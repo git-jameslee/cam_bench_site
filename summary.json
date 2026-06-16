@@ -1,0 +1,454 @@
+{
+  "generated": "2026-06-16T18:42:48.144021+00:00",
+  "n_runs": 6,
+  "group_order": [
+    "outcome",
+    "post",
+    "subjective",
+    "tokens",
+    "time",
+    "other"
+  ],
+  "default_visible": [
+    "outcome",
+    "post",
+    "subjective"
+  ],
+  "tasks": [
+    {
+      "name": "face_milling_basic",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "iou_voxel_1mm",
+          "section": "post",
+          "label": "IoU (1mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "dimensions_correct",
+          "section": "post",
+          "label": "Dimensions",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "toolpath_generated",
+          "section": "post",
+          "label": "Toolpath",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "overall_quality",
+          "section": "subjective",
+          "label": "Overall",
+          "group": "subjective",
+          "fmt": "score1"
+        },
+        {
+          "key": "strategy_appropriateness",
+          "section": "subjective",
+          "label": "Strategy",
+          "group": "subjective",
+          "fmt": "score1"
+        },
+        {
+          "key": "error_recovery",
+          "section": "subjective",
+          "label": "Error recovery",
+          "group": "subjective",
+          "fmt": "score1"
+        }
+      ],
+      "models": [
+        {
+          "model": "Claude Sonnet 4.6",
+          "runs": 2,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 1.0,
+              "lo": 1.0,
+              "hi": 1.0,
+              "n": 2
+            },
+            "tool_calls_total": {
+              "mean": 16.5,
+              "lo": 16.0,
+              "hi": 17.0,
+              "n": 2
+            },
+            "tool_calls_succeeded": {
+              "mean": 16.5,
+              "lo": 16.0,
+              "hi": 17.0,
+              "n": 2
+            },
+            "tool_calls_failed": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 2
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 2
+            },
+            "iou_voxel_1mm": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "dimensions_correct": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "toolpath_generated": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "overall_quality": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "strategy_appropriateness": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "error_recovery": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "tool_library_face_mill",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "queried_library",
+          "section": "post",
+          "label": "Queried lib",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "used_library_tool",
+          "section": "post",
+          "label": "Used lib tool",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "toolpath_generated",
+          "section": "post",
+          "label": "Toolpath",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "no_execute_code_fallback",
+          "section": "post",
+          "label": "No code fallback",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "tool_choice_quality",
+          "section": "subjective",
+          "label": "Tool choice",
+          "group": "subjective",
+          "fmt": "score1"
+        },
+        {
+          "key": "reasoning_quality",
+          "section": "subjective",
+          "label": "Reasoning",
+          "group": "subjective",
+          "fmt": "score1"
+        },
+        {
+          "key": "error_recovery",
+          "section": "subjective",
+          "label": "Error recovery",
+          "group": "subjective",
+          "fmt": "score1"
+        }
+      ],
+      "models": [
+        {
+          "model": "Claude Sonnet 4.6",
+          "runs": 3,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.886333,
+              "lo": 0.833,
+              "hi": 0.944,
+              "n": 3
+            },
+            "tool_calls_total": {
+              "mean": 17.666667,
+              "lo": 17.0,
+              "hi": 18.0,
+              "n": 3
+            },
+            "tool_calls_succeeded": {
+              "mean": 15.666667,
+              "lo": 15.0,
+              "hi": 17.0,
+              "n": 3
+            },
+            "tool_calls_failed": {
+              "mean": 2.0,
+              "lo": 1.0,
+              "hi": 3.0,
+              "n": 3
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 3
+            },
+            "queried_library": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "used_library_tool": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "toolpath_generated": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "no_execute_code_fallback": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "tool_choice_quality": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "reasoning_quality": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "error_recovery": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            }
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "runs": 1,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.727,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 11.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 8.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 3.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "queried_library": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "used_library_tool": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "toolpath_generated": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "no_execute_code_fallback": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "tool_choice_quality": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "reasoning_quality": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "error_recovery": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "overview": {
+    "models": [
+      "Claude Sonnet 4.6",
+      "Qwen3-8B"
+    ],
+    "tasks": [
+      "face_milling_basic",
+      "tool_library_face_mill"
+    ],
+    "cells": {
+      "Claude Sonnet 4.6": {
+        "face_milling_basic": {
+          "runs": 2,
+          "graded": 0
+        },
+        "tool_library_face_mill": {
+          "runs": 3,
+          "graded": 0
+        }
+      },
+      "Qwen3-8B": {
+        "face_milling_basic": {
+          "runs": 0,
+          "graded": 0
+        },
+        "tool_library_face_mill": {
+          "runs": 1,
+          "graded": 0
+        }
+      }
+    }
+  }
+}

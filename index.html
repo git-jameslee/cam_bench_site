@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAM-LLM Benchmark</title>
+<style>
+  :root { --bg:#0b1020; --panel:#151b30; --line:#2a3354; --fg:#e6e9f0; --muted:#9aa3bd; --accent:#3b82f6; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--fg); }
+  header { padding:24px 28px 8px; }
+  h1 { font-size:22px; margin:0; }
+  .sub { color:var(--muted); font-size:13px; margin-top:4px; }
+  .bar { display:flex; align-items:center; gap:18px; padding:10px 28px 0; flex-wrap:wrap; }
+  .bar .group { display:flex; align-items:center; gap:10px; }
+  .bar label { color:var(--muted); font-size:13px; display:inline-flex; align-items:center; gap:5px; cursor:pointer; }
+  .tabs { display:flex; gap:6px; padding:14px 28px 0; flex-wrap:wrap; }
+  .tab { padding:8px 14px; border-radius:8px 8px 0 0; background:transparent; color:var(--muted);
+         border:1px solid transparent; cursor:pointer; font-size:14px; }
+  .tab.active { background:var(--panel); color:var(--fg); border-color:var(--line); border-bottom-color:var(--panel); }
+  main { padding:0 28px 40px; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:0 10px 10px 10px; padding:18px 20px; }
+  h2 { font-size:16px; margin:0 0 4px; }
+  .note { color:var(--muted); font-size:13px; margin:8px 0 0; }
+  .scroll { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+  th, td { text-align:right; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; position:sticky; left:0; background:var(--panel); }
+  thead th { color:var(--muted); font-weight:600; font-size:12px; }
+  thead th.grp { border-bottom:2px solid var(--accent); }
+  tbody tr:hover td { background:rgba(59,130,246,.07); }
+  td.model { font-weight:600; }
+  td.dash { color:var(--muted); }
+  .ci { color:var(--muted); font-size:12px; margin-left:4px; }
+  a.logout { color:var(--muted); font-size:13px; text-decoration:none; margin-left:auto; }
+  a.logout:hover { color:var(--fg); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>CAM-LLM Benchmark — eval results</h1>
+    <div class="sub" id="sub">loading…</div>
+  </header>
+  <div class="bar">
+    <label><input type="checkbox" id="ci" checked> 95% CI</label>
+    <div class="group" id="groups"></div>
+    <a class="logout" href="/logout">sign out</a>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <main><div class="panel" id="panel"></div></main>
+  <script src="app.js"></script>
+</body>
+</html>

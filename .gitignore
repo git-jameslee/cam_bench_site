@@ -1,0 +1,7 @@
+# This repo is the Cloudflare Pages deploy source. Only the site files +
+# summary.json (aggregates) belong here. Raw eval_results live OUTSIDE this
+# folder and must never be added.
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
