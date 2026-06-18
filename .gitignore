@@ -1,6 +1,7 @@
-# This repo is the Cloudflare Pages deploy source. Only the site files +
-# summary.json (aggregates) belong here. Raw eval_results live OUTSIDE this
-# folder and must never be added.
+# This repo is the Cloudflare Pages deploy source. Site files + the derived
+# data belong here: summary.json (aggregates) and runs/<id>.json (per-run
+# flattened metrics + transcript, no conversation). The RAW eval_results
+# (full conversations) live OUTSIDE this folder and must never be added.
 .DS_Store
 Thumbs.db
 *.log

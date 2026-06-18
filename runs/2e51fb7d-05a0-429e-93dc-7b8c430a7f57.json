@@ -1,0 +1,222 @@
+{
+  "run_id": "2e51fb7d-05a0-429e-93dc-7b8c430a7f57",
+  "model": "Claude Sonnet 4.6",
+  "model_raw": "claude-sonnet-4-6",
+  "task": "tool_library_face_mill",
+  "task_group": null,
+  "prompt_variant": null,
+  "trial_index": null,
+  "trials_total": null,
+  "backend": "anthropic",
+  "timestamp": "2026-06-11T11:35:40.503196",
+  "sampling": null,
+  "seed": null,
+  "values": {
+    "tool_calls_total": 18.0,
+    "tool_calls_succeeded": 17.0,
+    "tool_calls_failed": 1.0,
+    "tool_call_success_rate": 0.944,
+    "hit_round_limit": 0.0,
+    "queried_library": null,
+    "used_library_tool": null,
+    "toolpath_generated": null,
+    "no_execute_code_fallback": null,
+    "tool_choice_quality": null,
+    "reasoning_quality": null,
+    "error_recovery": null
+  },
+  "transcript": [
+    {
+      "tool": "get_scene_info",
+      "success": true,
+      "input": {},
+      "result": "**get_scene_info** OK\n  design_name: Untitled\n  design_type: DesignProductType\n  bodies: []\n  sketches: []\n  bodies_count: 0\n  sketches_count: 0\n  features_count: 0\n  timeline_count: 0\n  camera: {'eye': [25.611467491870897, -25.611467491870897, 25.611467491870897], 'target': [0.0, 0.0, 0.0], 'up_vector': [0.0, 0.0, 1.0]}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_get_library_tools",
+      "success": true,
+      "input": {
+        "library_name": "TIW CNC Tool Library"
+      },
+      "result": "**cam_get_library_tools** OK\n  libraries: [{'location': 'local', 'url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'tool_count': 66, 'tools': [{'tool_number': 36, 'tool_diameter': 7.1437, 'tool_fluteLength': 27.94, 'tool_shoulderLength': 44.45, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#36 - \u00d89/32\" 135\u00b0 drill (9/32\" Cobalt Drill)'}, {'tool_number': 80, 'tool_diameter': 19.05, 'tool_fluteLength': 34.304, 'tool_shoulderLength': 46.863, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#80 - \u00d83/4\" flat (3/4\" HSS 2Fl Square Endmill)'}, {'tool_number': 105, 'tool_diameter': 1.0541, 'tool_fluteLength': 0.3048, 'tool_shoulderLength': 7.62, 'tool_overallLength': 78.5368, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#105 - \u00d80.0415\" 60\u00b0 chamfer ((REMOVED T49) diy engrave as a center drill)'}, {'tool_number': 18, 'tool_diameter': 6.35, 'tool_fluteLength': 19.05, 'tool_shoulderLength': 19.05, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 3.175, 'description': '#18 - \u00d81/4\" ball (1/4\" HSS Ball Endmill)'}, {'tool_number': 21, 'tool_diameter': 58.42, 'tool_fluteLength': 2.54, 'tool_shoulderLength': 12.7, 'tool_overallLength': 76.2, 'tool_numberOfFlutes': 1, 'tool_cornerRadius': 0.0, 'description': '#21 - \u00d82.3\" face (Tormach SuperFly Fly Cutter)'}, {'tool_number': 70, 'tool_diameter': 8.7312, 'tool_fluteLength': 90.6145, 'tool_shoulderLength': 90.6145, 'tool_overallLength': 152.4, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#70 - \u00d811/32\" drill (11/32\" Long Cobalt Drill)'}, {'tool_number': 45, 'tool_diameter': 7.9375, 'tool_fluteLength': 17.0561, 'tool_shoulderLength': 20.701, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#45 - \u00d85/16\" 120\u00b0 center drill (1/8\" - 5/16\" Center Drill w/ countersink)'}, {'tool_number': 1, 'tool_diameter': 19.05, 'tool_fluteLength': 44.45, 'tool_shoulderLength': 53.34, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#1 - \u00d83/4\" flat (3/4\" HSS TiN Flat Endmill)'}, {'tool_number': 46, 'tool_diameter': 6.35, 'tool_fluteLength': 14.4145, 'tool_shoulderLength': 17.7927, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#46 - \u00d81/4\" 120\u00b0 center drill (7/64\" - 1/4\" Center Drill w/ countersink)'}, {'tool_number': 92, 'tool_diameter': 14.2875, 'tool_fluteLength': 6.0452, 'tool_shoulderLength': 23.1902, 'tool_overallLength': 114.3, 'tool_numberOfFlutes': 6, 'tool_cornerRadius': 0.0, 'description': '#92 - \u00d89/16H0.238\" slot (9/16\" HSS 6FL T-Slot Cutter)'}, {'tool_number': 40, 'tool_diameter': 3.9688, 'tool_fluteLength': 28.575, 'tool_shoulderLength': 47.625, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#40 - \u00d85/32\" 135\u00b0 drill (5/31\" Cobalt Drill)'}, {'tool_number': 42, 'tool_diameter': 3.175, 'tool_fluteLength': 37.3761, 'tool_shoulderLength': 43.307, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#42 - \u00d81/8\" 135\u00b0 drill (1/8\" Cobalt Drill)'}, {'tool_number': 41, 'tool_diameter': 3.175, 'tool_fluteLength': 17.78, 'tool_shoulderLength': 27.94, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#41 - \u00d81/8\" 135\u00b0 drill (1/8\" Cobalt Drill)'}, {'tool_number': 15, 'tool_diameter': 11.1125, 'tool_fluteLength': 25.4, 'tool_shoulderLength': 30.48, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 5.5563, 'description': '#15 - \u00d87/16\" ball (7/16\" HSS Ball Endmill)'}, {'tool_number': 3, 'tool_diameter': 12.7, 'tool_fluteLength': 50.8, 'tool_shoulderLength': 55.88, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#3 - \u00d81/2\" flat (1/2\" 3Fl Carb TiCN Flat Endmill)'}, {'tool_number': 83, 'tool_diameter': 7.9375, 'tool_fluteLength': 40.64, 'tool_shoulderLength': 51.562, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#83 - \u00d85/16\" flat (5/16\" Carbide 2Fl Flat Endmill)'}, {'tool_number': 38, 'tool_diameter': 5.5563, 'tool_fluteLength': 25.4, 'tool_shoulderLength': 38.1, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#38 - \u00d87/32\" 135\u00b0 drill (7/32\" Cobalt Drill)'}, {'tool_number': 17, 'tool_diameter': 7.9375, 'tool_fluteLength': 12.7, 'tool_shoulderLength': 17.78, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 3.9688, 'description': '#17 - \u00d85/16\" ball (5/16\" HSS Ball Endmill)'}, {'tool_number': 20, 'tool_diameter': 3.175, 'tool_fluteLength': 10.16, 'tool_shoulderLength': 12.7, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 1.5875, 'description': '#20 - \u00d81/8\" ball (1/8\" HSS Ball Endmill)'}, {'tool_number': 30, 'tool_diameter': 6.35, 'tool_fluteLength': 27.94, 'tool_shoulderLength': 35.56, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 3.175, 'description': '#30 - \u00d81/4\" ball (1/4\" Carbide Uncoated Ball Endmill)'}, {'tool_number': 6, 'tool_diameter': 11.1125, 'tool_fluteLength': 25.4, 'tool_shoulderLength': 30.48, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#6 - \u00d87/16\" flat (7/16\" HSS TiN Flat Endmill)'}, {'tool_number': 104, 'tool_diameter': 1.5875, 'tool_fluteLength': 2.54, 'tool_shoulderLength': 19.05, 'tool_overallLength': 88.9, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#104 - \u00d81/16\" flat ((REMOVED T79) 1/16\" Long Flat Endmill 3FL)'}, {'tool_number': 51, 'tool_diameter': 15.875, 'tool_fluteLength': 42.8244, 'tool_shoulderLength': 53.848, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#51 - \u00d85/8\" flat (5/8\" HSS 4 Flute Endmill)'}, {'tool_number': 53, 'tool_diameter': 9.525, 'tool_fluteLength': 19.05, 'tool_shoulderLength': 27.94, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#53 - \u00d83/8\" flat (3/8\" HSS 4 Flute Flat Endmill)'}, {'tool_number': 12, 'tool_diameter': 19.05, 'tool_fluteLength': 34.29, 'tool_shoulderLength': 43.18, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 9.525, 'description': '#12 - \u00d83/4\" ball (3/4\" HSS 2Fl Ball Endmill)'}, {'tool_number': 50, 'tool_diameter': 19.05, 'tool_fluteLength': 43.7642, 'tool_shoulderLength': 57.15, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#50 - \u00d83/4\" flat (3/4\" HSS 4 Flute Flat Endmill)'}, {'tool_number': 84, 'tool_diameter': 7.9375, 'tool_fluteLength': 55.372, 'tool_shoulderLength': 64.9478, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#84 - \u00d85/16\" flat (5/16\" HSS 2Fl Square Endmill)'}, {'tool_number': 2, 'tool_diameter': 15.875, 'tool_fluteLength': 40.64, 'tool_shoulderLength': 50.8, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#2 - \u00d85/8\" flat (5/8\" HSS TiN Flat Endmill)'}, {'tool_number': 7, 'tool_diameter': 9.525, 'tool_fluteLength': 25.4, 'tool_shoulderLength': 30.48, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#7 - \u00d83/8\" flat (3/8\" 3FL Carb ZrN Flat Endmill)'}, {'tool_number': 39, 'tool_diameter': 4.7625, 'tool_fluteLength': 22.86, 'tool_shoulderLength': 34.29, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#39 - \u00d83/16\" 135\u00b0 drill (3/16\" Cobalt Drill)'}, {'tool_number': 48, 'tool_diameter': 3.175, 'tool_fluteLength': 7.62, 'tool_shoulderLength': 10.16, 'tool_overallLength': 81.28, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#48 - \u00d81/8\" 120\u00b0 center drill (3/64\" - 1/8\" Center Drill)'}, {'tool_number': 35, 'tool_diameter': 7.9375, 'tool_fluteLength': 31.75, 'tool_shoulderLength': 48.26, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#35 - \u00d85/16\" 135\u00b0 drill (5/16\" Cobalt Drill)'}, {'tool_number': 22, 'tool_diameter': 76.2, 'tool_fluteLength': 2.54, 'tool_shoulderLength': 12.7, 'tool_overallLength': 76.2, 'tool_numberOfFlutes': 1, 'tool_cornerRadius': 0.0, 'description': '#22 - \u00d83\" face (Tormach SuperFly Fly Cutter)'}, {'tool_number': 13, 'tool_diameter': 15.875, 'tool_fluteLength': 29.21, 'tool_shoulderLength': 38.1, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 7.9375, 'description': '#13 - \u00d85/8\" ball (5/8\" HSS Ball Endmill)'}, {'tool_number': 52, 'tool_diameter': 12.7, 'tool_fluteLength': 31.75, 'tool_shoulderLength': 40.64, 'tool_overallLength': 114.3, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#52 - \u00d81/2\" flat (1/2\" HSS 4 Flute Flat Endmill)'}, {'tool_number': 9, 'tool_diameter': 6.35, 'tool_fluteLength': 27.94, 'tool_shoulderLength': 34.925, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#9 - \u00d81/4\" flat (1/4\" 3fl TiCN Carb Flat Endmill)'}, {'tool_number': 101, 'tool_diameter': 7.9375, 'tool_fluteLength': 17.78, 'tool_shoulderLength': 25.4, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#101 - \u00d85/16\" flat ((REMOVED T63) 5/16\" HSS TiN Flat Endmill)'}, {'tool_number': 14, 'tool_diameter': 12.7, 'tool_fluteLength': 25.4, 'tool_shoulderLength': 35.56, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 6.35, 'description': '#14 - \u00d81/2\" ball (1/2\" HSS Ball Endmill)'}, {'tool_number': 32, 'tool_diameter': 11.9062, 'tool_fluteLength': 35.56, 'tool_shoulderLength': 60.96, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#32 - \u00d815/32\" 135\u00b0 drill (15/32\" Cobalt Drill)'}, {'tool_number': 25, 'tool_diameter': 9.525, 'tool_fluteLength': 6.35, 'tool_shoulderLength': 20.32, 'tool_overallLength': 76.2, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#25 - \u00d83/8\" 41\u00b0 chamfer (3/8\" HSS 3fl Chamfer Mill (41 degree - 82 degree incl.))'}, {'tool_number': 71, 'tool_diameter': 9.525, 'tool_fluteLength': 89.916, 'tool_shoulderLength': 89.916, 'tool_overallLength': 203.2, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#71 - \u00d83/8\" drill (3/8\" Long Cobalt drill)'}, {'tool_number': 55, 'tool_diameter': 4.7625, 'tool_fluteLength': 12.7, 'tool_shoulderLength': 12.7, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#55 - \u00d83/16\" flat (3/16\" HSS 4 Flute Flat Endmill)'}, {'tool_number': 102, 'tool_diameter': 1.5875, 'tool_fluteLength': 7.62, 'tool_shoulderLength': 10.16, 'tool_overallLength': 76.2, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#102 - \u00d81/16\" flat ((REMOVED T77) 1/16\" HSS Flat End Mill)'}, {'tool_number': 8, 'tool_diameter': 7.9375, 'tool_fluteLength': 42.9768, 'tool_shoulderLength': 50.292, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#8 - \u00d85/16\" flat (5/16\" TiCN Carbide 2Fl Flat Endmill)'}, {'tool_number': 31, 'tool_diameter': 12.7, 'tool_fluteLength': 35.56, 'tool_shoulderLength': 66.04, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#31 - \u00d81/2\" 135\u00b0 drill (1/2\" Cobalt Drill)'}, {'tool_number': 10, 'tool_diameter': 4.7625, 'tool_fluteLength': 15.24, 'tool_shoulderLength': 19.05, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#10 - \u00d83/16\" flat (3/16\" 3Fl ZrN Carb Flat Endmill)'}, {'tool_number': 47, 'tool_diameter': 4.7625, 'tool_fluteLength': 12.7, 'tool_shoulderLength': 14.2875, 'tool_overallLength': 81.28, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#47 - \u00d83/16\" 120\u00b0 center drill (3/32\" - 3/16\" Center Drill)'}, {'tool_number': 37, 'tool_diameter': 6.35, 'tool_fluteLength': 30.48, 'tool_shoulderLength': 43.18, 'tool_overallLength': 152.4, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#37 - \u00d81/4\" 135\u00b0 drill (1/4\" Cobalt Drill)'}, {'tool_number': 16, 'tool_diameter': 9.525, 'tool_fluteLength': 12.7, 'tool_shoulderLength': 20.32, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 4.7625, 'description': '#16 - \u00d83/8\" ball (3/8\" HSS Ball Endmill)'}, {'tool_number': 4, 'tool_diameter': 12.7, 'tool_fluteLength': 31.75, 'tool_shoulderLength': 36.83, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#4 - \u00d81/2\" flat (1/2\" 3Fl Carb ZrN Flat Endmill)'}, {'tool_number': 103, 'tool_diameter': 1.5875, 'tool_fluteLength': 5.08, 'tool_shoulderLength': 5.08, 'tool_overallLength': 76.2, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.7937, 'description': '#103 - \u00d81/16\" ball ((REMOVED T78) 1/16\" Tapered Ball Endmill)'}, {'tool_number': 43, 'tool_diameter': 2.4892, 'tool_fluteLength': 31.3182, 'tool_shoulderLength': 38.227, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#43 - \u00d80.098\" drill (0.0098\" Cobalt 2 Flute Drill)'}, {'tool_number': 54, 'tool_diameter': 6.35, 'tool_fluteLength': 24.13, 'tool_shoulderLength': 30.48, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#54 - \u00d81/4\" flat (1/4\" HSS Flat Endmill)'}, {'tool_number': 100, 'tool_diameter': 2.286, 'tool_fluteLength': 19.05, 'tool_shoulderLength': 19.05, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#100 - \u00d80.09\" drill ((CUSTOMIZIABLE) 0.09\" 2Fl HSS Drill)'}, {'tool_number': 5, 'tool_diameter': 12.7, 'tool_fluteLength': 31.75, 'tool_shoulderLength': 36.83, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#5 - \u00d81/2\" flat (1/2\" 3Fl Carb ZrN Flat Endmill)'}, {'tool_number': 56, 'tool_diameter': 1.5875, 'tool_fluteLength': 3.81, 'tool_shoulderLength': 4.826, 'tool_overallLength': 76.2, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#56 - \u00d81/16\" flat (1/16\" TICN Carbide Square Endmill)'}, {'tool_number': 90, 'tool_diameter': 8.89, 'tool_fluteLength': 22.86, 'tool_shoulderLength': 32.639, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 4, 'tool_cornerRadius': 0.0, 'description': '#90 - \u00d80.35\" thread (3/8\" 0.065in Thread Mill)'}, {'tool_number': 91, 'tool_diameter': 6.35, 'tool_fluteLength': 6.35, 'tool_shoulderLength': 10.16, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 1, 'tool_cornerRadius': 0.0, 'description': '#91 - \u00d81/4\" 30\u00b0 chamfer (1/4\" 60 deg Inclusive Engraver)'}, {'tool_number': 33, 'tool_diameter': 11.1125, 'tool_fluteLength': 35.56, 'tool_shoulderLength': 60.96, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#33 - \u00d87/16\" 135\u00b0 drill (7/16\" Cobalt Drill)'}, {'tool_number': 19, 'tool_diameter': 4.7625, 'tool_fluteLength': 10.16, 'tool_shoulderLength': 25.4, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 2.3812, 'description': '#19 - \u00d83/16\" ball (3/16\" HSS Ball Endmill)'}, {'tool_number': 34, 'tool_diameter': 9.525, 'tool_fluteLength': 27.94, 'tool_shoulderLength': 50.8, 'tool_overallLength': 127.0, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#34 - \u00d83/8\" 135\u00b0 drill (3/8\" Cobalt Drill)'}, {'tool_number': 81, 'tool_diameter': 12.7, 'tool_fluteLength': 53.975, 'tool_shoulderLength': 67.945, 'tool_overallLength': 152.4, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#81 - \u00d81/2\" flat (1/2\" HSS 2Fl Flat Endmill)'}, {'tool_number': 44, 'tool_diameter': 11.1125, 'tool_fluteLength': 21.082, 'tool_shoulderLength': 24.13, 'tool_overallLength': 101.6, 'tool_numberOfFlutes': 2, 'tool_cornerRadius': 0.0, 'description': '#44 - \u00d87/16\" center drill (3/16 - 7/16\" Center Drill w/countersink)'}, {'tool_number': 11, 'tool_diameter': 3.175, 'tool_fluteLength': 12.192, 'tool_shoulderLength': 15.875, 'tool_overallLength': 88.9, 'tool_numberOfFlutes': 3, 'tool_cornerRadius': 0.0, 'description': '#11 - \u00d81/8\" flat (1/8\" 3Fl ZrN Carb Flat End Mill - 45 Degree Helix)'}, {'tool_number': 72, 'tool_diameter': 11.1125, 'tool_fluteLength': 43.7896, 'tool_shoulderLength': 58.6613, 'tool_overallLength': 203.2, 'tool_numberOfFlutes': 6, 'tool_cornerRadius': 0.0, 'description': '#72 - \u00d87/16\" reamer (7/16\" Reamer)'}, {'tool_number': 26, 'tool_diameter': 6.35, 'tool_fluteLength': 3.81, 'tool_shoulderLength': 12.7, 'tool_overallLength': 88.9, 'tool_numberOfFlutes': 5, 'tool_cornerRadius': 0.0, 'description': '#26 - \u00d81/4\" 41\u00b0 chamfer (1/4\" HSS 5fl Chamfer Mill (41 degree - 82 incl.))'}]}]\n  library_count: 1",
+      "prompt_index": 1
+    },
+    {
+      "tool": "set_design_type",
+      "success": true,
+      "input": {
+        "design_type": "parametric"
+      },
+      "result": "**set_design_type** OK\n  changed: False\n  design_type: parametric\n  message: Already in parametric mode",
+      "prompt_index": 1
+    },
+    {
+      "tool": "create_sketch",
+      "success": true,
+      "input": {
+        "plane": "xy"
+      },
+      "result": "**create_sketch** OK\n  sketch_name: Sketch1\n  plane: xy\n  z_offset: None",
+      "prompt_index": 1
+    },
+    {
+      "tool": "draw_rectangle",
+      "success": true,
+      "input": {
+        "width": 5,
+        "height": 5,
+        "origin_x": 0,
+        "origin_y": 0
+      },
+      "result": "**draw_rectangle** OK\n  sketch: Sketch1\n  width: 5\n  height: 5",
+      "prompt_index": 1
+    },
+    {
+      "tool": "extrude",
+      "success": true,
+      "input": {
+        "height": 2,
+        "operation": "new_body"
+      },
+      "result": "**extrude** OK\n  feature_name: Extrude1\n  body_name: Extrude1\n  height: 2\n  operation: new_body\n  direction: positive",
+      "prompt_index": 1
+    },
+    {
+      "tool": "rename_body",
+      "success": true,
+      "input": {
+        "body_name": "Extrude1",
+        "new_name": "Aluminum Block 50x50x20mm"
+      },
+      "result": "**rename_body** OK\n  renamed: True\n  old_name: Extrude1\n  new_name: Aluminum Block 50x50x20mm",
+      "prompt_index": 1
+    },
+    {
+      "tool": "set_appearance",
+      "success": false,
+      "input": {
+        "target_name": "Aluminum Block 50x50x20mm",
+        "appearance_name": "Aluminum - Matte"
+      },
+      "result": "**set_appearance** ERROR (UNKNOWN)\n  Appearance 'Aluminum - Matte' not found. Appearance names must match exactly \u2014 call list_appearances with a name_filter to discover valid names.\n\ntraceback:\nTraceback (most recent call last):\n  File \"C:\\Users/Nanja/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/AddIns/Fusion360MCP\\server\\command_handler.py\", line 248, in execute_command\n    result = handler(**params)\n  File \"C:\\Users/Nanja/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/AddIns/Fusion360MCP\\server\\command_handler.py\", line 2371, in set_appearance\n    raise RuntimeError(\n    ...<3 lines>...\n    )\nRuntimeError: Appearance 'Aluminum - Matte' not found. Appearance names must match exactly \u2014 call list_appearances with a name_filter to discover valid names.\n",
+      "prompt_index": 1
+    },
+    {
+      "tool": "list_appearances",
+      "success": true,
+      "input": {
+        "name_filter": "aluminum"
+      },
+      "result": "**list_appearances** OK\n  library: Fusion Appearance Library\n  total_matched: 10\n  returned: 10\n  appearances: ['Aluminum - Anodized Glossy (Blue)', 'Aluminum - Anodized Glossy (Grey)', 'Aluminum - Anodized Glossy (Red)', 'Aluminum - Anodized Rough (Blue)', 'Aluminum - Anodized Rough (Grey)', 'Aluminum - Anodized Rough (Red)', 'Aluminum - Bead Blasted', 'Aluminum - Polished', 'Aluminum - Satin', 'Aluminum nitride (AlN)']",
+      "prompt_index": 1
+    },
+    {
+      "tool": "set_appearance",
+      "success": true,
+      "input": {
+        "target_name": "Aluminum Block 50x50x20mm",
+        "appearance_name": "Aluminum - Satin"
+      },
+      "result": "**set_appearance** OK\n  applied: True\n  target: Aluminum Block 50x50x20mm\n  appearance: Aluminum - Satin",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_import_library_tool",
+      "success": true,
+      "input": {
+        "library_name": "TIW CNC Tool Library",
+        "tool_number": 22
+      },
+      "result": "**cam_import_library_tool** OK\n  success: True\n  imported: True\n  tool_number: 22\n  source_library: toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\n  document_library_count: 1\n  tool_assigned: {'tool_number': 22, 'tool_diameter': 76.2, 'tool_fluteLength': 2.54, 'tool_shoulderLength': 12.7, 'tool_overallLength': 76.2, 'tool_numberOfFlutes': 1, 'tool_cornerRadius': 0.0, 'description': '#22 - \u00d83\" face (Tormach SuperFly Fly Cutter)'}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_create_setup",
+      "success": true,
+      "input": {
+        "body_name": "Aluminum Block 50x50x20mm",
+        "name": "Face Mill - Aluminum Block",
+        "operation_type": "milling",
+        "stock_mode": "relative_box",
+        "stock_offset_top": 0.5,
+        "stock_offset_sides": 0,
+        "stock_offset_bottom": 0
+      },
+      "result": "**cam_create_setup** OK\n  name: Face Mill - Aluminum Block\n  body: Aluminum Block 50x50x20mm\n  operation_type: milling",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_create_operation",
+      "success": true,
+      "input": {
+        "setup_name": "Face Mill - Aluminum Block",
+        "strategy": "face",
+        "name": "Face Top Surface"
+      },
+      "result": "**cam_create_operation** OK\n  name: Face1\n  setup: Face Mill - Aluminum Block\n  strategy: face\n  tool_assigned: #22 - \u00d83\" face (Tormach SuperFly Fly Cutter)\n  has_error: False",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_update_operation_parameters",
+      "success": true,
+      "input": {
+        "setup_name": "Face Mill - Aluminum Block",
+        "operation_name": "Face1",
+        "parameters": {
+          "spindle_speed_rpm": 900,
+          "cutting_feedrate_mmpm": 180,
+          "plunge_feedrate_mmpm": 90,
+          "stepdown_mm": 0.5,
+          "stepover_mm": 60,
+          "tolerance_mm": 0.01,
+          "stock_to_leave_mm": 0
+        }
+      },
+      "result": "**cam_update_operation_parameters** OK\n  success: True\n  operation: Face1\n  changes: [{'parameter': 'spindle_speed_rpm', 'fusion_param': 'tool_spindleSpeed', 'unit': 'rpm', 'before': 10000.0, 'after': 900.0}, {'parameter': 'cutting_feedrate_mmpm', 'fusion_param': 'tool_feedCutting', 'unit': 'mm/min', 'before': 5000.0, 'after': 180.0}, {'parameter': 'plunge_feedrate_mmpm', 'fusion_param': 'tool_feedPlunge', 'unit': 'mm/min', 'before': 1500.0, 'after': 90.0}, {'parameter': 'stepover_mm', 'fusion_param': 'stepover', 'unit': 'mm', 'before': 64.77, 'after': 60.0}, {'parameter': 'tolerance_mm', 'fusion_param': 'tolerance', 'unit': 'mm', 'before': 0.01, 'after': 0.01}]\n  changes_applied: 5\n  skipped: ['stepdown_mm', 'stock_to_leave_mm']\n  has_error: False\n  warnings: [\"'stepdown' not available for this operation type\", \"'stockToLeave' not available for this operation type\"]",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_generate_toolpath",
+      "success": true,
+      "input": {
+        "setup_name": "Face Mill - Aluminum Block",
+        "operation_name": "Face1"
+      },
+      "result": "**cam_generate_toolpath** OK\n  scope: operation\n  operation: Face1\n  has_toolpath: True\n  is_valid: True\n  completed: True\n  timed_out: False",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_get_toolpath_status",
+      "success": true,
+      "input": {
+        "setup_name": "Face Mill - Aluminum Block"
+      },
+      "result": "**cam_get_toolpath_status** OK\n  setups: [{'name': 'Face Mill - Aluminum Block', 'operations': [{'name': 'Face1', 'is_suppressed': False, 'has_toolpath': True, 'is_valid': True, 'is_outdated': False}]}]\n  summary: {'total_operations': 1, 'with_toolpath': 1, 'valid': 1, 'outdated': 0}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_get_machining_time",
+      "success": true,
+      "input": {
+        "setup_name": "Face Mill - Aluminum Block"
+      },
+      "result": "**cam_get_machining_time** OK\n  setups: [{'name': 'Face Mill - Aluminum Block', 'total_time_seconds': 430.76, 'operations': [{'name': 'Face1', 'has_toolpath': True, 'is_suppressed': False, 'time_seconds': 430.76}]}]",
+      "prompt_index": 1
+    },
+    {
+      "tool": "render_view",
+      "success": true,
+      "input": {
+        "view": "iso"
+      },
+      "result": "**render_view** OK\n  view: iso\n  width: 1024\n  height: 768\n  image_format: png\n  bytes: 32799",
+      "prompt_index": 1
+    }
+  ],
+  "provenance": null,
+  "artifacts": {
+    "video": null,
+    "image": null
+  }
+}

@@ -159,9 +159,15 @@ function renderTask(name) {
 
   let anyDash = false;
   const body = el("tbody");
+  const span = 2 + cols.length;
   task.models.forEach((mod) => {
-    const tr = el("tr");
-    tr.append(el("td", { class: "model" }, modelLabel(mod.model)));
+    const runIndex = mod.run_index || [];
+    const expandable = runIndex.length > 0;
+    const tr = el("tr", expandable ? { class: "expandable" } : {});
+    const mcell = el("td", { class: "model" });
+    if (expandable) mcell.append(el("span", { class: "caret" }, "▸"));
+    mcell.append(modelLabel(mod.model));
+    tr.append(mcell);
     tr.append(el("td", {}, "" + mod.runs));
     cols.forEach((m) => {
       const c = mod.cells[m.key];
@@ -175,6 +181,19 @@ function renderTask(name) {
       tr.append(td);
     });
     body.append(tr);
+
+    if (expandable) {
+      const detail = el("tr", { class: "detail hidden" });
+      const cell = el("td", { class: "detailcell", colspan: "" + span });
+      detail.append(cell);
+      body.append(detail);
+      let loaded = false;
+      tr.onclick = () => {
+        const open = detail.classList.toggle("hidden") === false;
+        tr.classList.toggle("open", open);
+        if (open && !loaded) { loaded = true; renderRunDetail(cell, runIndex, cols); }
+      };
+    }
   });
   table.append(body);
   panel.append(el("div", { class: "scroll" }, table));
@@ -182,6 +201,93 @@ function renderTask(name) {
     panel.append(el("div", { class: "note" },
       "“—” = ungraded (manual objective / subjective scores still null) or not logged for that model."));
   }
+}
+
+// Lazy-load every run for one model row and render a per-run breakdown table
+// (same visible metric cols) + variant col; each run row expands to its
+// tool-call transcript. Visuals (video/image) are deferred — slots stay hidden.
+async function renderRunDetail(container, runIndex, cols) {
+  container.replaceChildren(el("div", { class: "note" }, "loading runs…"));
+  let runs;
+  try {
+    runs = await Promise.all(runIndex.map(async (ri) => {
+      const res = await fetch(`runs/${ri.run_id}.json`, { cache: "no-store" });
+      if (!res.ok) throw new Error(ri.run_id);
+      return res.json();
+    }));
+  } catch (e) {
+    container.replaceChildren(el("div", { class: "note" }, "failed to load run detail"));
+    return;
+  }
+  runs.sort((a, b) => (a.timestamp || "").localeCompare(b.timestamp || ""));
+
+  const table = el("table", { class: "subtable" });
+  const head = el("tr");
+  head.append(el("th", {}, "run"));
+  head.append(el("th", {}, "variant"));
+  cols.forEach((m) => head.append(el("th", { title: `${m.group} · ${m.key}` }, m.label)));
+  table.append(el("thead", {}, head));
+
+  const span = 2 + cols.length;
+  const tb = el("tbody");
+  runs.forEach((run) => {
+    const tr = el("tr", { class: "expandable" });
+    tr.append(el("td", {}, el("span", { class: "caret" }, "▸"), runLabel(run)));
+    tr.append(el("td", {}, run.prompt_variant || DASH));
+    cols.forEach((m) => {
+      const v = run.values ? run.values[m.key] : null;
+      if (v == null) { tr.append(el("td", { class: "dash" }, DASH)); return; }
+      tr.append(el("td", {}, fmtMain(m.fmt, v)));
+    });
+    tb.append(tr);
+
+    const trow = el("tr", { class: "detail hidden" });
+    const tcell = el("td", { class: "detailcell", colspan: "" + span }, renderTranscript(run));
+    trow.append(tcell);
+    tb.append(trow);
+    tr.onclick = () => {
+      const open = trow.classList.toggle("hidden") === false;
+      tr.classList.toggle("open", open);
+    };
+  });
+  table.append(tb);
+  container.replaceChildren(table);
+}
+
+function runLabel(run) {
+  const when = run.timestamp ? new Date(run.timestamp).toLocaleString()
+                            : (run.run_id || "").slice(0, 8);
+  return (run.trials_total && run.trials_total > 1)
+    ? `#${(run.trial_index ?? 0) + 1} · ${when}` : when;
+}
+
+function renderTranscript(run) {
+  const wrap = el("div", { class: "transcript" });
+  const p = run.provenance;
+  if (p && p.mcp_git_sha) {
+    const bits = [`MCP ${String(p.mcp_git_sha).slice(0, 8)}`];
+    if (p.tool_count != null) bits.push(`${p.tool_count} tools`);
+    if (p.vllm_version) bits.push(`vLLM ${p.vllm_version}`);
+    wrap.append(el("div", { class: "note prov" }, bits.join(" · ")));
+  }
+  const calls = run.transcript || [];
+  if (!calls.length) {
+    wrap.append(el("div", { class: "note" }, "no tool calls logged"));
+    return wrap;
+  }
+  const ol = el("ol", { class: "tcalls" });
+  calls.forEach((t) => {
+    const li = el("li");
+    li.append(el("span", { class: t.success ? "ok" : "bad" }, t.success ? "✓" : "✗"));
+    li.append(" ", el("code", {}, t.tool || "?"));
+    const inp = typeof t.input === "string" ? t.input : JSON.stringify(t.input || {});
+    if (inp && inp !== "{}") {
+      li.append(el("span", { class: "args" }, " " + (inp.length > 90 ? inp.slice(0, 90) + "…" : inp)));
+    }
+    ol.append(li);
+  });
+  wrap.append(ol);
+  return wrap;
 }
 
 function render() {
