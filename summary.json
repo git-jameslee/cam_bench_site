@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-18T22:08:40.508717+00:00",
-  "n_runs": 6,
+  "generated": "2026-06-22T18:21:48.899866+00:00",
+  "n_runs": 8,
   "group_order": [
     "outcome",
     "post",
@@ -15,6 +15,319 @@
     "subjective"
   ],
   "tasks": [
+    {
+      "name": "box_pocket_detailed",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "toolpath_generated",
+          "section": "post",
+          "label": "Toolpath",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "gouge_free",
+          "section": "post",
+          "label": "Gouge free",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "coordinate_frame_correct",
+          "section": "post",
+          "label": "Coordinate frame correct",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "safe_retracts",
+          "section": "post",
+          "label": "Safe retracts",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "tool_appropriate",
+          "section": "post",
+          "label": "Tool appropriate",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "machine_time_min",
+          "section": "post",
+          "label": "Machine time min",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "overall_quality",
+          "section": "subjective",
+          "label": "Overall",
+          "group": "subjective",
+          "fmt": "score1"
+        },
+        {
+          "key": "strategy_appropriateness",
+          "section": "subjective",
+          "label": "Strategy",
+          "group": "subjective",
+          "fmt": "score1"
+        },
+        {
+          "key": "error_recovery",
+          "section": "subjective",
+          "label": "Error recovery",
+          "group": "subjective",
+          "fmt": "score1"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        }
+      ],
+      "models": [
+        {
+          "model": "Claude Sonnet 4.6",
+          "runs": 2,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.946,
+              "lo": 0.929,
+              "hi": 0.963,
+              "n": 2
+            },
+            "tool_calls_total": {
+              "mean": 27.5,
+              "lo": 27.0,
+              "hi": 28.0,
+              "n": 2
+            },
+            "tool_calls_succeeded": {
+              "mean": 26.0,
+              "lo": 26.0,
+              "hi": 26.0,
+              "n": 2
+            },
+            "tool_calls_failed": {
+              "mean": 1.5,
+              "lo": 1.0,
+              "hi": 2.0,
+              "n": 2
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 2
+            },
+            "toolpath_generated": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "gouge_free": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "coordinate_frame_correct": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "safe_retracts": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "tool_appropriate": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "machine_time_min": {
+              "mean": 60.145,
+              "lo": 52.59,
+              "hi": 67.7,
+              "n": 2
+            },
+            "overall_quality": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "strategy_appropriateness": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "error_recovery": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "input_tokens": {
+              "mean": 687065.0,
+              "lo": 648217.0,
+              "hi": 725913.0,
+              "n": 2
+            },
+            "output_tokens": {
+              "mean": 4900.5,
+              "lo": 4867.0,
+              "hi": 4934.0,
+              "n": 2
+            },
+            "cache_read_input_tokens": {
+              "mean": 649650.5,
+              "lo": 611270.0,
+              "hi": 688031.0,
+              "n": 2
+            },
+            "cache_creation_input_tokens": {
+              "mean": 37391.5,
+              "lo": 36925.0,
+              "hi": 37858.0,
+              "n": 2
+            },
+            "llm_rounds": {
+              "mean": 22.0,
+              "lo": 21.0,
+              "hi": 23.0,
+              "n": 2
+            },
+            "llm_s": {
+              "mean": 104.33,
+              "lo": 101.72,
+              "hi": 106.94,
+              "n": 2
+            },
+            "tool_s": {
+              "mean": 15.69,
+              "lo": 14.74,
+              "hi": 16.64,
+              "n": 2
+            },
+            "wall_clock_s": {
+              "mean": 120.045,
+              "lo": 118.39,
+              "hi": 121.7,
+              "n": 2
+            }
+          },
+          "run_index": [
+            {
+              "run_id": "3fbe000c-852d-4e00-8ec2-28fffd5ab120",
+              "timestamp": "2026-06-22T12:46:34.292359",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "c65606cb-314b-4367-9a27-bd0edd65cc1c",
+              "timestamp": "2026-06-22T13:17:46.086205",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "face_milling_basic",
       "metrics": [
@@ -467,11 +780,16 @@
       "Qwen3-8B"
     ],
     "tasks": [
+      "box_pocket_detailed",
       "face_milling_basic",
       "tool_library_face_mill"
     ],
     "cells": {
       "Claude Sonnet 4.6": {
+        "box_pocket_detailed": {
+          "runs": 2,
+          "graded": 2
+        },
         "face_milling_basic": {
           "runs": 2,
           "graded": 0
@@ -482,6 +800,10 @@
         }
       },
       "Qwen3-8B": {
+        "box_pocket_detailed": {
+          "runs": 0,
+          "graded": 0
+        },
         "face_milling_basic": {
           "runs": 0,
           "graded": 0
