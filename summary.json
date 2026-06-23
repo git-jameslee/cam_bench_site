@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-23T01:36:01.190981+00:00",
-  "n_runs": 12,
+  "generated": "2026-06-23T18:32:58.710147+00:00",
+  "n_runs": 13,
   "group_order": [
     "outcome",
     "post",
@@ -345,6 +345,152 @@
             {
               "run_id": "a3bb3f39-d8a7-4330-985a-9d175f72d00c",
               "timestamp": "2026-06-22T20:35:59.896364",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            }
+          ]
+        },
+        {
+          "model": "Qwen3.6-35B-A3B",
+          "runs": 1,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 1.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 24.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 24.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "toolpath_generated": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "gouge_free": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "coordinate_frame_correct": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "safe_retracts": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "tool_appropriate": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "machine_time_min": {
+              "mean": 45.01,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "overall_quality": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "strategy_appropriateness": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "error_recovery": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "input_tokens": {
+              "mean": 670790.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "output_tokens": {
+              "mean": 6149.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_rounds": {
+              "mean": 25.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_s": {
+              "mean": 459.8,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_s": {
+              "mean": 15.44,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "wall_clock_s": {
+              "mean": 475.29,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            }
+          },
+          "run_index": [
+            {
+              "run_id": "ffbe9271-e9c7-429f-b392-ded99faca1f9",
+              "timestamp": "2026-06-23T13:32:56.672768",
               "trial_index": 0,
               "prompt_variant": "detailed"
             }
@@ -801,7 +947,8 @@
   "overview": {
     "models": [
       "Claude Sonnet 4.6",
-      "Qwen3-8B"
+      "Qwen3-8B",
+      "Qwen3.6-35B-A3B"
     ],
     "tasks": [
       "box_pocket_detailed",
@@ -834,6 +981,20 @@
         },
         "tool_library_face_mill": {
           "runs": 1,
+          "graded": 0
+        }
+      },
+      "Qwen3.6-35B-A3B": {
+        "box_pocket_detailed": {
+          "runs": 1,
+          "graded": 1
+        },
+        "face_milling_basic": {
+          "runs": 0,
+          "graded": 0
+        },
+        "tool_library_face_mill": {
+          "runs": 0,
           "graded": 0
         }
       }
