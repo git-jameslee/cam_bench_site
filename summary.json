@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-23T19:07:47.904757+00:00",
-  "n_runs": 16,
+  "generated": "2026-06-23T19:47:15.716921+00:00",
+  "n_runs": 17,
   "group_order": [
     "outcome",
     "post",
@@ -96,6 +96,13 @@
           "fmt": "score2"
         },
         {
+          "key": "iou_voxel",
+          "section": "post",
+          "label": "IoU",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
           "key": "overall_quality",
           "section": "subjective",
           "label": "Overall",
@@ -176,37 +183,37 @@
       "models": [
         {
           "model": "Claude Sonnet 4.6",
-          "runs": 9,
+          "runs": 10,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.955,
-              "lo": 0.937553,
-              "hi": 0.974558,
-              "n": 9
+              "mean": 0.9526,
+              "lo": 0.936497,
+              "hi": 0.9703,
+              "n": 10
             },
             "tool_calls_total": {
-              "mean": 25.555556,
-              "lo": 23.0,
-              "hi": 28.555556,
-              "n": 9
+              "mean": 25.9,
+              "lo": 23.5,
+              "hi": 28.5,
+              "n": 10
             },
             "tool_calls_succeeded": {
-              "mean": 24.333333,
-              "lo": 22.111111,
-              "hi": 27.111111,
-              "n": 9
+              "mean": 24.6,
+              "lo": 22.5,
+              "hi": 27.0,
+              "n": 10
             },
             "tool_calls_failed": {
-              "mean": 1.222222,
-              "lo": 0.666667,
-              "hi": 1.666667,
-              "n": 9
+              "mean": 1.3,
+              "lo": 0.8,
+              "hi": 1.8,
+              "n": 10
             },
             "hit_round_limit": {
-              "mean": 0.111111,
+              "mean": 0.1,
               "lo": 0.0,
-              "hi": 0.333333,
-              "n": 9
+              "hi": 0.3,
+              "n": 10
             },
             "toolpath_generated": {
               "mean": null,
@@ -239,10 +246,16 @@
               "n": 0
             },
             "machine_time_min": {
-              "mean": 50.89,
-              "lo": 40.442187,
-              "hi": 61.61875,
-              "n": 8
+              "mean": 50.747778,
+              "lo": 41.2,
+              "hi": 59.615833,
+              "n": 9
+            },
+            "iou_voxel": {
+              "mean": 0.9114,
+              "lo": 0.9114,
+              "hi": 0.9114,
+              "n": 2
             },
             "overall_quality": {
               "mean": null,
@@ -263,52 +276,52 @@
               "n": 0
             },
             "input_tokens": {
-              "mean": 620605.333333,
-              "lo": 550521.552778,
-              "hi": 715548.741667,
-              "n": 9
+              "mean": 618666.6,
+              "lo": 554929.6875,
+              "hi": 701082.815,
+              "n": 10
             },
             "output_tokens": {
-              "mean": 4421.444444,
-              "lo": 4050.613889,
-              "hi": 4749.008333,
-              "n": 9
+              "mean": 4473.9,
+              "lo": 4136.375,
+              "hi": 4769.835,
+              "n": 10
             },
             "cache_read_input_tokens": {
-              "mean": 586288.777778,
-              "lo": 517076.113889,
-              "hi": 679407.808333,
-              "n": 9
+              "mean": 584039.3,
+              "lo": 521330.655,
+              "hi": 664659.365,
+              "n": 10
             },
             "cache_creation_input_tokens": {
-              "mean": 34295.222222,
-              "lo": 30351.483333,
-              "hi": 36774.927778,
-              "n": 9
+              "mean": 34606.0,
+              "lo": 30905.2775,
+              "hi": 36879.51,
+              "n": 10
             },
             "llm_rounds": {
-              "mean": 20.333333,
-              "lo": 18.222222,
-              "hi": 23.222222,
-              "n": 9
+              "mean": 20.3,
+              "lo": 18.4,
+              "hi": 22.8,
+              "n": 10
             },
             "llm_s": {
-              "mean": 98.961111,
-              "lo": 88.960778,
-              "hi": 111.877083,
-              "n": 9
+              "mean": 99.563,
+              "lo": 90.239275,
+              "hi": 110.634325,
+              "n": 10
             },
             "tool_s": {
-              "mean": 16.954444,
-              "lo": 14.5455,
-              "hi": 19.407389,
-              "n": 9
+              "mean": 16.859,
+              "lo": 14.83485,
+              "hi": 19.058125,
+              "n": 10
             },
             "wall_clock_s": {
-              "mean": 115.941111,
-              "lo": 106.178722,
-              "hi": 128.664889,
-              "n": 9
+              "mean": 116.448,
+              "lo": 107.51375,
+              "hi": 127.4823,
+              "n": 10
             }
           },
           "run_index": [
@@ -363,6 +376,12 @@
             {
               "run_id": "e875f31c-a376-4ba0-a0d7-60289b318d09",
               "timestamp": "2026-06-23T14:07:47.132327",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "e2d46aab-a740-4ddc-835a-24d0271c38aa",
+              "timestamp": "2026-06-23T14:47:14.387705",
               "trial_index": 0,
               "prompt_variant": "detailed"
             }
@@ -437,6 +456,12 @@
               "lo": null,
               "hi": null,
               "n": 1
+            },
+            "iou_voxel": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
             },
             "overall_quality": {
               "mean": null,
@@ -976,8 +1001,8 @@
     "cells": {
       "Claude Sonnet 4.6": {
         "box_pocket_detailed": {
-          "runs": 9,
-          "graded": 8
+          "runs": 10,
+          "graded": 9
         },
         "face_milling_basic": {
           "runs": 2,

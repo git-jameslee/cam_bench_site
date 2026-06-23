@@ -31,6 +31,7 @@
     "safe_retracts": null,
     "tool_appropriate": null,
     "machine_time_min": 67.42,
+    "iou_voxel": 0.9114,
     "overall_quality": null,
     "strategy_appropriateness": null,
     "error_recovery": null

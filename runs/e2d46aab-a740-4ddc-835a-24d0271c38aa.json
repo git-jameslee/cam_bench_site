@@ -1,5 +1,5 @@
 {
-  "run_id": "e875f31c-a376-4ba0-a0d7-60289b318d09",
+  "run_id": "e2d46aab-a740-4ddc-835a-24d0271c38aa",
   "model": "Claude Sonnet 4.6",
   "model_raw": "claude-sonnet-4-6",
   "task": "box_pocket_detailed",
@@ -8,30 +8,30 @@
   "trial_index": 0,
   "trials_total": 1,
   "backend": "anthropic",
-  "timestamp": "2026-06-23T14:07:47.132327",
+  "timestamp": "2026-06-23T14:47:14.387705",
   "sampling": {},
   "seed": null,
   "values": {
-    "tool_calls_total": 26.0,
-    "tool_calls_succeeded": 25.0,
-    "tool_calls_failed": 1.0,
-    "tool_call_success_rate": 0.962,
+    "tool_calls_total": 29.0,
+    "tool_calls_succeeded": 27.0,
+    "tool_calls_failed": 2.0,
+    "tool_call_success_rate": 0.931,
     "hit_round_limit": 0.0,
-    "input_tokens": 571861.0,
-    "output_tokens": 4889.0,
-    "cache_read_input_tokens": 552661.0,
-    "cache_creation_input_tokens": 19180.0,
-    "llm_rounds": 19.0,
-    "llm_s": 98.14,
-    "tool_s": 13.28,
-    "wall_clock_s": 111.44,
+    "input_tokens": 601218.0,
+    "output_tokens": 4946.0,
+    "cache_read_input_tokens": 563794.0,
+    "cache_creation_input_tokens": 37403.0,
+    "llm_rounds": 20.0,
+    "llm_s": 104.98,
+    "tool_s": 16.0,
+    "wall_clock_s": 121.01,
+    "iou_voxel": null,
     "toolpath_generated": null,
     "gouge_free": null,
     "coordinate_frame_correct": null,
     "safe_retracts": null,
     "tool_appropriate": null,
-    "machine_time_min": 67.52,
-    "iou_voxel": 0.9114,
+    "machine_time_min": 49.61,
     "overall_quality": null,
     "strategy_appropriateness": null,
     "error_recovery": null
@@ -41,7 +41,7 @@
       "tool": "get_scene_info",
       "success": true,
       "input": {},
-      "result": "**get_scene_info** OK\n  design_name: Pocket Box v3\n  design_type: DesignProductType\n  bodies: [{\"name\": \"PocketBox\", \"volume\": 428.42920367320505, \"area\": 446.28318530717956, \"material\": \"Steel\", \"is_visible\": true}]\n  sketches: [{\"name\": \"Sketch2\", \"profile_count\": 1, \"is_visible\": false}, {\"name\": \"Sketch3\", \"profile_count\": 2, \"is_visible\": false}]\n  bodies_count: 1\n  sketches_count: 2\n  features_count: 3\n  timeline_count: 5\n  camera: {\"eye\": [197.67677584620083, -194.596312356832, 197.75194671573718], \"target\": [1.8350975399443428, 1.2453659494244675, 1.9102684094807252], \"up_vector\": [0.0, 0.0, 1.0]}",
+      "result": "**get_scene_info** OK\n  design_name: Pocket Box v3\n  design_type: DesignProductType\n  bodies: [{\"name\": \"PocketBox\", \"volume\": 428.42920367320505, \"area\": 446.28318530717956, \"material\": \"Steel\", \"is_visible\": true}]\n  sketches: [{\"name\": \"Sketch2\", \"profile_count\": 1, \"is_visible\": false}, {\"name\": \"Sketch3\", \"profile_count\": 2, \"is_visible\": false}]\n  bodies_count: 1\n  sketches_count: 2\n  features_count: 3\n  timeline_count: 5\n  camera: {\"eye\": [21.947768305269392, -21.947768305269392, 24.447768305269392], \"target\": [0.0, 0.0, 2.5], \"up_vector\": [0.0, 0.0, 1.0]}",
       "prompt_index": 1
     },
     {
@@ -70,28 +70,48 @@
       "prompt_index": 1
     },
     {
+      "tool": "convert_units",
+      "success": true,
+      "input": {
+        "value": 20,
+        "from_unit": "mm"
+      },
+      "result": "**convert_units** OK\n  value: 2.0\n  from_value: 20\n  from_unit: mm\n  to_unit: cm\n  method: fusion_units_manager\n  expression: 20 mm = 2 cm",
+      "prompt_index": 1
+    },
+    {
+      "tool": "convert_units",
+      "success": true,
+      "input": {
+        "value": 50,
+        "from_unit": "mm"
+      },
+      "result": "**convert_units** OK\n  value: 5.0\n  from_value: 50\n  from_unit: mm\n  to_unit: cm\n  method: fusion_units_manager\n  expression: 50 mm = 5 cm",
+      "prompt_index": 1
+    },
+    {
       "tool": "cam_create_setup",
       "success": true,
       "input": {
         "body_name": "PocketBox",
-        "name": "Pocket_Rough_Finish",
+        "name": "PocketBox_Setup",
         "operation_type": "milling",
         "stock_mode": "relative_box",
         "stock_offset_top": 0,
         "stock_offset_sides": 0,
         "stock_offset_bottom": 0
       },
-      "result": "**cam_create_setup** OK\n  name: Pocket_Rough_Finish\n  body: PocketBox\n  operation_type: milling\n  stock: {\"stock_mode\": \"relative_box\", \"model_size_mm\": [100.0, 100.0, 50.0], \"stock_size_mm\": [100.0, 100.0, 50.0], \"offsets_mm\": {\"sides\": 0.0, \"top\": 0.0, \"bottom\": 0.0}}\n  stock_offsets_applied: {\"top\": \"job_stockOffsetTop\", \"sides\": \"job_stockOffsetSides\", \"bottom\": \"job_stockOffsetBottom\"}",
+      "result": "**cam_create_setup** OK\n  name: PocketBox_Setup\n  body: PocketBox\n  operation_type: milling\n  stock: {\"stock_mode\": \"relative_box\", \"model_size_mm\": [100.0, 100.0, 50.0], \"stock_size_mm\": [100.0, 100.0, 50.0], \"offsets_mm\": {\"sides\": 0.0, \"top\": 0.0, \"bottom\": 0.0}}\n  stock_offsets_applied: {\"top\": \"job_stockOffsetTop\", \"sides\": \"job_stockOffsetSides\", \"bottom\": \"job_stockOffsetBottom\"}",
       "prompt_index": 1
     },
     {
       "tool": "cam_set_setup_machine",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
+        "setup_name": "PocketBox_Setup",
         "machine_name": "Mini Mill"
       },
-      "result": "**cam_set_setup_machine** OK\n  success: true\n  setup: Pocket_Rough_Finish\n  machine_assigned: {\"vendor\": \"HAAS\", \"model\": \"Mini Mill\", \"description\": \"Haas Mini Mill\", \"id\": \"urn:adsk.wipprod:fs.file:vf.wEasnMZxQP2C4o5rjsYeQA?\"}\n  source_library: user://_haas minimill.0fa7ee2a-86a8-48bf-9fb7-3b4b7b70eef3.mch\n  machine_location: local\n  assign_method: direct\n  machine_params_available: []",
+      "result": "**cam_set_setup_machine** OK\n  success: true\n  setup: PocketBox_Setup\n  machine_assigned: {\"vendor\": \"HAAS\", \"model\": \"Mini Mill\", \"description\": \"Haas Mini Mill\", \"id\": \"urn:adsk.wipprod:fs.file:vf.wEasnMZxQP2C4o5rjsYeQA?\"}\n  source_library: user://_haas minimill.0fa7ee2a-86a8-48bf-9fb7-3b4b7b70eef3.mch\n  machine_location: local\n  assign_method: direct\n  machine_params_available: []",
       "prompt_index": 1
     },
     {
@@ -118,56 +138,56 @@
       "tool": "cam_create_operation",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
+        "setup_name": "PocketBox_Setup",
         "strategy": "2d_adaptive",
-        "name": "Pocket_Rough",
+        "name": "Rough_Pocket",
         "tool_number": 7,
-        "spindle_speed": 10000,
-        "feed_rate": 1500,
-        "stepdown": 3,
+        "stepdown": 5,
+        "feed_rate": 1200,
+        "spindle_speed": 8000,
         "coolant": "flood"
       },
-      "result": "**cam_create_operation** OK\n  name: Pocket_Rough\n  setup: Pocket_Rough_Finish\n  strategy: 2d_adaptive\n  tool_assigned: #7 - \u00d83/8\" flat (3/8\" 3FL Carb ZrN Flat Endmill)\n  has_error: false",
+      "result": "**cam_create_operation** OK\n  name: Rough_Pocket\n  setup: PocketBox_Setup\n  strategy: 2d_adaptive\n  tool_assigned: #7 - \u00d83/8\" flat (3/8\" 3FL Carb ZrN Flat Endmill)\n  has_error: false",
       "prompt_index": 1
     },
     {
       "tool": "cam_create_operation",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
+        "setup_name": "PocketBox_Setup",
         "strategy": "2d_contour",
-        "name": "Pocket_Finish_Walls",
+        "name": "Finish_Walls",
         "tool_number": 9,
-        "spindle_speed": 12000,
-        "feed_rate": 800,
         "stepdown": 20,
+        "feed_rate": 800,
+        "spindle_speed": 10000,
         "coolant": "flood"
       },
-      "result": "**cam_create_operation** OK\n  name: Pocket_Finish_Walls\n  setup: Pocket_Rough_Finish\n  strategy: 2d_contour\n  tool_assigned: #9 - \u00d81/4\" flat (1/4\" 3fl TiCN Carb Flat Endmill)\n  has_error: false",
+      "result": "**cam_create_operation** OK\n  name: Finish_Walls\n  setup: PocketBox_Setup\n  strategy: 2d_contour\n  tool_assigned: #9 - \u00d81/4\" flat (1/4\" 3fl TiCN Carb Flat Endmill)\n  has_error: false",
       "prompt_index": 1
     },
     {
       "tool": "cam_create_operation",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
+        "setup_name": "PocketBox_Setup",
         "strategy": "2d_pocket",
-        "name": "Pocket_Finish_Floor",
+        "name": "Finish_Floor",
         "tool_number": 9,
-        "spindle_speed": 12000,
-        "feed_rate": 600,
         "stepdown": 20,
+        "feed_rate": 1000,
+        "spindle_speed": 10000,
         "coolant": "flood"
       },
-      "result": "**cam_create_operation** OK\n  name: Pocket_Finish_Floor\n  setup: Pocket_Rough_Finish\n  strategy: 2d_pocket\n  tool_assigned: #9 - \u00d81/4\" flat (1/4\" 3fl TiCN Carb Flat Endmill)\n  has_error: false",
+      "result": "**cam_create_operation** OK\n  name: Finish_Floor\n  setup: PocketBox_Setup\n  strategy: 2d_pocket\n  tool_assigned: #9 - \u00d81/4\" flat (1/4\" 3fl TiCN Carb Flat Endmill)\n  has_error: false",
       "prompt_index": 1
     },
     {
       "tool": "cam_set_operation_geometry",
       "success": false,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Rough",
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Rough_Pocket",
         "body_name": "PocketBox",
         "face_indices": [
           0,
@@ -190,8 +210,8 @@
       "tool": "cam_set_operation_geometry",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Rough",
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Rough_Pocket",
         "body_name": "PocketBox",
         "face_indices": [
           5
@@ -199,15 +219,34 @@
         "bottom_height_mode": "from contour",
         "bottom_height_offset_mm": 0
       },
-      "result": "**cam_set_operation_geometry** OK\n  success: true\n  setup: Pocket_Rough_Finish\n  operation: Pocket_Rough\n  body: PocketBox\n  param_used: pockets\n  selection: faces (explicit)\n  face_count: 1\n  note: Geometry assigned. Toolpath is now outdated \u2014 call cam_generate_toolpath to regenerate. Cut depth set: from contour (offset 0.0 mm). Verify via cam_get_operation_info (z_depth.stops_short_of_floor_mm).\n  bottom_height: from contour (offset 0.0 mm)",
+      "result": "**cam_set_operation_geometry** OK\n  success: true\n  setup: PocketBox_Setup\n  operation: Rough_Pocket\n  body: PocketBox\n  param_used: pockets\n  selection: faces (explicit)\n  face_count: 1\n  note: Geometry assigned. Toolpath is now outdated \u2014 call cam_generate_toolpath to regenerate. Cut depth set: from contour (offset 0.0 mm). Verify via cam_get_operation_info (z_depth.stops_short_of_floor_mm).\n  bottom_height: from contour (offset 0.0 mm)",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_set_operation_geometry",
+      "success": false,
+      "input": {
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Finish_Walls",
+        "body_name": "PocketBox",
+        "face_indices": [
+          1,
+          3,
+          6,
+          8
+        ],
+        "bottom_height_mode": "from contour",
+        "bottom_height_offset_mm": 0
+      },
+      "result": "**cam_set_operation_geometry** ERROR (UNKNOWN)\n  face_indices [1, 3, 6, 8] are vertical wall faces \u2014 a 2D contour follows the outer loop of a horizontal face. Pass the top face (outer profile) or a pocket-floor face (see get_body_faces), or omit face_indices for the body's outer profile.\n\ntraceback:\nTraceback (most recent call last):\n  File \"C:\\Users/Nanja/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/AddIns/Fusion360MCP\\server\\command_handler.py\", line 254, in execute_command\n    result = handler(**params)\n  File \"C:\\Users/Nanja/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/AddIns/Fusion360MCP\\server\\command_handler.py\", line 5182, in cam_set_operation_geometry\n    raise RuntimeError(\n    ...<5 lines>...\n    )\nRuntimeError: face_indices [1, 3, 6, 8] are vertical wall faces \u2014 a 2D contour follows the outer loop of a horizontal face. Pass the top face (outer profile) or a pocket-floor face (see get_body_faces), or omit face_indices for the body's outer profile.\n",
       "prompt_index": 1
     },
     {
       "tool": "cam_set_operation_geometry",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Finish_Walls",
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Finish_Walls",
         "body_name": "PocketBox",
         "face_indices": [
           5
@@ -215,15 +254,15 @@
         "bottom_height_mode": "from contour",
         "bottom_height_offset_mm": 0
       },
-      "result": "**cam_set_operation_geometry** OK\n  success: true\n  setup: Pocket_Rough_Finish\n  operation: Pocket_Finish_Walls\n  body: PocketBox\n  param_used: contours\n  selection: contour (explicit faces, inside)\n  face_count: null\n  note: Geometry assigned. Toolpath is now outdated \u2014 call cam_generate_toolpath to regenerate. Cut depth set: from contour (offset 0.0 mm). Verify via cam_get_operation_info (z_depth.stops_short_of_floor_mm).\n  bottom_height: from contour (offset 0.0 mm)",
+      "result": "**cam_set_operation_geometry** OK\n  success: true\n  setup: PocketBox_Setup\n  operation: Finish_Walls\n  body: PocketBox\n  param_used: contours\n  selection: contour (explicit faces, inside)\n  face_count: null\n  note: Geometry assigned. Toolpath is now outdated \u2014 call cam_generate_toolpath to regenerate. Cut depth set: from contour (offset 0.0 mm). Verify via cam_get_operation_info (z_depth.stops_short_of_floor_mm).\n  bottom_height: from contour (offset 0.0 mm)",
       "prompt_index": 1
     },
     {
       "tool": "cam_set_operation_geometry",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Finish_Floor",
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Finish_Floor",
         "body_name": "PocketBox",
         "face_indices": [
           5
@@ -231,159 +270,154 @@
         "bottom_height_mode": "from contour",
         "bottom_height_offset_mm": 0
       },
-      "result": "**cam_set_operation_geometry** OK\n  success: true\n  setup: Pocket_Rough_Finish\n  operation: Pocket_Finish_Floor\n  body: PocketBox\n  param_used: pockets\n  selection: faces (explicit)\n  face_count: 1\n  note: Geometry assigned. Toolpath is now outdated \u2014 call cam_generate_toolpath to regenerate. Cut depth set: from contour (offset 0.0 mm). Verify via cam_get_operation_info (z_depth.stops_short_of_floor_mm).\n  bottom_height: from contour (offset 0.0 mm)",
+      "result": "**cam_set_operation_geometry** OK\n  success: true\n  setup: PocketBox_Setup\n  operation: Finish_Floor\n  body: PocketBox\n  param_used: pockets\n  selection: faces (explicit)\n  face_count: 1\n  note: Geometry assigned. Toolpath is now outdated \u2014 call cam_generate_toolpath to regenerate. Cut depth set: from contour (offset 0.0 mm). Verify via cam_get_operation_info (z_depth.stops_short_of_floor_mm).\n  bottom_height: from contour (offset 0.0 mm)",
       "prompt_index": 1
     },
     {
       "tool": "cam_update_operation_parameters",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Rough",
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Rough_Pocket",
         "parameters": {
-          "optimal_load_mm": 3.0,
-          "stepdown_mm": 3.0,
           "stock_to_leave_mm": 0.3,
-          "axial_stock_mm": 0.2,
-          "tolerance_mm": 0.1,
-          "cutting_feedrate_mmpm": 1500,
-          "spindle_speed_rpm": 10000,
-          "plunge_feedrate_mmpm": 300,
-          "ramp_feedrate_mmpm": 500
+          "axial_stock_mm": 0.3,
+          "optimal_load_mm": 3.5,
+          "stepdown_mm": 5.0,
+          "cutting_feedrate_mmpm": 1200,
+          "spindle_speed_rpm": 8000,
+          "tolerance_mm": 0.1
         }
       },
-      "result": "**cam_update_operation_parameters** OK\n  success: true\n  operation: Pocket_Rough\n  changes: [{\"parameter\": \"optimal_load_mm\", \"fusion_param\": \"optimalLoad\", \"unit\": \"mm\", \"before\": 1.7145, \"after\": 3.0}, {\"parameter\": \"stock_to_leave_mm\", \"fusion_param\": \"stockToLeave\", \"unit\": \"mm\", \"before\": 0.5, \"after\": 0.3}, {\"parameter\": \"tolerance_mm\", \"fusion_param\": \"tolerance\", \"unit\": \"mm\", \"before\": 0.1, \"after\": 0.1}, {\"parameter\": \"cutting_feedrate_mmpm\", \"fusion_param\": \"tool_feedCutting\", \"unit\": \"mm/min\", \"before\": 1500.0, \"after\": 1500.0}, {\"parameter\": \"spindle_speed_rpm\", \"fusion_param\": \"tool_spindleSpeed\", \"unit\": \"rpm\", \"before\": 10000.0, \"after\": 10000.0}, {\"parameter\": \"plunge_feedrate_mmpm\", \"fusion_param\": \"tool_feedPlunge\", \"unit\": \"mm/min\", \"before\": 450.0, \"after\": 300.0}, {\"parameter\": \"ramp_feedrate_mmpm\", \"fusion_param\": \"tool_feedRamp\", \"unit\": \"mm/min\", \"before\": 750.0, \"after\": 500.0}]\n  changes_applied: 7\n  skipped: [\"stepdown_mm\", \"axial_stock_mm\"]\n  has_error: false\n  warnings: [\"'stepdown' not available for this operation type\", \"'axialStock' not available for this operation type\"]\n  deltas:\n    body_count: 1 \u2192 1 (\u0394+0)\n    mass_g:     3363.169 \u2192 3363.169 (\u0394+0.000)\n    bbox_before: {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}\n    bbox_after:  {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}",
+      "result": "**cam_update_operation_parameters** OK\n  success: true\n  operation: Rough_Pocket\n  changes: [{\"parameter\": \"stock_to_leave_mm\", \"fusion_param\": \"stockToLeave\", \"unit\": \"mm\", \"before\": 0.5, \"after\": 0.3}, {\"parameter\": \"optimal_load_mm\", \"fusion_param\": \"optimalLoad\", \"unit\": \"mm\", \"before\": 1.7145, \"after\": 3.5}, {\"parameter\": \"cutting_feedrate_mmpm\", \"fusion_param\": \"tool_feedCutting\", \"unit\": \"mm/min\", \"before\": 1200.0, \"after\": 1200.0}, {\"parameter\": \"spindle_speed_rpm\", \"fusion_param\": \"tool_spindleSpeed\", \"unit\": \"rpm\", \"before\": 8000.0, \"after\": 8000.0}, {\"parameter\": \"tolerance_mm\", \"fusion_param\": \"tolerance\", \"unit\": \"mm\", \"before\": 0.1, \"after\": 0.1}]\n  changes_applied: 5\n  skipped: [\"axial_stock_mm\", \"stepdown_mm\"]\n  has_error: false\n  warnings: [\"'axialStock' not available for this operation type\", \"'stepdown' not available for this operation type\"]\n  deltas:\n    body_count: 1 \u2192 1 (\u0394+0)\n    mass_g:     3363.169 \u2192 3363.169 (\u0394+0.000)\n    bbox_before: {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}\n    bbox_after:  {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}",
       "prompt_index": 1
     },
     {
       "tool": "cam_update_operation_parameters",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Finish_Walls",
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Finish_Walls",
         "parameters": {
           "stock_to_leave_mm": 0.0,
-          "tolerance_mm": 0.01,
+          "stepdown_mm": 20.0,
           "cutting_feedrate_mmpm": 800,
-          "spindle_speed_rpm": 12000,
-          "plunge_feedrate_mmpm": 250,
-          "ramp_feedrate_mmpm": 400
+          "spindle_speed_rpm": 10000,
+          "tolerance_mm": 0.01
         }
       },
-      "result": "**cam_update_operation_parameters** OK\n  success: true\n  operation: Pocket_Finish_Walls\n  changes: [{\"parameter\": \"stock_to_leave_mm\", \"fusion_param\": \"stockToLeave\", \"unit\": \"mm\", \"before\": 0.0, \"after\": 0.0}, {\"parameter\": \"tolerance_mm\", \"fusion_param\": \"tolerance\", \"unit\": \"mm\", \"before\": 0.01, \"after\": 0.01}, {\"parameter\": \"cutting_feedrate_mmpm\", \"fusion_param\": \"tool_feedCutting\", \"unit\": \"mm/min\", \"before\": 800.0, \"after\": 800.0}, {\"parameter\": \"spindle_speed_rpm\", \"fusion_param\": \"tool_spindleSpeed\", \"unit\": \"rpm\", \"before\": 12000.0, \"after\": 12000.0}, {\"parameter\": \"plunge_feedrate_mmpm\", \"fusion_param\": \"tool_feedPlunge\", \"unit\": \"mm/min\", \"before\": 240.0, \"after\": 250.0}, {\"parameter\": \"ramp_feedrate_mmpm\", \"fusion_param\": \"tool_feedRamp\", \"unit\": \"mm/min\", \"before\": 400.0, \"after\": 400.0}]\n  changes_applied: 6\n  skipped: []\n  has_error: false\n  warnings: []\n  deltas:\n    body_count: 1 \u2192 1 (\u0394+0)\n    mass_g:     3363.169 \u2192 3363.169 (\u0394+0.000)\n    bbox_before: {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}\n    bbox_after:  {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}",
+      "result": "**cam_update_operation_parameters** OK\n  success: true\n  operation: Finish_Walls\n  changes: [{\"parameter\": \"stock_to_leave_mm\", \"fusion_param\": \"stockToLeave\", \"unit\": \"mm\", \"before\": 0.0, \"after\": 0.0}, {\"parameter\": \"cutting_feedrate_mmpm\", \"fusion_param\": \"tool_feedCutting\", \"unit\": \"mm/min\", \"before\": 800.0, \"after\": 800.0}, {\"parameter\": \"spindle_speed_rpm\", \"fusion_param\": \"tool_spindleSpeed\", \"unit\": \"rpm\", \"before\": 10000.0, \"after\": 10000.0}, {\"parameter\": \"tolerance_mm\", \"fusion_param\": \"tolerance\", \"unit\": \"mm\", \"before\": 0.01, \"after\": 0.01}]\n  changes_applied: 4\n  skipped: [\"stepdown_mm\"]\n  has_error: false\n  warnings: [\"'stepdown' not available for this operation type\"]\n  deltas:\n    body_count: 1 \u2192 1 (\u0394+0)\n    mass_g:     3363.169 \u2192 3363.169 (\u0394+0.000)\n    bbox_before: {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}\n    bbox_after:  {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}",
       "prompt_index": 1
     },
     {
       "tool": "cam_update_operation_parameters",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Finish_Floor",
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Finish_Floor",
         "parameters": {
           "stock_to_leave_mm": 0.0,
-          "tolerance_mm": 0.01,
-          "cutting_feedrate_mmpm": 600,
-          "spindle_speed_rpm": 12000,
-          "plunge_feedrate_mmpm": 200,
-          "stepover_mm": 3.0
+          "stepover_mm": 4.0,
+          "cutting_feedrate_mmpm": 1000,
+          "spindle_speed_rpm": 10000,
+          "tolerance_mm": 0.01
         }
       },
-      "result": "**cam_update_operation_parameters** OK\n  success: true\n  operation: Pocket_Finish_Floor\n  changes: [{\"parameter\": \"stock_to_leave_mm\", \"fusion_param\": \"stockToLeave\", \"unit\": \"mm\", \"before\": 0.5, \"after\": 0.0}, {\"parameter\": \"tolerance_mm\", \"fusion_param\": \"tolerance\", \"unit\": \"mm\", \"before\": 0.1, \"after\": 0.01}, {\"parameter\": \"cutting_feedrate_mmpm\", \"fusion_param\": \"tool_feedCutting\", \"unit\": \"mm/min\", \"before\": 600.0, \"after\": 600.0}, {\"parameter\": \"spindle_speed_rpm\", \"fusion_param\": \"tool_spindleSpeed\", \"unit\": \"rpm\", \"before\": 12000.0, \"after\": 12000.0}, {\"parameter\": \"plunge_feedrate_mmpm\", \"fusion_param\": \"tool_feedPlunge\", \"unit\": \"mm/min\", \"before\": 180.0, \"after\": 200.0}]\n  changes_applied: 5\n  skipped: [\"stepover_mm\"]\n  has_error: false\n  warnings: [\"'stepover' not available for this operation type\"]\n  deltas:\n    body_count: 1 \u2192 1 (\u0394+0)\n    mass_g:     3363.169 \u2192 3363.169 (\u0394+0.000)\n    bbox_before: {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}\n    bbox_after:  {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}",
+      "result": "**cam_update_operation_parameters** OK\n  success: true\n  operation: Finish_Floor\n  changes: [{\"parameter\": \"stock_to_leave_mm\", \"fusion_param\": \"stockToLeave\", \"unit\": \"mm\", \"before\": 0.5, \"after\": 0.0}, {\"parameter\": \"cutting_feedrate_mmpm\", \"fusion_param\": \"tool_feedCutting\", \"unit\": \"mm/min\", \"before\": 1000.0, \"after\": 1000.0}, {\"parameter\": \"spindle_speed_rpm\", \"fusion_param\": \"tool_spindleSpeed\", \"unit\": \"rpm\", \"before\": 10000.0, \"after\": 10000.0}, {\"parameter\": \"tolerance_mm\", \"fusion_param\": \"tolerance\", \"unit\": \"mm\", \"before\": 0.1, \"after\": 0.01}]\n  changes_applied: 4\n  skipped: [\"stepover_mm\"]\n  has_error: false\n  warnings: [\"'stepover' not available for this operation type\"]\n  deltas:\n    body_count: 1 \u2192 1 (\u0394+0)\n    mass_g:     3363.169 \u2192 3363.169 (\u0394+0.000)\n    bbox_before: {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}\n    bbox_after:  {\"min\": [-5.001, -5.001, -0.001], \"max\": [5.001, 5.001, 5.001]}",
       "prompt_index": 1
     },
     {
       "tool": "cam_generate_toolpath",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish"
+        "setup_name": "PocketBox_Setup"
       },
-      "result": "**cam_generate_toolpath** OK\n  scope: setup\n  setup: Pocket_Rough_Finish\n  completed: true\n  timed_out: false\n  all_valid: true",
+      "result": "**cam_generate_toolpath** OK\n  scope: setup\n  setup: PocketBox_Setup\n  completed: true\n  timed_out: false\n  all_valid: true",
       "prompt_index": 1
     },
     {
       "tool": "cam_get_toolpath_status",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish"
+        "setup_name": "PocketBox_Setup"
       },
-      "result": "**cam_get_toolpath_status** OK\n  setups: [{\"name\": \"Pocket_Rough_Finish\", \"operations\": [{\"name\": \"Pocket_Rough\", \"is_suppressed\": false, \"has_toolpath\": true, \"is_valid\": true, \"is_outdated\": false}, {\"name\": \"Pocket_Finish_Walls\", \"is_suppressed\": false, \"has_toolpath\": true, \"is_valid\": true, \"is_outdated\": false}, {\"name\": \"Pocket_Finish_Floor\", \"is_suppressed\": false, \"has_toolpath\": true, \"is_valid\": true, \"is_outdated\": false}]}]\n  summary: {\"total_operations\": 3, \"with_toolpath\": 3, \"valid\": 3, \"outdated\": 0}",
+      "result": "**cam_get_toolpath_status** OK\n  setups: [{\"name\": \"PocketBox_Setup\", \"operations\": [{\"name\": \"Rough_Pocket\", \"is_suppressed\": false, \"has_toolpath\": true, \"is_valid\": true, \"is_outdated\": false}, {\"name\": \"Finish_Walls\", \"is_suppressed\": false, \"has_toolpath\": true, \"is_valid\": true, \"is_outdated\": false}, {\"name\": \"Finish_Floor\", \"is_suppressed\": false, \"has_toolpath\": true, \"is_valid\": true, \"is_outdated\": false}]}]\n  summary: {\"total_operations\": 3, \"with_toolpath\": 3, \"valid\": 3, \"outdated\": 0}",
       "prompt_index": 1
     },
     {
       "tool": "cam_get_machining_time",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish"
+        "setup_name": "PocketBox_Setup"
       },
-      "result": "**cam_get_machining_time** OK\n  setups: [{\"name\": \"Pocket_Rough_Finish\", \"total_time_seconds\": 4051.26, \"operations\": [{\"name\": \"Pocket_Rough\", \"has_toolpath\": true, \"is_suppressed\": false, \"time_seconds\": 1340.6}, {\"name\": \"Pocket_Finish_Walls\", \"has_toolpath\": true, \"is_suppressed\": false, \"time_seconds\": 221.11}, {\"name\": \"Pocket_Finish_Floor\", \"has_toolpath\": true, \"is_suppressed\": false, \"time_seconds\": 2489.55}]}]",
+      "result": "**cam_get_machining_time** OK\n  setups: [{\"name\": \"PocketBox_Setup\", \"total_time_seconds\": 2976.72, \"operations\": [{\"name\": \"Rough_Pocket\", \"has_toolpath\": true, \"is_suppressed\": false, \"time_seconds\": 1259.04}, {\"name\": \"Finish_Walls\", \"has_toolpath\": true, \"is_suppressed\": false, \"time_seconds\": 223.55}, {\"name\": \"Finish_Floor\", \"has_toolpath\": true, \"is_suppressed\": false, \"time_seconds\": 1494.14}]}]",
       "prompt_index": 1
     },
     {
       "tool": "cam_get_operation_info",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Rough"
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Rough_Pocket"
       },
-      "result": "**cam_get_operation_info** OK\n  name: Pocket_Rough\n  is_valid: true\n  has_toolpath: true\n  tool: {\"description\": \"#7 - \\u00d83/8\\\" flat (3/8\\\" 3FL Carb ZrN Flat Endmill)\"}\n  key_params: {\"strategy\": \"'adaptive2d'\", \"tool_diameter\": \"0.375in\", \"tool_cornerRadius\": \"0.0in\", \"tool_fluteLength\": \"1.in\", \"tool_numberOfFlutes\": \"3\", \"tool_spindleSpeed\": \"10000.rpm\", \"tool_feedCutting\": \"150.mm/min\", \"tool_feedPlunge\": \"30.mm/min\", \"topHeight_mode\": \"'from stock top'\", \"bottomHeight_mode\": \"'from contour'\", \"tolerance\": \"0.01cm\", \"optimalLoad\": \"0.3cm\", \"direction\": \"'climb'\", \"doMultipleDepths\": \"false\", \"maximumStepdown\": \"0.3cm\", \"useStockToLeave\": \"true\", \"stockToLeave\": \"0.03cm\"}\n  z_depth: {\"units\": \"mm\", \"frame\": \"setup WCS (Z=0 at stock top, part extends downward in -Z)\", \"model_top\": 0.0, \"model_bottom\": -50.0, \"stock_top\": 0.0, \"stock_bottom\": -50.0, \"cut_top\": 0.0, \"bottom_mode\": \"from contour\", \"cut_bottom\": null, \"bottom_offset_from_contour_mm\": 0.0, \"note\": \"Bottom is relative to the selected geometry (from contour): the op machines down to that contour/pocket floor, offset by bottom_offset_from_contour_mm (0 = reaches it). stops_short_of_floor_mm is omitted \\u2014 it would compare against the body's outer floor, which is not this op's target.\"}",
+      "result": "**cam_get_operation_info** OK\n  name: Rough_Pocket\n  is_valid: true\n  has_toolpath: true\n  tool: {\"description\": \"#7 - \\u00d83/8\\\" flat (3/8\\\" 3FL Carb ZrN Flat Endmill)\"}\n  key_params: {\"strategy\": \"'adaptive2d'\", \"tool_diameter\": \"0.375in\", \"tool_cornerRadius\": \"0.0in\", \"tool_fluteLength\": \"1.in\", \"tool_numberOfFlutes\": \"3\", \"tool_spindleSpeed\": \"8000.rpm\", \"tool_feedCutting\": \"120.mm/min\", \"tool_feedPlunge\": \"36.mm/min\", \"topHeight_mode\": \"'from stock top'\", \"bottomHeight_mode\": \"'from contour'\", \"tolerance\": \"0.01cm\", \"optimalLoad\": \"0.35cm\", \"direction\": \"'climb'\", \"doMultipleDepths\": \"false\", \"maximumStepdown\": \"0.5cm\", \"useStockToLeave\": \"true\", \"stockToLeave\": \"0.03cm\"}\n  z_depth: {\"units\": \"mm\", \"frame\": \"setup WCS (Z=0 at stock top, part extends downward in -Z)\", \"model_top\": 0.0, \"model_bottom\": -50.0, \"stock_top\": 0.0, \"stock_bottom\": -50.0, \"cut_top\": 0.0, \"bottom_mode\": \"from contour\", \"cut_bottom\": null, \"bottom_offset_from_contour_mm\": 0.0, \"note\": \"Bottom is relative to the selected geometry (from contour): the op machines down to that contour/pocket floor, offset by bottom_offset_from_contour_mm (0 = reaches it). stops_short_of_floor_mm is omitted \\u2014 it would compare against the body's outer floor, which is not this op's target.\"}",
       "prompt_index": 1
     },
     {
       "tool": "cam_get_operation_info",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Finish_Walls"
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Finish_Walls"
       },
-      "result": "**cam_get_operation_info** OK\n  name: Pocket_Finish_Walls\n  is_valid: true\n  has_toolpath: true\n  tool: {\"description\": \"#9 - \\u00d81/4\\\" flat (1/4\\\" 3fl TiCN Carb Flat Endmill)\"}\n  key_params: {\"strategy\": \"'contour2d'\", \"tool_diameter\": \"0.25in\", \"tool_cornerRadius\": \"0.0in\", \"tool_fluteLength\": \"1.1in\", \"tool_numberOfFlutes\": \"3\", \"tool_spindleSpeed\": \"12000.rpm\", \"tool_feedCutting\": \"80.mm/min\", \"tool_feedPlunge\": \"25.mm/min\", \"topHeight_mode\": \"'from stock top'\", \"bottomHeight_mode\": \"'from contour'\", \"tolerance\": \"0.001cm\", \"compensation\": \"'left'\", \"finishFeedrate\": \"80.mm/min\", \"doMultipleDepths\": \"false\", \"maximumStepdown\": \"2.cm\", \"useStockToLeave\": \"false\", \"stockToLeave\": \"0.0cm\"}\n  z_depth: {\"units\": \"mm\", \"frame\": \"setup WCS (Z=0 at stock top, part extends downward in -Z)\", \"model_top\": 0.0, \"model_bottom\": -50.0, \"stock_top\": 0.0, \"stock_bottom\": -50.0, \"cut_top\": 0.0, \"bottom_mode\": \"from contour\", \"cut_bottom\": null, \"bottom_offset_from_contour_mm\": 0.0, \"note\": \"Bottom is relative to the selected geometry (from contour): the op machines down to that contour/pocket floor, offset by bottom_offset_from_contour_mm (0 = reaches it). stops_short_of_floor_mm is omitted \\u2014 it would compare against the body's outer floor, which is not this op's target.\"}",
+      "result": "**cam_get_operation_info** OK\n  name: Finish_Walls\n  is_valid: true\n  has_toolpath: true\n  tool: {\"description\": \"#9 - \\u00d81/4\\\" flat (1/4\\\" 3fl TiCN Carb Flat Endmill)\"}\n  key_params: {\"strategy\": \"'contour2d'\", \"tool_diameter\": \"0.25in\", \"tool_cornerRadius\": \"0.0in\", \"tool_fluteLength\": \"1.1in\", \"tool_numberOfFlutes\": \"3\", \"tool_spindleSpeed\": \"10000.rpm\", \"tool_feedCutting\": \"80.mm/min\", \"tool_feedPlunge\": \"24.mm/min\", \"topHeight_mode\": \"'from stock top'\", \"bottomHeight_mode\": \"'from contour'\", \"tolerance\": \"0.001cm\", \"compensation\": \"'left'\", \"finishFeedrate\": \"80.mm/min\", \"doMultipleDepths\": \"false\", \"maximumStepdown\": \"2.cm\", \"useStockToLeave\": \"false\", \"stockToLeave\": \"0.0cm\"}\n  z_depth: {\"units\": \"mm\", \"frame\": \"setup WCS (Z=0 at stock top, part extends downward in -Z)\", \"model_top\": 0.0, \"model_bottom\": -50.0, \"stock_top\": 0.0, \"stock_bottom\": -50.0, \"cut_top\": 0.0, \"bottom_mode\": \"from contour\", \"cut_bottom\": null, \"bottom_offset_from_contour_mm\": 0.0, \"note\": \"Bottom is relative to the selected geometry (from contour): the op machines down to that contour/pocket floor, offset by bottom_offset_from_contour_mm (0 = reaches it). stops_short_of_floor_mm is omitted \\u2014 it would compare against the body's outer floor, which is not this op's target.\"}",
       "prompt_index": 1
     },
     {
       "tool": "cam_get_operation_info",
       "success": true,
       "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "operation_name": "Pocket_Finish_Floor"
+        "setup_name": "PocketBox_Setup",
+        "operation_name": "Finish_Floor"
       },
-      "result": "**cam_get_operation_info** OK\n  name: Pocket_Finish_Floor\n  is_valid: true\n  has_toolpath: true\n  tool: {\"description\": \"#9 - \\u00d81/4\\\" flat (1/4\\\" 3fl TiCN Carb Flat Endmill)\"}\n  key_params: {\"strategy\": \"'pocket2d'\", \"tool_diameter\": \"0.25in\", \"tool_cornerRadius\": \"0.0in\", \"tool_fluteLength\": \"1.1in\", \"tool_numberOfFlutes\": \"3\", \"tool_spindleSpeed\": \"12000.rpm\", \"tool_feedCutting\": \"60.mm/min\", \"tool_feedPlunge\": \"20.mm/min\", \"topHeight_mode\": \"'from stock top'\", \"bottomHeight_mode\": \"'from contour'\", \"tolerance\": \"0.001cm\", \"compensation\": \"'left'\", \"doMultipleDepths\": \"false\", \"maximumStepdown\": \"2.cm\", \"finishFeedrate\": \"60.mm/min\", \"useStockToLeave\": \"true\", \"stockToLeave\": \"0.0cm\"}\n  z_depth: {\"units\": \"mm\", \"frame\": \"setup WCS (Z=0 at stock top, part extends downward in -Z)\", \"model_top\": 0.0, \"model_bottom\": -50.0, \"stock_top\": 0.0, \"stock_bottom\": -50.0, \"cut_top\": 0.0, \"bottom_mode\": \"from contour\", \"cut_bottom\": null, \"bottom_offset_from_contour_mm\": 0.0, \"note\": \"Bottom is relative to the selected geometry (from contour): the op machines down to that contour/pocket floor, offset by bottom_offset_from_contour_mm (0 = reaches it). stops_short_of_floor_mm is omitted \\u2014 it would compare against the body's outer floor, which is not this op's target.\"}",
-      "prompt_index": 1
-    },
-    {
-      "tool": "cam_post_process",
-      "success": true,
-      "input": {
-        "setup_name": "Pocket_Rough_Finish",
-        "post_processor": "haas",
-        "output_units": "mm",
-        "program_number": 100,
-        "output_folder": "~/Desktop"
-      },
-      "result": "**cam_post_process** OK\n  setup: Pocket_Rough_Finish\n  post_processor: haas\n  output_folder: C:\\Users\\Nanja\\Desktop\n  output_file: C:\\Users\\Nanja\\Desktop\\100.nc\n  units: mm",
+      "result": "**cam_get_operation_info** OK\n  name: Finish_Floor\n  is_valid: true\n  has_toolpath: true\n  tool: {\"description\": \"#9 - \\u00d81/4\\\" flat (1/4\\\" 3fl TiCN Carb Flat Endmill)\"}\n  key_params: {\"strategy\": \"'pocket2d'\", \"tool_diameter\": \"0.25in\", \"tool_cornerRadius\": \"0.0in\", \"tool_fluteLength\": \"1.1in\", \"tool_numberOfFlutes\": \"3\", \"tool_spindleSpeed\": \"10000.rpm\", \"tool_feedCutting\": \"100.mm/min\", \"tool_feedPlunge\": \"30.mm/min\", \"topHeight_mode\": \"'from stock top'\", \"bottomHeight_mode\": \"'from contour'\", \"tolerance\": \"0.001cm\", \"compensation\": \"'left'\", \"doMultipleDepths\": \"false\", \"maximumStepdown\": \"2.cm\", \"finishFeedrate\": \"100.mm/min\", \"useStockToLeave\": \"true\", \"stockToLeave\": \"0.0cm\"}\n  z_depth: {\"units\": \"mm\", \"frame\": \"setup WCS (Z=0 at stock top, part extends downward in -Z)\", \"model_top\": 0.0, \"model_bottom\": -50.0, \"stock_top\": 0.0, \"stock_bottom\": -50.0, \"cut_top\": 0.0, \"bottom_mode\": \"from contour\", \"cut_bottom\": null, \"bottom_offset_from_contour_mm\": 0.0, \"note\": \"Bottom is relative to the selected geometry (from contour): the op machines down to that contour/pocket floor, offset by bottom_offset_from_contour_mm (0 = reaches it). stops_short_of_floor_mm is omitted \\u2014 it would compare against the body's outer floor, which is not this op's target.\"}",
       "prompt_index": 1
     },
     {
       "tool": "export_view_sheet",
       "success": true,
       "input": {
-        "title": "Pocket Box \u2014 CAM Setup: Rough + Finish",
+        "title": "PocketBox CAM Setup \u2014 HAAS Mini Mill",
         "views": [
           "iso",
           "top",
           "front",
           "right"
         ],
-        "notes": "Part: PocketBox \u2014 100\u00d7100\u00d750 mm 6061 Al | Pocket: 60\u00d760\u00d720 mm deep, 5 mm corner radii, floor at Z\u221220 mm\nMachine: HAAS Mini Mill | WCS: top-center of stock (Z=0 at top)\nStock: 100\u00d7100\u00d750 mm (zero offset \u2014 matches part)\n\nOP 1 \u2014 Pocket_Rough    | T7: 3/8\u2033 3FL Carb ZrN Flat EM | 2D Adaptive | 10,000 RPM / 1,500 mm/min | Optimal load 3 mm | Stepdown 3 mm | 0.3 mm radial stock-to-leave\nOP 2 \u2014 Pocket_Finish_Walls | T9: 1/4\u2033 3FL TiCN Carb Flat EM | 2D Contour  | 12,000 RPM /   800 mm/min | Single full-depth pass | 0 mm stock-to-leave\nOP 3 \u2014 Pocket_Finish_Floor | T9: 1/4\u2033 3FL TiCN Carb Flat EM | 2D Pocket   | 12,000 RPM /   600 mm/min | Single finishing pass   | 0 mm stock-to-leave\n\nEstimated cycle times: Rough \u2248 22 min | Finish Walls \u2248 4 min | Finish Floor \u2248 41 min | Setup Total \u2248 67 min\nNC output: ~/Desktop/100.nc (HAAS post, mm)"
+        "notes": "Part: 6061 Al, 100\u00d7100\u00d750mm | Pocket: 60\u00d760mm, 20mm deep, R5mm corners | WCS: top-center of stock | Machine: HAAS Mini Mill\n\nOP1 Rough_Pocket   \u2014 T7  3/8\" Carb ZrN 3Fl | 2D Adaptive | 8000 RPM | 1200 mm/min | Stepdown 5mm | 0.3mm stock left | ~21 min\nOP2 Finish_Walls   \u2014 T9  1/4\" TiCN Carb 3Fl | 2D Contour  | 10000 RPM | 800 mm/min  | Full depth 20mm | 0.0mm stock | ~3.7 min\nOP3 Finish_Floor   \u2014 T9  1/4\" TiCN Carb 3Fl | 2D Pocket   | 10000 RPM | 1000 mm/min | Full depth pass | 0.0mm stock | ~25 min\nTotal estimated cycle time: ~49.6 min"
       },
-      "result": "**export_view_sheet** OK\n  html_path: C:\\Users\\Nanja\\Desktop\\Pocket Box v3_views_20260623_140731\\view_sheet.html\n  output_dir: C:\\Users\\Nanja\\Desktop\\Pocket Box v3_views_20260623_140731\n  views: [{\"view\": \"iso\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_140731\\\\iso.png\"}, {\"view\": \"top\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_140731\\\\top.png\"}, {\"view\": \"front\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_140731\\\\front.png\"}, {\"view\": \"right\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_140731\\\\right.png\"}]\n  title: Pocket Box \u2014 CAM Setup: Rough + Finish\n  image_size: [1200, 900]",
+      "result": "**export_view_sheet** OK\n  html_path: C:\\Users\\Nanja\\Desktop\\Pocket Box v3_views_20260623_144652\\view_sheet.html\n  output_dir: C:\\Users\\Nanja\\Desktop\\Pocket Box v3_views_20260623_144652\n  views: [{\"view\": \"iso\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_144652\\\\iso.png\"}, {\"view\": \"top\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_144652\\\\top.png\"}, {\"view\": \"front\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_144652\\\\front.png\"}, {\"view\": \"right\", \"path\": \"C:\\\\Users\\\\Nanja\\\\Desktop\\\\Pocket Box v3_views_20260623_144652\\\\right.png\"}]\n  title: PocketBox CAM Setup \u2014 HAAS Mini Mill\n  image_size: [1200, 900]",
+      "prompt_index": 1
+    },
+    {
+      "tool": "cam_post_process",
+      "success": true,
+      "input": {
+        "setup_name": "PocketBox_Setup",
+        "post_processor": "haas",
+        "output_units": "mm",
+        "program_number": 1001
+      },
+      "result": "**cam_post_process** OK\n  setup: PocketBox_Setup\n  post_processor: haas\n  output_folder: C:\\Users\\Nanja\\Desktop\n  output_file: C:\\Users\\Nanja\\Desktop\\1001.nc\n  units: mm",
       "prompt_index": 1
     }
   ],
   "provenance": {
     "mcp_project": "C:\\Users\\Nanja\\fusion360-mcp-server",
     "mcp_git_sha": "8f3ebf91690e-dirty",
-    "middleware_sha256": "58dae90690eb",
+    "middleware_sha256": "367e544d5a62",
     "system_prompt_sha256": "ccaef524e3b5",
-    "protocol_sha256": "87ad3a70b727",
+    "protocol_sha256": "a04f4315fd5f",
     "max_tool_rounds": 30,
     "max_tokens": 4096,
     "seed_base": null,
