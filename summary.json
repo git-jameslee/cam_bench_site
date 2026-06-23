@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-23T01:17:28.849850+00:00",
-  "n_runs": 11,
+  "generated": "2026-06-23T01:36:01.190981+00:00",
+  "n_runs": 12,
   "group_order": [
     "outcome",
     "post",
@@ -176,37 +176,37 @@
       "models": [
         {
           "model": "Claude Sonnet 4.6",
-          "runs": 5,
+          "runs": 6,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.958,
-              "lo": 0.9394,
-              "hi": 0.9796,
-              "n": 5
+              "mean": 0.965,
+              "lo": 0.944667,
+              "hi": 0.986333,
+              "n": 6
             },
             "tool_calls_total": {
-              "mean": 26.6,
-              "lo": 22.6,
-              "hi": 31.0,
-              "n": 5
+              "mean": 25.5,
+              "lo": 21.833333,
+              "hi": 30.0,
+              "n": 6
             },
             "tool_calls_succeeded": {
-              "mean": 25.4,
-              "lo": 22.0,
-              "hi": 29.2,
-              "n": 5
+              "mean": 24.5,
+              "lo": 21.333333,
+              "hi": 28.333333,
+              "n": 6
             },
             "tool_calls_failed": {
-              "mean": 1.2,
-              "lo": 0.6,
-              "hi": 1.8,
-              "n": 5
+              "mean": 1.0,
+              "lo": 0.333333,
+              "hi": 1.666667,
+              "n": 6
             },
             "hit_round_limit": {
-              "mean": 0.2,
+              "mean": 0.166667,
               "lo": 0.0,
-              "hi": 0.6,
-              "n": 5
+              "hi": 0.5,
+              "n": 6
             },
             "toolpath_generated": {
               "mean": null,
@@ -239,10 +239,10 @@
               "n": 0
             },
             "machine_time_min": {
-              "mean": 52.015,
-              "lo": 39.7425,
-              "hi": 63.8525,
-              "n": 4
+              "mean": 46.94,
+              "lo": 33.594,
+              "hi": 58.578,
+              "n": 5
             },
             "overall_quality": {
               "mean": null,
@@ -263,52 +263,52 @@
               "n": 0
             },
             "input_tokens": {
-              "mean": 676486.2,
-              "lo": 561618.6,
-              "hi": 807883.2,
-              "n": 5
+              "mean": 643940.0,
+              "lo": 536488.320833,
+              "hi": 768322.833333,
+              "n": 6
             },
             "output_tokens": {
-              "mean": 4379.6,
-              "lo": 3899.0,
-              "hi": 4860.2,
-              "n": 5
+              "mean": 4267.166667,
+              "lo": 3864.166667,
+              "hi": 4687.075,
+              "n": 6
             },
             "cache_read_input_tokens": {
-              "mean": 640204.8,
-              "lo": 526444.4,
-              "hi": 771189.6,
-              "n": 5
+              "mean": 607907.0,
+              "lo": 501459.666667,
+              "hi": 731742.833333,
+              "n": 6
             },
             "cache_creation_input_tokens": {
-              "mean": 36258.4,
-              "lo": 35144.0,
-              "hi": 37362.2,
-              "n": 5
+              "mean": 36011.0,
+              "lo": 34926.833333,
+              "hi": 37033.0,
+              "n": 6
             },
             "llm_rounds": {
-              "mean": 22.0,
-              "lo": 18.6,
-              "hi": 26.2,
-              "n": 5
+              "mean": 21.0,
+              "lo": 17.833333,
+              "hi": 24.8375,
+              "n": 6
             },
             "llm_s": {
-              "mean": 106.252,
-              "lo": 92.7527,
-              "hi": 125.368,
-              "n": 5
+              "mean": 101.145,
+              "lo": 86.627208,
+              "hi": 118.775083,
+              "n": 6
             },
             "tool_s": {
-              "mean": 18.682,
-              "lo": 16.264,
-              "hi": 21.226,
-              "n": 5
+              "mean": 18.996667,
+              "lo": 16.963333,
+              "hi": 21.135,
+              "n": 6
             },
             "wall_clock_s": {
-              "mean": 124.962,
-              "lo": 111.774,
-              "hi": 143.44,
-              "n": 5
+              "mean": 120.168333,
+              "lo": 106.938042,
+              "hi": 137.256833,
+              "n": 6
             }
           },
           "run_index": [
@@ -339,6 +339,12 @@
             {
               "run_id": "5250cc47-caac-4fcc-9bd5-cd76f258dbc2",
               "timestamp": "2026-06-22T20:17:27.379179",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "a3bb3f39-d8a7-4330-985a-9d175f72d00c",
+              "timestamp": "2026-06-22T20:35:59.896364",
               "trial_index": 0,
               "prompt_variant": "detailed"
             }
@@ -805,8 +811,8 @@
     "cells": {
       "Claude Sonnet 4.6": {
         "box_pocket_detailed": {
-          "runs": 5,
-          "graded": 4
+          "runs": 6,
+          "graded": 5
         },
         "face_milling_basic": {
           "runs": 2,
