@@ -242,7 +242,11 @@ async function renderRunDetail(container, runIndex, cols) {
     tb.append(tr);
 
     const trow = el("tr", { class: "detail hidden" });
-    const tcell = el("td", { class: "detailcell", colspan: "" + span }, renderTranscript(run));
+    const tcell = el("td", { class: "detailcell", colspan: "" + span },
+      el("div", { class: "detail-h" }, "Produced CAM"),
+      renderCamSummary(run),
+      el("div", { class: "detail-h" }, "Tool calls"),
+      renderTranscript(run));
     trow.append(tcell);
     tb.append(trow);
     tr.onclick = () => {
@@ -259,6 +263,60 @@ function runLabel(run) {
                             : (run.run_id || "").slice(0, 8);
   return (run.trials_total && run.trials_total > 1)
     ? `#${(run.trial_index ?? 0) + 1} · ${when}` : when;
+}
+
+// Render the produced CAM state (build_site.cam_summary) — setups, operations,
+// tools — so a reviewer sees WHAT got built, not just the metric scalars. The
+// model drives Fusion via opaque execute(script) calls, so the transcript no
+// longer shows the resulting CAM; this is the only structured view of it.
+function renderCamSummary(run) {
+  const cs = run.cam_summary;
+  const wrap = el("div", { class: "camsum" });
+  if (!cs) { wrap.append(el("div", { class: "note" }, "no CAM state probed")); return wrap; }
+  if (cs.probe_error) { wrap.append(el("div", { class: "note bad" }, "CAM probe error")); return wrap; }
+  const setups = cs.setups || [];
+  if (!setups.length) { wrap.append(el("div", { class: "note" }, "no setups in probe")); return wrap; }
+
+  setups.forEach((s) => {
+    const bits = [];
+    if (s.strategy) bits.push(s.strategy);
+    if (Array.isArray(s.stock_size_mm))
+      bits.push("stock " + s.stock_size_mm.map((x) => Math.round(x)).join("×") + "mm");
+    bits.push(s.machine ? "machine: " + s.machine : "no machine");
+    wrap.append(el("div", { class: "camsum-setup" },
+      el("strong", {}, s.name || "Setup"),
+      el("span", { class: "args" }, "  " + bits.join(" · "))));
+
+    const ops = s.operations || [];
+    if (!ops.length) { wrap.append(el("div", { class: "note" }, "no operations")); return; }
+    const t = el("table", { class: "subtable camsum-ops" });
+    const head = el("tr");
+    ["op", "strategy", "tool", "stepover", "stepdown", "toolpath"].forEach((h) =>
+      head.append(el("th", {}, h)));
+    t.append(el("thead", {}, head));
+    const tb = el("tbody");
+    ops.forEach((op) => {
+      const tool = op.tool || {};
+      const toolStr = [tool.diameter ? "Ø" + tool.diameter : null, tool.type]
+        .filter(Boolean).join(" ") || DASH;
+      let badge;
+      if (op.is_suppressed) badge = el("span", { class: "args" }, "suppressed");
+      else if (op.is_toolpath_valid) badge = el("span", { class: "ok" }, "✓ valid");
+      else if (op.has_toolpath) badge = el("span", { class: "bad" }, "✗ invalid");
+      else badge = el("span", { class: "args" }, "no path");
+      const tr = el("tr");
+      tr.append(el("td", {}, op.name || DASH));
+      tr.append(el("td", {}, op.strategy || DASH));
+      tr.append(el("td", {}, toolStr));
+      tr.append(el("td", {}, op.stepover || DASH));
+      tr.append(el("td", {}, op.stepdown || DASH));
+      tr.append(el("td", {}, badge));
+      tb.append(tr);
+    });
+    t.append(tb);
+    wrap.append(t);
+  });
+  return wrap;
 }
 
 function renderTranscript(run) {

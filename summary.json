@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-23T20:35:46.844664+00:00",
-  "n_runs": 19,
+  "generated": "2026-06-26T04:23:12.469263+00:00",
+  "n_runs": 4,
   "group_order": [
     "outcome",
     "post",
@@ -54,55 +54,6 @@
           "fmt": "pct"
         },
         {
-          "key": "toolpath_generated",
-          "section": "post",
-          "label": "Toolpath",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "gouge_free",
-          "section": "post",
-          "label": "Gouge free",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "coordinate_frame_correct",
-          "section": "post",
-          "label": "Coordinate frame correct",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "safe_retracts",
-          "section": "post",
-          "label": "Safe retracts",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "tool_appropriate",
-          "section": "post",
-          "label": "Tool appropriate",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "machine_time_min",
-          "section": "post",
-          "label": "Machine time min",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "iou_voxel",
-          "section": "post",
-          "label": "IoU",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
           "key": "scallop_height_mm",
           "section": "post",
           "label": "Scallop (mm)",
@@ -150,27 +101,6 @@
           "label": "Air-cut",
           "group": "post",
           "fmt": "pct"
-        },
-        {
-          "key": "overall_quality",
-          "section": "subjective",
-          "label": "Overall",
-          "group": "subjective",
-          "fmt": "score1"
-        },
-        {
-          "key": "strategy_appropriateness",
-          "section": "subjective",
-          "label": "Strategy",
-          "group": "subjective",
-          "fmt": "score1"
-        },
-        {
-          "key": "error_recovery",
-          "section": "subjective",
-          "label": "Error recovery",
-          "group": "subjective",
-          "fmt": "score1"
         },
         {
           "key": "input_tokens",
@@ -232,899 +162,152 @@
       "models": [
         {
           "model": "Claude Sonnet 4.6",
-          "runs": 12,
+          "runs": 4,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.95775,
-              "lo": 0.942748,
-              "hi": 0.974335,
-              "n": 12
+              "mean": 0.93,
+              "lo": 0.89525,
+              "hi": 0.95,
+              "n": 4
             },
             "tool_calls_total": {
-              "mean": 26.083333,
-              "lo": 23.916667,
-              "hi": 28.416667,
-              "n": 12
+              "mean": 45.0,
+              "lo": 27.5,
+              "hi": 62.5,
+              "n": 4
             },
             "tool_calls_succeeded": {
-              "mean": 24.916667,
-              "lo": 23.0,
-              "hi": 27.0,
-              "n": 12
+              "mean": 41.5,
+              "lo": 26.0,
+              "hi": 57.0,
+              "n": 4
             },
             "tool_calls_failed": {
-              "mean": 1.166667,
-              "lo": 0.666667,
-              "hi": 1.583333,
-              "n": 12
+              "mean": 3.5,
+              "lo": 1.5,
+              "hi": 6.5,
+              "n": 4
             },
             "hit_round_limit": {
-              "mean": 0.083333,
+              "mean": 0.5,
               "lo": 0.0,
-              "hi": 0.25,
-              "n": 12
-            },
-            "toolpath_generated": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "gouge_free": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "coordinate_frame_correct": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "safe_retracts": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "tool_appropriate": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "machine_time_min": {
-              "mean": 48.289091,
-              "lo": 39.334341,
-              "hi": 56.721636,
-              "n": 11
-            },
-            "iou_voxel": {
-              "mean": 0.9114,
-              "lo": 0.9114,
-              "hi": 0.9114,
-              "n": 2
-            },
-            "scallop_height_mm": {
-              "mean": 0.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "radial_engagement_pct": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "axial_engagement_pct": {
-              "mean": 0.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "engagement_ok": {
-              "mean": 1.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "operation_count": {
-              "mean": 2.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "tool_change_count": {
-              "mean": 2.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "air_cut_ratio": {
-              "mean": 0.1129,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "overall_quality": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "strategy_appropriateness": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "error_recovery": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "input_tokens": {
-              "mean": 617356.75,
-              "lo": 562993.108333,
-              "hi": 686708.522917,
-              "n": 12
-            },
-            "output_tokens": {
-              "mean": 4507.5,
-              "lo": 4220.2375,
-              "hi": 4752.339583,
-              "n": 12
-            },
-            "cache_read_input_tokens": {
-              "mean": 585530.666667,
-              "lo": 532008.214583,
-              "hi": 653966.916667,
-              "n": 12
-            },
-            "cache_creation_input_tokens": {
-              "mean": 31804.75,
-              "lo": 27184.552083,
-              "hi": 36018.591667,
-              "n": 12
-            },
-            "llm_rounds": {
-              "mean": 20.333333,
-              "lo": 18.747917,
-              "hi": 22.5,
-              "n": 12
-            },
-            "llm_s": {
-              "mean": 99.775833,
-              "lo": 91.854958,
-              "hi": 109.384646,
-              "n": 12
-            },
-            "tool_s": {
-              "mean": 16.356667,
-              "lo": 14.4955,
-              "hi": 18.342562,
-              "n": 12
-            },
-            "wall_clock_s": {
-              "mean": 116.160833,
-              "lo": 108.686667,
-              "hi": 125.865875,
-              "n": 12
-            }
-          },
-          "run_index": [
-            {
-              "run_id": "3fbe000c-852d-4e00-8ec2-28fffd5ab120",
-              "timestamp": "2026-06-22T12:46:34.292359",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "c65606cb-314b-4367-9a27-bd0edd65cc1c",
-              "timestamp": "2026-06-22T13:17:46.086205",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "a87f97cd-f1fb-45e3-b4a5-0764d2c154ac",
-              "timestamp": "2026-06-22T19:44:54.000736",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "956e35eb-a17d-472c-aecf-abee7382011e",
-              "timestamp": "2026-06-22T20:03:42.647492",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "5250cc47-caac-4fcc-9bd5-cd76f258dbc2",
-              "timestamp": "2026-06-22T20:17:27.379179",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "a3bb3f39-d8a7-4330-985a-9d175f72d00c",
-              "timestamp": "2026-06-22T20:35:59.896364",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "88e6cc7d-eb70-408a-b335-4dd9de3f66a2",
-              "timestamp": "2026-06-23T13:39:10.822369",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "d7fd05e0-b7b0-4a34-91e3-bebff5bcc7d1",
-              "timestamp": "2026-06-23T13:49:06.163412",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "e875f31c-a376-4ba0-a0d7-60289b318d09",
-              "timestamp": "2026-06-23T14:07:47.132327",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "e2d46aab-a740-4ddc-835a-24d0271c38aa",
-              "timestamp": "2026-06-23T14:47:14.387705",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "585488d6-561a-48df-a5ec-c8551b2930a0",
-              "timestamp": "2026-06-23T14:49:51.190985",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "d6a1e351-c1aa-456b-9695-0d68bdafcec7",
-              "timestamp": "2026-06-23T15:35:45.713413",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            }
-          ]
-        },
-        {
-          "model": "Qwen3.6-35B-A3B",
-          "runs": 1,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 1.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "tool_calls_total": {
-              "mean": 24.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "tool_calls_succeeded": {
-              "mean": 24.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "toolpath_generated": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "gouge_free": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "coordinate_frame_correct": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "safe_retracts": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "tool_appropriate": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "machine_time_min": {
-              "mean": 45.01,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "iou_voxel": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "scallop_height_mm": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "radial_engagement_pct": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "axial_engagement_pct": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "engagement_ok": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "operation_count": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "tool_change_count": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "air_cut_ratio": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "overall_quality": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "strategy_appropriateness": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "error_recovery": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "input_tokens": {
-              "mean": 670790.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "output_tokens": {
-              "mean": 6149.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "llm_rounds": {
-              "mean": 25.0,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "llm_s": {
-              "mean": 459.8,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "tool_s": {
-              "mean": 15.44,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            },
-            "wall_clock_s": {
-              "mean": 475.29,
-              "lo": null,
-              "hi": null,
-              "n": 1
-            }
-          },
-          "run_index": [
-            {
-              "run_id": "ffbe9271-e9c7-429f-b392-ded99faca1f9",
-              "timestamp": "2026-06-23T13:32:56.672768",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "face_milling_basic",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "iou_voxel_1mm",
-          "section": "post",
-          "label": "IoU (1mm)",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "dimensions_correct",
-          "section": "post",
-          "label": "Dimensions",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "toolpath_generated",
-          "section": "post",
-          "label": "Toolpath",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "overall_quality",
-          "section": "subjective",
-          "label": "Overall",
-          "group": "subjective",
-          "fmt": "score1"
-        },
-        {
-          "key": "strategy_appropriateness",
-          "section": "subjective",
-          "label": "Strategy",
-          "group": "subjective",
-          "fmt": "score1"
-        },
-        {
-          "key": "error_recovery",
-          "section": "subjective",
-          "label": "Error recovery",
-          "group": "subjective",
-          "fmt": "score1"
-        }
-      ],
-      "models": [
-        {
-          "model": "Claude Sonnet 4.6",
-          "runs": 2,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 1.0,
-              "lo": 1.0,
               "hi": 1.0,
-              "n": 2
+              "n": 4
             },
-            "tool_calls_total": {
-              "mean": 16.5,
-              "lo": 16.0,
-              "hi": 17.0,
-              "n": 2
-            },
-            "tool_calls_succeeded": {
-              "mean": 16.5,
-              "lo": 16.0,
-              "hi": 17.0,
-              "n": 2
-            },
-            "tool_calls_failed": {
+            "scallop_height_mm": {
               "mean": 0.0,
-              "lo": 0.0,
-              "hi": 0.0,
-              "n": 2
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "lo": 0.0,
-              "hi": 0.0,
-              "n": 2
-            },
-            "iou_voxel_1mm": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "dimensions_correct": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "toolpath_generated": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "overall_quality": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "strategy_appropriateness": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "error_recovery": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            }
-          },
-          "run_index": [
-            {
-              "run_id": "c722376d-3031-49bf-970a-9789da459ad8",
-              "timestamp": "2026-05-28T14:50:48.415477",
-              "trial_index": null,
-              "prompt_variant": null
-            },
-            {
-              "run_id": "2b94aa2c-6ded-4cfb-ab1a-66dc8f0b98e0",
-              "timestamp": "2026-05-29T15:22:15.647425",
-              "trial_index": null,
-              "prompt_variant": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "tool_library_face_mill",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "queried_library",
-          "section": "post",
-          "label": "Queried lib",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "used_library_tool",
-          "section": "post",
-          "label": "Used lib tool",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "toolpath_generated",
-          "section": "post",
-          "label": "Toolpath",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "no_execute_code_fallback",
-          "section": "post",
-          "label": "No code fallback",
-          "group": "post",
-          "fmt": "score2"
-        },
-        {
-          "key": "tool_choice_quality",
-          "section": "subjective",
-          "label": "Tool choice",
-          "group": "subjective",
-          "fmt": "score1"
-        },
-        {
-          "key": "reasoning_quality",
-          "section": "subjective",
-          "label": "Reasoning",
-          "group": "subjective",
-          "fmt": "score1"
-        },
-        {
-          "key": "error_recovery",
-          "section": "subjective",
-          "label": "Error recovery",
-          "group": "subjective",
-          "fmt": "score1"
-        }
-      ],
-      "models": [
-        {
-          "model": "Claude Sonnet 4.6",
-          "runs": 3,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.886333,
-              "lo": 0.833,
-              "hi": 0.944,
-              "n": 3
-            },
-            "tool_calls_total": {
-              "mean": 17.666667,
-              "lo": 17.0,
-              "hi": 18.0,
-              "n": 3
-            },
-            "tool_calls_succeeded": {
-              "mean": 15.666667,
-              "lo": 15.0,
-              "hi": 17.0,
-              "n": 3
-            },
-            "tool_calls_failed": {
-              "mean": 2.0,
-              "lo": 1.0,
-              "hi": 3.0,
-              "n": 3
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "lo": 0.0,
-              "hi": 0.0,
-              "n": 3
-            },
-            "queried_library": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "used_library_tool": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "toolpath_generated": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "no_execute_code_fallback": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "tool_choice_quality": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "reasoning_quality": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            },
-            "error_recovery": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
-            }
-          },
-          "run_index": [
-            {
-              "run_id": "a53fd32c-b067-462b-8261-b0bb415f3fe1",
-              "timestamp": "2026-05-29T15:24:56.838690",
-              "trial_index": null,
-              "prompt_variant": null
-            },
-            {
-              "run_id": "c67701fa-5d89-4d22-a02c-d9b5126faa4b",
-              "timestamp": "2026-06-02T18:45:51.724956",
-              "trial_index": null,
-              "prompt_variant": null
-            },
-            {
-              "run_id": "2e51fb7d-05a0-429e-93dc-7b8c430a7f57",
-              "timestamp": "2026-06-11T11:35:40.503196",
-              "trial_index": null,
-              "prompt_variant": null
-            }
-          ]
-        },
-        {
-          "model": "Qwen3-8B",
-          "runs": 1,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.727,
               "lo": null,
               "hi": null,
               "n": 1
             },
-            "tool_calls_total": {
-              "mean": 11.0,
+            "radial_engagement_pct": {
+              "mean": 40.0,
               "lo": null,
               "hi": null,
               "n": 1
             },
-            "tool_calls_succeeded": {
-              "mean": 8.0,
+            "axial_engagement_pct": {
+              "mean": 34.091,
               "lo": null,
               "hi": null,
               "n": 1
             },
-            "tool_calls_failed": {
+            "engagement_ok": {
+              "mean": 1.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "operation_count": {
               "mean": 3.0,
               "lo": null,
               "hi": null,
               "n": 1
             },
-            "hit_round_limit": {
-              "mean": 0.0,
+            "tool_change_count": {
+              "mean": 1.0,
               "lo": null,
               "hi": null,
               "n": 1
             },
-            "queried_library": {
+            "air_cut_ratio": {
               "mean": null,
               "lo": null,
               "hi": null,
               "n": 0
             },
-            "used_library_tool": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
+            "input_tokens": {
+              "mean": 2052699.5,
+              "lo": 1012156.5,
+              "hi": 3223833.75,
+              "n": 4
             },
-            "toolpath_generated": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
+            "output_tokens": {
+              "mean": 34279.5,
+              "lo": 21539.5,
+              "hi": 52723.0,
+              "n": 4
             },
-            "no_execute_code_fallback": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
+            "cache_read_input_tokens": {
+              "mean": 2275491.0,
+              "lo": 764045.0,
+              "hi": 3786937.0,
+              "n": 2
             },
-            "tool_choice_quality": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
+            "cache_creation_input_tokens": {
+              "mean": 85496.5,
+              "lo": 59721.0,
+              "hi": 111272.0,
+              "n": 2
             },
-            "reasoning_quality": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
+            "llm_rounds": {
+              "mean": 44.25,
+              "lo": 28.5,
+              "hi": 60.0,
+              "n": 4
             },
-            "error_recovery": {
-              "mean": null,
-              "lo": null,
-              "hi": null,
-              "n": 0
+            "llm_s": {
+              "mean": 509.52,
+              "lo": 348.7925,
+              "hi": 748.3825,
+              "n": 4
+            },
+            "tool_s": {
+              "mean": 26.87,
+              "lo": 14.395,
+              "hi": 46.3475,
+              "n": 4
+            },
+            "wall_clock_s": {
+              "mean": 536.67,
+              "lo": 369.725,
+              "hi": 794.305,
+              "n": 4
             }
           },
           "run_index": [
             {
-              "run_id": "2d07a8f9-f271-4ef5-8a0e-6e6abda18a98",
-              "timestamp": "2026-06-02T18:34:19.151095",
-              "trial_index": null,
+              "run_id": "ee4ba413-aced-46ac-b70a-8497d7a7edd2",
+              "timestamp": "2026-06-24T18:03:22.145348",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "07cf7107-fb28-4131-9bfb-5e6bbfa29577",
+              "timestamp": "2026-06-25T12:02:45.873299",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "b4354992-79a5-475c-abc0-c64edbe7a176",
+              "timestamp": "2026-06-25T19:12:15.288533",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "7b6e4975-f34d-42d8-bef7-4189c9990f55",
+              "timestamp": "2026-06-25T19:56:28.645760",
+              "trial_index": 0,
               "prompt_variant": null
             }
           ]
@@ -1134,56 +317,16 @@
   ],
   "overview": {
     "models": [
-      "Claude Sonnet 4.6",
-      "Qwen3-8B",
-      "Qwen3.6-35B-A3B"
+      "Claude Sonnet 4.6"
     ],
     "tasks": [
-      "box_pocket_detailed",
-      "face_milling_basic",
-      "tool_library_face_mill"
+      "box_pocket_detailed"
     ],
     "cells": {
       "Claude Sonnet 4.6": {
         "box_pocket_detailed": {
-          "runs": 12,
-          "graded": 11
-        },
-        "face_milling_basic": {
-          "runs": 2,
-          "graded": 0
-        },
-        "tool_library_face_mill": {
-          "runs": 3,
-          "graded": 0
-        }
-      },
-      "Qwen3-8B": {
-        "box_pocket_detailed": {
-          "runs": 0,
-          "graded": 0
-        },
-        "face_milling_basic": {
-          "runs": 0,
-          "graded": 0
-        },
-        "tool_library_face_mill": {
-          "runs": 1,
-          "graded": 0
-        }
-      },
-      "Qwen3.6-35B-A3B": {
-        "box_pocket_detailed": {
-          "runs": 1,
+          "runs": 4,
           "graded": 1
-        },
-        "face_milling_basic": {
-          "runs": 0,
-          "graded": 0
-        },
-        "tool_library_face_mill": {
-          "runs": 0,
-          "graded": 0
         }
       }
     }
