@@ -18,15 +18,13 @@ const LOGOS = {
   autodesk: "m.129 20.202 14.7-9.136h7.625c.235 0 .445.188.445.445 0 .21-.092.305-.21.375l-7.222 4.323c-.47.283-.633.845-.633 1.265l-.008 2.725H24V4.362a.561.561 0 0 0-.585-.562h-8.752L0 12.893V20.2h.129z",
 };
 
-// Official brand colors, tuned for the light theme: OpenAI and Autodesk marks
-// are monochrome/black → rendered gray-900 so they stay legible on the white
-// panel. Missing key falls back to the row text color.
+// Brand colors for the colored marks. The monochrome OpenAI/Autodesk marks are
+// intentionally omitted → they fall back to currentColor (the row text color),
+// so they flip black↔white automatically with the light/dark theme.
 const LOGO_COLORS = {
   claude: "#D97757",
   qwen: "#6950EF",
   gemini: "#8E75B2",
-  openai: "#111827",
-  autodesk: "#111827",
 };
 
 // Map a model name to a brand-logo key by substring (null → no logo).
@@ -392,6 +390,19 @@ async function init() {
   $("#sub").textContent =
     `${DATA.n_runs} runs · ${DATA.overview.models.length} models · ${DATA.tasks.length} tasks · built ${gen}`;
   $("#ci").addEventListener("change", render);
+  const themeBtn = $("#theme");
+  if (themeBtn) {
+    const syncAria = () => themeBtn.setAttribute("aria-pressed",
+      document.documentElement.getAttribute("data-theme") === "dark" ? "true" : "false");
+    syncAria();
+    themeBtn.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      const next = cur === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncAria();
+    });
+  }
   buildGroupToggles();
   buildTabs();
   render();

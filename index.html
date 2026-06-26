@@ -7,11 +7,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  /* Set the theme BEFORE first paint (no flash): saved choice → system
+     preference → dark fallback. The rest of the theming is pure CSS vars. */
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t !== "light" && t !== "dark") {
+        t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches)
+            ? "light" : "dark";
+      }
+      document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
 <style>
-  /* Flat Design, light mode. Tokens map the design system to plain CSS vars so
-     the zero-build static deploy stays intact. White color-block panels on a
-     gray-100 canvas give edges without shadows (shadows are banned here). */
-  :root {
+  /* Flat Design with a light/dark toggle. Both palettes live in [data-theme]
+     blocks; the zero-build static deploy stays intact. Surfaces are separated
+     by LIGHTNESS steps (panel vs canvas), never shadows (banned here). */
+  :root { --r:8px; --rm:6px; }            /* shape tokens, theme-independent */
+
+  :root[data-theme="light"] {
     --canvas:#f3f4f6;   /* gray-100  — page */
     --panel:#ffffff;    /* white     — color-block card */
     --fg:#111827;       /* gray-900  — text */
@@ -23,8 +41,27 @@
     --accent:#f59e0b;   /* amber-500 */
     --ok:#059669;       /* emerald-600 — AA on white */
     --bad:#dc2626;      /* red-600     — AA on white */
-    --r:8px;            /* rounded-lg */
-    --rm:6px;           /* rounded-md */
+    --row-hover:rgba(59,130,246,.06);
+    --deco-op:.05;
+    --sw-track:#d1d5db; /* gray-300 — reads on the gray-100 canvas */
+    --sw-knob:#ffffff;
+  }
+  :root[data-theme="dark"] {
+    --canvas:#0a0e17;   /* near-black slate — page */
+    --panel:#141a24;    /* elevated surface (lighter, not shadowed) */
+    --fg:#f3f4f6;       /* gray-100  — text */
+    --muted:#9ca3af;    /* gray-400  — secondary text (AA on dark) */
+    --line:#2a3140;     /* subtle separator on dark */
+    --primary:#3b82f6;  /* blue-500  — action */
+    --primary-d:#2563eb;/* blue-600  — hover (darken keeps white text legible) */
+    --secondary:#10b981;/* emerald-500 */
+    --accent:#f59e0b;   /* amber-500 */
+    --ok:#34d399;       /* emerald-400 — AA on dark */
+    --bad:#f87171;      /* red-400     — AA on dark */
+    --row-hover:rgba(59,130,246,.12);
+    --deco-op:.08;
+    --sw-track:#1c2433; /* lighter than canvas → pill is visible */
+    --sw-knob:#454f66;
   }
   * { box-sizing:border-box; }
   body {
@@ -32,12 +69,13 @@
     font:15px/1.5 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     background:var(--canvas); color:var(--fg);
     -webkit-font-smoothing:antialiased;
+    transition:background .2s, color .2s;
   }
-  /* Poster decoration: one large flat circle, very low opacity, behind content. */
+  /* Poster decoration: one large flat circle, low opacity, behind content. */
   body::before {
     content:""; position:fixed; top:-160px; right:-160px;
     width:460px; height:460px; border-radius:9999px;
-    background:var(--primary); opacity:.05; pointer-events:none; z-index:0;
+    background:var(--primary); opacity:var(--deco-op); pointer-events:none; z-index:0;
   }
   header, .bar, .tabs, main { position:relative; z-index:1;
     max-width:1200px; margin-left:auto; margin-right:auto; }
@@ -49,7 +87,33 @@
                background:var(--primary); display:inline-block; }
   .sub { color:var(--muted); font-size:13px; margin-top:6px; }
 
-  /* Controls = a flat white block on the gray canvas. */
+  /* Vertical theme switch, floating at the page's top-right corner. */
+  .theme-switch {
+    position:fixed; top:24px; right:28px; z-index:50;
+    width:84px; height:44px; padding:0; border:0; cursor:pointer;
+    border-radius:9999px; background:var(--sw-track);
+    transition:background .2s;
+  }
+  .theme-switch .rail-sun, .theme-switch .rail-moon {
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:18px; height:18px; color:var(--muted); opacity:.55; pointer-events:none;
+  }
+  .theme-switch .rail-sun { left:11px; }
+  .theme-switch .rail-moon { right:11px; }
+  .theme-switch .knob {
+    position:absolute; top:50%; transform:translateY(-50%); left:4px; z-index:1;
+    width:36px; height:36px; border-radius:9999px; background:var(--sw-knob);
+    display:flex; align-items:center; justify-content:center;
+    transition:left .25s cubic-bezier(.4,0,.2,1), transform .2s;
+  }
+  :root[data-theme="dark"] .theme-switch .knob { left:calc(100% - 36px - 4px); }
+  .theme-switch:hover .knob { transform:translateY(-50%) scale(1.08); }
+  .theme-switch .knob svg { width:20px; height:20px; }
+  .theme-switch .knob .i-sun, .theme-switch .knob .i-moon { display:none; }
+  :root[data-theme="light"] .theme-switch .knob .i-sun { display:block; color:var(--accent); }
+  :root[data-theme="dark"]  .theme-switch .knob .i-moon { display:block; color:var(--primary); }
+
+  /* Controls = a flat panel block on the canvas. */
   .bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap;
          margin:18px 28px 0; padding:14px 18px;
          background:var(--panel); border-radius:var(--r); }
@@ -72,7 +136,7 @@
   .tab.active:hover { background:var(--primary-d); }
 
   main { padding:16px 28px 48px; }
-  /* Panel: white color block. No border, no shadow, generous padding. */
+  /* Panel: flat color block. No border, no shadow, generous padding. */
   .panel { background:var(--panel); border-radius:var(--r); padding:28px 28px 22px; }
   h2 { font-size:20px; font-weight:700; letter-spacing:-.01em; margin:0 0 4px; }
   .note { color:var(--muted); font-size:13px; margin:10px 0 0; }
@@ -86,7 +150,7 @@
   thead th { color:var(--muted); font-weight:600; font-size:11px;
              text-transform:uppercase; letter-spacing:.05em; }
   thead th.grp { border-bottom:2px solid var(--primary); }
-  tbody tr:hover td { background:rgba(59,130,246,.06); }
+  tbody tr:hover td { background:var(--row-hover); }
   td.model { font-weight:700; }
   .logo { width:16px; height:16px; vertical-align:-3px; margin-right:7px; }
   td.dash { color:var(--muted); }
@@ -97,7 +161,7 @@
            transition:transform .2s ease; }
   tr.open > td > .caret, tr.open > td .caret { transform:rotate(90deg); }
   tr.detail.hidden { display:none; }
-  /* Nested detail = a flat muted block (gray-100) inside the white panel. */
+  /* Nested detail = a flat recessed block (back to canvas) inside the panel. */
   td.detailcell { text-align:left; background:var(--canvas); padding:14px 18px;
                   border-radius:var(--rm); }
   td.detailcell, td.detailcell:first-child { position:static; }
@@ -121,11 +185,34 @@
 
   /* No shadows → focus must be a hard, high-contrast outline. */
   a:focus-visible, button:focus-visible, input:focus-visible {
-    outline:2px solid var(--primary); outline-offset:2px; border-radius:4px;
+    outline:2px solid var(--primary); outline-offset:2px; border-radius:9999px;
   }
 </style>
 </head>
 <body>
+  <button id="theme" class="theme-switch" type="button"
+          aria-label="Toggle light / dark theme" title="Toggle light / dark theme">
+    <svg class="rail-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+    </svg>
+    <svg class="rail-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+    </svg>
+    <span class="knob">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+      </svg>
+    </span>
+  </button>
   <header>
     <h1>CAM-LLM Benchmark</h1>
     <div class="sub" id="sub">loading…</div>
