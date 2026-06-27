@@ -77,7 +77,8 @@
     width:460px; height:460px; border-radius:9999px;
     background:var(--primary); opacity:var(--deco-op); pointer-events:none; z-index:0;
   }
-  header, .bar, .tabs, main { position:relative; z-index:1;
+  /* All sections share one centered column so their left edges line up. */
+  header, .barwrap, .tabs, main { position:relative; z-index:1;
     max-width:1200px; margin-left:auto; margin-right:auto; }
 
   header { padding:32px 28px 4px; }
@@ -86,6 +87,7 @@
   h1::before { content:""; width:18px; height:18px; border-radius:5px;
                background:var(--primary); display:inline-block; }
   .sub { color:var(--muted); font-size:13px; margin-top:6px; }
+  .sub:empty { display:none; }
 
   /* Vertical theme switch, floating at the page's top-right corner. */
   .theme-switch {
@@ -113,9 +115,10 @@
   :root[data-theme="light"] .theme-switch .knob .i-sun { display:block; color:var(--accent); }
   :root[data-theme="dark"]  .theme-switch .knob .i-moon { display:block; color:var(--primary); }
 
-  /* Controls = a flat panel block on the canvas. */
+  /* Controls = a flat panel block, inset to share the title/panel left edge. */
+  .barwrap { padding:18px 28px 0; }
   .bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap;
-         margin:18px 28px 0; padding:14px 18px;
+         padding:14px 18px;
          background:var(--panel); border-radius:var(--r); }
   .bar .group { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
   .bar label { color:var(--fg); font-size:13px; font-weight:500;
@@ -149,8 +152,16 @@
                                    background:var(--panel); }
   thead th { color:var(--muted); font-weight:600; font-size:11px;
              text-transform:uppercase; letter-spacing:.05em; }
-  thead th.grp { border-bottom:2px solid var(--primary); }
+  /* Group delimiter: a neutral VERTICAL divider at each metric group's first
+     column (header + body), so groups read clearly without a floating blue
+     horizontal bar that looks wrong during horizontal scroll. */
+  thead th.grp, tbody td.grp { border-left:1px solid var(--line); }
   tbody tr:hover td { background:var(--row-hover); }
+  /* The sticky first column must stay OPAQUE under the hover tint, or
+     horizontally-scrolled cells bleed through it. Layer the translucent tint
+     over a solid panel base so it still tints but never shows through. */
+  tbody tr:hover td:first-child {
+    background:linear-gradient(var(--row-hover), var(--row-hover)), var(--panel); }
   td.model { font-weight:700; }
   .logo { width:16px; height:16px; vertical-align:-3px; margin-right:7px; }
   td.dash { color:var(--muted); }
@@ -215,12 +226,14 @@
   </button>
   <header>
     <h1>CAM-LLM Benchmark</h1>
-    <div class="sub" id="sub">loading…</div>
+    <div class="sub" id="sub"></div>
   </header>
-  <div class="bar">
-    <label><input type="checkbox" id="ci" checked> 95% CI</label>
-    <div class="group" id="groups"></div>
-    <a class="logout" href="/logout">sign out</a>
+  <div class="barwrap">
+    <div class="bar">
+      <label><input type="checkbox" id="ci" checked> 95% CI</label>
+      <div class="group" id="groups"></div>
+      <a class="logout" href="/logout">sign out</a>
+    </div>
   </div>
   <div class="tabs" id="tabs"></div>
   <main><div class="panel" id="panel"></div></main>

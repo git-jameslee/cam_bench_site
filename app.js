@@ -167,15 +167,18 @@ function renderTask(name) {
     mcell.append(modelLabel(mod.model));
     tr.append(mcell);
     tr.append(el("td", {}, "" + mod.runs));
+    let prevG = null;
     cols.forEach((m) => {
       const c = mod.cells[m.key];
+      let td;
       if (c == null || c.mean == null) {
         anyDash = true;
-        tr.append(el("td", { class: "dash" }, DASH));
-        return;
+        td = el("td", { class: "dash" }, DASH);
+      } else {
+        td = el("td", {}, fmtMain(m.fmt, c.mean));
+        if (showCI() && c.lo != null) td.append(el("span", { class: "ci" }, " " + fmtRange(m.fmt, c.lo, c.hi)));
       }
-      const td = el("td", {}, fmtMain(m.fmt, c.mean));
-      if (showCI() && c.lo != null) td.append(el("span", { class: "ci" }, " " + fmtRange(m.fmt, c.lo, c.hi)));
+      if (m.group !== prevG) { td.classList.add("grp"); prevG = m.group; }
       tr.append(td);
     });
     body.append(tr);
@@ -386,9 +389,6 @@ async function init() {
     $("#sub").textContent = "failed to load summary.json";
     return;
   }
-  const gen = DATA.generated ? new Date(DATA.generated).toLocaleString() : "?";
-  $("#sub").textContent =
-    `${DATA.n_runs} runs · ${DATA.overview.models.length} models · ${DATA.tasks.length} tasks · built ${gen}`;
   $("#ci").addEventListener("change", render);
   const themeBtn = $("#theme");
   if (themeBtn) {

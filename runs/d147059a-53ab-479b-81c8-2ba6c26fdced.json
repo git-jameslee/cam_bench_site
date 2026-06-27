@@ -1,0 +1,448 @@
+{
+  "run_id": "d147059a-53ab-479b-81c8-2ba6c26fdced",
+  "model": "Qwen3.6-35B-A3B",
+  "model_raw": "Qwen3.6-35B-A3B",
+  "task": "box_pocket_minimal",
+  "task_group": null,
+  "prompt_variant": null,
+  "trial_index": 0,
+  "trials_total": 1,
+  "backend": "openai",
+  "timestamp": "2026-06-26T19:38:46.226864",
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "repetition_penalty": 1.0
+  },
+  "seed": null,
+  "values": {
+    "tool_calls_total": 28.0,
+    "tool_calls_succeeded": 15.0,
+    "tool_calls_failed": 13.0,
+    "tool_call_success_rate": 0.536,
+    "tool_inputs_repaired": 0.0,
+    "mb_injected_calls": 27.0,
+    "hit_round_limit": 0.0,
+    "aborted": 1.0,
+    "input_tokens": 474937.0,
+    "output_tokens": 13443.0,
+    "cache_read_input_tokens": 0.0,
+    "cache_creation_input_tokens": 0.0,
+    "llm_rounds": 28.0,
+    "llm_s": 622.25,
+    "tool_s": 23.28,
+    "wall_clock_s": 6514.57
+  },
+  "transcript": [
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": "",
+        "script": "def run(_context):\n    import json\n    scene = mb.inspect()\n    print(json.dumps(scene, indent=2))\n    \n    if len(scene['bodies']) > 0:\n        body_idx = 0\n        faces_all = mb.faces(body_idx, kind=None)\n        print(f\"\\nAll faces on body {body_idx}:\")\n        print(json.dumps(faces_all, indent=2))\n        \n        # Also show just plane faces (likely pocket walls/bottom)\n        faces_plane = mb.faces(body_idx, kind=\"Plane\")\n        print(f\"\\nPlane faces ({len(faces_plane)}):\")\n        for f in faces_plane:\n            print(f\"  idx={f['index']}, area={f['area_mm2']:.1f}mm\u00b2, z={f['z_mm']:.3f}, normal={f.get('normal')}\")"
+      },
+      "result": "{\"error\":\"Validation failed with 2 error(s):\\n  1. At '/<root>/[\\\"object\\\"]': Value type not permitted by 'type' constraint.\\n  2. At '/<root>': Failed to validate against schema associated with property name 'object'.\"}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    scene = mb.inspect()\n    print(json.dumps(scene, indent=2))\n    if len(scene['bodies']) > 0:\n        body_idx = 0\n        faces_all = mb.faces(body_idx, kind=None)\n        print(f'All faces on body {body_idx}:')\n        print(json.dumps(faces_all, indent=2))"
+        }
+      },
+      "result": "{\n    \"message\": \"{\\n  \\\"document\\\": \\\"Pocket Box\\\",\\n  \\\"length_unit\\\": \\\"mm\\\",\\n  \\\"bodies\\\": [\\n    {\\n      \\\"index\\\": 0,\\n      \\\"name\\\": \\\"PocketBox\\\",\\n      \\\"dims_mm\\\": [\\n        100.0,\\n        100.0,\\n        50.0\\n      ],\\n      \\\"bbox_min_mm\\\": [\\n        -50.0,\\n        -50.0,\\n        0.0\\n      ],\\n      \\\"bbox_max_mm\\\": [\\n        50.0,\\n        50.0,\\n        50.0\\n      ],\\n      \\\"face_count\\\": 15\\n    }\\n  ],\\n  \\\"cam\\\": {\\n    \\\"present\\\": true,\\n    \\\"setups\\\": []\\n  }\\n}\\nAll faces on body 0:\\n[\\n  {\\n    \\\"index\\\": 0,\\n    \\\"type\\\": \\\"Cylinder\\\",\\n    \\\"area_mm2\\\": 157.08,\\n    \\\"centroid_mm\\\": [\\n      -28.536,\\n      28.536,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      0.7071,\\n      -0.7071,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 1,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 1000.0,\\n    \\\"centroid_mm\\\": [\\n      0.0,\\n      30.0,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      -0.0,\\n      -1.0,\\n      -0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 2,\\n    \\\"type\\\": \\\"Cylinder\\\",\\n    \\\"area_mm2\\\": 157.08,\\n    \\\"centroid_mm\\\": [\\n      28.536,\\n      28.536,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      -0.7071,\\n      -0.7071,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 3,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 1000.0,\\n    \\\"centroid_mm\\\": [\\n      30.0,\\n      0.0,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      -1.0,\\n      0.0,\\n      -0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 4,\\n    \\\"type\\\": \\\"Cylinder\\\",\\n    \\\"area_mm2\\\": 157.08,\\n    \\\"centroid_mm\\\": [\\n      -28.536,\\n      -28.536,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      0.7071,\\n      0.7071,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 5,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 3578.54,\\n    \\\"centroid_mm\\\": [\\n      0.0,\\n      0.0,\\n      30.0\\n    ],\\n    \\\"normal\\\": [\\n      -0.0,\\n      -0.0,\\n      1.0\\n    ],\\n    \\\"z_mm\\\": 30.0\\n  },\\n  {\\n    \\\"index\\\": 6,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 1000.0,\\n    \\\"centroid_mm\\\": [\\n      0.0,\\n      -30.0,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      -0.0,\\n      1.0,\\n      -0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 7,\\n    \\\"type\\\": \\\"Cylinder\\\",\\n    \\\"area_mm2\\\": 157.08,\\n    \\\"centroid_mm\\\": [\\n      28.536,\\n      -28.536,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      -0.7071,\\n      0.7071,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 8,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 1000.0,\\n    \\\"centroid_mm\\\": [\\n      -30.0,\\n      0.0,\\n      40.0\\n    ],\\n    \\\"normal\\\": [\\n      1.0,\\n      0.0,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 40.0\\n  },\\n  {\\n    \\\"index\\\": 9,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 5000.0,\\n    \\\"centroid_mm\\\": [\\n      0.0,\\n      50.0,\\n      25.0\\n    ],\\n    \\\"normal\\\": [\\n      0.0,\\n      1.0,\\n      -0.0\\n    ],\\n    \\\"z_mm\\\": 25.0\\n  },\\n  {\\n    \\\"index\\\": 10,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 5000.0,\\n    \\\"centroid_mm\\\": [\\n      50.0,\\n      0.0,\\n      25.0\\n    ],\\n    \\\"normal\\\": [\\n      1.0,\\n      0.0,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 25.0\\n  },\\n  {\\n    \\\"index\\\": 11,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 5000.0,\\n    \\\"centroid_mm\\\": [\\n      0.0,\\n      -50.0,\\n      25.0\\n    ],\\n    \\\"normal\\\": [\\n      0.0,\\n      -1.0,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 25.0\\n  },\\n  {\\n    \\\"index\\\": 12,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 5000.0,\\n    \\\"centroid_mm\\\": [\\n      -50.0,\\n      0.0,\\n      25.0\\n    ],\\n    \\\"normal\\\": [\\n      -1.0,\\n      0.0,\\n      0.0\\n    ],\\n    \\\"z_mm\\\": 25.0\\n  },\\n  {\\n    \\\"index\\\": 13,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 6421.46,\\n    \\\"centroid_mm\\\": [\\n      0.0,\\n      -40.0,\\n      50.0\\n    ],\\n    \\\"normal\\\": [\\n      0.0,\\n      0.0,\\n      1.0\\n    ],\\n    \\\"z_mm\\\": 50.0\\n  },\\n  {\\n    \\\"index\\\": 14,\\n    \\\"type\\\": \\\"Plane\\\",\\n    \\\"area_mm2\\\": 10000.0,\\n    \\\"centroid_mm\\\": [\\n      0.0,\\n      0.0,\\n      0.0\\n    ],\\n    \\\"normal\\\": [\\n      -0.0,\\n      -0.0,\\n      -1.0\\n    ],\\n    \\\"z_mm\\\": 0.0\\n  }\\n]\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    tools = mb.list_library_tools(contains=None)\n    print(f'Total tools in library: {len(tools)}')\n    for t in tools:\n        print(json.dumps(t))\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Total tools in library: 66\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 0, \\\"description\\\": \\\"9/32\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 7.1437, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 27.94, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 1, \\\"description\\\": \\\"3/4\\\\\\\" HSS 2Fl Square Endmill\\\", \\\"diameter_mm\\\": 19.05, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 34.304, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 2, \\\"description\\\": \\\"(REMOVED T49) diy engrave as a center drill\\\", \\\"diameter_mm\\\": 1.0541, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 0.3048, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 3, \\\"description\\\": \\\"1/4\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 3.175, \\\"flute_length_mm\\\": 19.05, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 4, \\\"description\\\": \\\"Tormach SuperFly Fly Cutter\\\", \\\"diameter_mm\\\": 58.42, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 2.54, \\\"flutes\\\": 1}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 5, \\\"description\\\": \\\"11/32\\\\\\\" Long Cobalt Drill\\\", \\\"diameter_mm\\\": 8.7312, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 90.6145, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 6, \\\"description\\\": \\\"1/8\\\\\\\" - 5/16\\\\\\\" Center Drill w/ countersink\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 17.0561, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 7, \\\"description\\\": \\\"3/4\\\\\\\" HSS TiN Flat Endmill\\\", \\\"diameter_mm\\\": 19.05, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 44.45, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 8, \\\"description\\\": \\\"7/64\\\\\\\" - 1/4\\\\\\\" Center Drill w/ countersink\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 14.4145, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 9, \\\"description\\\": \\\"9/16\\\\\\\" HSS 6FL T-Slot Cutter\\\", \\\"diameter_mm\\\": 14.2875, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 6.0452, \\\"flutes\\\": 6}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 10, \\\"description\\\": \\\"5/31\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 3.9688, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 28.575, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 11, \\\"description\\\": \\\"1/8\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 3.175, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 37.3761, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 12, \\\"description\\\": \\\"1/8\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 3.175, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 17.78, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 13, \\\"description\\\": \\\"7/16\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 11.1125, \\\"corner_radius_mm\\\": 5.5563, \\\"flute_length_mm\\\": 25.4, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 14, \\\"description\\\": \\\"1/2\\\\\\\" 3Fl Carb TiCN Flat Endmill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 50.8, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 15, \\\"description\\\": \\\"5/16\\\\\\\" Carbide 2Fl Flat Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 40.64, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 16, \\\"description\\\": \\\"7/32\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 5.5563, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 25.4, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 17, \\\"description\\\": \\\"5/16\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 3.9688, \\\"flute_length_mm\\\": 12.7, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 18, \\\"description\\\": \\\"1/8\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 3.175, \\\"corner_radius_mm\\\": 1.5875, \\\"flute_length_mm\\\": 10.16, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 19, \\\"description\\\": \\\"1/4\\\\\\\" Carbide Uncoated Ball Endmill\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 3.175, \\\"flute_length_mm\\\": 27.94, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 20, \\\"description\\\": \\\"7/16\\\\\\\" HSS TiN Flat Endmill\\\", \\\"diameter_mm\\\": 11.1125, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 25.4, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 21, \\\"description\\\": \\\"(REMOVED T79) 1/16\\\\\\\" Long Flat Endmill 3FL\\\", \\\"diameter_mm\\\": 1.5875, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 2.54, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 22, \\\"description\\\": \\\"5/8\\\\\\\" HSS 4 Flute Endmill\\\", \\\"diameter_mm\\\": 15.875, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 42.8244, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 23, \\\"description\\\": \\\"3/8\\\\\\\" HSS 4 Flute Flat Endmill\\\", \\\"diameter_mm\\\": 9.525, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 19.05, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 24, \\\"description\\\": \\\"3/4\\\\\\\" HSS 2Fl Ball Endmill\\\", \\\"diameter_mm\\\": 19.05, \\\"corner_radius_mm\\\": 9.525, \\\"flute_length_mm\\\": 34.29, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 25, \\\"description\\\": \\\"3/4\\\\\\\" HSS 4 Flute Flat Endmill\\\", \\\"diameter_mm\\\": 19.05, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 43.7642, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 26, \\\"description\\\": \\\"5/16\\\\\\\" HSS 2Fl Square Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 55.372, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 27, \\\"description\\\": \\\"5/8\\\\\\\" HSS TiN Flat Endmill\\\", \\\"diameter_mm\\\": 15.875, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 40.64, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 28, \\\"description\\\": \\\"3/8\\\\\\\" 3FL Carb ZrN Flat Endmill\\\", \\\"diameter_mm\\\": 9.525, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 25.4, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 29, \\\"description\\\": \\\"3/16\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 4.7625, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 22.86, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 30, \\\"description\\\": \\\"3/64\\\\\\\" - 1/8\\\\\\\" Center Drill\\\", \\\"diameter_mm\\\": 3.175, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 7.62, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 31, \\\"description\\\": \\\"5/16\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 31.75, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 32, \\\"description\\\": \\\"Tormach SuperFly Fly Cutter\\\", \\\"diameter_mm\\\": 76.2, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 2.54, \\\"flutes\\\": 1}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 33, \\\"description\\\": \\\"5/8\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 15.875, \\\"corner_radius_mm\\\": 7.9375, \\\"flute_length_mm\\\": 29.21, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 34, \\\"description\\\": \\\"1/2\\\\\\\" HSS 4 Flute Flat Endmill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 31.75, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 35, \\\"description\\\": \\\"1/4\\\\\\\" 3fl TiCN Carb Flat Endmill\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 27.94, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 36, \\\"description\\\": \\\"(REMOVED T63) 5/16\\\\\\\" HSS TiN Flat Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 17.78, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 37, \\\"description\\\": \\\"1/2\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 6.35, \\\"flute_length_mm\\\": 25.4, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 38, \\\"description\\\": \\\"15/32\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 11.9062, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 35.56, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 39, \\\"description\\\": \\\"3/8\\\\\\\" HSS 3fl Chamfer Mill (41 degree - 82 degree incl.)\\\", \\\"diameter_mm\\\": 9.525, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 6.35, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 40, \\\"description\\\": \\\"3/8\\\\\\\" Long Cobalt drill\\\", \\\"diameter_mm\\\": 9.525, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 89.916, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 41, \\\"description\\\": \\\"3/16\\\\\\\" HSS 4 Flute Flat Endmill\\\", \\\"diameter_mm\\\": 4.7625, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 12.7, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 42, \\\"description\\\": \\\"(REMOVED T77) 1/16\\\\\\\" HSS Flat End Mill\\\", \\\"diameter_mm\\\": 1.5875, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 7.62, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 43, \\\"description\\\": \\\"5/16\\\\\\\" TiCN Carbide 2Fl Flat Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 42.9768, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 44, \\\"description\\\": \\\"1/2\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 35.56, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 45, \\\"description\\\": \\\"3/16\\\\\\\" 3Fl ZrN Carb Flat Endmill\\\", \\\"diameter_mm\\\": 4.7625, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 15.24, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 46, \\\"description\\\": \\\"3/32\\\\\\\" - 3/16\\\\\\\" Center Drill\\\", \\\"diameter_mm\\\": 4.7625, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 12.7, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 47, \\\"description\\\": \\\"1/4\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 30.48, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 48, \\\"description\\\": \\\"3/8\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 9.525, \\\"corner_radius_mm\\\": 4.7625, \\\"flute_length_mm\\\": 12.7, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 49, \\\"description\\\": \\\"1/2\\\\\\\" 3Fl Carb ZrN Flat Endmill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 31.75, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 50, \\\"description\\\": \\\"(REMOVED T78) 1/16\\\\\\\" Tapered Ball Endmill\\\", \\\"diameter_mm\\\": 1.5875, \\\"corner_radius_mm\\\": 0.7937, \\\"flute_length_mm\\\": 5.08, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 51, \\\"description\\\": \\\"0.0098\\\\\\\" Cobalt 2 Flute Drill\\\", \\\"diameter_mm\\\": 2.4892, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 31.3182, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 52, \\\"description\\\": \\\"1/4\\\\\\\" HSS Flat Endmill\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 24.13, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 53, \\\"description\\\": \\\"(CUSTOMIZIABLE) 0.09\\\\\\\" 2Fl HSS Drill\\\", \\\"diameter_mm\\\": 2.286, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 19.05, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 54, \\\"description\\\": \\\"1/2\\\\\\\" 3Fl Carb ZrN Flat Endmill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 31.75, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 55, \\\"description\\\": \\\"1/16\\\\\\\" TICN Carbide Square Endmill\\\", \\\"diameter_mm\\\": 1.5875, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 3.81, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 56, \\\"description\\\": \\\"3/8\\\\\\\" 0.065in Thread Mill\\\", \\\"diameter_mm\\\": 8.89, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 22.86, \\\"flutes\\\": 4}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 57, \\\"description\\\": \\\"1/4\\\\\\\" 60 deg Inclusive Engraver\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 6.35, \\\"flutes\\\": 1}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 58, \\\"description\\\": \\\"7/16\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 11.1125, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 35.56, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 59, \\\"description\\\": \\\"3/16\\\\\\\" HSS Ball Endmill\\\", \\\"diameter_mm\\\": 4.7625, \\\"corner_radius_mm\\\": 2.3812, \\\"flute_length_mm\\\": 10.16, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 60, \\\"description\\\": \\\"3/8\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 9.525, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 27.94, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 61, \\\"description\\\": \\\"1/2\\\\\\\" HSS 2Fl Flat Endmill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 53.975, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 62, \\\"description\\\": \\\"3/16 - 7/16\\\\\\\" Center Drill w/countersink\\\", \\\"diameter_mm\\\": 11.1125, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 21.082, \\\"flutes\\\": 2}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 63, \\\"description\\\": \\\"1/8\\\\\\\" 3Fl ZrN Carb Flat End Mill - 45 Degree Helix\\\", \\\"diameter_mm\\\": 3.175, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 12.192, \\\"flutes\\\": 3}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 64, \\\"description\\\": \\\"7/16\\\\\\\" Reamer\\\", \\\"diameter_mm\\\": 11.1125, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 43.7896, \\\"flutes\\\": 6}\\n{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 65, \\\"description\\\": \\\"1/4\\\\\\\" HSS 5fl Chamfer Mill (41 degree - 82 incl.)\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 3.81, \\\"flutes\\\": 5}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Analyze the geometry more carefully\n    # The part is 100x100x50mm. Key observations:\n    # - Face 13 at z=50 (top) area=6421.46 -> outer top with opening\n    # - Face 5 at z=30 (pocket floor) area=3578.54 -> ~59.8x59.8mm pocket bottom\n    # - Faces at z=40 -> inner rim/ledge before pocket walls\n    \n    # Pocket floor is face 5 at z=30, upward-facing normal\n    # The pocket is approximately 60x60mm, depth from z=40 to z=30 = 10mm deep\n    \n    print(\"Part analysis:\")\n    print(\"- Block: 100x100x50mm\")\n    print(\"- Pocket floor (face 5): ~60x60mm at z=30, area=3578.54mm\u00b2\")\n    print(\"- Pocket top rim: faces at z=40\")\n    print(\"- Pocket depth: ~10mm (from z=40 rim to z=30 floor)\")\n    print()\n    \n    # Tool selection: We need a flat endmill for pocket machining\n    # Best options from library:\n    # - Index 15: 5/16\" (7.9375mm) Carbide 2Fl - good finishing\n    # - Index 23: 3/8\" (9.525mm) HSS 4Fl - decent roughing\n    # - Index 14: 1/2\" (12.7mm) Carbide 3Fl - larger roughing\n    \n    # For a ~60x60 pocket with 10mm depth, a 10mm endmill is ideal\n    # Let's make a custom 10mm carbide endmill\n    \n    import json as j\n    custom_tool = {\n        \"diameter_mm\": 10.0,\n        \"corner_radius_mm\": 0.0,\n        \"flute_length_mm\": 25.0,\n        \"num_flutes\": 4,\n        \"description\": \"10mm Carbide 4-Flute Endmill\"\n    }\n    ti = mb.make_tool(j.dumps(custom_tool))\n    print(f\"Made custom tool, document_tool_index: {ti['document_tool_index']}\")\n    \n    # Also add the carbide finishing tool\n    fin_tools = mb.list_library_tools(contains=\"Carbide 2Fl Flat\")\n    print(f\"Finishing tools: {j.dumps(fin_tools)}\")\n    \n    fin_tool = None\n    for ft in fin_tools:\n        if ft['diameter_mm'] <= 8.0 and ft['diameter_mm'] >= 6.0:\n            ft_res = mb.add_tool(ft['library_url'], ft['index'])\n            print(f\"Added finishing tool: {ft['description']} (idx={ft_res['document_tool_index']})\")\n            break\n    \n    print(f\"\\nRoughing tool idx: {ti['document_tool_index']}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Part analysis:\\n- Block: 100x100x50mm\\n- Pocket floor (face 5): ~60x60mm at z=30, area=3578.54mm\u00c2\u00b2\\n- Pocket top rim: faces at z=40\\n- Pocket depth: ~10mm (from z=40 rim to z=30 floor)\\n\\nMade custom tool, document_tool_index: 4\\nFinishing tools: [{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 15, \\\"description\\\": \\\"5/16\\\\\\\" Carbide 2Fl Flat Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 40.64, \\\"flutes\\\": 2}, {\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 43, \\\"description\\\": \\\"5/16\\\\\\\" TiCN Carbide 2Fl Flat Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 42.9768, \\\"flutes\\\": 2}]\\nAdded finishing tool: 5/16\\\" Carbide 2Fl Flat Endmill (idx=5)\\n\\nRoughing tool idx: 4\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Setup: WCS at bottom center of stock, stock is just the part itself\n    # The pocket floor is at z=30, top of part at z=50\n    # Set WCS at bottom of part (z=0)\n    setup_name = mb.create_setup(\n        body_index=0,\n        wcs_origin=\"bottom center\",\n        stock={\"mode\": \"relative\", \"side_mm\": 0, \"top_mm\": 0, \"bottom_mm\": 0},\n        name=\"Pocket_Mill\"\n    )\n    print(f\"Setup created: {setup_name['setup']}\")\n    \n    # Now add roughing operation - adaptive2d pocket milling with 10mm endmill\n    # Pocket geometry: face 5 is the pocket floor at z=30\n    # We need to select the faces that define the pocket boundaries\n    # Face 5 (pocket floor, area=3578.54 at z=30) + the vertical walls around it\n    \n    # First let's use contour strategy targeting the pocket faces\n    # For pocket2d we need the faces to machine\n    rough_result = mb.add_operation(\n        \"Pocket_Mill\",\n        strategy=\"adaptive2d\",\n        tool=4,  # 10mm carbide endmill\n        stepover_mm=7.5,     # 75% of tool diameter - good for adaptive\n        stepdown_mm=5.0,     # Half depth per pass (10mm total depth)\n        feeds={\n            \"cutting_mm_min\": 3000,  # ~1m/s * 4 flutes / (1 tooth load) -> ~3000 mm/min\n            \"plunge_mm_min\": 500,   # Conservative plunge for carbide\n            \"ramp_mm_min\": 800,     # Ramp feed\n            \"spindle_rpm\": 6000     # ~955 m/min surface speed for 10mm carbide\n        },\n        geometry={\n            \"faces\": [5],  # pocket floor face\n            \"type\": \"pocket\"\n        },\n        heights={\n            \"clearance_mm\": 5.0,\n            \"retract_mm\": 3.0\n        },\n        name=\"Pocket_Rough_Adaptive\"\n    )\n    print(f\"Roughing op created: {rough_result['operation']}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Setup created: Pocket_Mill\\nRoughing op created: Pocket_Rough_Adaptive\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    result = mb.generate(setup=\"Pocket_Mill\")\n    print(f\"Generation result: {json.dumps(result, indent=2)}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Generation result: {\\n  \\\"completed\\\": true,\\n  \\\"operations\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Rough_Adaptive\\\",\\n      \\\"has_toolpath\\\": false,\\n      \\\"is_valid\\\": false\\n    }\\n  ]\\n}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # The pocket floor is face 5, but we also need to select the walls\n    # Let me check which faces are the vertical pocket walls\n    # Faces with horizontal normals (z=40 planes) are likely the pocket rim/ledge\n    # The pocket bottom is at z=30 (face 5), top opening is around z=40\n    \n    # For adaptive2d, we should use \"contour\" type with the pocket faces\n    # Or use a simpler approach: face milling with stepdown\n    \n    # Try face operation first to machine down from top of stock\n    face_result = mb.add_operation(\n        \"Pocket_Mill\",\n        strategy=\"face\",\n        tool=4,  # 10mm carbide endmill\n        stepover_mm=7.5,\n        stepdown_mm=5.0,\n        feeds={\n            \"cutting_mm_min\": 3000,\n            \"plunge_mm_min\": 500,\n            \"ramp_mm_min\": 800,\n            \"spindle_rpm\": 6000\n        },\n        name=\"Pocket_Face_Rough\"\n    )\n    print(f\"Face rough op created: {face_result['operation']}\")\n    \n    result = mb.generate(operation=\"Pocket_Face_Rough\")\n    print(f\"Face generation result: {json.dumps(result, indent=2)}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Face rough op created: Pocket_Face_Rough\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 32, in <module>\\n  File \\\"<string>\\\", line 29, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 532, in generate\\n    while not future.isGenerationCompleted:   # note the 'd'\\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"C:\\\\Users/Nanja/AppData/Local/Autodesk/webdeploy/production/441fa886a8bddbe651a2c8bfe18605e72308757a/Api/Python/packages\\\\adsk\\\\cam.py\\\", line 9260, in _get_isGenerationCompleted\\n    return _cam.GenerateToolpathFuture__get_isGenerationCompleted(self)\\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^\\nRuntimeError: 3 : Generation not started\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    result = mb.generate(setup=\"Pocket_Mill\")\n    print(f\"Setup generation result: {json.dumps(result, indent=2)}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Setup generation result: {\\n  \\\"completed\\\": true,\\n  \\\"operations\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Rough_Adaptive\\\",\\n      \\\"has_toolpath\\\": false,\\n      \\\"is_valid\\\": false\\n    },\\n    {\\n      \\\"name\\\": \\\"Pocket_Face_Rough\\\",\\n      \\\"has_toolpath\\\": false,\\n      \\\"is_valid\\\": false\\n    }\\n  ]\\n}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Delete both failed operations\n    mb.delete_operation(\"Pocket_Mill\", \"Pocket_Rough_Adaptive\")\n    mb.delete_operation(\"Pocket_Mill\", \"Pocket_Face_Rough\")\n    print(\"Deleted both operations\")\n    \n    probe = mb.probe()\n    print(f\"Current state: {json.dumps(probe, indent=2)}\")\n    \n    # Now let's try again with a proper face operation\n    face_result = mb.add_operation(\n        \"Pocket_Mill\",\n        strategy=\"face\",\n        tool=4,  # 10mm carbide endmill\n        stepover_mm=7.5,\n        stepdown_mm=5.0,\n        feeds={\n            \"cutting_mm_min\": 3000,\n            \"plunge_mm_min\": 500,\n            \"ramp_mm_min\": 800,\n            \"spindle_rpm\": 6000\n        },\n        name=\"Face_Top\"\n    )\n    print(f\"Created: {face_result['operation']}\")\n    \n    result = mb.generate(operation=\"Face_Top\")\n    print(f\"Result: {json.dumps(result, indent=2)}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 32, in <module>\\n  File \\\"<string>\\\", line 5, in run\\nAttributeError: module 'mb_cam' has no attribute 'delete_operation'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Check available mb functions\n    import dir as d\n    funcs = [x for x in dir(mb) if not x.startswith('_')]\n    print(\"Available mb functions:\")\n    for f in sorted(funcs):\n        print(f\"  {f}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 11, in <module>\\n  File \\\"<string>\\\", line 5, in run\\nModuleNotFoundError: No module named 'dir'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Check available functions\n    funcs = [x for x in dir(mb) if not x.startswith('_')]\n    print(\"Available mb functions:\")\n    for f in sorted(funcs):\n        print(f\"  {f}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Available mb functions:\\n  MM\\n  add_operation\\n  add_tool\\n  adsk\\n  create_setup\\n  faces\\n  generate\\n  get_cam\\n  inspect\\n  list_library_tools\\n  make_tool\\n  post\\n  probe\\n  time\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Let's probe to see current state\n    probe = mb.probe()\n    print(json.dumps(probe, indent=2))\n    \n    # The operations exist. Let me inspect them more carefully.\n    # For face strategy, no geometry is needed - it machines stock top by default\n    # For adaptive2d, geometry is required with faces\n    \n    # Let's try regenerating just the Face_Top operation\n    result = mb.generate(operation=\"Face_Top\")\n    print(f\"\\nFace_Top generation: {json.dumps(result, indent=2)}\")\n    \n    # And regenerate the adaptive one with corrected geometry\n    # The issue might be that adaptive2d expects specific loop/side params\n    result2 = mb.generate(operation=\"Pocket_Rough_Adaptive\")\n    print(f\"\\nAdaptive generation: {json.dumps(result2, indent=2)}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"{\\n  \\\"setups\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Mill\\\",\\n      \\\"operations\\\": [\\n        {\\n          \\\"name\\\": \\\"Pocket_Rough_Adaptive\\\",\\n          \\\"strategy\\\": \\\"adaptive2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 0.0\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Face_Rough\\\",\\n          \\\"strategy\\\": \\\"face\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 0.0\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"cam_present\\\": true\\n}\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 21, in <module>\\n  File \\\"<string>\\\", line 13, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 518, in generate\\n    s, op = _find_op(cam, operation)\\n            ~~~~~~~~^^^^^^^^^^^^^^^^\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 551, in _find_op\\n    raise RuntimeError(f\\\"operation {name!r} not found\\\")\\nRuntimeError: operation 'Face_Top' not found\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Check current CAM state\n    scene = mb.inspect()\n    print(json.dumps(scene, indent=2))\n    \n    # Let's rebuild from scratch\n    # First, let's add tools properly\n    tools = mb.list_library_tools(contains=\"Carbide\")\n    print(\"\\nCarbide tools:\")\n    for t in tools:\n        print(f\"  {t['index']}: {t['description']} (d={t['diameter_mm']}, cr={t['corner_radius_mm']})\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"{\\n  \\\"document\\\": \\\"Pocket Box\\\",\\n  \\\"length_unit\\\": \\\"mm\\\",\\n  \\\"bodies\\\": [\\n    {\\n      \\\"index\\\": 0,\\n      \\\"name\\\": \\\"PocketBox\\\",\\n      \\\"dims_mm\\\": [\\n        100.0,\\n        100.0,\\n        50.0\\n      ],\\n      \\\"bbox_min_mm\\\": [\\n        -50.0,\\n        -50.0,\\n        0.0\\n      ],\\n      \\\"bbox_max_mm\\\": [\\n        50.0,\\n        50.0,\\n        50.0\\n      ],\\n      \\\"face_count\\\": 15\\n    }\\n  ],\\n  \\\"cam\\\": {\\n    \\\"present\\\": true,\\n    \\\"setups\\\": [\\n      \\\"Pocket_Mill\\\"\\n    ]\\n  }\\n}\\n\\nCarbide tools:\\n  15: 5/16\\\" Carbide 2Fl Flat Endmill (d=7.9375, cr=0.0)\\n  19: 1/4\\\" Carbide Uncoated Ball Endmill (d=6.35, cr=3.175)\\n  43: 5/16\\\" TiCN Carbide 2Fl Flat Endmill (d=7.9375, cr=0.0)\\n  55: 1/16\\\" TICN Carbide Square Endmill (d=1.5875, cr=0.0)\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Check what tools exist in the CAM document\n    cam = mb.get_cam()\n    \n    # List documents tools through raw API\n    app = adsk.core.Application.get()\n    product = app.activeProduct\n    design = product\n    cam_product = adsk.cam.CAM.cast(product)\n    setups = cam_product.setups\n    \n    setup = setups.itemByName('Pocket_Mill')\n    if not setup:\n        print(\"Setup Pocket_Mill not found\")\n        return\n    \n    ops = setup.operations2D\n    print(f\"Operations in setup: {ops.count}\")\n    for i in range(ops.count):\n        op = ops.item(i)\n        print(f\"  [{i}] {op.name} ({op.strategy})\")\n        print(f\"      valid={op.isOperationValid()} error='{op.operationErrors}'\")\n    \n    # Now let's add a proper face operation to the existing setup\n    # First ensure we have the right tool index\n    tools = mb.list_library_tools(contains=\"Carbide 2Fl Flat\")\n    print(f\"\\nCarbide flat endmills: {json.dumps(tools)}\")\n    \n    # Let's make a simple 10mm tool again and attach it\n    custom_tool = {\n        \"diameter_mm\": 10.0,\n        \"corner_radius_mm\": 0.0,\n        \"flute_length_mm\": 25.0,\n        \"num_flutes\": 4,\n        \"description\": \"10mm Carbide 4-Flute Endmill\"\n    }\n    ti = mb.make_tool(json.dumps(custom_tool))\n    doc_idx = ti['document_tool_index']\n    print(f\"Created tool index: {doc_idx}\")\n    \n    # Try adding face operation with explicit geometry selection\n    # Face strategy machines the stock top automatically\n    op_result = mb.add_operation(\n        \"Pocket_Mill\",\n        strategy=\"face\",\n        tool=doc_idx,\n        stepover_mm=7.5,\n        stepdown_mm=5.0,\n        feeds={\n            \"cutting_mm_min\": 3000,\n            \"plunge_mm_min\": 500,\n            \"ramp_mm_min\": 800,\n            \"spindle_rpm\": 6000\n        },\n        name=\"Rough_Top_Face\"\n    )\n    print(f\"Added op: {op_result}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 61, in <module>\\n  File \\\"<string>\\\", line 12, in run\\nAttributeError: 'NoneType' object has no attribute 'setups'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    print(f\"CAM object: {type(cam)}\")\n    if cam is None:\n        # Maybe the CAM document is accessed differently\n        app = adsk.core.Application.get()\n        product = app.activeProduct\n        print(f\"Active product: {product}\")\n        design = product\n        if hasattr(design, 'cam'):  \n            cam_product = design.cam\n            print(f\"CAM product: {type(cam_product)}\")\n            setups = cam_product.setups\n            print(f\"Setups count: {setups.count}\")\n            for i in range(setups.count):\n                s = setups.item(i)\n                print(f\"  Setup [{i}]: {s.name}\")\n        else:\n            print(\"No cam attribute on product\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"CAM object: <class 'adsk.cam.CAM'>\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    app = adsk.core.Application.get()\n    product = app.activeProduct\n    design = product\n    cam_product = design.cam\n    setups = cam_product.setups\n    \n    setup = setups.itemByName('Pocket_Mill')\n    if not setup:\n        print(\"Setup not found\")\n        return\n    \n    ops = setup.operations2D\n    print(f\"Operations count: {ops.count}\")\n    for i in range(ops.count):\n        op = ops.item(i)\n        errors = \"\"\n        try:\n            errors = str(op.operationErrors) if hasattr(op, 'operationErrors') else \"N/A\"\n        except:\n            errors = \"N/A\"\n        valid = \"valid\" if op.isOperationValid() else \"INVALID\"\n        print(f\"  [{i}] {op.name} ({op.strategy}) - {valid}, errors={errors}\")\n        \n        # Try to get more details about failures\n        if not op.isOperationValid():\n            try:\n                issues = list(op.operationIssues) if hasattr(op, 'operationIssues') else []\n                for issue in issues:\n                    print(f\"      Issue: {issue.issueName} / {issue.severityLevel}\")\n            except Exception as e:\n                print(f\"      Could not get issues: {e}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 37, in <module>\\n  File \\\"<string>\\\", line 8, in run\\nAttributeError: 'Design' object has no attribute 'cam'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    # The CAM object was returned earlier successfully\n    # Let's explore it more carefully\n    print(f\"CAM type: {type(cam)}\")\n    \n    # Access setups through the CAM object directly\n    setups = cam.setups\n    print(f\"Setups count: {setups.count}\")\n    \n    for i in range(setups.count):\n        s = setups.item(i)\n        print(f\"\\nSetup [{i}]: {s.name}\")\n        \n        # Get operations\n        ops_2d = s.operations2D\n        print(f\"  2D ops count: {ops_2d.count}\")\n        for j in range(ops_2d.count):\n            op = ops_2d.item(j)\n            valid = \"VALID\" if op.isOperationValid() else \"INVALID\"\n            strategy = op.strategy\n            print(f\"    Op[{j}] {op.name} ({strategy}) - {valid}\")\n            \n            # Check errors\n            error_count = op.errorCount\n            print(f\"      Error count: {error_count}\")\n            for k in range(min(error_count, 5)):\n                err = op.getError(k)\n                if err:\n                    print(f\"      Err[{k}]: name={err.name}, severity={err.severityLevel}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"CAM type: <class 'adsk.cam.CAM'>\\nSetups count: 1\\n\\nSetup [0]: Pocket_Mill\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 34, in <module>\\n  File \\\"<string>\\\", line 18, in run\\nAttributeError: 'Setup' object has no attribute 'operations2D'. Did you mean: 'operations'?\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    setups = cam.setups\n    setup = setups.itemByName('Pocket_Mill')\n    \n    # Use 'operations' instead of 'operations2D'\n    ops = setup.operations\n    print(f\"Operations count: {ops.count}\")\n    \n    for i in range(ops.count):\n        op = ops.item(i)\n        valid = \"VALID\" if op.isOperationValid() else \"INVALID\"\n        strategy = str(op.strategy) if hasattr(op, 'strategy') else 'N/A'\n        print(f\"  Op[{i}] {op.name} - {valid}, strategy={strategy}\")\n        \n        error_count = op.errorCount\n        print(f\"    Error count: {error_count}\")\n        for k in range(min(error_count, 5)):\n            err = op.getError(k)\n            if err:\n                print(f\"    Err[{k}]: name={err.name}, severity={err.severityLevel}\")\n                print(f\"          category={err.category}, message={str(err)}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Operations count: 2\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 26, in <module>\\n  File \\\"<string>\\\", line 14, in run\\nAttributeError: 'Operation' object has no attribute 'isOperationValid'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    setups = cam.setups\n    setup = setups.itemByName('Pocket_Mill')\n    ops = setup.operations\n    \n    for i in range(ops.count):\n        op = ops.item(i)\n        print(f\"Op[{i}] {op.name}:\")\n        error_count = op.errorCount\n        print(f\"  Error count: {error_count}\")\n        for k in range(min(error_count, 5)):\n            err = op.getError(k)\n            if err:\n                # Get all properties of the error\n                print(f\"  Err[{k}]:\")\n                print(f\"    name={err.name}\")\n                print(f\"    severity={err.severityLevel}\")\n                print(f\"    category={err.category}\")\n                print(f\"    message={str(err)}\")\n        print()\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Op[0] Pocket_Rough_Adaptive:\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 25, in <module>\\n  File \\\"<string>\\\", line 12, in run\\nAttributeError: 'Operation' object has no attribute 'errorCount'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    setups = cam.setups\n    setup = setups.itemByName('Pocket_Mill')\n    ops = setup.operations\n    \n    op = ops.item(0)\n    print(f\"Op name: {op.name}\")\n    \n    # List all properties/methods of operation\n    attrs = [x for x in dir(op) if not x.startswith('_')]\n    relevant = [a for a in attrs if 'error' in a.lower() or 'valid' in a.lower() or 'issue' in a.lower()]\n    print(f\"Error/valid related: {relevant}\")\n    \n    # Try isOperationValid through different paths\n    methods = [x for x in attrs if 'valid' in x.lower() or 'is_' in x.lower()][:20]\n    print(f\"'is_' methods: {methods}\")\n    \n    # Check strategy property\n    print(f\"Strategy: {getattr(op, 'strategy', 'N/A')}\")\n    \n    # Get operation parameters that might be missing\n    try:\n        params = op.operationParameters  # common Fusion CAM API\n        print(f\"Has operationParameters: {type(params)}\")\n        # This might throw if not implemented\n    except Exception as e:\n        print(f\"operationParameters error: {e}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Op name: Pocket_Rough_Adaptive\\nError/valid related: ['error', 'hasError', 'isToolpathValid', 'isValid']\\n'is_' methods: ['isToolpathValid', 'isValid']\\nStrategy: adaptive2d\\noperationParameters error: 'Operation' object has no attribute 'operationParameters'\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    setups = cam.setups\n    setup = setups.itemByName('Pocket_Mill')\n    ops = setup.operations\n    \n    for i in range(ops.count):\n        op = ops.item(i)\n        print(f\"\\nOp[{i}] {op.name}:\")\n        print(f\"  isValid: {op.isValid}\")\n        print(f\"  hasError: {op.hasError}\")\n        if op.hasError:\n            try:\n                err = op.error\n                print(f\"  error type: {type(err)}\")\n                print(f\"  error: {err}\")\n                # Navigate through the error hierarchy\n                if hasattr(err, 'items'):  # Collection of errors\n                    print(f\"  error items count: {err.items.count if err.items else 'N/A'}\")\n                    for j in range(min(err.items.count, 5)):  \n                        e = err.items.item(j)\n                        print(f\"    [{j}] name={e.name}, severity={e.severityLevel}, category={e.category}\")\n                        print(f\"        message={str(e)}\")\n                elif hasattr(err, 'name'):\n                    print(f\"  error.name: {err.name}\")\n                    print(f\"  error.severityLevel: {err.severityLevel}\")\n            except Exception as e2:\n                print(f\"  Error detail error: {e2}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"\\nOp[0] Pocket_Rough_Adaptive:\\n  isValid: True\\n  hasError: True\\n  error type: <class 'str'>\\n  error: Optimal Load: This value should be less than the tool diameter.\\nMinimum Cutting Radius: This value should be smaller than the tool radius.\\n\\n\\nOp[1] Pocket_Face_Rough:\\n  isValid: True\\n  hasError: True\\n  error type: <class 'str'>\\n  error: Tool (unspecified) is not supported for the strategy.\\n\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    setups = cam.setups\n    setup = setups.itemByName('Pocket_Mill')\n    ops = setup.operations\n    \n    # Fix the Pocket_Rough_Adaptive operation by updating its parameters\n    # The errors are about Optimal Load and Minimum Cutting Radius\n    for i in range(ops.count):\n        op = ops.item(i)\n        if op.name == 'Pocket_Rough_Adaptive':\n            print(f\"Fixing {op.name}:\")\n            params = op.operationParameters2D\n            print(f\"  param type: {type(params)}\")\n            # List available parameters\n            pattrs = [x for x in dir(params) if not x.startswith('_')]\n            adaptive_params = [p for p in pattrs if 'optimal' in p.lower() or 'radius' in p.lower() or 'minCutting' in p.lower() or 'load' in p.lower()]\n            print(f\"  Adaptive params: {adaptive_params}\")\n            \n            for p in adaptive_params[:15]:\n                try:\n                    val = getattr(params, p)\n                    if not callable(val):\n                        print(f\"    {p} = {val}\")\n                except Exception as e:\n                    pass\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Fixing Pocket_Rough_Adaptive:\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 30, in <module>\\n  File \\\"<string>\\\", line 15, in run\\nAttributeError: 'Operation' object has no attribute 'operationParameters2D'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Let's check what happens when we inspect current state\n    scene = mb.inspect()\n    print(json.dumps(scene, indent=2))\n    \n    # Let me probe the existing operations more carefully\n    probe = mb.probe()\n    print(json.dumps(probe, indent=2))\n    \n    # The tool_diameter_mm shows 0.0 for both operations\n    # This means the tool wasn't properly attached in mb.add_operation\n    # Let me re-examine the mb.make_tool result\n"
+        }
+      },
+      "result": "{\n    \"message\": \"{\\n  \\\"document\\\": \\\"Pocket Box\\\",\\n  \\\"length_unit\\\": \\\"mm\\\",\\n  \\\"bodies\\\": [\\n    {\\n      \\\"index\\\": 0,\\n      \\\"name\\\": \\\"PocketBox\\\",\\n      \\\"dims_mm\\\": [\\n        100.0,\\n        100.0,\\n        50.0\\n      ],\\n      \\\"bbox_min_mm\\\": [\\n        -50.0,\\n        -50.0,\\n        0.0\\n      ],\\n      \\\"bbox_max_mm\\\": [\\n        50.0,\\n        50.0,\\n        50.0\\n      ],\\n      \\\"face_count\\\": 15\\n    }\\n  ],\\n  \\\"cam\\\": {\\n    \\\"present\\\": true,\\n    \\\"setups\\\": [\\n      \\\"Pocket_Mill\\\"\\n    ]\\n  }\\n}\\n{\\n  \\\"setups\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Mill\\\",\\n      \\\"operations\\\": [\\n        {\\n          \\\"name\\\": \\\"Pocket_Rough_Adaptive\\\",\\n          \\\"strategy\\\": \\\"adaptive2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 0.0\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Face_Rough\\\",\\n          \\\"strategy\\\": \\\"face\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 0.0\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"cam_present\\\": true\\n}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    \n    # Get all document tools\n    app = adsk.core.Application.get()\n    product = app.activeProduct\n    design = product\n    cam_product = design.cam\n    doc_tools = cam_product.documentTools2D\n    \n    print(f\"Document tools count: {doc_tools.count}\")\n    for i in range(doc_tools.count):\n        dt = doc_tools.item(i)\n        t = dt.tool\n        desc = str(t.description) if hasattr(t, 'description') else 'N/A'\n        d = t.diameter if hasattr(t, 'diameter') else 'N/A'\n        print(f\"  [{i}] {desc}, diameter={d}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 21, in <module>\\n  File \\\"<string>\\\", line 10, in run\\nAttributeError: 'CAM' object has no attribute 'cam'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    \n    # Get document tools from CAM\n    doc_tools = cam.documentTools2D\n    print(f\"Document tools count: {doc_tools.count}\")\n    for i in range(doc_tools.count):\n        dt = doc_tools.item(i)\n        t = dt.tool\n        desc = str(t.description) if hasattr(t, 'description') else 'N/A'\n        d_val = None\n        if hasattr(t, 'diameter'): d_val = t.diameter\n        elif hasattr(t, 'toolDefinitions'):\n            try:\n                td = t.toolDefinitions\n                for j in range(td.count):\n                    tooldef = td.item(j)\n                    if hasattr(tooldef, 'diameter'):\n                        d_val = tooldef.diameter\n                        break\n            except:\n                pass\n        print(f\"  [{i}] desc={desc}, diameter={d_val}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 27, in <module>\\n  File \\\"<string>\\\", line 7, in run\\nAttributeError: 'CAM' object has no attribute 'documentTools2D'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Let me check what mb.make_tool actually returns and how tools are stored\n    # First, list what we've already created\n    cam = mb.get_cam()\n    \n    # Look through the CAM structure\n    setups = cam.setups\n    setup = setups.itemByName('Pocket_Mill')\n    ops = setup.operations\n    \n    op = ops.item(0)\n    print(f\"Op: {op.name}, strategy: {op.strategy}\")\n    \n    # Get the operation parameters through available attrs\n    all_attrs = [x for x in dir(op) if not x.startswith('_')]\n    param_related = [a for a in all_attrs if 'param' in a.lower() or 'data' in a.lower() or 'value' in a.lower()][:30]\n    print(f\"Param-related attrs: {param_related}\")\n    \n    # Check for tool reference\n    tool_ref = [a for a in all_attrs if 'tool' in a.lower()] \n    print(f\"Tool-related attrs: {tool_ref}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Op: Pocket_Rough_Adaptive, strategy: adaptive2d\\nParam-related attrs: ['generatedDataCollection', 'parameters']\\nTool-related attrs: ['hasToolpath', 'isToolpathValid', 'referenceTool', 'tool', 'toolJson', 'toolPreset', 'toolPresetId']\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    cam = mb.get_cam()\n    setups = cam.setups\n    setup = setups.itemByName('Pocket_Mill')\n    ops = setup.operations\n    \n    for i in range(ops.count):\n        op = ops.item(i)\n        print(f\"Op[{i}] {op.name}:\")\n        t = op.tool\n        print(f\"  tool: {t}\")\n        ref_tool = op.referenceTool\n        print(f\"  referenceTool: {ref_tool}\")\n        tool_json = op.toolJson\n        print(f\"  toolJson: {tool_json}\")\n        \n        # Check parameters\n        params = op.parameters\n        print(f\"  params type: {type(params)}\")\n        param_names = [x.name for x in params] if hasattr(params, '__iter__') else 'N/A'\n        print(f\"  params names: {param_names[:20] if isinstance(param_names, list) else param_names}\")\n        print()\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Op[0] Pocket_Rough_Adaptive:\\n  tool: <class 'adsk.cam.Tool'>\\n  referenceTool: None\\n  toolJson: {\\n    \\\"BMC\\\": \\\"unspecified\\\",\\n    \\\"description\\\": \\\"\\\",\\n    \\\"geometry\\\": {\\n        \\\"CSP\\\": false,\\n        \\\"DC\\\": 0,\\n        \\\"HAND\\\": true,\\n        \\\"LB\\\": 0,\\n        \\\"LCF\\\": 0,\\n        \\\"NOF\\\": 1,\\n        \\\"NT\\\": 1,\\n        \\\"OAL\\\": 0,\\n        \\\"RE\\\": 0,\\n        \\\"SFDM\\\": 0,\\n        \\\"TA\\\": 0,\\n        \\\"TP\\\": 0,\\n        \\\"assemblyGaugeLength\\\": 0,\\n        \\\"shoulder-length\\\": 0,\\n        \\\"thread-profile-angle\\\": 60,\\n        \\\"tip-diameter\\\": 0,\\n        \\\"tip-length\\\": 0,\\n        \\\"tip-offset\\\": 0\\n    },\\n    \\\"guid\\\": \\\"\\\",\\n    \\\"post-process\\\": {\\n        \\\"break-control\\\": false,\\n        \\\"comment\\\": \\\"\\\",\\n        \\\"diameter-offset\\\": 0,\\n        \\\"length-offset\\\": 0,\\n        \\\"live\\\": true,\\n        \\\"manual-tool-change\\\": false,\\n        \\\"number\\\": 0,\\n        \\\"turret\\\": 0\\n    },\\n    \\\"product-id\\\": \\\"\\\",\\n    \\\"product-link\\\": \\\"\\\",\\n    \\\"start-values\\\": {\\n        \\\"presets\\\": [\\n            {\\n                \\\"description\\\": \\\"\\\",\\n                \\\"f_n\\\": null,\\n                \\\"f_z\\\": null,\\n                \\\"guid\\\": \\\"2b8827e1-45c7-f1e0-1f49-a48b4b751333\\\",\\n                \\\"material\\\": {\\n                    \\\"category\\\": \\\"all\\\",\\n                    \\\"query\\\": \\\"\\\",\\n                    \\\"use-hardness\\\": false\\n                },\\n                \\\"n\\\": 0,\\n                \\\"n_ramp\\\": 0,\\n                \\\"name\\\": \\\"Default Preset\\\",\\n                \\\"ramp-angle\\\": 0,\\n                \\\"tool-coolant\\\": \\\"disabled\\\",\\n                \\\"use-stepdown\\\": false,\\n                \\\"use-stepover\\\": false,\\n                \\\"v_c\\\": 0,\\n                \\\"v_f\\\": 0,\\n                \\\"v_f_leadIn\\\": 0,\\n                \\\"v_f_leadOut\\\": 0,\\n                \\\"v_f_plunge\\\": 0,\\n                \\\"v_f_ramp\\\": 0,\\n                \\\"v_f_transition\\\": 0\\n            }\\n        ]\\n    },\\n    \\\"type\\\": \\\"unspecified\\\",\\n    \\\"unit\\\": \\\"millimeters\\\",\\n    \\\"vendor\\\": \\\"\\\"\\n}\\n\\n  params type: <class 'adsk.cam.CAMParameters'>\\n  params names: ['advancedMode', 'betaMode', 'alphaMode', 'isXpress', 'licenseMultiaxis', 'license3D', 'metric', 'isAssemblyDocument', 'context', 'strategy', 'operation_description', 'group_tool', 'isOperationTemplate', 'isTappingOperation', 'isDrillingOperation', 'tool_selectionMethod', 'tool_searchMethod', 'tool_exactDiameter', 'tool_diameterRatio', 'tool_searchTolerance']\\n\\nOp[1] Pocket_Face_Rough:\\n  tool: <class 'adsk.cam.Tool'>\\n  referenceTool: None\\n  toolJson: {\\n    \\\"BMC\\\": \\\"unspecified\\\",\\n    \\\"description\\\": \\\"\\\",\\n    \\\"geometry\\\": {\\n        \\\"CSP\\\": false,\\n        \\\"DC\\\": 0,\\n        \\\"HAND\\\": true,\\n        \\\"LB\\\": 0,\\n        \\\"LCF\\\": 0,\\n        \\\"NOF\\\": 1,\\n        \\\"NT\\\": 1,\\n        \\\"OAL\\\": 0,\\n        \\\"RE\\\": 0,\\n        \\\"SFDM\\\": 0,\\n        \\\"TA\\\": 0,\\n        \\\"TP\\\": 0,\\n        \\\"assemblyGaugeLength\\\": 0,\\n        \\\"shoulder-length\\\": 0,\\n        \\\"thread-profile-angle\\\": 60,\\n        \\\"tip-diameter\\\": 0,\\n        \\\"tip-length\\\": 0,\\n        \\\"tip-offset\\\": 0\\n    },\\n    \\\"guid\\\": \\\"\\\",\\n    \\\"post-process\\\": {\\n        \\\"break-control\\\": false,\\n        \\\"comment\\\": \\\"\\\",\\n        \\\"diameter-offset\\\": 0,\\n        \\\"length-offset\\\": 0,\\n        \\\"live\\\": true,\\n        \\\"manual-tool-change\\\": false,\\n        \\\"number\\\": 0,\\n        \\\"turret\\\": 0\\n    },\\n    \\\"product-id\\\": \\\"\\\",\\n    \\\"product-link\\\": \\\"\\\",\\n    \\\"start-values\\\": {\\n        \\\"presets\\\": [\\n            {\\n                \\\"description\\\": \\\"\\\",\\n                \\\"f_n\\\": null,\\n                \\\"f_z\\\": null,\\n                \\\"guid\\\": \\\"492dbd96-4d75-2bde-4c04-b78931a56bcf\\\",\\n                \\\"material\\\": {\\n                    \\\"category\\\": \\\"all\\\",\\n                    \\\"query\\\": \\\"\\\",\\n                    \\\"use-hardness\\\": false\\n                },\\n                \\\"n\\\": 0,\\n                \\\"n_ramp\\\": 0,\\n                \\\"name\\\": \\\"Default Preset\\\",\\n                \\\"ramp-angle\\\": 0,\\n                \\\"tool-coolant\\\": \\\"disabled\\\",\\n                \\\"use-stepdown\\\": false,\\n                \\\"use-stepover\\\": false,\\n                \\\"v_c\\\": 0,\\n                \\\"v_f\\\": 0,\\n                \\\"v_f_leadIn\\\": 0,\\n                \\\"v_f_leadOut\\\": 0,\\n                \\\"v_f_plunge\\\": 0,\\n                \\\"v_f_ramp\\\": 0,\\n                \\\"v_f_transition\\\": 0\\n            }\\n        ]\\n    },\\n    \\\"type\\\": \\\"unspecified\\\",\\n    \\\"unit\\\": \\\"millimeters\\\",\\n    \\\"vendor\\\": \\\"\\\"\\n}\\n\\n  params type: <class 'adsk.cam.CAMParameters'>\\n  params names: ['advancedMode', 'betaMode', 'alphaMode', 'isXpress', 'licenseMultiaxis', 'license3D', 'metric', 'isAssemblyDocument', 'context', 'strategy', 'operation_description', 'group_tool', 'isOperationTemplate', 'tool_type', 'undercut', 'tool_isTurning', 'tool_isMill', 'tool_isDrill', 'tool_isJet', 'tool_isDepositing']\\n\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Check existing document tools through mb.probe and raw inspection\n    cam = mb.get_cam()\n    setups = cam.setups\n    \n    # Find the Pocket_Mill setup\n    setup = setups.itemByName('Pocket_Mill')\n    print(f\"Setup found: {setup is not None}\")\n    \n    # Let's look at the source library tools more carefully\n    # We'll use mb.add_tool to get a proper tool index\n    \n    # For roughing: 1/2\" Carbide 3Fl Flat Endmill (index 14, 12.7mm)\n    # For finishing: 5/16\" Carbide 2Fl Flat Endmill (index 15, 7.9375mm)\n    \n    rough_lib = mb.list_library_tools(contains=\"Carbide 3Fl\")\n    fin_lib = mb.list_library_tools(contains=\"Carbide 2Fl Flat\")\n    \n    print(f\"Rough candidate: {json.dumps(rough_lib)}\")\n    print(f\"Finish candidates: {json.dumps(fin_lib)}\")\n    \n    # Let me also check what tool indices are currently in the document\n    # by creating a test tool\n    ti_test = mb.add_tool(rough_lib[0]['library_url'], rough_lib[0]['index'])\n    print(f\"Added rough tool, doc_idx: {ti_test['document_tool_index']}\")\n    \n    ti_fin = mb.add_tool(fin_lib[0]['library_url'], fin_lib[0]['index'])\n    print(f\"Added finish tool, doc_idx: {ti_fin['document_tool_index']}\")\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Setup found: True\\nRough candidate: []\\nFinish candidates: [{\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 15, \\\"description\\\": \\\"5/16\\\\\\\" Carbide 2Fl Flat Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 40.64, \\\"flutes\\\": 2}, {\\\"library_url\\\": \\\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\\\", \\\"index\\\": 43, \\\"description\\\": \\\"5/16\\\\\\\" TiCN Carbide 2Fl Flat Endmill\\\", \\\"diameter_mm\\\": 7.9375, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 42.9768, \\\"flutes\\\": 2}]\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 32, in <module>\\n  File \\\"<string>\\\", line 26, in run\\nIndexError: list index out of range\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    }
+  ],
+  "provenance": {
+    "system_prompt_sha": "3fd4ca8a3383",
+    "mb_cam_sha": "e512ee612da5",
+    "task_file": "C:\\Users\\Nanja\\MachineBench\\tasks\\box_pocket_minimal.yaml",
+    "cad_file": null,
+    "cloud_cad": "Pocket Box",
+    "cloud_cad_file_id": "urn:adsk.wipprod:dm.lineage:QLatPThkSNmoSr8zqnh-6A",
+    "cloud_results_name": "Pocket Box__minimal",
+    "fusion_hub": "Team hub - Nathan Tsoi",
+    "fusion_project": "Examples",
+    "fusion_mcp_url": "http://127.0.0.1:55663/mcp"
+  },
+  "artifacts": {
+    "video": null,
+    "image": null
+  },
+  "cam_summary": {
+    "doc": "Pocket Box",
+    "cam_product": true,
+    "setups": [
+      {
+        "name": "Pocket_Mill",
+        "strategy": "setup",
+        "operation_type": 0,
+        "stock_mode": 1,
+        "stock_size_mm": [
+          100.0,
+          100.0,
+          50.0
+        ],
+        "machine": null,
+        "operations": [
+          {
+            "name": "Pocket_Rough_Adaptive",
+            "strategy": "adaptive2d",
+            "has_toolpath": false,
+            "is_valid": true,
+            "is_toolpath_valid": false,
+            "is_suppressed": false,
+            "stepover": "0.75cm",
+            "stepdown": "0.5cm",
+            "tool": {
+              "number": 0,
+              "type": "unspecified",
+              "diameter": "0.0",
+              "corner_radius": "0.0",
+              "flute_length": "0.0",
+              "flutes": 1
+            }
+          },
+          {
+            "name": "Pocket_Face_Rough",
+            "strategy": "face",
+            "has_toolpath": false,
+            "is_valid": true,
+            "is_toolpath_valid": false,
+            "is_suppressed": false,
+            "stepover": "0.75cm",
+            "stepdown": "0.5cm",
+            "tool": {
+              "number": 0,
+              "type": "unspecified",
+              "diameter": "0.0",
+              "corner_radius": "0.0",
+              "flute_length": "0.0",
+              "flutes": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

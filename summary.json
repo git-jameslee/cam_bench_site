@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-26T16:13:16.939650+00:00",
-  "n_runs": 4,
+  "generated": "2026-06-27T22:41:46.481582+00:00",
+  "n_runs": 19,
   "group_order": [
     "outcome",
     "post",
@@ -157,42 +157,63 @@
           "label": "Wall s",
           "group": "time",
           "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
         }
       ],
       "models": [
         {
           "model": "Claude Sonnet 4.6",
-          "runs": 4,
+          "runs": 7,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.93,
-              "lo": 0.89525,
-              "hi": 0.95,
-              "n": 4
+              "mean": 0.934429,
+              "lo": 0.908425,
+              "hi": 0.954714,
+              "n": 7
             },
             "tool_calls_total": {
-              "mean": 45.0,
-              "lo": 27.5,
-              "hi": 62.5,
-              "n": 4
+              "mean": 38.857143,
+              "lo": 28.0,
+              "hi": 51.435714,
+              "n": 7
             },
             "tool_calls_succeeded": {
-              "mean": 41.5,
-              "lo": 26.0,
-              "hi": 57.0,
-              "n": 4
+              "mean": 36.0,
+              "lo": 26.428571,
+              "hi": 46.714286,
+              "n": 7
             },
             "tool_calls_failed": {
-              "mean": 3.5,
-              "lo": 1.5,
-              "hi": 6.5,
-              "n": 4
+              "mean": 2.857143,
+              "lo": 1.428571,
+              "hi": 4.857143,
+              "n": 7
             },
             "hit_round_limit": {
-              "mean": 0.5,
+              "mean": 0.285714,
               "lo": 0.0,
-              "hi": 1.0,
-              "n": 4
+              "hi": 0.571429,
+              "n": 7
             },
             "scallop_height_mm": {
               "mean": 0.0,
@@ -237,52 +258,70 @@
               "n": 0
             },
             "input_tokens": {
-              "mean": 2052699.5,
-              "lo": 1012156.5,
-              "hi": 3223833.75,
-              "n": 4
+              "mean": 1567535.857143,
+              "lo": 917281.428571,
+              "hi": 2434734.114286,
+              "n": 7
             },
             "output_tokens": {
-              "mean": 34279.5,
-              "lo": 21539.5,
-              "hi": 52723.0,
-              "n": 4
+              "mean": 26415.142857,
+              "lo": 17077.571429,
+              "hi": 39011.857143,
+              "n": 7
             },
             "cache_read_input_tokens": {
-              "mean": 2275491.0,
-              "lo": 764045.0,
-              "hi": 3786937.0,
-              "n": 2
+              "mean": 1436174.6,
+              "lo": 723285.4,
+              "hi": 2628574.2,
+              "n": 5
             },
             "cache_creation_input_tokens": {
-              "mean": 85496.5,
-              "lo": 59721.0,
-              "hi": 111272.0,
-              "n": 2
+              "mean": 60591.4,
+              "lo": 42475.8,
+              "hi": 86400.0,
+              "n": 5
             },
             "llm_rounds": {
-              "mean": 44.25,
-              "lo": 28.5,
-              "hi": 60.0,
-              "n": 4
+              "mean": 38.857143,
+              "lo": 28.996429,
+              "hi": 50.0,
+              "n": 7
             },
             "llm_s": {
-              "mean": 509.52,
-              "lo": 348.7925,
-              "hi": 748.3825,
-              "n": 4
+              "mean": 407.167143,
+              "lo": 284.78,
+              "hi": 571.711857,
+              "n": 7
             },
             "tool_s": {
-              "mean": 26.87,
-              "lo": 14.395,
-              "hi": 46.3475,
-              "n": 4
+              "mean": 23.125714,
+              "lo": 15.71,
+              "hi": 34.678107,
+              "n": 7
             },
             "wall_clock_s": {
-              "mean": 536.67,
-              "lo": 369.725,
-              "hi": 794.305,
-              "n": 4
+              "mean": 430.562857,
+              "lo": 302.55,
+              "hi": 606.101643,
+              "n": 7
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 2
+            },
+            "mb_injected_calls": {
+              "mean": 26.5,
+              "lo": 24.0,
+              "hi": 29.0,
+              "n": 2
+            },
+            "aborted": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 2
             }
           },
           "run_index": [
@@ -309,6 +348,611 @@
               "timestamp": "2026-06-25T19:56:28.645760",
               "trial_index": 0,
               "prompt_variant": null
+            },
+            {
+              "run_id": "2f919bb6-d0f5-4d9c-82ad-261174e275b3",
+              "timestamp": "2026-06-26T11:32:01.769409",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "bf7e00ea-c32e-4cf8-b7bb-c4b79cf02f88",
+              "timestamp": "2026-06-27T17:07:17.268084",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "d2f7c1a9-cba1-4afd-974a-d086b226d2d6",
+              "timestamp": "2026-06-27T17:41:43.846237",
+              "trial_index": 0,
+              "prompt_variant": null
+            }
+          ]
+        },
+        {
+          "model": "Qwen3-35B-A22B",
+          "runs": 1,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "scallop_height_mm": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "radial_engagement_pct": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "axial_engagement_pct": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "engagement_ok": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "operation_count": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "tool_change_count": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "air_cut_ratio": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "input_tokens": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "output_tokens": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_rounds": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_s": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_s": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "wall_clock_s": {
+              "mean": 0.96,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "mb_injected_calls": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "aborted": {
+              "mean": 1.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            }
+          },
+          "run_index": [
+            {
+              "run_id": "369f7435-45bd-4e1b-9ed7-0651fb3f6a6d",
+              "timestamp": "2026-06-26T23:47:57.988438",
+              "trial_index": 0,
+              "prompt_variant": null
+            }
+          ]
+        },
+        {
+          "model": "Qwen3.6-35B-A3B",
+          "runs": 8,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.77475,
+              "lo": 0.540212,
+              "hi": 0.942037,
+              "n": 8
+            },
+            "tool_calls_total": {
+              "mean": 15.0,
+              "lo": 7.5,
+              "hi": 22.5,
+              "n": 8
+            },
+            "tool_calls_succeeded": {
+              "mean": 12.375,
+              "lo": 6.875,
+              "hi": 18.0,
+              "n": 8
+            },
+            "tool_calls_failed": {
+              "mean": 2.625,
+              "lo": 0.625,
+              "hi": 4.75,
+              "n": 8
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 8
+            },
+            "scallop_height_mm": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "radial_engagement_pct": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "axial_engagement_pct": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "engagement_ok": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "operation_count": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "tool_change_count": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "air_cut_ratio": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "input_tokens": {
+              "mean": 269784.125,
+              "lo": 120637.21875,
+              "hi": 441271.94375,
+              "n": 8
+            },
+            "output_tokens": {
+              "mean": 13231.375,
+              "lo": 7807.596875,
+              "hi": 18617.903125,
+              "n": 8
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 8
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 8
+            },
+            "llm_rounds": {
+              "mean": 15.5,
+              "lo": 8.0,
+              "hi": 23.0,
+              "n": 8
+            },
+            "llm_s": {
+              "mean": 536.43875,
+              "lo": 309.670531,
+              "hi": 767.851406,
+              "n": 8
+            },
+            "tool_s": {
+              "mean": 136.31125,
+              "lo": 13.811187,
+              "hi": 370.321313,
+              "n": 8
+            },
+            "wall_clock_s": {
+              "mean": 696.2625,
+              "lo": 370.529188,
+              "hi": 1049.522969,
+              "n": 8
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 8
+            },
+            "mb_injected_calls": {
+              "mean": 13.875,
+              "lo": 6.875,
+              "hi": 20.875,
+              "n": 8
+            },
+            "aborted": {
+              "mean": 0.5,
+              "lo": 0.125,
+              "hi": 0.875,
+              "n": 8
+            }
+          },
+          "run_index": [
+            {
+              "run_id": "1025634a-7769-430a-9e96-316bba34632f",
+              "timestamp": "2026-06-26T21:11:13.956421",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "b4527cfb-c17d-4ddc-b896-113e74a5adaf",
+              "timestamp": "2026-06-26T21:59:40.243689",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "951b99ed-272c-4f40-b9f1-727001a17791",
+              "timestamp": "2026-06-26T22:38:45.194385",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "a7117fcc-dab7-4a24-9ba8-531c8d5e08ff",
+              "timestamp": "2026-06-26T23:08:13.063860",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "15ba4c28-df60-4b6e-8b1a-c11ff22d5c52",
+              "timestamp": "2026-06-26T23:32:19.775246",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "81d4c3bb-a45b-45ad-afba-1a9a0114f3e7",
+              "timestamp": "2026-06-27T00:28:15.078857",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "44d0ef5d-d7e0-480c-828f-1f61ceef99c5",
+              "timestamp": "2026-06-27T16:31:49.806751",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "83ea5864-0b5b-41b4-a412-a562197e68e6",
+              "timestamp": "2026-06-27T16:59:09.383396",
+              "trial_index": 0,
+              "prompt_variant": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "box_pocket_minimal",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "Qwen3.6-35B-A3B",
+          "runs": 3,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.671,
+              "lo": 0.536,
+              "hi": 0.81,
+              "n": 3
+            },
+            "tool_calls_total": {
+              "mean": 22.333333,
+              "lo": 18.0,
+              "hi": 28.0,
+              "n": 3
+            },
+            "tool_calls_succeeded": {
+              "mean": 14.666667,
+              "lo": 12.0,
+              "hi": 17.0,
+              "n": 3
+            },
+            "tool_calls_failed": {
+              "mean": 7.666667,
+              "lo": 4.0,
+              "hi": 13.0,
+              "n": 3
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 3
+            },
+            "input_tokens": {
+              "mean": 397394.0,
+              "lo": 279143.0,
+              "hi": 474937.0,
+              "n": 3
+            },
+            "output_tokens": {
+              "mean": 18976.666667,
+              "lo": 13443.0,
+              "hi": 26192.0,
+              "n": 3
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 3
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 3
+            },
+            "llm_rounds": {
+              "mean": 23.0,
+              "lo": 19.0,
+              "hi": 28.0,
+              "n": 3
+            },
+            "llm_s": {
+              "mean": 765.333333,
+              "lo": 622.25,
+              "hi": 1008.06,
+              "n": 3
+            },
+            "tool_s": {
+              "mean": 53.863333,
+              "lo": 23.28,
+              "hi": 80.8,
+              "n": 3
+            },
+            "wall_clock_s": {
+              "mean": 2775.623333,
+              "lo": 723.31,
+              "hi": 6514.57,
+              "n": 3
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0,
+              "n": 3
+            },
+            "mb_injected_calls": {
+              "mean": 21.333333,
+              "lo": 17.0,
+              "hi": 27.0,
+              "n": 3
+            },
+            "aborted": {
+              "mean": 0.333333,
+              "lo": 0.0,
+              "hi": 1.0,
+              "n": 3
+            }
+          },
+          "run_index": [
+            {
+              "run_id": "7d554d84-2f82-4df6-8bab-013018d9de45",
+              "timestamp": "2026-06-26T13:54:24.056919",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "f962a14d-85f7-42d9-8526-b88cdc3671d6",
+              "timestamp": "2026-06-26T15:31:00.950677",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "d147059a-53ab-479b-81c8-2ba6c26fdced",
+              "timestamp": "2026-06-26T19:38:46.226864",
+              "trial_index": 0,
+              "prompt_variant": null
             }
           ]
         }
@@ -317,16 +961,43 @@
   ],
   "overview": {
     "models": [
-      "Claude Sonnet 4.6"
+      "Claude Sonnet 4.6",
+      "Qwen3-35B-A22B",
+      "Qwen3.6-35B-A3B"
     ],
     "tasks": [
-      "box_pocket_detailed"
+      "box_pocket_detailed",
+      "box_pocket_minimal"
     ],
     "cells": {
       "Claude Sonnet 4.6": {
         "box_pocket_detailed": {
-          "runs": 4,
+          "runs": 7,
           "graded": 1
+        },
+        "box_pocket_minimal": {
+          "runs": 0,
+          "graded": 0
+        }
+      },
+      "Qwen3-35B-A22B": {
+        "box_pocket_detailed": {
+          "runs": 1,
+          "graded": 0
+        },
+        "box_pocket_minimal": {
+          "runs": 0,
+          "graded": 0
+        }
+      },
+      "Qwen3.6-35B-A3B": {
+        "box_pocket_detailed": {
+          "runs": 8,
+          "graded": 0
+        },
+        "box_pocket_minimal": {
+          "runs": 3,
+          "graded": 0
         }
       }
     }

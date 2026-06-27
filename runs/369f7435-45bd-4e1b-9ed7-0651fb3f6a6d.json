@@ -1,0 +1,61 @@
+{
+  "run_id": "369f7435-45bd-4e1b-9ed7-0651fb3f6a6d",
+  "model": "Qwen3-35B-A22B",
+  "model_raw": "Qwen3-35B-A22B",
+  "task": "box_pocket_detailed",
+  "task_group": null,
+  "prompt_variant": null,
+  "trial_index": 0,
+  "trials_total": 1,
+  "backend": "openai",
+  "timestamp": "2026-06-26T23:47:57.988438",
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "repetition_penalty": 1.0
+  },
+  "seed": null,
+  "values": {
+    "tool_calls_total": 0.0,
+    "tool_calls_succeeded": 0.0,
+    "tool_calls_failed": 0.0,
+    "tool_call_success_rate": 0.0,
+    "tool_inputs_repaired": 0.0,
+    "mb_injected_calls": 0.0,
+    "hit_round_limit": 0.0,
+    "aborted": 1.0,
+    "input_tokens": 0.0,
+    "output_tokens": 0.0,
+    "cache_read_input_tokens": 0.0,
+    "cache_creation_input_tokens": 0.0,
+    "llm_rounds": 0.0,
+    "llm_s": 0.0,
+    "tool_s": 0.0,
+    "wall_clock_s": 0.96
+  },
+  "transcript": [],
+  "provenance": {
+    "system_prompt_sha": "a1ffdbe63487",
+    "mb_cam_sha": "4752183a2b99",
+    "task_file": "C:\\Users\\Nanja\\MachineBench\\tasks\\box_pocket_detailed.yaml",
+    "cad_file": null,
+    "cloud_cad": "Pocket Box",
+    "cloud_cad_file_id": "urn:adsk.wipprod:dm.lineage:QLatPThkSNmoSr8zqnh-6A",
+    "cloud_results_name": "Pocket Box__detailed__0626_2347",
+    "fusion_hub": "Team hub - Nathan Tsoi",
+    "fusion_project": "Examples",
+    "fusion_mcp_url": "http://127.0.0.1:62277/mcp"
+  },
+  "artifacts": {
+    "video": null,
+    "image": null
+  },
+  "cam_summary": {
+    "doc": "Pocket Box__detailed__0626_2347",
+    "cam_product": true,
+    "setups": []
+  }
+}

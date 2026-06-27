@@ -1,0 +1,385 @@
+{
+  "run_id": "81d4c3bb-a45b-45ad-afba-1a9a0114f3e7",
+  "model": "Qwen3.6-35B-A3B",
+  "model_raw": "Qwen3.6-35B-A3B",
+  "task": "box_pocket_detailed",
+  "task_group": null,
+  "prompt_variant": null,
+  "trial_index": 0,
+  "trials_total": 1,
+  "backend": "openai",
+  "timestamp": "2026-06-27T00:28:15.078857",
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "repetition_penalty": 1.0
+  },
+  "seed": null,
+  "values": {
+    "tool_calls_total": 21.0,
+    "tool_calls_succeeded": 16.0,
+    "tool_calls_failed": 5.0,
+    "tool_call_success_rate": 0.762,
+    "tool_inputs_repaired": 0.0,
+    "mb_injected_calls": 20.0,
+    "hit_round_limit": 0.0,
+    "aborted": 0.0,
+    "input_tokens": 373528.0,
+    "output_tokens": 16534.0,
+    "cache_read_input_tokens": 0.0,
+    "cache_creation_input_tokens": 0.0,
+    "llm_rounds": 22.0,
+    "llm_s": 682.34,
+    "tool_s": 23.48,
+    "wall_clock_s": 706.09
+  },
+  "transcript": [
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": "",
+        "script": "import json\n\n# Inspect the document state\nscene = mb.inspect()\nprint(\"=== INSPECT RESULT ===\")\nprint(json.dumps(scene, indent=2))\n\n# Check faces on body 0\nfaces_result = mb.faces(0)\nprint(\"\\n=== ALL FACES ON BODY 0 ===\")\nfor f in faces_result:\n    print(f\"Face idx={f['index']}, type={f['type']}, area={f['area_mm2']:.1f}mm\u00b2, centroid={f['centroid_mm']}, normal={f['normal']}, z={f['z_mm']}\")\n\n# List available tools from TIW library\ntools = mb.list_library_tools(contains=\"TIW\")\nprint(\"\\n=== TIW TOOLS ===\")\nfor t in tools:\n    print(f\"Idx={t['index']}, desc={t['description']}, dia={t['diameter_mm']}mm, cr={t['corner_radius_mm']}mm, flute={t['flute_length_mm']}mm\")"
+      },
+      "result": "{\"error\":\"Validation failed with 2 error(s):\\n  1. At '/<root>/[\\\"object\\\"]': Value type not permitted by 'type' constraint.\\n  2. At '/<root>': Failed to validate against schema associated with property name 'object'.\"}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\n# Inspect the document state\nscene = mb.inspect()\nprint(\"=== INSPECT RESULT ===\")\nprint(json.dumps(scene, indent=2))\n\n# Check faces on body 0\nfaces_result = mb.faces(0)\nprint(\"\\n=== ALL FACES ON BODY 0 ===\")\nfor f in faces_result:\n    print(f\"Face idx={f['index']}, type={f['type']}, area={f['area_mm2']:.1f}mm\u00b2, centroid={f['centroid_mm']}, normal={f['normal']}, z={f['z_mm']}\")\n\n# List available tools from TIW library\ntools = mb.list_library_tools(contains=\"TIW\")\nprint(\"\\n=== TIW TOOLS ===\")\nfor t in tools:\n    print(f\"Idx={t['index']}, desc={t['description']}, dia={t['diameter_mm']}mm, cr={t['corner_radius_mm']}mm, flute={t['flute_length_mm']}mm\")"
+        }
+      },
+      "result": "{\n    \"message\": \"=== INSPECT RESULT ===\\n{\\n  \\\"document\\\": \\\"Pocket Box__detailed__0627_0016\\\",\\n  \\\"length_unit\\\": \\\"mm\\\",\\n  \\\"bodies\\\": [\\n    {\\n      \\\"index\\\": 0,\\n      \\\"name\\\": \\\"PocketBox\\\",\\n      \\\"dims_mm\\\": [\\n        100.0,\\n        100.0,\\n        50.0\\n      ],\\n      \\\"bbox_min_mm\\\": [\\n        -50.0,\\n        -50.0,\\n        0.0\\n      ],\\n      \\\"bbox_max_mm\\\": [\\n        50.0,\\n        50.0,\\n        50.0\\n      ],\\n      \\\"face_count\\\": 15\\n    }\\n  ],\\n  \\\"cam\\\": {\\n    \\\"present\\\": true,\\n    \\\"setups\\\": [\\n      \\\"Setup1\\\"\\n    ]\\n  }\\n}\\n\\n=== ALL FACES ON BODY 0 ===\\nFace idx=0, type=Cylinder, area=157.1mm\u00c2\u00b2, centroid=[-28.536, 28.536, 40.0], normal=[0.7071, -0.7071, 0.0], z=40.0\\nFace idx=1, type=Plane, area=1000.0mm\u00c2\u00b2, centroid=[0.0, 30.0, 40.0], normal=[-0.0, -1.0, -0.0], z=40.0\\nFace idx=2, type=Cylinder, area=157.1mm\u00c2\u00b2, centroid=[28.536, 28.536, 40.0], normal=[-0.7071, -0.7071, 0.0], z=40.0\\nFace idx=3, type=Plane, area=1000.0mm\u00c2\u00b2, centroid=[30.0, 0.0, 40.0], normal=[-1.0, 0.0, -0.0], z=40.0\\nFace idx=4, type=Cylinder, area=157.1mm\u00c2\u00b2, centroid=[-28.536, -28.536, 40.0], normal=[0.7071, 0.7071, 0.0], z=40.0\\nFace idx=5, type=Plane, area=3578.5mm\u00c2\u00b2, centroid=[0.0, 0.0, 30.0], normal=[-0.0, -0.0, 1.0], z=30.0\\nFace idx=6, type=Plane, area=1000.0mm\u00c2\u00b2, centroid=[0.0, -30.0, 40.0], normal=[-0.0, 1.0, -0.0], z=40.0\\nFace idx=7, type=Cylinder, area=157.1mm\u00c2\u00b2, centroid=[28.536, -28.536, 40.0], normal=[-0.7071, 0.7071, 0.0], z=40.0\\nFace idx=8, type=Plane, area=1000.0mm\u00c2\u00b2, centroid=[-30.0, 0.0, 40.0], normal=[1.0, 0.0, 0.0], z=40.0\\nFace idx=9, type=Plane, area=5000.0mm\u00c2\u00b2, centroid=[0.0, 50.0, 25.0], normal=[0.0, 1.0, -0.0], z=25.0\\nFace idx=10, type=Plane, area=5000.0mm\u00c2\u00b2, centroid=[50.0, 0.0, 25.0], normal=[1.0, 0.0, 0.0], z=25.0\\nFace idx=11, type=Plane, area=5000.0mm\u00c2\u00b2, centroid=[0.0, -50.0, 25.0], normal=[0.0, -1.0, 0.0], z=25.0\\nFace idx=12, type=Plane, area=5000.0mm\u00c2\u00b2, centroid=[-50.0, 0.0, 25.0], normal=[-1.0, 0.0, 0.0], z=25.0\\nFace idx=13, type=Plane, area=6421.5mm\u00c2\u00b2, centroid=[0.0, -40.0, 50.0], normal=[0.0, 0.0, 1.0], z=50.0\\nFace idx=14, type=Plane, area=10000.0mm\u00c2\u00b2, centroid=[0.0, 0.0, 0.0], normal=[-0.0, -0.0, -1.0], z=0.0\\n\\n=== TIW TOOLS ===\\nIdx=0, desc=9/32\\\" Cobalt Drill, dia=7.1437mm, cr=0.0mm, flute=27.94mm\\nIdx=1, desc=3/4\\\" HSS 2Fl Square Endmill, dia=19.05mm, cr=0.0mm, flute=34.304mm\\nIdx=2, desc=(REMOVED T49) diy engrave as a center drill, dia=1.0541mm, cr=0.0mm, flute=0.3048mm\\nIdx=3, desc=1/4\\\" HSS Ball Endmill, dia=6.35mm, cr=3.175mm, flute=19.05mm\\nIdx=4, desc=Tormach SuperFly Fly Cutter, dia=58.42mm, cr=0.0mm, flute=2.54mm\\nIdx=5, desc=11/32\\\" Long Cobalt Drill, dia=8.7312mm, cr=0.0mm, flute=90.6145mm\\nIdx=6, desc=1/8\\\" - 5/16\\\" Center Drill w/ countersink, dia=7.9375mm, cr=0.0mm, flute=17.0561mm\\nIdx=7, desc=3/4\\\" HSS TiN Flat Endmill, dia=19.05mm, cr=0.0mm, flute=44.45mm\\nIdx=8, desc=7/64\\\" - 1/4\\\" Center Drill w/ countersink, dia=6.35mm, cr=0.0mm, flute=14.4145mm\\nIdx=9, desc=9/16\\\" HSS 6FL T-Slot Cutter, dia=14.2875mm, cr=0.0mm, flute=6.0452mm\\nIdx=10, desc=5/31\\\" Cobalt Drill, dia=3.9688mm, cr=0.0mm, flute=28.575mm\\nIdx=11, desc=1/8\\\" Cobalt Drill, dia=3.175mm, cr=0.0mm, flute=37.3761mm\\nIdx=12, desc=1/8\\\" Cobalt Drill, dia=3.175mm, cr=0.0mm, flute=17.78mm\\nIdx=13, desc=7/16\\\" HSS Ball Endmill, dia=11.1125mm, cr=5.5563mm, flute=25.4mm\\nIdx=14, desc=1/2\\\" 3Fl Carb TiCN Flat Endmill, dia=12.7mm, cr=0.0mm, flute=50.8mm\\nIdx=15, desc=5/16\\\" Carbide 2Fl Flat Endmill, dia=7.9375mm, cr=0.0mm, flute=40.64mm\\nIdx=16, desc=7/32\\\" Cobalt Drill, dia=5.5563mm, cr=0.0mm, flute=25.4mm\\nIdx=17, desc=5/16\\\" HSS Ball Endmill, dia=7.9375mm, cr=3.9688mm, flute=12.7mm\\nIdx=18, desc=1/8\\\" HSS Ball Endmill, dia=3.175mm, cr=1.5875mm, flute=10.16mm\\nIdx=19, desc=1/4\\\" Carbide Uncoated Ball Endmill, dia=6.35mm, cr=3.175mm, flute=27.94mm\\nIdx=20, desc=7/16\\\" HSS TiN Flat Endmill, dia=11.1125mm, cr=0.0mm, flute=25.4mm\\nIdx=21, desc=(REMOVED T79) 1/16\\\" Long Flat Endmill 3FL, dia=1.5875mm, cr=0.0mm, flute=2.54mm\\nIdx=22, desc=5/8\\\" HSS 4 Flute Endmill, dia=15.875mm, cr=0.0mm, flute=42.8244mm\\nIdx=23, desc=3/8\\\" HSS 4 Flute Flat Endmill, dia=9.525mm, cr=0.0mm, flute=19.05mm\\nIdx=24, desc=3/4\\\" HSS 2Fl Ball Endmill, dia=19.05mm, cr=9.525mm, flute=34.29mm\\nIdx=25, desc=3/4\\\" HSS 4 Flute Flat Endmill, dia=19.05mm, cr=0.0mm, flute=43.7642mm\\nIdx=26, desc=5/16\\\" HSS 2Fl Square Endmill, dia=7.9375mm, cr=0.0mm, flute=55.372mm\\nIdx=27, desc=5/8\\\" HSS TiN Flat Endmill, dia=15.875mm, cr=0.0mm, flute=40.64mm\\nIdx=28, desc=3/8\\\" 3FL Carb ZrN Flat Endmill, dia=9.525mm, cr=0.0mm, flute=25.4mm\\nIdx=29, desc=3/16\\\" Cobalt Drill, dia=4.7625mm, cr=0.0mm, flute=22.86mm\\nIdx=30, desc=3/64\\\" - 1/8\\\" Center Drill, dia=3.175mm, cr=0.0mm, flute=7.62mm\\nIdx=31, desc=5/16\\\" Cobalt Drill, dia=7.9375mm, cr=0.0mm, flute=31.75mm\\nIdx=32, desc=Tormach SuperFly Fly Cutter, dia=76.2mm, cr=0.0mm, flute=2.54mm\\nIdx=33, desc=5/8\\\" HSS Ball Endmill, dia=15.875mm, cr=7.9375mm, flute=29.21mm\\nIdx=34, desc=1/2\\\" HSS 4 Flute Flat Endmill, dia=12.7mm, cr=0.0mm, flute=31.75mm\\nIdx=35, desc=1/4\\\" 3fl TiCN Carb Flat Endmill, dia=6.35mm, cr=0.0mm, flute=27.94mm\\nIdx=36, desc=(REMOVED T63) 5/16\\\" HSS TiN Flat Endmill, dia=7.9375mm, cr=0.0mm, flute=17.78mm\\nIdx=37, desc=1/2\\\" HSS Ball Endmill, dia=12.7mm, cr=6.35mm, flute=25.4mm\\nIdx=38, desc=15/32\\\" Cobalt Drill, dia=11.9062mm, cr=0.0mm, flute=35.56mm\\nIdx=39, desc=3/8\\\" HSS 3fl Chamfer Mill (41 degree - 82 degree incl.), dia=9.525mm, cr=0.0mm, flute=6.35mm\\nIdx=40, desc=3/8\\\" Long Cobalt drill, dia=9.525mm, cr=0.0mm, flute=89.916mm\\nIdx=41, desc=3/16\\\" HSS 4 Flute Flat Endmill, dia=4.7625mm, cr=0.0mm, flute=12.7mm\\nIdx=42, desc=(REMOVED T77) 1/16\\\" HSS Flat End Mill, dia=1.5875mm, cr=0.0mm, flute=7.62mm\\nIdx=43, desc=5/16\\\" TiCN Carbide 2Fl Flat Endmill, dia=7.9375mm, cr=0.0mm, flute=42.9768mm\\nIdx=44, desc=1/2\\\" Cobalt Drill, dia=12.7mm, cr=0.0mm, flute=35.56mm\\nIdx=45, desc=3/16\\\" 3Fl ZrN Carb Flat Endmill, dia=4.7625mm, cr=0.0mm, flute=15.24mm\\nIdx=46, desc=3/32\\\" - 3/16\\\" Center Drill, dia=4.7625mm, cr=0.0mm, flute=12.7mm\\nIdx=47, desc=1/4\\\" Cobalt Drill, dia=6.35mm, cr=0.0mm, flute=30.48mm\\nIdx=48, desc=3/8\\\" HSS Ball Endmill, dia=9.525mm, cr=4.7625mm, flute=12.7mm\\nIdx=49, desc=1/2\\\" 3Fl Carb ZrN Flat Endmill, dia=12.7mm, cr=0.0mm, flute=31.75mm\\nIdx=50, desc=(REMOVED T78) 1/16\\\" Tapered Ball Endmill, dia=1.5875mm, cr=0.7937mm, flute=5.08mm\\nIdx=51, desc=0.0098\\\" Cobalt 2 Flute Drill, dia=2.4892mm, cr=0.0mm, flute=31.3182mm\\nIdx=52, desc=1/4\\\" HSS Flat Endmill, dia=6.35mm, cr=0.0mm, flute=24.13mm\\nIdx=53, desc=(CUSTOMIZIABLE) 0.09\\\" 2Fl HSS Drill, dia=2.286mm, cr=0.0mm, flute=19.05mm\\nIdx=54, desc=1/2\\\" 3Fl Carb ZrN Flat Endmill, dia=12.7mm, cr=0.0mm, flute=31.75mm\\nIdx=55, desc=1/16\\\" TICN Carbide Square Endmill, dia=1.5875mm, cr=0.0mm, flute=3.81mm\\nIdx=56, desc=3/8\\\" 0.065in Thread Mill, dia=8.89mm, cr=0.0mm, flute=22.86mm\\nIdx=57, desc=1/4\\\" 60 deg Inclusive Engraver, dia=6.35mm, cr=0.0mm, flute=6.35mm\\nIdx=58, desc=7/16\\\" Cobalt Drill, dia=11.1125mm, cr=0.0mm, flute=35.56mm\\nIdx=59, desc=3/16\\\" HSS Ball Endmill, dia=4.7625mm, cr=2.3812mm, flute=10.16mm\\nIdx=60, desc=3/8\\\" Cobalt Drill, dia=9.525mm, cr=0.0mm, flute=27.94mm\\nIdx=61, desc=1/2\\\" HSS 2Fl Flat Endmill, dia=12.7mm, cr=0.0mm, flute=53.975mm\\nIdx=62, desc=3/16 - 7/16\\\" Center Drill w/countersink, dia=11.1125mm, cr=0.0mm, flute=21.082mm\\nIdx=63, desc=1/8\\\" 3Fl ZrN Carb Flat End Mill - 45 Degree Helix, dia=3.175mm, cr=0.0mm, flute=12.192mm\\nIdx=64, desc=7/16\\\" Reamer, dia=11.1125mm, cr=0.0mm, flute=43.7896mm\\nIdx=65, desc=1/4\\\" HSS 5fl Chamfer Mill (41 degree - 82 incl.), dia=6.35mm, cr=0.0mm, flute=3.81mm\\n<<<MB_DATA_BEGIN>>>{\\\"saved\\\": false, \\\"skipped\\\": true, \\\"name\\\": \\\"Pocket Box__detailed__0627_0016\\\", \\\"reason\\\": \\\"already_exists\\\", \\\"results_folder\\\": {\\\"name\\\": \\\"Results\\\", \\\"id\\\": \\\"urn:adsk.wipprod:fs.folder:co.D5KsES7PQZCTsJ7BwG4jqA\\\"}, \\\"model_folder\\\": {\\\"name\\\": \\\"Qwen3.6-35B-A3B\\\", \\\"id\\\": \\\"urn:adsk.wipprod:fs.folder:co.JOdYMHeqSU-9kO_67ykiOA\\\"}, \\\"document_name\\\": \\\"Pocket Box__detailed__0627_0016\\\", \\\"cam_setups\\\": 1}<<<MB_DATA_END>>>\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\n# Check existing setup details\nsetups = mb.probe()\nprint(\"=== EXISTING SETUP ===\")\nprint(json.dumps(setups, indent=2))\n\n# Identify key faces for the pocket\nfaces_5 = mb.faces(0, kind=\"Plane\")\nprint(\"\\n=== PLANE FACES (reordered) ===\")\nfor f in faces_5:\n    print(f\"Face idx={f['index']}, area={f['area_mm2']:.1f}mm\u00b2, centroid={f['centroid_mm']}, normal={f['normal']}, z={f['z_mm']}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"=== EXISTING SETUP ===\\n{\\n  \\\"setups\\\": [\\n    {\\n      \\\"name\\\": \\\"Setup1\\\",\\n      \\\"operations\\\": []\\n    }\\n  ],\\n  \\\"cam_present\\\": true\\n}\\n\\n=== PLANE FACES (reordered) ===\\nFace idx=1, area=1000.0mm\u00c2\u00b2, centroid=[0.0, 30.0, 40.0], normal=[-0.0, -1.0, -0.0], z=40.0\\nFace idx=3, area=1000.0mm\u00c2\u00b2, centroid=[30.0, 0.0, 40.0], normal=[-1.0, 0.0, -0.0], z=40.0\\nFace idx=5, area=3578.5mm\u00c2\u00b2, centroid=[0.0, 0.0, 30.0], normal=[-0.0, -0.0, 1.0], z=30.0\\nFace idx=6, area=1000.0mm\u00c2\u00b2, centroid=[0.0, -30.0, 40.0], normal=[-0.0, 1.0, -0.0], z=40.0\\nFace idx=8, area=1000.0mm\u00c2\u00b2, centroid=[-30.0, 0.0, 40.0], normal=[1.0, 0.0, 0.0], z=40.0\\nFace idx=9, area=5000.0mm\u00c2\u00b2, centroid=[0.0, 50.0, 25.0], normal=[0.0, 1.0, -0.0], z=25.0\\nFace idx=10, area=5000.0mm\u00c2\u00b2, centroid=[50.0, 0.0, 25.0], normal=[1.0, 0.0, 0.0], z=25.0\\nFace idx=11, area=5000.0mm\u00c2\u00b2, centroid=[0.0, -50.0, 25.0], normal=[0.0, -1.0, 0.0], z=25.0\\nFace idx=12, area=5000.0mm\u00c2\u00b2, centroid=[-50.0, 0.0, 25.0], normal=[-1.0, 0.0, 0.0], z=25.0\\nFace idx=13, area=6421.5mm\u00c2\u00b2, centroid=[0.0, -40.0, 50.0], normal=[0.0, 0.0, 1.0], z=50.0\\nFace idx=14, area=10000.0mm\u00c2\u00b2, centroid=[0.0, 0.0, 0.0], normal=[-0.0, -0.0, -1.0], z=0.0\\n<<<MB_DATA_BEGIN>>>{\\\"saved\\\": false, \\\"skipped\\\": true, \\\"name\\\": \\\"Pocket Box__detailed__0627_0016\\\", \\\"reason\\\": \\\"already_exists\\\", \\\"results_folder\\\": {\\\"name\\\": \\\"Results\\\", \\\"id\\\": \\\"urn:adsk.wipprod:fs.folder:co.D5KsES7PQZCTsJ7BwG4jqA\\\"}, \\\"model_folder\\\": {\\\"name\\\": \\\"Qwen3.6-35B-A3B\\\", \\\"id\\\": \\\"urn:adsk.wipprod:fs.folder:co.JOdYMHeqSU-9kO_67ykiOA\\\"}, \\\"document_name\\\": \\\"Pocket Box__detailed__0627_0016\\\", \\\"cam_setups\\\": 1}<<<MB_DATA_END>>>\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\n# Select tools:\n# Roughing: 9.525mm (3/8\") 3FL Carb ZrN Flat Endmill (idx 28) - good for adaptive clearing\n# Finishing: Same tool works - its 4.76mm radius fits inside the 5mm corner radius\n\ntool_info = {\n    \"library_url\": None,\n    \"index\": None,\n    \"desc\": None\n}\n\n# Find the tool\nfor i in range(50):  # check up to index 50\n    try:\n        # Check each tool by re-listing\n        pass\n    except:\n        pass\n\n# Instead, just find from the previous listing\n# idx=28: 3/8\" 3FL Carb ZrN Flat Endmill, dia=9.525mm\ntools = mb.list_library_tools(contains=\"Carb ZrN\")\nprint(\"Carb ZrN tools found:\")\nfor t in tools:\n    print(f\"  Idx={t['index']}, desc={t['description']}, dia={t['diameter_mm']}mm, cr={t['corner_radius_mm']}mm\")\n\ncarb_tool = next(t for t in tools if t[\"diameter_mm\"] == 9.525)\nprint(f\"\\nSelected roughing/finishing tool: {carb_tool['description']}\")\ndoc_idx = mb.add_tool(carb_tool[\"library_url\"], carb_tool[\"index\"])[\"document_tool_index\"]\nprint(f\"Document tool index: {doc_idx}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Carb ZrN tools found:\\n  Idx=28, desc=3/8\\\" 3FL Carb ZrN Flat Endmill, dia=9.525mm, cr=0.0mm\\n  Idx=49, desc=1/2\\\" 3Fl Carb ZrN Flat Endmill, dia=12.7mm, cr=0.0mm\\n  Idx=54, desc=1/2\\\" 3Fl Carb ZrN Flat Endmill, dia=12.7mm, cr=0.0mm\\n\\nSelected roughing/finishing tool: 3/8\\\" 3FL Carb ZrN Flat Endmill\\nDocument tool index: 0\\n<<<MB_DATA_BEGIN>>>{\\\"saved\\\": false, \\\"skipped\\\": true, \\\"name\\\": \\\"Pocket Box__detailed__0627_0016\\\", \\\"reason\\\": \\\"already_exists\\\", \\\"results_folder\\\": {\\\"name\\\": \\\"Results\\\", \\\"id\\\": \\\"urn:adsk.wipprod:fs.folder:co.D5KsES7PQZCTsJ7BwG4jqA\\\"}, \\\"model_folder\\\": {\\\"name\\\": \\\"Qwen3.6-35B-A3B\\\", \\\"id\\\": \\\"urn:adsk.wipprod:fs.folder:co.JOdYMHeqSU-9kO_67ykiOA\\\"}, \\\"document_name\\\": \\\"Pocket Box__detailed__0627_0016\\\", \\\"cam_setups\\\": 1}<<<MB_DATA_END>>>\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\n# Roughing operation: adaptive2d on pocket floor\ndef run(_context):\n    print(\"=== Creating roughing operation ===\")\n    \n    # Parameters for 6061 Al with 9.525mm carbide endmill\n    roughing_geom = {\n        \"faces\": [5],       # pocket floor face at Z=30\n        \"type\": \"pocket\"\n    }\n    \n    result = mb.add_operation(\n        \"Setup1\",\n        strategy=\"adaptive2d\",\n        tool=0,               # document_tool_index\n        stepover_mm=3.0,      # ~30% of 9.525mm dia\n        stepdown_mm=3.0,\n        geometry=roughing_geom,\n        feeds={\n            \"cutting_mm_min\": 1350,    # 9000rpm * 0.05mm/tooth * 3flutes\n            \"plunge_mm_min\": 150,\n            \"ramp_mm_min\": 400,\n            \"spindle_rpm\": 9000\n        },\n        heights={\n            \"clearance_mm\": 10,\n            \"retract_mm\": 5\n        },\n        name=\"Pocket_Rough_adaptive\"\n    )\n    print(f\"Operation created: {result}\")\n\nrun(\"\")"
+        }
+      },
+      "result": "{\n    \"message\": \"=== Creating roughing operation ===\\nOperation created: {'operation': 'Pocket_Rough_adaptive', 'stepover_param': 'optimalLoad', 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n=== Creating roughing operation ===\\nOperation created: {'operation': 'Pocket_Rough_adaptive1', 'stepover_param': 'optimalLoad', 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\n# Check current state\nstate = mb.probe()\nprint(\"=== CURRENT STATE ===\")\nprint(json.dumps(state, indent=2))\n"
+        }
+      },
+      "result": "{\n    \"message\": \"=== CURRENT STATE ===\\n{\\n  \\\"setups\\\": [\\n    {\\n      \\\"name\\\": \\\"Setup1\\\",\\n      \\\"operations\\\": [\\n        {\\n          \\\"name\\\": \\\"Pocket_Rough_adaptive\\\",\\n          \\\"strategy\\\": \\\"adaptive2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Rough_adaptive1\\\",\\n          \\\"strategy\\\": \\\"adaptive2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"cam_present\\\": true\\n}\\n=== Creating roughing operation ===\\nOperation created: {'operation': 'Pocket_Rough_adaptive2', 'stepover_param': 'optimalLoad', 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\n# Try generating just the first operation to see the error\nresult = mb.generate(operation=\"Pocket_Rough_adaptive\")\nprint(\"=== GENERATE RESULT ===\")\nprint(json.dumps(result, indent=2))"
+        }
+      },
+      "result": "{\n    \"message\": \"=== GENERATE RESULT ===\\n{\\n  \\\"completed\\\": true,\\n  \\\"operations\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Rough_adaptive\\\",\\n      \\\"has_toolpath\\\": true,\\n      \\\"is_valid\\\": true\\n    }\\n  ]\\n}\\n=== Creating roughing operation ===\\nOperation created: {'operation': 'Pocket_Rough_adaptive3', 'stepover_param': 'optimalLoad', 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\n# Check current state\ndef run(_context):\n    # First clean up the duplicate ops\n    state = mb.probe()\n    print(\"=== BEFORE CLEANUP ===\")\n    for s in state[\"setups\"]:\n        print(f\"Setup: {s['name']}\")\n        for op in s[\"operations\"]:\n            print(f\"  Op: {op['name']} - {op['strategy']}\")\n    \n    # Delete duplicate roughing ops if they exist\n    to_delete = [\"Pocket_Rough_adaptive1\", \"Pocket_Rough_adaptive2\", \"Pocket_Rough_adaptive3\"]\n    for op_name in to_delete:\n        try:\n            mb.delete_operation(op_name)\n            print(f\"Deleted: {op_name}\")\n        except Exception as e:\n            print(f\"Could not delete {op_name}: {e}\")\n    \n    # Verify cleanup\n    state = mb.probe()\n    print(\"\\n=== AFTER CLEANUP ===\")\n    for s in state[\"setups\"]:\n        print(f\"Setup: {s['name']}\")\n        for op in s[\"operations\"]:\n            print(f\"  Op: {op['name']} - {op['strategy']}\")\n\nrun(\"\")"
+        }
+      },
+      "result": "{\n    \"message\": \"=== BEFORE CLEANUP ===\\nSetup: Setup1\\n  Op: Pocket_Rough_adaptive - adaptive2d\\n  Op: Pocket_Rough_adaptive1 - adaptive2d\\n  Op: Pocket_Rough_adaptive2 - adaptive2d\\n  Op: Pocket_Rough_adaptive3 - adaptive2d\\nCould not delete Pocket_Rough_adaptive1: module 'mb_cam' has no attribute 'delete_operation'\\nCould not delete Pocket_Rough_adaptive2: module 'mb_cam' has no attribute 'delete_operation'\\nCould not delete Pocket_Rough_adaptive3: module 'mb_cam' has no attribute 'delete_operation'\\n\\n=== AFTER CLEANUP ===\\nSetup: Setup1\\n  Op: Pocket_Rough_adaptive - adaptive2d\\n  Op: Pocket_Rough_adaptive1 - adaptive2d\\n  Op: Pocket_Rough_adaptive2 - adaptive2d\\n  Op: Pocket_Rough_adaptive3 - adaptive2d\\n=== BEFORE CLEANUP ===\\nSetup: Setup1\\n  Op: Pocket_Rough_adaptive - adaptive2d\\n  Op: Pocket_Rough_adaptive1 - adaptive2d\\n  Op: Pocket_Rough_adaptive2 - adaptive2d\\n  Op: Pocket_Rough_adaptive3 - adaptive2d\\nCould not delete Pocket_Rough_adaptive1: module 'mb_cam' has no attribute 'delete_operation'\\nCould not delete Pocket_Rough_adaptive2: module 'mb_cam' has no attribute 'delete_operation'\\nCould not delete Pocket_Rough_adaptive3: module 'mb_cam' has no attribute 'delete_operation'\\n\\n=== AFTER CLEANUP ===\\nSetup: Setup1\\n  Op: Pocket_Rough_adaptive - adaptive2d\\n  Op: Pocket_Rough_adaptive1 - adaptive2d\\n  Op: Pocket_Rough_adaptive2 - adaptive2d\\n  Op: Pocket_Rough_adaptive3 - adaptive2d\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Check what mb functions are available\n    funcs = [x for x in dir(mb) if not x.startswith('_')]\n    print(\"Available mb functions/attributes:\")\n    for f in sorted(funcs):\n        print(f\"  {f}\")"
+        }
+      },
+      "result": "{\n    \"message\": \"Available mb functions/attributes:\\n  MM\\n  add_operation\\n  add_tool\\n  adsk\\n  create_setup\\n  faces\\n  generate\\n  get_cam\\n  inspect\\n  list_library_tools\\n  make_tool\\n  post\\n  probe\\n  time\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\nfrom adsk import core, fusion\ndef run(_context):\n    app = core.Application.get()\n    ui = app.userInterface\n    prod = app.activeProduct\n    design = fusion.Design.cast(prod)\n    cam = design.camDocuments[0].cam\n    \n    # Find Setup1\n    setup = None\n    for i in range(cam.setups.count):\n        s = cam.setups.item(i)\n        print(f\"Setup: {s.name}\")\n        if s.name == \"Setup1\":\n            setup = s\n            break\n    \n    if not setup:\n        print(\"Setup1 not found!\")\n        return\n    \n    print(f\"\\nOperations in Setup1 ({setup.operations.count}):\")\n    ops_to_delete = []\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name} (strategy: {op.operationDefinition.strategy})\")\n        if op.name.startswith(\"Pocket_Rough_adaptive\") and op.name != \"Pocket_Rough_adaptive\":\n            ops_to_delete.append(op.name)\n    \n    # Delete duplicates\n    for op_name in ops_to_delete:\n        for i in range(setup.operations.count):\n            op = setup.operations.item(i)\n            if op.name == op_name:\n                setup.operations.deleteOp(op)\n                print(f\"Deleted: {op_name}\")\n                break\n    \n    # Verify\n    print(f\"\\nAfter cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name}\")"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 46, in <module>\\n  File \\\"<string>\\\", line 9, in run\\nAttributeError: 'NoneType' object has no attribute 'camDocuments'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\nfrom adsk import core, fusion\ndef run(_context):\n    app = core.Application.get()\n    ui = app.userInterface\n    prod = app.activeProduct\n    design = fusion.Design.cast(prod)\n    \n    print(f\"Document type: {design.documentType}\")\n    print(f\"Active workspace: {app.activeWorkspace.id if app.activeWorkspace else 'None'}\")\n    \n    # Check for CAM\n    try:\n        cam_docs = dir(design)\n        print(f\"Design attributes with 'cam': {[x for x in cam_docs if 'cam' in x.lower()]}\")\n    except:\n        pass\n    \n    # Try to access CAM via product\n    print(f\"\\nProd id: {prod.id}\")\n    print(f\"Prod name: {prod.name}\")\n    \n    # Check if there's a camDocument property\n    attrs = [x for x in dir(prod) if not x.startswith('_')]\n    cam_attrs = [a for a in attrs if 'cam' in a.lower()]\n    print(f\"Product CAM-related attrs: {cam_attrs}\")"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 28, in <module>\\n  File \\\"<string>\\\", line 10, in run\\nAttributeError: 'NoneType' object has no attribute 'documentType'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Get CAM object via mb\n    cam = mb.get_cam()\n    \n    print(f\"CAM type: {type(cam)}\")\n    print(f\"CAM dir: {[x for x in dir(cam) if not x.startswith('_')]}\")\n    \n    # Find Setup1\n    setup = None\n    for i in range(cam.setups.count):\n        s = cam.setups.item(i)\n        print(f\"Setup: {s.name}\")\n        if s.name == \"Setup1\":\n            setup = s\n            break\n    \n    if not setup:\n        print(\"Setup1 not found!\")\n        return\n    \n    print(f\"\\nOperations in Setup1 ({setup.operations.count}):\")\n    ops_to_delete = []\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name} (strategy: {op.operationDefinition.strategy})\")\n        if op.name.startswith(\"Pocket_Rough_adaptive\") and op.name != \"Pocket_Rough_adaptive\":\n            ops_to_delete.append(op.name)\n    \n    # Delete duplicates\n    for op_name in ops_to_delete:\n        for i in range(setup.operations.count):\n            op = setup.operations.item(i)\n            if op.name == op_name:\n                setup.operations.deleteOp(op)\n                print(f\"Deleted: {op_name}\")\n                break\n    \n    # Verify\n    print(f\"\\nAfter cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name}\")"
+        }
+      },
+      "result": "{\n    \"error\": \"CAM type: <class 'adsk.cam.CAM'>\\nCAM dir: ['allMachines', 'allOperations', 'analyses', 'attributes', 'cast', 'checkAllToolpaths', 'checkToolpath', 'checkValidity', 'classType', 'clearAllToolpaths', 'clearMissingReferences', 'clearToolpath', 'customGraphicsGroups', 'deleteEntities', 'designRootOccurrence', 'documentStockMaterialLibrary', 'documentToolLibrary', 'export3MFForDefaultAdditiveSetup', 'exportManager', 'findAttributes', 'flatPatternOccurrences', 'generateAllSetupSheets', 'generateAllToolpaths', 'generateSetupSheet', 'generateTemplateXML', 'generateToolpath', 'genericPostFolder', 'getMachiningTime', 'importManager', 'inspectionResults', 'isValid', 'manufacturingModels', 'namedViews', 'ncPrograms', 'objectType', 'parentDocument', 'personalPostFolder', 'postProcess', 'postProcessAll', 'productType', 'selectionSets', 'setupActivated', 'setupActivating', 'setupChanged', 'setupCreated', 'setupDeactivated', 'setupDeactivating', 'setupDestroying', 'setupGroups', 'setups', 'temporaryFolder', 'this', 'thisown', 'unitsManager', 'workspaces']\\nSetup: Setup1\\n\\nOperations in Setup1 (4):\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 45, in <module>\\n  File \\\"<string>\\\", line 27, in run\\nAttributeError: 'Operation' object has no attribute 'operationDefinition'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\nfrom adsk import core, fusion\ndef run(_context):\n    cam = mb.get_cam()\n    \n    # Find Setup1\n    setup = None\n    for i in range(cam.setups.count):\n        s = cam.setups.item(i)\n        if s.name == \"Setup1\":\n            setup = s\n            break\n    \n    if not setup:\n        print(\"Setup1 not found!\")\n        return\n    \n    print(f\"Operations in Setup1 ({setup.operations.count}):\")\n    ops_to_delete = []\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: Name={op.name}\")\n        print(f\"      Dir: {[x for x in dir(op) if not x.startswith('_')][:20]}\")\n        \n        # Try to find the strategy\n        try:\n            strat = op.operationDefinition.strategy\n            print(f\"      Strategy: {strat}\")\n        except Exception as e:\n            print(f\"      Error getting strategy: {e}\")\n        \n        if op.name.startswith(\"Pocket_Rough_adaptive\") and op.name != \"Pocket_Rough_adaptive\":\n            ops_to_delete.append(op.name)\n    \n    # Delete duplicates\n    for op_name in ops_to_delete:\n        for i in range(setup.operations.count):\n            op = setup.operations.item(i)\n            if op.name == op_name:\n                setup.operations.deleteOp(op)\n                print(f\"Deleted: {op_name}\")\n                break\n    \n    # Verify\n    print(f\"\\nAfter cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        strat = op.operationDefinition.strategy\n        print(f\"  {i}: {op.name} ({strat})\")"
+        }
+      },
+      "result": "{\n    \"error\": \"Operations in Setup1 (4):\\n  0: Name=Pocket_Rough_adaptive\\n      Dir: ['attributes', 'cast', 'classType', 'copyAfter', 'copyBefore', 'copyInto', 'deleteMe', 'duplicate', 'error', 'generatedDataCollection', 'generatingProgress', 'hasError', 'hasMissingReferences', 'hasToolpath', 'hasWarning', 'isGenerating', 'isLightBulbOn', 'isOptional', 'isProtected', 'isSelected']\\n      Error getting strategy: 'Operation' object has no attribute 'operationDefinition'\\n  1: Name=Pocket_Rough_adaptive1\\n      Dir: ['attributes', 'cast', 'classType', 'copyAfter', 'copyBefore', 'copyInto', 'deleteMe', 'duplicate', 'error', 'generatedDataCollection', 'generatingProgress', 'hasError', 'hasMissingReferences', 'hasToolpath', 'hasWarning', 'isGenerating', 'isLightBulbOn', 'isOptional', 'isProtected', 'isSelected']\\n      Error getting strategy: 'Operation' object has no attribute 'operationDefinition'\\n  2: Name=Pocket_Rough_adaptive2\\n      Dir: ['attributes', 'cast', 'classType', 'copyAfter', 'copyBefore', 'copyInto', 'deleteMe', 'duplicate', 'error', 'generatedDataCollection', 'generatingProgress', 'hasError', 'hasMissingReferences', 'hasToolpath', 'hasWarning', 'isGenerating', 'isLightBulbOn', 'isOptional', 'isProtected', 'isSelected']\\n      Error getting strategy: 'Operation' object has no attribute 'operationDefinition'\\n  3: Name=Pocket_Rough_adaptive3\\n      Dir: ['attributes', 'cast', 'classType', 'copyAfter', 'copyBefore', 'copyInto', 'deleteMe', 'duplicate', 'error', 'generatedDataCollection', 'generatingProgress', 'hasError', 'hasMissingReferences', 'hasToolpath', 'hasWarning', 'isGenerating', 'isLightBulbOn', 'isOptional', 'isProtected', 'isSelected']\\n      Error getting strategy: 'Operation' object has no attribute 'operationDefinition'\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 51, in <module>\\n  File \\\"<string>\\\", line 41, in run\\nAttributeError: 'Operations' object has no attribute 'deleteOp'\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\nfrom adsk import core, fusion\ndef run(_context):\n    cam = mb.get_cam()\n    setup = cam.setups.item(0)\n    \n    # Check how to delete operations\n    ops_coll = setup.operations\n    print(f\"Operations collection methods: {[x for x in dir(ops_coll) if not x.startswith('_')]}\")\n    \n    # Try deleteOp vs deleteMe vs remove\n    op = ops_coll.item(1)\n    print(f\"\\nOperation item(1) methods: {[x for x in dir(op) if not x.startswith('_') and 'delete' in x.lower()]}\")"
+        }
+      },
+      "result": "{\n    \"message\": \"Operations collection methods: ['add', 'cast', 'classType', 'compatibleStrategies', 'count', 'createInput', 'isValid', 'item', 'itemByName', 'itemByOperationId', 'objectType', 'this', 'thisown']\\n\\nOperation item(1) methods: ['deleteMe']\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\nfrom adsk import core, fusion\ndef run(_context):\n    cam = mb.get_cam()\n    setup = cam.setups.item(0)\n    \n    print(f\"Before cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        strat = op.operationDefinition.strategy if hasattr(op, 'operationDefinition') else \"unknown\"\n        print(f\"  {i}: {op.name} ({strat})\")\n    \n    # Delete duplicate roughing ops (indices 1, 2, 3)\n    to_delete_names = [\"Pocket_Rough_adaptive1\", \"Pocket_Rough_adaptive2\", \"Pocket_Rough_adaptive3\"]\n    for op_name in to_delete_names:\n        try:\n            op = setup.operations.itemByName(op_name)\n            if op:\n                op.deleteMe()\n                print(f\"Deleted: {op_name}\")\n        except Exception as e:\n            print(f\"Error deleting {op_name}: {e}\")\n    \n    print(f\"\\nAfter cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        strat = op.operationDefinition.strategy if hasattr(op, 'operationDefinition') else \"unknown\"\n        print(f\"  {i}: {op.name} ({strat})\")"
+        }
+      },
+      "result": "{\n    \"message\": \"Before cleanup (4 ops):\\n  0: Pocket_Rough_adaptive (unknown)\\n  1: Pocket_Rough_adaptive1 (unknown)\\n  2: Pocket_Rough_adaptive2 (unknown)\\n  3: Pocket_Rough_adaptive3 (unknown)\\nDeleted: Pocket_Rough_adaptive1\\nDeleted: Pocket_Rough_adaptive2\\nDeleted: Pocket_Rough_adaptive3\\n\\nAfter cleanup (1 ops):\\n  0: Pocket_Rough_adaptive (unknown)\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Verify roughing still works after deletion\n    result = mb.generate(operation=\"Pocket_Rough_adaptive\")\n    print(\"=== ROUGHING GENERATE ===\")\n    print(json.dumps(result, indent=2))"
+        }
+      },
+      "result": "{\n    \"message\": \"=== ROUGHING GENERATE ===\\n{\\n  \\\"completed\\\": true,\\n  \\\"operations\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Rough_adaptive\\\",\\n      \\\"has_toolpath\\\": true,\\n      \\\"is_valid\\\": true\\n    }\\n  ]\\n}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\n\ndef run(_context):\n    # Operation 1: Pocket floor finishing (pocket2d)\n    print(\"=== Creating pocket floor finish ===\")\n    \n    floor_geom = {\n        \"faces\": [5],  # pocket floor at Z=30\n        \"type\": \"pocket\"\n    }\n    \n    result1 = mb.add_operation(\n        \"Setup1\",\n        strategy=\"pocket2d\",\n        tool=0,\n        stepover_mm=0.5,   # light pass for good surface finish\n        stepdown_mm=0.5,\n        geometry=floor_geom,\n        feeds={\n            \"cutting_mm_min\": 1350,   # 9000rpm * 0.05mm/t * 3flutes\n            \"plunge_mm_min\": 150,\n            \"ramp_mm_min\": 400,\n            \"spindle_rpm\": 9000\n        },\n        heights={\n            \"clearance_mm\": 10,\n            \"retract_mm\": 5\n        },\n        name=\"Pocket_Finish_floor\"\n    )\n    print(f\"Created: {result1}\")\n    \n    # Operation 2: Pocket wall finishing (contour2d on the opening face)\n    print(\"\\n=== Creating pocket wall finish ===\")\n    \n    # The pocket opening is on the top face (idx=13). contour2d will trace\n    # its inner loop boundaries to machine the walls.\n    wall_geom = {\n        \"faces\": [13],  # top face with pocket opening\n        \"type\": \"contour\",\n        \"loop\": \"OnlyInsideLoops\",  # machine only the pocket opening loop\n        \"side\": \"AlwaysInsideSideType\"  # cut on the inside (wall side)\n    }\n    \n    result2 = mb.add_operation(\n        \"Setup1\",\n        strategy=\"contour2d\",\n        tool=0,\n        stepover_mm=None,  # not used for contour\n        stepdown_mm=2.0,   # finish depth per pass (full wall height = 20mm)\n        geometry=wall_geom,\n        feeds={\n            \"cutting_mm_min\": 1350,\n            \"plunge_mm_min\": 150,\n            \"ramp_mm_min\": 400,\n            \"spindle_rpm\": 9000\n        },\n        heights={\n            \"clearance_mm\": 10,\n            \"retract_mm\": 5\n        },\n        name=\"Pocket_Finish_walls\"\n    )\n    print(f\"Created: {result2}\")\n    \n    # Check current state\n    state = mb.probe()\n    print(\"\\n=== CURRENT STATE ===\")\n    print(json.dumps(state, indent=2))\n\nrun(\"\")"
+        }
+      },
+      "result": "{\n    \"message\": \"=== Creating pocket floor finish ===\\nCreated: {'operation': 'Pocket_Finish_floor', 'stepover_param': 'maximumStepover', 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n\\n=== Creating pocket wall finish ===\\nCreated: {'operation': 'Pocket_Finish_walls', 'stepover_param': None, 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n\\n=== CURRENT STATE ===\\n{\\n  \\\"setups\\\": [\\n    {\\n      \\\"name\\\": \\\"Setup1\\\",\\n      \\\"operations\\\": [\\n        {\\n          \\\"name\\\": \\\"Pocket_Rough_adaptive\\\",\\n          \\\"strategy\\\": \\\"adaptive2d\\\",\\n          \\\"has_toolpath\\\": true,\\n          \\\"is_valid\\\": true,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_floor\\\",\\n          \\\"strategy\\\": \\\"pocket2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_walls\\\",\\n          \\\"strategy\\\": \\\"contour2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"cam_present\\\": true\\n}\\n=== Creating pocket floor finish ===\\nCreated: {'operation': 'Pocket_Finish_floor1', 'stepover_param': 'maximumStepover', 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n\\n=== Creating pocket wall finish ===\\nCreated: {'operation': 'Pocket_Finish_walls1', 'stepover_param': None, 'stepdown_param': 'maximumStepdown', 'tool_attached': True}\\n\\n=== CURRENT STATE ===\\n{\\n  \\\"setups\\\": [\\n    {\\n      \\\"name\\\": \\\"Setup1\\\",\\n      \\\"operations\\\": [\\n        {\\n          \\\"name\\\": \\\"Pocket_Rough_adaptive\\\",\\n          \\\"strategy\\\": \\\"adaptive2d\\\",\\n          \\\"has_toolpath\\\": true,\\n          \\\"is_valid\\\": true,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_floor\\\",\\n          \\\"strategy\\\": \\\"pocket2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_walls\\\",\\n          \\\"strategy\\\": \\\"contour2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_floor1\\\",\\n          \\\"strategy\\\": \\\"pocket2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_walls1\\\",\\n          \\\"strategy\\\": \\\"contour2d\\\",\\n          \\\"has_toolpath\\\": false,\\n          \\\"is_valid\\\": false,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"cam_present\\\": true\\n}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\nfrom adsk import core, fusion\ndef run(_context):\n    cam = mb.get_cam()\n    setup = cam.setups.item(0)\n    \n    print(f\"Before cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name}\")\n    \n    # Delete the duplicate ops (indices 3 and 4)\n    for idx in [3, 4]:\n        if idx < setup.operations.count:\n            op = setup.operations.item(idx)\n            op.deleteMe()\n            print(f\"Deleted: {op.name}\")\n    \n    print(f\"\\nAfter cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name}\")"
+        }
+      },
+      "result": "{\n    \"error\": \"Before cleanup (5 ops):\\n  0: Pocket_Rough_adaptive\\n  1: Pocket_Finish_floor\\n  2: Pocket_Finish_walls\\n  3: Pocket_Finish_floor1\\n  4: Pocket_Finish_walls1\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 24, in <module>\\n  File \\\"<string>\\\", line 18, in run\\n  File \\\"C:\\\\Users/Nanja/AppData/Local/Autodesk/webdeploy/production/441fa886a8bddbe651a2c8bfe18605e72308757a/Api/Python/packages\\\\adsk\\\\cam.py\\\", line 14344, in _get_name\\n    return _cam.OperationBase__get_name(self)\\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^\\nRuntimeError: 2 : InternalValidationError : ironObject.isValid()\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\nfrom adsk import core, fusion\ndef run(_context):\n    cam = mb.get_cam()\n    setup = cam.setups.item(0)\n    \n    print(f\"Before cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name}\")\n    \n    # Delete duplicates by name (in reverse order of creation to be safe)\n    dup_names = [\"Pocket_Finish_walls1\", \"Pocket_Finish_floor1\"]\n    for name in dup_names:\n        try:\n            op = setup.operations.itemByName(name)\n            if op:\n                op.deleteMe()\n                print(f\"Deleted: {name}\")\n        except Exception as e:\n            print(f\"Error deleting {name}: {e}\")\n    \n    print(f\"\\nAfter cleanup ({setup.operations.count} ops):\")\n    for i in range(setup.operations.count):\n        op = setup.operations.item(i)\n        print(f\"  {i}: {op.name}\")"
+        }
+      },
+      "result": "{\n    \"message\": \"Before cleanup (4 ops):\\n  0: Pocket_Rough_adaptive\\n  1: Pocket_Finish_floor\\n  2: Pocket_Finish_walls\\n  3: Pocket_Finish_walls1\\nDeleted: Pocket_Finish_walls1\\nError deleting Pocket_Finish_floor1: 2 : InternalValidationError : pIronObjectBase\\n\\nAfter cleanup (3 ops):\\n  0: Pocket_Rough_adaptive\\n  1: Pocket_Finish_floor\\n  2: Pocket_Finish_walls\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    # Generate pocket floor finish\n    print(\"=== Generating Pocket_Finish_floor ===\")\n    result1 = mb.generate(operation=\"Pocket_Finish_floor\")\n    print(json.dumps(result1, indent=2))\n    \n    print(\"\\n=== Generating Pocket_Finish_walls ===\")\n    result2 = mb.generate(operation=\"Pocket_Finish_walls\")\n    print(json.dumps(result2, indent=2))"
+        }
+      },
+      "result": "{\n    \"message\": \"=== Generating Pocket_Finish_floor ===\\n{\\n  \\\"completed\\\": true,\\n  \\\"operations\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Finish_floor\\\",\\n      \\\"has_toolpath\\\": true,\\n      \\\"is_valid\\\": true\\n    }\\n  ]\\n}\\n\\n=== Generating Pocket_Finish_walls ===\\n{\\n  \\\"completed\\\": true,\\n  \\\"operations\\\": [\\n    {\\n      \\\"name\\\": \\\"Pocket_Finish_walls\\\",\\n      \\\"has_toolpath\\\": true,\\n      \\\"is_valid\\\": true\\n    }\\n  ]\\n}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\nimport json\ndef run(_context):\n    state = mb.probe()\n    print(\"=== FINAL CAM SETUP VERIFICATION ===\")\n    print(json.dumps(state, indent=2))"
+        }
+      },
+      "result": "{\n    \"message\": \"=== FINAL CAM SETUP VERIFICATION ===\\n{\\n  \\\"setups\\\": [\\n    {\\n      \\\"name\\\": \\\"Setup1\\\",\\n      \\\"operations\\\": [\\n        {\\n          \\\"name\\\": \\\"Pocket_Rough_adaptive\\\",\\n          \\\"strategy\\\": \\\"adaptive2d\\\",\\n          \\\"has_toolpath\\\": true,\\n          \\\"is_valid\\\": true,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_floor\\\",\\n          \\\"strategy\\\": \\\"pocket2d\\\",\\n          \\\"has_toolpath\\\": true,\\n          \\\"is_valid\\\": true,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        },\\n        {\\n          \\\"name\\\": \\\"Pocket_Finish_walls\\\",\\n          \\\"strategy\\\": \\\"contour2d\\\",\\n          \\\"has_toolpath\\\": true,\\n          \\\"is_valid\\\": true,\\n          \\\"tool_diameter_mm\\\": 9.525\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"cam_present\\\": true\\n}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    }
+  ],
+  "provenance": {
+    "system_prompt_sha": "a1ffdbe63487",
+    "mb_cam_sha": "4752183a2b99",
+    "task_file": "C:\\Users\\Nanja\\MachineBench\\tasks\\box_pocket_detailed.yaml",
+    "cad_file": null,
+    "cloud_cad": "Pocket Box",
+    "cloud_cad_file_id": "urn:adsk.wipprod:dm.lineage:QLatPThkSNmoSr8zqnh-6A",
+    "cloud_results_name": "Pocket Box__detailed__0627_0016",
+    "fusion_hub": "Team hub - Nathan Tsoi",
+    "fusion_project": "Examples",
+    "fusion_mcp_url": "http://127.0.0.1:62277/mcp"
+  },
+  "artifacts": {
+    "video": null,
+    "image": null
+  },
+  "cam_summary": {
+    "doc": "Pocket Box__detailed__0627_0016",
+    "cam_product": true,
+    "setups": [
+      {
+        "name": "Setup1",
+        "strategy": "setup",
+        "operation_type": 0,
+        "stock_mode": 1,
+        "stock_size_mm": [
+          102.0,
+          102.0,
+          51.0
+        ],
+        "machine": {
+          "vendor": "HAAS",
+          "model": "Mini Mill"
+        },
+        "operations": [
+          {
+            "name": "Pocket_Rough_adaptive",
+            "strategy": "adaptive2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "0.3cm",
+            "stepdown": "0.3cm",
+            "tool": {
+              "number": 7,
+              "type": "flat end mill",
+              "diameter": "0.375in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Pocket_Finish_floor",
+            "strategy": "pocket2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "0.05cm",
+            "stepdown": "0.05cm",
+            "tool": {
+              "number": 7,
+              "type": "flat end mill",
+              "diameter": "0.375in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Pocket_Finish_walls",
+            "strategy": "contour2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "Math.max((tool_diameter - (2 * tool_cornerRadius)) * 0.95; tool_diameter * 0.20)",
+            "stepdown": "0.2cm",
+            "tool": {
+              "number": 7,
+              "type": "flat end mill",
+              "diameter": "0.375in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.in",
+              "flutes": 3
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
