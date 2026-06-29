@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-27T22:41:46.481582+00:00",
-  "n_runs": 19,
+  "generated": "2026-06-29T04:25:41.760175+00:00",
+  "n_runs": 25,
   "group_order": [
     "outcome",
     "post",
@@ -103,6 +103,13 @@
           "fmt": "pct"
         },
         {
+          "key": "iou_voxel",
+          "section": "post",
+          "label": "IoU",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
           "key": "input_tokens",
           "section": "auto",
           "label": "In tok",
@@ -183,37 +190,37 @@
       "models": [
         {
           "model": "Claude Sonnet 4.6",
-          "runs": 7,
+          "runs": 13,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.934429,
-              "lo": 0.908425,
-              "hi": 0.954714,
-              "n": 7
+              "mean": 0.910077,
+              "lo": 0.873381,
+              "hi": 0.942692,
+              "n": 13
             },
             "tool_calls_total": {
-              "mean": 38.857143,
-              "lo": 28.0,
-              "hi": 51.435714,
-              "n": 7
+              "mean": 31.538462,
+              "lo": 24.384615,
+              "hi": 40.078846,
+              "n": 13
             },
             "tool_calls_succeeded": {
-              "mean": 36.0,
-              "lo": 26.428571,
-              "hi": 46.714286,
-              "n": 7
+              "mean": 28.615385,
+              "lo": 22.153846,
+              "hi": 36.309615,
+              "n": 13
             },
             "tool_calls_failed": {
-              "mean": 2.857143,
-              "lo": 1.428571,
-              "hi": 4.857143,
-              "n": 7
+              "mean": 2.923077,
+              "lo": 1.767308,
+              "hi": 4.307692,
+              "n": 13
             },
             "hit_round_limit": {
-              "mean": 0.285714,
+              "mean": 0.153846,
               "lo": 0.0,
-              "hi": 0.571429,
-              "n": 7
+              "hi": 0.384615,
+              "n": 13
             },
             "scallop_height_mm": {
               "mean": 0.0,
@@ -257,71 +264,77 @@
               "hi": null,
               "n": 0
             },
+            "iou_voxel": {
+              "mean": 0.808125,
+              "lo": 0.69485,
+              "hi": 0.9214,
+              "n": 4
+            },
             "input_tokens": {
-              "mean": 1567535.857143,
-              "lo": 917281.428571,
-              "hi": 2434734.114286,
-              "n": 7
+              "mean": 1130891.076923,
+              "lo": 716952.263462,
+              "hi": 1689317.142308,
+              "n": 13
             },
             "output_tokens": {
-              "mean": 26415.142857,
-              "lo": 17077.571429,
-              "hi": 39011.857143,
-              "n": 7
+              "mean": 19246.384615,
+              "lo": 12935.053846,
+              "hi": 27556.644231,
+              "n": 13
             },
             "cache_read_input_tokens": {
-              "mean": 1436174.6,
-              "lo": 723285.4,
-              "hi": 2628574.2,
-              "n": 5
+              "mean": 971021.727273,
+              "lo": 597294.952273,
+              "hi": 1564170.45,
+              "n": 11
             },
             "cache_creation_input_tokens": {
-              "mean": 60591.4,
-              "lo": 42475.8,
-              "hi": 86400.0,
-              "n": 5
+              "mean": 48297.636364,
+              "lo": 38669.7,
+              "hi": 62391.856818,
+              "n": 11
             },
             "llm_rounds": {
-              "mean": 38.857143,
-              "lo": 28.996429,
-              "hi": 50.0,
-              "n": 7
+              "mean": 32.0,
+              "lo": 25.382692,
+              "hi": 39.692308,
+              "n": 13
             },
             "llm_s": {
-              "mean": 407.167143,
-              "lo": 284.78,
-              "hi": 571.711857,
-              "n": 7
+              "mean": 310.806923,
+              "lo": 227.449269,
+              "hi": 421.197635,
+              "n": 13
             },
             "tool_s": {
-              "mean": 23.125714,
-              "lo": 15.71,
-              "hi": 34.678107,
-              "n": 7
+              "mean": 20.836154,
+              "lo": 16.076788,
+              "hi": 27.535019,
+              "n": 13
             },
             "wall_clock_s": {
-              "mean": 430.562857,
-              "lo": 302.55,
-              "hi": 606.101643,
-              "n": 7
+              "mean": 331.921538,
+              "lo": 245.415,
+              "hi": 449.453731,
+              "n": 13
             },
             "tool_inputs_repaired": {
               "mean": 0.0,
               "lo": 0.0,
               "hi": 0.0,
-              "n": 2
+              "n": 8
             },
             "mb_injected_calls": {
-              "mean": 26.5,
-              "lo": 24.0,
-              "hi": 29.0,
-              "n": 2
+              "mean": 23.875,
+              "lo": 20.875,
+              "hi": 26.875,
+              "n": 8
             },
             "aborted": {
               "mean": 0.0,
               "lo": 0.0,
               "hi": 0.0,
-              "n": 2
+              "n": 8
             }
           },
           "run_index": [
@@ -364,6 +377,42 @@
             {
               "run_id": "d2f7c1a9-cba1-4afd-974a-d086b226d2d6",
               "timestamp": "2026-06-27T17:41:43.846237",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "0befd64f-ccf1-48f8-8bb9-84762f256c55",
+              "timestamp": "2026-06-27T18:43:10.636836",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "e88ba5a2-981d-4424-910f-b21951ec41b8",
+              "timestamp": "2026-06-27T19:02:26.168690",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "21a9a830-7f5e-45ac-82eb-e1cfdbb0bf69",
+              "timestamp": "2026-06-28T19:20:51.273518",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "2466475e-4b3e-4e41-9528-11a5af9d9f19",
+              "timestamp": "2026-06-28T20:05:27.881187",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "b4aff727-9b32-4600-82de-44e7b5076a4e",
+              "timestamp": "2026-06-28T20:32:32.988314",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "38572cf5-f056-4323-919b-2f404b8e5c3f",
+              "timestamp": "2026-06-28T23:20:06.222822",
               "trial_index": 0,
               "prompt_variant": null
             }
@@ -440,6 +489,12 @@
               "n": 0
             },
             "air_cut_ratio": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "iou_voxel": {
               "mean": null,
               "lo": null,
               "hi": null,
@@ -592,6 +647,12 @@
               "n": 0
             },
             "air_cut_ratio": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "iou_voxel": {
               "mean": null,
               "lo": null,
               "hi": null,
@@ -972,8 +1033,8 @@
     "cells": {
       "Claude Sonnet 4.6": {
         "box_pocket_detailed": {
-          "runs": 7,
-          "graded": 1
+          "runs": 13,
+          "graded": 5
         },
         "box_pocket_minimal": {
           "runs": 0,
