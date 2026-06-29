@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-29T16:59:06.634122+00:00",
-  "n_runs": 29,
+  "generated": "2026-06-29T17:03:34.126740+00:00",
+  "n_runs": 30,
   "group_order": [
     "outcome",
     "post",
@@ -1168,6 +1168,34 @@
           "fmt": "pct"
         },
         {
+          "key": "iou_voxel",
+          "section": "post",
+          "label": "IoU",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "operation_count",
+          "section": "post",
+          "label": "Ops",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_change_count",
+          "section": "post",
+          "label": "Tool changes",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "air_cut_ratio",
+          "section": "post",
+          "label": "Air-cut",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
           "key": "input_tokens",
           "section": "auto",
           "label": "In tok",
@@ -1247,6 +1275,140 @@
       ],
       "models": [
         {
+          "model": "Claude Sonnet 4.6",
+          "runs": 1,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 1.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 20.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 20.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "iou_voxel": {
+              "mean": 0.9328,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "operation_count": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_change_count": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "air_cut_ratio": {
+              "mean": 0.0672,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "input_tokens": {
+              "mean": 479026.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "output_tokens": {
+              "mean": 6990.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_read_input_tokens": {
+              "mean": 457156.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_creation_input_tokens": {
+              "mean": 21848.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_rounds": {
+              "mean": 21.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_s": {
+              "mean": 156.52,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_s": {
+              "mean": 15.69,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "wall_clock_s": {
+              "mean": 172.47,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "mb_injected_calls": {
+              "mean": 20.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "aborted": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            }
+          },
+          "run_index": [
+            {
+              "run_id": "a386b41e-47ae-47de-949d-06c934767723",
+              "timestamp": "2026-06-29T12:02:05.998568",
+              "trial_index": 0,
+              "prompt_variant": null
+            }
+          ]
+        },
+        {
           "model": "Qwen3.6-35B-A3B",
           "runs": 3,
           "cells": {
@@ -1279,6 +1441,30 @@
               "lo": 0.0,
               "hi": 0.0,
               "n": 3
+            },
+            "iou_voxel": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "operation_count": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "tool_change_count": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
+            },
+            "air_cut_ratio": {
+              "mean": null,
+              "lo": null,
+              "hi": null,
+              "n": 0
             },
             "input_tokens": {
               "mean": 397394.0,
@@ -1393,8 +1579,8 @@
           "graded": 1
         },
         "box_pocket_minimal": {
-          "runs": 0,
-          "graded": 0
+          "runs": 1,
+          "graded": 1
         }
       },
       "Qwen3-35B-A22B": {
