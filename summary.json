@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-29T16:51:12.043712+00:00",
-  "n_runs": 28,
+  "generated": "2026-06-29T16:59:06.634122+00:00",
+  "n_runs": 29,
   "group_order": [
     "outcome",
     "post",
@@ -797,6 +797,339 @@
       ]
     },
     {
+      "name": "box_pocket_explicit",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "iou_voxel",
+          "section": "post",
+          "label": "IoU",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "operation_count",
+          "section": "post",
+          "label": "Ops",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_change_count",
+          "section": "post",
+          "label": "Tool changes",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "scallop_height_mm",
+          "section": "post",
+          "label": "Scallop (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "radial_engagement_pct",
+          "section": "post",
+          "label": "Radial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "engagement_ok",
+          "section": "post",
+          "label": "Engagement OK",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "axial_engagement_pct",
+          "section": "post",
+          "label": "Axial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "air_cut_ratio",
+          "section": "post",
+          "label": "Air-cut",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "Claude Sonnet 4.6",
+          "runs": 1,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.882,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 34.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 30.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 4.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "iou_voxel": {
+              "mean": 0.9214,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "operation_count": {
+              "mean": 3.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_change_count": {
+              "mean": 2.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "scallop_height_mm": {
+              "mean": 0.3332,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "radial_engagement_pct": {
+              "mean": 36.7454,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "engagement_ok": {
+              "mean": 1.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "axial_engagement_pct": {
+              "mean": 44.1422,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "air_cut_ratio": {
+              "mean": 0.089,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "input_tokens": {
+              "mean": 1252625.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "output_tokens": {
+              "mean": 20444.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_read_input_tokens": {
+              "mean": 1203578.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "cache_creation_input_tokens": {
+              "mean": 49011.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_rounds": {
+              "mean": 35.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "llm_s": {
+              "mean": 383.06,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_s": {
+              "mean": 16.73,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "wall_clock_s": {
+              "mean": 399.97,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "mb_injected_calls": {
+              "mean": 33.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            },
+            "aborted": {
+              "mean": 0.0,
+              "lo": null,
+              "hi": null,
+              "n": 1
+            }
+          },
+          "run_index": [
+            {
+              "run_id": "cb7f5a03-0431-4ec6-b919-7d267ae0736b",
+              "timestamp": "2026-06-29T11:58:01.847167",
+              "trial_index": 0,
+              "prompt_variant": null
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "box_pocket_minimal",
       "metrics": [
         {
@@ -1046,6 +1379,7 @@
     ],
     "tasks": [
       "box_pocket_detailed",
+      "box_pocket_explicit",
       "box_pocket_minimal"
     ],
     "cells": {
@@ -1053,6 +1387,10 @@
         "box_pocket_detailed": {
           "runs": 16,
           "graded": 8
+        },
+        "box_pocket_explicit": {
+          "runs": 1,
+          "graded": 1
         },
         "box_pocket_minimal": {
           "runs": 0,
@@ -1064,6 +1402,10 @@
           "runs": 1,
           "graded": 0
         },
+        "box_pocket_explicit": {
+          "runs": 0,
+          "graded": 0
+        },
         "box_pocket_minimal": {
           "runs": 0,
           "graded": 0
@@ -1072,6 +1414,10 @@
       "Qwen3.6-35B-A3B": {
         "box_pocket_detailed": {
           "runs": 8,
+          "graded": 0
+        },
+        "box_pocket_explicit": {
+          "runs": 0,
           "graded": 0
         },
         "box_pocket_minimal": {
