@@ -392,6 +392,10 @@ function buildTabs() {
 async function init() {
   try {
     const res = await fetch("summary.json", { cache: "no-store" });
+    if (!/json/.test(res.headers.get("content-type") ?? "")) {
+      window.location.replace("/");
+      return;
+    }
     DATA = await res.json();
   } catch (e) {
     $("#sub").textContent = "failed to load summary.json";
