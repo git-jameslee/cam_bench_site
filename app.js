@@ -175,8 +175,16 @@ function renderTask(name) {
         anyDash = true;
         td = el("td", { class: "dash" }, DASH);
       } else {
-        td = el("td", {}, fmtMain(m.fmt, c.mean));
-        if (showCI() && c.lo != null) td.append(el("span", { class: "ci" }, " " + fmtRange(m.fmt, c.lo, c.hi)));
+        const ciMargin = mod[m.key + "_ci_margin"];
+        const ciLow    = mod[m.key + "_ci_low"];
+        const ciHigh   = mod[m.key + "_ci_high"];
+        const tdAttrs  = (showCI() && ciLow != null && ciHigh != null)
+          ? { title: "[" + fmtMain(m.fmt, ciLow) + ", " + fmtMain(m.fmt, ciHigh) + "]" }
+          : {};
+        td = el("td", tdAttrs, fmtMain(m.fmt, c.mean));
+        if (showCI() && ciMargin != null) {
+          td.append(el("span", { class: "ci" }, " ±" + fmtMain(m.fmt, ciMargin)));
+        }
       }
       if (m.group !== prevG) { td.classList.add("grp"); prevG = m.group; }
       tr.append(td);
