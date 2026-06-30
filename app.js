@@ -392,7 +392,7 @@ function buildTabs() {
 async function init() {
   try {
     const res = await fetch("summary.json", { cache: "no-store" });
-    if (!/json/.test(res.headers.get("content-type") ?? "")) {
+    if (!res.ok || !/json/.test(res.headers.get("content-type") ?? "")) {
       window.location.replace("/");
       return;
     }

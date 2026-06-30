@@ -83,5 +83,10 @@ export async function onRequest(context) {
   const cookies = (request.headers.get("Cookie") || "").split(";").map((c) => c.trim());
   if (cookies.includes(`${COOKIE}=${token}`)) return next();
 
+  // Non-HTML requests (fetch() for JSON assets) get a 401 so clients can
+  // detect auth failure without trying to parse the login-page HTML as JSON.
+  if (!(request.headers.get("Accept") || "").includes("text/html")) {
+    return new Response("", { status: 401 });
+  }
   return loginPage();
 }
