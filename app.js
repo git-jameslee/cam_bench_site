@@ -1,6 +1,6 @@
 // app.js — renders bench_site/summary.json into per-task tables.
 // Columns are grouped (outcome / post / subjective / tokens / time); each group
-// has a show/hide toggle. Cells show mean with an optional 95% bootstrap CI.
+// has a show/hide toggle. Cells show mean with an optional 95% t-distribution CI.
 
 const DASH = "—";
 const GROUP_LABEL = {
@@ -79,15 +79,6 @@ function fmtMain(fmt, v) {
   if (fmt === "secs") return v.toFixed(1) + "s";
   if (fmt === "score1") return v.toFixed(1);
   return v.toFixed(2); // score2
-}
-
-function fmtRange(fmt, lo, hi) {
-  if (fmt === "pct") return `[${Math.round(lo * 100)}–${Math.round(hi * 100)}]`;
-  if (fmt === "count") return `[${Math.round(lo)}–${Math.round(hi)}]`;
-  if (fmt === "tokens") return `[${compact(lo)}–${compact(hi)}]`;
-  if (fmt === "secs") return `[${lo.toFixed(1)}–${hi.toFixed(1)}]`;
-  if (fmt === "score1") return `[${lo.toFixed(1)}–${hi.toFixed(1)}]`;
-  return `[${lo.toFixed(2)}–${hi.toFixed(2)}]`;
 }
 
 function el(tag, attrs = {}, ...kids) {

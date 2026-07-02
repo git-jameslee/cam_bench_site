@@ -152,6 +152,10 @@
           50.0
         ],
         "machine": null,
+        "machining_time_s": null,
+        "feed_time_s": null,
+        "rapid_time_s": null,
+        "tool_change_time_s": null,
         "operations": []
       }
     ]

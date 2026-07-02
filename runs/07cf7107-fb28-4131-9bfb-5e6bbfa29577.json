@@ -467,6 +467,10 @@
         "stock_mode": 0,
         "stock_size_mm": null,
         "machine": null,
+        "machining_time_s": null,
+        "feed_time_s": null,
+        "rapid_time_s": null,
+        "tool_change_time_s": null,
         "operations": [
           {
             "name": "Pocket Roughing - Adaptive",
