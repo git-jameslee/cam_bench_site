@@ -222,32 +222,13 @@ function renderLeaderboard() {
     "↑ higher is better, ↓ lower is better. ● = best mean in this view (a win; ties share it; a metric only 1 model has data for is uncontested). Curated scoring metrics only — token / time diagnostics never count toward wins."));
 }
 
-// The model's variant × task_group matrix of the headline metric.
-function variantMatrixTable(mtx, lb) {
-  const H = lb.headline;
-  const sub = el("table", { class: "subtable" });
-  const sh = el("tr");
-  sh.append(el("th", {}, "variant"));
-  lb.task_groups.forEach((g) => sh.append(el("th", { title: g }, taskShort(g))));
-  sub.append(el("thead", {}, sh));
-  const sb = el("tbody");
-  Object.entries(mtx).forEach(([v, cells]) => {
-    const r = el("tr");
-    r.append(el("td", {}, v));
-    lb.task_groups.forEach((g) => {
-      const c = cells[g];
-      r.append(headlineCell(H, c, "", c && c.n ? `n=${c.n}` : null));
-    });
-    sb.append(r);
-  });
-  sub.append(sb);
-  return sub;
-}
+// Always show all three ablation variants under a task, even unrun ones.
+const VARIANT_ORDER = ["minimal", "explicit", "detailed"];
 
 // Model detail page (#model=<name>, opened in a new tab from the leaderboard):
-// logo + name header, the variant × task headline matrix, then per-task run
-// tables with the transcript / produced-CAM drill-down that used to live
-// under the task tabs.
+// logo + name header, then a task accordion — click a task to reveal its three
+// prompt variants, click a variant to lazy-load that variant's runs with the
+// transcript / produced-CAM drill-down.
 function renderModel(name) {
   const lb = DATA.leaderboard;
   const H = lb.headline;
@@ -260,38 +241,105 @@ function renderModel(name) {
   panel.append(head);
 
   const all = lb.boards.all;
-  const idx = all.models.findIndex((e) => e.model === name);
-  if (idx >= 0) {
-    const e = all.models[idx];
-    const bits = [`rank #${idx + 1}`, `${e.runs} runs`,
-                  `wins ${e.wins}/${all.contested}`];
-    if (e.headline.mean != null) {
-      bits.push(`${H.label} ${fmtMain(H.fmt, e.headline.mean)}` +
-        (e.headline.ci_margin != null ? ` ±${fmtMain(H.fmt, e.headline.ci_margin)}` : ""));
+  const idx = all.models.findIndex((x) => x.model === name);
+  const allEntry = idx >= 0 ? all.models[idx] : null;
+  if (allEntry) {
+    const bits = [`rank #${idx + 1}`, `${allEntry.runs} runs`,
+                  `wins ${allEntry.wins}/${all.contested}`];
+    if (allEntry.headline.mean != null) {
+      bits.push(`${H.label} ${fmtMain(H.fmt, allEntry.headline.mean)}` +
+        (allEntry.headline.ci_margin != null
+          ? ` ±${fmtMain(H.fmt, allEntry.headline.ci_margin)}` : ""));
     }
     panel.append(el("div", { class: "note" }, bits.join(" · ") + " (all variants)"));
   }
 
-  panel.append(el("div", { class: "detail-h" }, `${H.label} by prompt variant`));
-  const mtx = lb.matrix[name] || {};
-  if (Object.keys(mtx).length) {
-    panel.append(el("div", { class: "scroll" }, variantMatrixTable(mtx, lb)));
-  } else {
-    panel.append(el("div", { class: "note" }, `no ${H.label}-graded runs yet`));
-  }
+  panel.append(el("div", { class: "detail-h" }, "Tasks"));
+  panel.append(el("div", { class: "note" },
+    `Click a task for its prompt variants, then a variant to load that variant's runs (metrics, transcript, produced CAM). ${H.label} is shown at every level.`));
 
+  const table = el("table");
+  const hrow = el("tr");
+  ["task", "runs", H.label].forEach((h) => hrow.append(el("th", {}, h)));
+  table.append(el("thead", {}, hrow));
+  const body = el("tbody");
+  const mtx = lb.matrix[name] || {};
   let any = false;
-  DATA.tasks.forEach((task) => {
-    const mod = task.models.find((m) => m.model === name);
-    const runIndex = (mod && mod.run_index) || [];
-    if (!runIndex.length) return;
+
+  lb.task_groups.forEach((g) => {
+    // One slot per canonical variant (kept even when unrun, so the ablation
+    // grid is visible), plus a fallback slot for a suffix-less task name.
+    const slots = VARIANT_ORDER.map((v) => {
+      const t = DATA.tasks.find((x) => x.name === g + "_" + v);
+      const mod = t && t.models.find((m) => m.model === name);
+      return { v, task: t, runIndex: (mod && mod.run_index) || [],
+               iou: (mtx[v] || {})[g] };
+    });
+    const bare = DATA.tasks.find((x) => x.name === g);
+    if (bare) {
+      const mod = bare.models.find((m) => m.model === name);
+      if (mod && (mod.run_index || []).length) {
+        slots.push({ v: "(no variant)", task: bare, runIndex: mod.run_index, iou: null });
+      }
+    }
+    const total = slots.reduce((s, p) => s + p.runIndex.length, 0);
+    if (!total) return; // this model never ran the task
     any = true;
-    panel.append(el("h2", { class: "tasksec" }, task.name));
-    const cols = task.metrics.filter((m) => visible.has(m.group));
-    const box = el("div", { class: "scroll" });
-    panel.append(box);
-    renderRunDetail(box, runIndex, cols);
+
+    const trow = el("tr", { class: "expandable" });
+    const tcell = el("td", { class: "model" });
+    tcell.append(el("span", { class: "caret" }, "▸"), g);
+    trow.append(tcell);
+    trow.append(el("td", {}, "" + total));
+    trow.append(headlineCell(H, allEntry && allEntry.tasks[g], "",
+      `mean ${H.label} across all variants`));
+    body.append(trow);
+
+    const tdetail = el("tr", { class: "detail hidden" });
+    const tdcell = el("td", { class: "detailcell", colspan: "3" });
+    const vt = el("table", { class: "subtable" });
+    const vh = el("tr");
+    ["variant", "runs", H.label].forEach((h) => vh.append(el("th", {}, h)));
+    vt.append(el("thead", {}, vh));
+    const vb = el("tbody");
+    slots.forEach((p) => {
+      const has = p.runIndex.length > 0;
+      const vr = el("tr", has ? { class: "expandable" } : {});
+      const vc = el("td", has ? {} : { class: "dash" });
+      if (has) vc.append(el("span", { class: "caret" }, "▸"));
+      vc.append(p.v);
+      vr.append(vc);
+      vr.append(el("td", has ? {} : { class: "dash" },
+        has ? "" + p.runIndex.length : "no runs"));
+      vr.append(headlineCell(H, p.iou, "", p.iou && p.iou.n ? `n=${p.iou.n}` : null));
+      vb.append(vr);
+      if (!has) return;
+      const vdetail = el("tr", { class: "detail hidden" });
+      const vdcell = el("td", { class: "detailcell", colspan: "3" });
+      vdetail.append(vdcell);
+      vb.append(vdetail);
+      let loaded = false;
+      vr.onclick = () => {
+        const open = vdetail.classList.toggle("hidden") === false;
+        vr.classList.toggle("open", open);
+        if (open && !loaded) {
+          loaded = true;
+          const cols = p.task.metrics.filter((m) => visible.has(m.group));
+          renderRunDetail(vdcell, p.runIndex, cols);
+        }
+      };
+    });
+    vt.append(vb);
+    tdcell.append(vt);
+    tdetail.append(tdcell);
+    body.append(tdetail);
+    trow.onclick = () => {
+      const open = tdetail.classList.toggle("hidden") === false;
+      trow.classList.toggle("open", open);
+    };
   });
+  table.append(body);
+  panel.append(el("div", { class: "scroll" }, table));
   if (!any) panel.append(el("div", { class: "note" }, "no runs logged for this model"));
 }
 
