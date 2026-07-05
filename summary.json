@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-05T05:21:31.195512+00:00",
+  "generated": "2026-07-05T05:31:21.503251+00:00",
   "n_runs": 35,
   "group_order": [
     "outcome",
@@ -1241,109 +1241,109 @@
               "run_id": "ee4ba413-aced-46ac-b70a-8497d7a7edd2",
               "timestamp": "2026-06-24T18:03:22.145348",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "07cf7107-fb28-4131-9bfb-5e6bbfa29577",
               "timestamp": "2026-06-25T12:02:45.873299",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "b4354992-79a5-475c-abc0-c64edbe7a176",
               "timestamp": "2026-06-25T19:12:15.288533",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "7b6e4975-f34d-42d8-bef7-4189c9990f55",
               "timestamp": "2026-06-25T19:56:28.645760",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "2f919bb6-d0f5-4d9c-82ad-261174e275b3",
               "timestamp": "2026-06-26T11:32:01.769409",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "bf7e00ea-c32e-4cf8-b7bb-c4b79cf02f88",
               "timestamp": "2026-06-27T17:07:17.268084",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "d2f7c1a9-cba1-4afd-974a-d086b226d2d6",
               "timestamp": "2026-06-27T17:41:43.846237",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "0befd64f-ccf1-48f8-8bb9-84762f256c55",
               "timestamp": "2026-06-27T18:43:10.636836",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "e88ba5a2-981d-4424-910f-b21951ec41b8",
               "timestamp": "2026-06-27T19:02:26.168690",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "21a9a830-7f5e-45ac-82eb-e1cfdbb0bf69",
               "timestamp": "2026-06-28T19:20:51.273518",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "2466475e-4b3e-4e41-9528-11a5af9d9f19",
               "timestamp": "2026-06-28T20:05:27.881187",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "b4aff727-9b32-4600-82de-44e7b5076a4e",
               "timestamp": "2026-06-28T20:32:32.988314",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "38572cf5-f056-4323-919b-2f404b8e5c3f",
               "timestamp": "2026-06-28T23:20:06.222822",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "71fdc7a9-8ef8-4825-8bbc-3b85aa856a2e",
               "timestamp": "2026-06-29T00:13:36.633669",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "2bbe8ba7-1132-4958-b6d5-0fc45f563117",
               "timestamp": "2026-06-29T00:27:50.873149",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "9bea8dc9-307e-4870-89c6-7d3de5d4aa5d",
               "timestamp": "2026-06-29T11:50:04.491476",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "7ce8d439-22ce-466c-ba85-5b2a9ebe3fda",
               "timestamp": "2026-07-01T22:14:49.307963",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "b9aab6d1-0c5e-4415-b99b-128e7f2f02fe",
               "timestamp": "2026-07-04T23:08:21.338569",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             }
           ]
         },
@@ -1597,7 +1597,7 @@
               "run_id": "369f7435-45bd-4e1b-9ed7-0651fb3f6a6d",
               "timestamp": "2026-06-26T23:47:57.988438",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             }
           ]
         },
@@ -1851,49 +1851,49 @@
               "run_id": "1025634a-7769-430a-9e96-316bba34632f",
               "timestamp": "2026-06-26T21:11:13.956421",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "b4527cfb-c17d-4ddc-b896-113e74a5adaf",
               "timestamp": "2026-06-26T21:59:40.243689",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "951b99ed-272c-4f40-b9f1-727001a17791",
               "timestamp": "2026-06-26T22:38:45.194385",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "a7117fcc-dab7-4a24-9ba8-531c8d5e08ff",
               "timestamp": "2026-06-26T23:08:13.063860",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "15ba4c28-df60-4b6e-8b1a-c11ff22d5c52",
               "timestamp": "2026-06-26T23:32:19.775246",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "81d4c3bb-a45b-45ad-afba-1a9a0114f3e7",
               "timestamp": "2026-06-27T00:28:15.078857",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "44d0ef5d-d7e0-480c-828f-1f61ceef99c5",
               "timestamp": "2026-06-27T16:31:49.806751",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             },
             {
               "run_id": "83ea5864-0b5b-41b4-a412-a562197e68e6",
               "timestamp": "2026-06-27T16:59:09.383396",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             }
           ]
         }
@@ -2274,7 +2274,7 @@
               "run_id": "cb7f5a03-0431-4ec6-b919-7d267ae0736b",
               "timestamp": "2026-06-29T11:58:01.847167",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "explicit"
             }
           ]
         }
@@ -2655,19 +2655,19 @@
               "run_id": "a386b41e-47ae-47de-949d-06c934767723",
               "timestamp": "2026-06-29T12:02:05.998568",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "minimal"
             },
             {
               "run_id": "f4520b32-3447-4f38-9957-085470e8bb55",
               "timestamp": "2026-06-30T17:13:47.515821",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "minimal"
             },
             {
               "run_id": "554709e5-a44e-47f4-9124-60b10424e506",
               "timestamp": "2026-06-30T17:33:17.567721",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "minimal"
             }
           ]
         },
@@ -2873,19 +2873,19 @@
               "run_id": "7d554d84-2f82-4df6-8bab-013018d9de45",
               "timestamp": "2026-06-26T13:54:24.056919",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "minimal"
             },
             {
               "run_id": "f962a14d-85f7-42d9-8526-b88cdc3671d6",
               "timestamp": "2026-06-26T15:31:00.950677",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "minimal"
             },
             {
               "run_id": "d147059a-53ab-479b-81c8-2ba6c26fdced",
               "timestamp": "2026-06-26T19:38:46.226864",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "minimal"
             }
           ]
         }
@@ -3146,7 +3146,7 @@
               "run_id": "57e1ed9d-a3bf-484b-91f8-0c827a53776a",
               "timestamp": "2026-07-01T23:28:32.774821",
               "trial_index": 0,
-              "prompt_variant": null
+              "prompt_variant": "detailed"
             }
           ]
         }

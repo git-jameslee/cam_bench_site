@@ -65,6 +65,7 @@ function modelLabel(name) {
 let DATA = null;
 let active = "Leaderboard";
 let variantTab = "all";
+let currentModel = null; // set when the #model=<name> route is active
 let visible = new Set();
 
 const $ = (s) => document.querySelector(s);
@@ -124,7 +125,7 @@ function renderLeaderboard() {
   panel.replaceChildren();
   panel.append(el("h2", {}, "Leaderboard"));
   panel.append(el("div", { class: "note" },
-    `Ranked by metric wins — on how many scoring metrics the model posts the best mean in this view (${board.contested} contested; ties shared) — tiebroken by overall ${H.label}. Task cells show mean ${H.label}; click a model for its prompt-variant breakdown.`));
+    `Ranked by metric wins — on how many scoring metrics the model posts the best mean in this view (${board.contested} contested; ties shared) — tiebroken by overall ${H.label}. Task cells show mean ${H.label}; click a model to open its detail page in a new tab.`));
 
   // Prompt-variant filter (the ablation axis): re-filters + re-ranks the board.
   const seg = el("div", { class: "seg" });
@@ -145,16 +146,17 @@ function renderLeaderboard() {
   table.append(el("thead", {}, head));
 
   const body = el("tbody");
-  const span = 4 + lb.task_groups.length;
   board.models.forEach((e, i) => {
-    const mtx = lb.matrix[e.model] || {};
-    const expandable = Object.keys(mtx).length > 0;
-    const tr = el("tr", expandable ? { class: "expandable" } : {});
+    const tr = el("tr");
     // Rank lives inside the sticky model cell so it survives horizontal scroll.
+    // The model name is a real link (middle-click friendly) to its detail page.
     const mcell = el("td", { class: "model" });
     mcell.append(el("span", { class: "rank" }, "" + (i + 1)));
-    if (expandable) mcell.append(el("span", { class: "caret" }, "▸"));
-    mcell.append(modelLabel(e.model));
+    const link = el("a", { class: "mlink", target: "_blank", rel: "noopener",
+                           href: "#model=" + encodeURIComponent(e.model),
+                           title: "open model page in a new tab" });
+    link.append(modelLabel(e.model));
+    mcell.append(link);
     tr.append(mcell);
     tr.append(el("td", {}, "" + e.runs));
     const wonLabels = e.won.map((k) => {
@@ -183,36 +185,6 @@ function renderLeaderboard() {
       tr.append(headlineCell(H, c, "", c && c.n ? `${g} · n=${c.n}` : g));
     });
     body.append(tr);
-
-    if (expandable) {
-      const detail = el("tr", { class: "detail hidden" });
-      const cell = el("td", { class: "detailcell", colspan: "" + span });
-      const sub = el("table", { class: "subtable" });
-      const sh = el("tr");
-      sh.append(el("th", {}, "variant"));
-      lb.task_groups.forEach((g) => sh.append(el("th", { title: g }, taskShort(g))));
-      sub.append(el("thead", {}, sh));
-      const sb = el("tbody");
-      Object.entries(mtx).forEach(([v, cells]) => {
-        const r = el("tr");
-        r.append(el("td", {}, v));
-        lb.task_groups.forEach((g) => {
-          const c = cells[g];
-          r.append(headlineCell(H, c, "", c && c.n ? `n=${c.n}` : null));
-        });
-        sb.append(r);
-      });
-      sub.append(sb);
-      cell.append(el("div", { class: "detail-h" }, `${H.label} by prompt variant`), sub,
-        el("div", { class: "note" },
-          "Per-run detail (transcripts, produced CAM) lives in the task tabs."));
-      detail.append(cell);
-      body.append(detail);
-      tr.onclick = () => {
-        const open = detail.classList.toggle("hidden") === false;
-        tr.classList.toggle("open", open);
-      };
-    }
   });
   table.append(body);
   panel.append(el("div", { class: "scroll" }, table));
@@ -250,6 +222,79 @@ function renderLeaderboard() {
     "↑ higher is better, ↓ lower is better. ● = best mean in this view (a win; ties share it; a metric only 1 model has data for is uncontested). Curated scoring metrics only — token / time diagnostics never count toward wins."));
 }
 
+// The model's variant × task_group matrix of the headline metric.
+function variantMatrixTable(mtx, lb) {
+  const H = lb.headline;
+  const sub = el("table", { class: "subtable" });
+  const sh = el("tr");
+  sh.append(el("th", {}, "variant"));
+  lb.task_groups.forEach((g) => sh.append(el("th", { title: g }, taskShort(g))));
+  sub.append(el("thead", {}, sh));
+  const sb = el("tbody");
+  Object.entries(mtx).forEach(([v, cells]) => {
+    const r = el("tr");
+    r.append(el("td", {}, v));
+    lb.task_groups.forEach((g) => {
+      const c = cells[g];
+      r.append(headlineCell(H, c, "", c && c.n ? `n=${c.n}` : null));
+    });
+    sb.append(r);
+  });
+  sub.append(sb);
+  return sub;
+}
+
+// Model detail page (#model=<name>, opened in a new tab from the leaderboard):
+// logo + name header, the variant × task headline matrix, then per-task run
+// tables with the transcript / produced-CAM drill-down that used to live
+// under the task tabs.
+function renderModel(name) {
+  const lb = DATA.leaderboard;
+  const H = lb.headline;
+  const panel = $("#panel");
+  panel.replaceChildren();
+
+  panel.append(el("a", { class: "backlink", href: "./" }, "← Leaderboard"));
+  const head = el("div", { class: "model-head" });
+  head.append(modelLabel(name));
+  panel.append(head);
+
+  const all = lb.boards.all;
+  const idx = all.models.findIndex((e) => e.model === name);
+  if (idx >= 0) {
+    const e = all.models[idx];
+    const bits = [`rank #${idx + 1}`, `${e.runs} runs`,
+                  `wins ${e.wins}/${all.contested}`];
+    if (e.headline.mean != null) {
+      bits.push(`${H.label} ${fmtMain(H.fmt, e.headline.mean)}` +
+        (e.headline.ci_margin != null ? ` ±${fmtMain(H.fmt, e.headline.ci_margin)}` : ""));
+    }
+    panel.append(el("div", { class: "note" }, bits.join(" · ") + " (all variants)"));
+  }
+
+  panel.append(el("div", { class: "detail-h" }, `${H.label} by prompt variant`));
+  const mtx = lb.matrix[name] || {};
+  if (Object.keys(mtx).length) {
+    panel.append(el("div", { class: "scroll" }, variantMatrixTable(mtx, lb)));
+  } else {
+    panel.append(el("div", { class: "note" }, `no ${H.label}-graded runs yet`));
+  }
+
+  let any = false;
+  DATA.tasks.forEach((task) => {
+    const mod = task.models.find((m) => m.model === name);
+    const runIndex = (mod && mod.run_index) || [];
+    if (!runIndex.length) return;
+    any = true;
+    panel.append(el("h2", { class: "tasksec" }, task.name));
+    const cols = task.metrics.filter((m) => visible.has(m.group));
+    const box = el("div", { class: "scroll" });
+    panel.append(box);
+    renderRunDetail(box, runIndex, cols);
+  });
+  if (!any) panel.append(el("div", { class: "note" }, "no runs logged for this model"));
+}
+
 function renderOverview() {
   const ov = DATA.overview;
   const panel = $("#panel");
@@ -283,82 +328,6 @@ function renderOverview() {
   panel.append(el("div", { class: "scroll" }, table));
   panel.append(el("div", { class: "note" },
     "Cross-vendor caveat: tokens / time are not comparable between remote-API models (Claude, GPT) and locally-served ones (Qwen, Gemma)."));
-}
-
-function renderTask(name) {
-  const task = DATA.tasks.find((t) => t.name === name);
-  const cols = task.metrics.filter((m) => visible.has(m.group));
-  const panel = $("#panel");
-  panel.replaceChildren();
-  panel.append(el("h2", {}, name));
-
-  const table = el("table");
-  const head = el("tr");
-  head.append(el("th", {}, "model"));
-  head.append(el("th", {}, "runs"));
-  let prevGroup = null;
-  cols.forEach((m) => {
-    const th = el("th", { title: `${m.group} · ${m.key}` }, m.label);
-    if (m.group !== prevGroup) { th.classList.add("grp"); prevGroup = m.group; }
-    head.append(th);
-  });
-  table.append(el("thead", {}, head));
-
-  let anyDash = false;
-  const body = el("tbody");
-  const span = 2 + cols.length;
-  task.models.forEach((mod) => {
-    const runIndex = mod.run_index || [];
-    const expandable = runIndex.length > 0;
-    const tr = el("tr", expandable ? { class: "expandable" } : {});
-    const mcell = el("td", { class: "model" });
-    if (expandable) mcell.append(el("span", { class: "caret" }, "▸"));
-    mcell.append(modelLabel(mod.model));
-    tr.append(mcell);
-    tr.append(el("td", {}, "" + mod.runs));
-    let prevG = null;
-    cols.forEach((m) => {
-      const c = mod.cells[m.key];
-      let td;
-      if (c == null || c.mean == null) {
-        anyDash = true;
-        td = el("td", { class: "dash" }, DASH);
-      } else {
-        const ciMargin = mod[m.key + "_ci_margin"];
-        const ciLow    = mod[m.key + "_ci_low"];
-        const ciHigh   = mod[m.key + "_ci_high"];
-        const tdAttrs  = (showCI() && ciLow != null && ciHigh != null)
-          ? { title: "[" + fmtMain(m.fmt, ciLow) + ", " + fmtMain(m.fmt, ciHigh) + "]" }
-          : {};
-        td = el("td", tdAttrs, fmtMain(m.fmt, c.mean));
-        if (showCI() && ciMargin != null) {
-          td.append(el("span", { class: "ci" }, " ±" + fmtMain(m.fmt, ciMargin)));
-        }
-      }
-      if (m.group !== prevG) { td.classList.add("grp"); prevG = m.group; }
-      tr.append(td);
-    });
-    body.append(tr);
-
-    if (expandable) {
-      const detail = el("tr", { class: "detail hidden" });
-      const cell = el("td", { class: "detailcell", colspan: "" + span });
-      detail.append(cell);
-      body.append(detail);
-      let loaded = false;
-      tr.onclick = () => {
-        const open = detail.classList.toggle("hidden") === false;
-        tr.classList.toggle("open", open);
-        if (open && !loaded) { loaded = true; renderRunDetail(cell, runIndex, cols); }
-      };
-    }
-  });
-  table.append(body);
-  panel.append(el("div", { class: "scroll" }, table));
-  if (anyDash) {
-    panel.append(el("div", { class: "note" },
-      "“—” = ungraded (manual objective / subjective scores still null) or not logged for that model."));
-  }
 }
 
 // Lazy-load every run for one model row and render a per-run breakdown table
@@ -507,14 +476,26 @@ function renderTranscript(run) {
 }
 
 function render() {
-  if (active === "Leaderboard" && DATA.leaderboard) renderLeaderboard();
-  else if (active === "Coverage" || active === "Overview") renderOverview();
-  else renderTask(active);
-  // Metric-group toggles only drive the task tables; hide them elsewhere.
-  $("#groups").style.display =
-    (active === "Leaderboard" || active === "Coverage") ? "none" : "flex";
+  if (active === "__model__" && DATA.leaderboard) renderModel(currentModel);
+  else if (active === "Leaderboard" && DATA.leaderboard) renderLeaderboard();
+  else renderOverview();
+  // Metric-group toggles only drive the model page's run tables.
+  $("#groups").style.display = active === "__model__" ? "flex" : "none";
   document.querySelectorAll(".tab").forEach((b) =>
     b.classList.toggle("active", b.dataset.name === active));
+}
+
+// #model=<name> deep link → the model detail page (opened in a new tab from
+// the leaderboard, but also directly shareable).
+function applyRoute() {
+  const m = location.hash.match(/^#model=(.+)$/);
+  if (m && DATA && DATA.leaderboard) {
+    currentModel = decodeURIComponent(m[1]);
+    active = "__model__";
+  } else if (active === "__model__") {
+    currentModel = null;
+    active = "Leaderboard";
+  }
 }
 
 function buildGroupToggles() {
@@ -535,11 +516,16 @@ function buildGroupToggles() {
 function buildTabs() {
   const tabs = $("#tabs");
   tabs.replaceChildren();
-  const names = [...(DATA.leaderboard ? ["Leaderboard"] : []),
-                 "Coverage", ...DATA.tasks.map((t) => t.name)];
+  const names = [...(DATA.leaderboard ? ["Leaderboard"] : []), "Coverage"];
   names.forEach((name) => {
     const b = el("button", { class: "tab", "data-name": name }, name);
-    b.onclick = () => { active = name; render(); };
+    b.onclick = () => {
+      // Leaving a #model page: drop the hash so the route doesn't re-apply.
+      if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+      currentModel = null;
+      active = name;
+      render();
+    };
     tabs.append(b);
   });
 }
@@ -577,6 +563,8 @@ async function init() {
   }
   buildGroupToggles();
   buildTabs();
+  applyRoute();
+  window.addEventListener("hashchange", () => { applyRoute(); render(); });
   render();
 }
 
