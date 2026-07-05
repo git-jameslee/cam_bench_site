@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-02T04:28:40.161013+00:00",
-  "n_runs": 34,
+  "generated": "2026-07-05T05:21:31.195512+00:00",
+  "n_runs": 35,
   "group_order": [
     "outcome",
     "post",
@@ -14,6 +14,767 @@
     "post",
     "subjective"
   ],
+  "leaderboard": {
+    "headline": {
+      "key": "iou_voxel",
+      "section": "post",
+      "label": "IoU",
+      "group": "post",
+      "fmt": "score2"
+    },
+    "variants": [
+      "all",
+      "minimal",
+      "explicit",
+      "detailed"
+    ],
+    "task_groups": [
+      "box_pocket",
+      "titan_m1"
+    ],
+    "wins_metrics": [
+      {
+        "key": "iou_voxel",
+        "section": "post",
+        "direction": 1,
+        "label": "IoU",
+        "group": "post",
+        "fmt": "score2"
+      },
+      {
+        "key": "max_deviation_mm",
+        "section": "post",
+        "direction": -1,
+        "label": "Max deviation (mm)",
+        "group": "post",
+        "fmt": "score2"
+      },
+      {
+        "key": "cycle_time_s",
+        "section": "post",
+        "direction": -1,
+        "label": "Cycle time",
+        "group": "post",
+        "fmt": "secs"
+      },
+      {
+        "key": "scallop_height_mm",
+        "section": "post",
+        "direction": -1,
+        "label": "Scallop (mm)",
+        "group": "post",
+        "fmt": "score2"
+      },
+      {
+        "key": "air_cut_ratio",
+        "section": "post",
+        "direction": -1,
+        "label": "Air-cut",
+        "group": "post",
+        "fmt": "pct"
+      },
+      {
+        "key": "engagement_ok",
+        "section": "post",
+        "direction": 1,
+        "label": "Engagement OK",
+        "group": "post",
+        "fmt": "pct"
+      },
+      {
+        "key": "rough_before_finish",
+        "section": "post",
+        "direction": 1,
+        "label": "Sequencing",
+        "group": "post",
+        "fmt": "pct"
+      },
+      {
+        "key": "tolerance_appropriate",
+        "section": "post",
+        "direction": 1,
+        "label": "Tolerance",
+        "group": "post",
+        "fmt": "pct"
+      },
+      {
+        "key": "tool_call_success_rate",
+        "section": "auto",
+        "direction": 1,
+        "label": "Success",
+        "group": "outcome",
+        "fmt": "pct"
+      },
+      {
+        "key": "hit_round_limit",
+        "section": "auto",
+        "direction": -1,
+        "label": "Round-limit",
+        "group": "outcome",
+        "fmt": "pct"
+      }
+    ],
+    "boards": {
+      "all": {
+        "contested": 2,
+        "models": [
+          {
+            "model": "Claude Sonnet 4.6",
+            "runs": 23,
+            "wins": 1,
+            "won": [
+              "tool_call_success_rate"
+            ],
+            "headline": {
+              "mean": 0.855223,
+              "n": 13,
+              "ci_low": 0.779368,
+              "ci_high": 0.931078,
+              "ci_margin": 0.075855
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.855223,
+                "n": 13
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.855223,
+                "n": 13
+              },
+              "max_deviation_mm": {
+                "mean": 7.01895,
+                "n": 2
+              },
+              "cycle_time_s": {
+                "mean": 5042.135,
+                "n": 2
+              },
+              "scallop_height_mm": {
+                "mean": 0.792556,
+                "n": 9
+              },
+              "air_cut_ratio": {
+                "mean": 0.074622,
+                "n": 9
+              },
+              "engagement_ok": {
+                "mean": 0.666667,
+                "n": 9
+              },
+              "rough_before_finish": {
+                "mean": 1.0,
+                "n": 2
+              },
+              "tolerance_appropriate": {
+                "mean": 1.0,
+                "n": 2
+              },
+              "tool_call_success_rate": {
+                "mean": 0.910174,
+                "n": 23
+              },
+              "hit_round_limit": {
+                "mean": 0.130435,
+                "n": 23
+              }
+            }
+          },
+          {
+            "model": "Qwen3.6-35B-A3B",
+            "runs": 11,
+            "wins": 1,
+            "won": [
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": null,
+              "n": 0,
+              "ci_low": null,
+              "ci_high": null,
+              "ci_margin": null
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": null,
+                "n": 0
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "air_cut_ratio": {
+                "mean": null,
+                "n": 0
+              },
+              "engagement_ok": {
+                "mean": null,
+                "n": 0
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.746455,
+                "n": 11
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 11
+              }
+            }
+          },
+          {
+            "model": "Qwen3-35B-A22B",
+            "runs": 1,
+            "wins": 1,
+            "won": [
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": null,
+              "n": 0,
+              "ci_low": null,
+              "ci_high": null,
+              "ci_margin": null
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": null,
+                "n": 0
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "air_cut_ratio": {
+                "mean": null,
+                "n": 0
+              },
+              "engagement_ok": {
+                "mean": null,
+                "n": 0
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.0,
+                "n": 1
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 1
+              }
+            }
+          }
+        ]
+      },
+      "minimal": {
+        "contested": 2,
+        "models": [
+          {
+            "model": "Claude Sonnet 4.6",
+            "runs": 3,
+            "wins": 2,
+            "won": [
+              "tool_call_success_rate",
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": 0.934867,
+              "n": 3,
+              "ci_low": 0.923525,
+              "ci_high": 0.946208,
+              "ci_margin": 0.011341
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.934867,
+                "n": 3
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.934867,
+                "n": 3
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": 0.9629,
+                "n": 2
+              },
+              "air_cut_ratio": {
+                "mean": 0.0682,
+                "n": 3
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 2
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.974333,
+                "n": 3
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 3
+              }
+            }
+          },
+          {
+            "model": "Qwen3.6-35B-A3B",
+            "runs": 3,
+            "wins": 1,
+            "won": [
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": null,
+              "n": 0,
+              "ci_low": null,
+              "ci_high": null,
+              "ci_margin": null
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": null,
+                "n": 0
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "air_cut_ratio": {
+                "mean": null,
+                "n": 0
+              },
+              "engagement_ok": {
+                "mean": null,
+                "n": 0
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.671,
+                "n": 3
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 3
+              }
+            }
+          }
+        ]
+      },
+      "explicit": {
+        "contested": 0,
+        "models": [
+          {
+            "model": "Claude Sonnet 4.6",
+            "runs": 1,
+            "wins": 0,
+            "won": [],
+            "headline": {
+              "mean": 0.9214,
+              "n": 1,
+              "ci_low": null,
+              "ci_high": null,
+              "ci_margin": null
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.9214,
+                "n": 1
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.9214,
+                "n": 1
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": 0.3332,
+                "n": 1
+              },
+              "air_cut_ratio": {
+                "mean": 0.089,
+                "n": 1
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 1
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.882,
+                "n": 1
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 1
+              }
+            }
+          }
+        ]
+      },
+      "detailed": {
+        "contested": 2,
+        "models": [
+          {
+            "model": "Claude Sonnet 4.6",
+            "runs": 19,
+            "wins": 1,
+            "won": [
+              "tool_call_success_rate"
+            ],
+            "headline": {
+              "mean": 0.821322,
+              "n": 9,
+              "ci_low": 0.714228,
+              "ci_high": 0.928416,
+              "ci_margin": 0.107094
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.821322,
+                "n": 9
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.821322,
+                "n": 9
+              },
+              "max_deviation_mm": {
+                "mean": 7.01895,
+                "n": 2
+              },
+              "cycle_time_s": {
+                "mean": 5042.135,
+                "n": 2
+              },
+              "scallop_height_mm": {
+                "mean": 0.812333,
+                "n": 6
+              },
+              "air_cut_ratio": {
+                "mean": 0.0756,
+                "n": 5
+              },
+              "engagement_ok": {
+                "mean": 0.5,
+                "n": 6
+              },
+              "rough_before_finish": {
+                "mean": 1.0,
+                "n": 2
+              },
+              "tolerance_appropriate": {
+                "mean": 1.0,
+                "n": 2
+              },
+              "tool_call_success_rate": {
+                "mean": 0.901526,
+                "n": 19
+              },
+              "hit_round_limit": {
+                "mean": 0.157895,
+                "n": 19
+              }
+            }
+          },
+          {
+            "model": "Qwen3.6-35B-A3B",
+            "runs": 8,
+            "wins": 1,
+            "won": [
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": null,
+              "n": 0,
+              "ci_low": null,
+              "ci_high": null,
+              "ci_margin": null
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": null,
+                "n": 0
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "air_cut_ratio": {
+                "mean": null,
+                "n": 0
+              },
+              "engagement_ok": {
+                "mean": null,
+                "n": 0
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.77475,
+                "n": 8
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 8
+              }
+            }
+          },
+          {
+            "model": "Qwen3-35B-A22B",
+            "runs": 1,
+            "wins": 1,
+            "won": [
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": null,
+              "n": 0,
+              "ci_low": null,
+              "ci_high": null,
+              "ci_margin": null
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": null,
+                "n": 0
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "air_cut_ratio": {
+                "mean": null,
+                "n": 0
+              },
+              "engagement_ok": {
+                "mean": null,
+                "n": 0
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.0,
+                "n": 1
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "matrix": {
+      "Claude Sonnet 4.6": {
+        "minimal": {
+          "box_pocket": {
+            "mean": 0.934867,
+            "n": 3
+          },
+          "titan_m1": {
+            "mean": null,
+            "n": 0
+          }
+        },
+        "explicit": {
+          "box_pocket": {
+            "mean": 0.9214,
+            "n": 1
+          },
+          "titan_m1": {
+            "mean": null,
+            "n": 0
+          }
+        },
+        "detailed": {
+          "box_pocket": {
+            "mean": 0.821322,
+            "n": 9
+          },
+          "titan_m1": {
+            "mean": null,
+            "n": 0
+          }
+        }
+      },
+      "Qwen3-35B-A22B": {},
+      "Qwen3.6-35B-A3B": {}
+    }
+  },
   "tasks": [
     {
       "name": "box_pocket_detailed",
@@ -232,245 +993,245 @@
       "models": [
         {
           "model": "Claude Sonnet 4.6",
-          "runs": 17,
+          "runs": 18,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.903059,
-              "n": 17
+              "mean": 0.906222,
+              "n": 18
             },
             "tool_calls_total": {
-              "mean": 29.235294,
-              "n": 17
+              "mean": 29.0,
+              "n": 18
             },
             "tool_calls_succeeded": {
-              "mean": 26.352941,
-              "n": 17
+              "mean": 26.222222,
+              "n": 18
             },
             "tool_calls_failed": {
-              "mean": 2.882353,
-              "n": 17
+              "mean": 2.777778,
+              "n": 18
             },
             "hit_round_limit": {
-              "mean": 0.117647,
-              "n": 17
+              "mean": 0.111111,
+              "n": 18
             },
             "scallop_height_mm": {
-              "mean": 0.65294,
-              "n": 5
+              "mean": 0.812333,
+              "n": 6
             },
             "radial_engagement_pct": {
-              "mean": 48.11374,
-              "n": 5
+              "mean": 49.19365,
+              "n": 6
             },
             "axial_engagement_pct": {
-              "mean": 25.59416,
-              "n": 5
+              "mean": 25.44545,
+              "n": 6
             },
             "engagement_ok": {
-              "mean": 0.4,
-              "n": 5
+              "mean": 0.5,
+              "n": 6
             },
             "operation_count": {
-              "mean": 3.4,
-              "n": 5
+              "mean": 3.833333,
+              "n": 6
             },
             "tool_change_count": {
-              "mean": 1.8,
-              "n": 5
+              "mean": 2.0,
+              "n": 6
             },
             "air_cut_ratio": {
-              "mean": 0.072725,
-              "n": 4
+              "mean": 0.0756,
+              "n": 5
             },
             "iou_voxel": {
-              "mean": 0.845312,
-              "n": 8
+              "mean": 0.821322,
+              "n": 9
             },
             "max_deviation_mm": {
-              "mean": 1.5379,
-              "n": 1
+              "mean": 7.01895,
+              "n": 2
             },
             "cycle_time_s": {
-              "mean": 5644.56,
-              "n": 1
+              "mean": 5042.135,
+              "n": 2
             },
             "rough_before_finish": {
               "mean": 1.0,
-              "n": 1
+              "n": 2
             },
             "toolpath_length_mm": {
-              "mean": 13475.93,
-              "n": 1
+              "mean": 9389.255,
+              "n": 2
             },
             "tolerance_appropriate": {
               "mean": 1.0,
-              "n": 1
+              "n": 2
             },
             "mrr_mm3_per_min": {
-              "mean": 6600.0,
-              "n": 1
+              "mean": 4845.0,
+              "n": 2
             },
             "input_tokens": {
-              "mean": 1005396.294118,
-              "n": 17
+              "mean": 991441.222222,
+              "n": 18
             },
             "output_tokens": {
-              "mean": 16939.529412,
-              "n": 17
+              "mean": 16575.5,
+              "n": 18
             },
             "cache_read_input_tokens": {
-              "mean": 861333.866667,
-              "n": 15
+              "mean": 851899.75,
+              "n": 16
             },
             "cache_creation_input_tokens": {
-              "mean": 45504.2,
-              "n": 15
+              "mean": 45397.0625,
+              "n": 16
             },
             "llm_rounds": {
-              "mean": 29.823529,
-              "n": 17
+              "mean": 29.611111,
+              "n": 18
             },
             "llm_s": {
-              "mean": 280.116471,
-              "n": 17
+              "mean": 276.147778,
+              "n": 18
             },
             "tool_s": {
-              "mean": 20.493529,
-              "n": 17
+              "mean": 21.156111,
+              "n": 18
             },
             "wall_clock_s": {
-              "mean": 300.897647,
-              "n": 17
+              "mean": 297.617778,
+              "n": 18
             },
             "tool_inputs_repaired": {
               "mean": 0.0,
-              "n": 12
+              "n": 13
             },
             "mb_injected_calls": {
-              "mean": 23.083333,
-              "n": 12
+              "mean": 23.230769,
+              "n": 13
             },
             "aborted": {
               "mean": 0.0,
-              "n": 12
+              "n": 13
             }
           },
-          "tool_call_success_rate_mean": 0.903059,
-          "tool_call_success_rate_ci_low": 0.869669,
-          "tool_call_success_rate_ci_high": 0.936448,
-          "tool_call_success_rate_ci_margin": 0.033389,
-          "tool_calls_total_mean": 29.235294,
-          "tool_calls_total_ci_low": 22.08661,
-          "tool_calls_total_ci_high": 36.383978,
-          "tool_calls_total_ci_margin": 7.148684,
-          "tool_calls_succeeded_mean": 26.352941,
-          "tool_calls_succeeded_ci_low": 19.814048,
-          "tool_calls_succeeded_ci_high": 32.891835,
-          "tool_calls_succeeded_ci_margin": 6.538894,
-          "tool_calls_failed_mean": 2.882353,
-          "tool_calls_failed_ci_low": 1.720062,
-          "tool_calls_failed_ci_high": 4.044644,
-          "tool_calls_failed_ci_margin": 1.162291,
-          "hit_round_limit_mean": 0.117647,
-          "hit_round_limit_ci_low": -0.053106,
-          "hit_round_limit_ci_high": 0.2884,
-          "hit_round_limit_ci_margin": 0.170753,
-          "scallop_height_mm_mean": 0.65294,
-          "scallop_height_mm_ci_low": 0.032002,
-          "scallop_height_mm_ci_high": 1.273878,
-          "scallop_height_mm_ci_margin": 0.620938,
-          "radial_engagement_pct_mean": 48.11374,
-          "radial_engagement_pct_ci_low": 39.548646,
-          "radial_engagement_pct_ci_high": 56.678834,
-          "radial_engagement_pct_ci_margin": 8.565094,
-          "axial_engagement_pct_mean": 25.59416,
-          "axial_engagement_pct_ci_low": 14.116897,
-          "axial_engagement_pct_ci_high": 37.071423,
-          "axial_engagement_pct_ci_margin": 11.477263,
-          "engagement_ok_mean": 0.4,
-          "engagement_ok_ci_low": -0.280087,
-          "engagement_ok_ci_high": 1.080087,
-          "engagement_ok_ci_margin": 0.680087,
-          "operation_count_mean": 3.4,
-          "operation_count_ci_low": 2.289422,
-          "operation_count_ci_high": 4.510578,
-          "operation_count_ci_margin": 1.110578,
-          "tool_change_count_mean": 1.8,
-          "tool_change_count_ci_low": 1.244711,
-          "tool_change_count_ci_high": 2.355289,
-          "tool_change_count_ci_margin": 0.555289,
-          "air_cut_ratio_mean": 0.072725,
-          "air_cut_ratio_ci_low": 0.044416,
-          "air_cut_ratio_ci_high": 0.101034,
-          "air_cut_ratio_ci_margin": 0.028309,
-          "iou_voxel_mean": 0.845312,
-          "iou_voxel_ci_low": 0.738693,
-          "iou_voxel_ci_high": 0.951932,
-          "iou_voxel_ci_margin": 0.10662,
-          "max_deviation_mm_mean": null,
-          "max_deviation_mm_ci_low": null,
-          "max_deviation_mm_ci_high": null,
-          "max_deviation_mm_ci_margin": null,
-          "cycle_time_s_mean": null,
-          "cycle_time_s_ci_low": null,
-          "cycle_time_s_ci_high": null,
-          "cycle_time_s_ci_margin": null,
-          "rough_before_finish_mean": null,
+          "tool_call_success_rate_mean": 0.906222,
+          "tool_call_success_rate_ci_low": 0.874189,
+          "tool_call_success_rate_ci_high": 0.938255,
+          "tool_call_success_rate_ci_margin": 0.032033,
+          "tool_calls_total_mean": 29.0,
+          "tool_calls_total_ci_low": 22.27389,
+          "tool_calls_total_ci_high": 35.72611,
+          "tool_calls_total_ci_margin": 6.72611,
+          "tool_calls_succeeded_mean": 26.222222,
+          "tool_calls_succeeded_ci_low": 20.080441,
+          "tool_calls_succeeded_ci_high": 32.364003,
+          "tool_calls_succeeded_ci_margin": 6.141781,
+          "tool_calls_failed_mean": 2.777778,
+          "tool_calls_failed_ci_low": 1.665081,
+          "tool_calls_failed_ci_high": 3.890475,
+          "tool_calls_failed_ci_margin": 1.112697,
+          "hit_round_limit_mean": 0.111111,
+          "hit_round_limit_ci_low": -0.049702,
+          "hit_round_limit_ci_high": 0.271925,
+          "hit_round_limit_ci_margin": 0.160814,
+          "scallop_height_mm_mean": 0.812333,
+          "scallop_height_mm_ci_low": 0.189261,
+          "scallop_height_mm_ci_high": 1.435406,
+          "scallop_height_mm_ci_margin": 0.623073,
+          "radial_engagement_pct_mean": 49.19365,
+          "radial_engagement_pct_ci_low": 42.148817,
+          "radial_engagement_pct_ci_high": 56.238483,
+          "radial_engagement_pct_ci_margin": 7.044833,
+          "axial_engagement_pct_mean": 25.44545,
+          "axial_engagement_pct_ci_low": 16.760723,
+          "axial_engagement_pct_ci_high": 34.130177,
+          "axial_engagement_pct_ci_margin": 8.684727,
+          "engagement_ok_mean": 0.5,
+          "engagement_ok_ci_low": -0.0748,
+          "engagement_ok_ci_high": 1.0748,
+          "engagement_ok_ci_margin": 0.5748,
+          "operation_count_mean": 3.833333,
+          "operation_count_ci_low": 2.438465,
+          "operation_count_ci_high": 5.228201,
+          "operation_count_ci_margin": 1.394868,
+          "tool_change_count_mean": 2.0,
+          "tool_change_count_ci_low": 1.336279,
+          "tool_change_count_ci_high": 2.663721,
+          "tool_change_count_ci_margin": 0.663721,
+          "air_cut_ratio_mean": 0.0756,
+          "air_cut_ratio_ci_low": 0.054871,
+          "air_cut_ratio_ci_high": 0.096329,
+          "air_cut_ratio_ci_margin": 0.020729,
+          "iou_voxel_mean": 0.821322,
+          "iou_voxel_ci_low": 0.714228,
+          "iou_voxel_ci_high": 0.928416,
+          "iou_voxel_ci_margin": 0.107094,
+          "max_deviation_mm_mean": 7.01895,
+          "max_deviation_mm_ci_low": -62.624393,
+          "max_deviation_mm_ci_high": 76.662293,
+          "max_deviation_mm_ci_margin": 69.643343,
+          "cycle_time_s_mean": 5042.135,
+          "cycle_time_s_ci_low": -2612.400388,
+          "cycle_time_s_ci_high": 12696.670388,
+          "cycle_time_s_ci_margin": 7654.535388,
+          "rough_before_finish_mean": 1.0,
           "rough_before_finish_ci_low": null,
           "rough_before_finish_ci_high": null,
           "rough_before_finish_ci_margin": null,
-          "toolpath_length_mm_mean": null,
-          "toolpath_length_mm_ci_low": null,
-          "toolpath_length_mm_ci_high": null,
-          "toolpath_length_mm_ci_margin": null,
-          "tolerance_appropriate_mean": null,
+          "toolpath_length_mm_mean": 9389.255,
+          "toolpath_length_mm_ci_low": -42536.87424,
+          "toolpath_length_mm_ci_high": 61315.38424,
+          "toolpath_length_mm_ci_margin": 51926.12924,
+          "tolerance_appropriate_mean": 1.0,
           "tolerance_appropriate_ci_low": null,
           "tolerance_appropriate_ci_high": null,
           "tolerance_appropriate_ci_margin": null,
-          "mrr_mm3_per_min_mean": null,
-          "mrr_mm3_per_min_ci_low": null,
-          "mrr_mm3_per_min_ci_high": null,
-          "mrr_mm3_per_min_ci_margin": null,
-          "input_tokens_mean": 1005396.294118,
-          "input_tokens_ci_low": 557964.599129,
-          "input_tokens_ci_high": 1452827.989106,
-          "input_tokens_ci_margin": 447431.694988,
-          "output_tokens_mean": 16939.529412,
-          "output_tokens_ci_low": 10146.140565,
-          "output_tokens_ci_high": 23732.918259,
-          "output_tokens_ci_margin": 6793.388847,
-          "cache_read_input_tokens_mean": 861333.866667,
-          "cache_read_input_tokens_ci_low": 397313.825208,
-          "cache_read_input_tokens_ci_high": 1325353.908126,
-          "cache_read_input_tokens_ci_margin": 464020.041459,
-          "cache_creation_input_tokens_mean": 45504.2,
-          "cache_creation_input_tokens_ci_low": 34418.251881,
-          "cache_creation_input_tokens_ci_high": 56590.148119,
-          "cache_creation_input_tokens_ci_margin": 11085.948119,
-          "llm_rounds_mean": 29.823529,
-          "llm_rounds_ci_low": 23.223536,
-          "llm_rounds_ci_high": 36.423522,
-          "llm_rounds_ci_margin": 6.599993,
-          "llm_s_mean": 280.116471,
-          "llm_s_ci_low": 189.975103,
-          "llm_s_ci_high": 370.257838,
-          "llm_s_ci_margin": 90.141367,
-          "tool_s_mean": 20.493529,
-          "tool_s_ci_low": 15.201551,
-          "tool_s_ci_high": 25.785507,
-          "tool_s_ci_margin": 5.291978,
-          "wall_clock_s_mean": 300.897647,
-          "wall_clock_s_ci_low": 206.64876,
-          "wall_clock_s_ci_high": 395.146534,
-          "wall_clock_s_ci_margin": 94.248887,
+          "mrr_mm3_per_min_mean": 4845.0,
+          "mrr_mm3_per_min_ci_low": -17454.389312,
+          "mrr_mm3_per_min_ci_high": 27144.389312,
+          "mrr_mm3_per_min_ci_margin": 22299.389312,
+          "input_tokens_mean": 991441.222222,
+          "input_tokens_ci_low": 570575.215402,
+          "input_tokens_ci_high": 1412307.229043,
+          "input_tokens_ci_margin": 420866.006821,
+          "output_tokens_mean": 16575.5,
+          "output_tokens_ci_low": 10155.012977,
+          "output_tokens_ci_high": 22995.987023,
+          "output_tokens_ci_margin": 6420.487023,
+          "cache_read_input_tokens_mean": 851899.75,
+          "cache_read_input_tokens_ci_low": 420079.407743,
+          "cache_read_input_tokens_ci_high": 1283720.092257,
+          "cache_read_input_tokens_ci_margin": 431820.342257,
+          "cache_creation_input_tokens_mean": 45397.0625,
+          "cache_creation_input_tokens_ci_low": 35089.062339,
+          "cache_creation_input_tokens_ci_high": 55705.062661,
+          "cache_creation_input_tokens_ci_margin": 10308.000161,
+          "llm_rounds_mean": 29.611111,
+          "llm_rounds_ci_low": 23.401999,
+          "llm_rounds_ci_high": 35.820223,
+          "llm_rounds_ci_margin": 6.209112,
+          "llm_s_mean": 276.147778,
+          "llm_s_ci_low": 191.152729,
+          "llm_s_ci_high": 361.142826,
+          "llm_s_ci_margin": 84.995049,
+          "tool_s_mean": 21.156111,
+          "tool_s_ci_low": 15.997511,
+          "tool_s_ci_high": 26.314712,
+          "tool_s_ci_margin": 5.158601,
+          "wall_clock_s_mean": 297.617778,
+          "wall_clock_s_ci_low": 208.911678,
+          "wall_clock_s_ci_high": 386.323878,
+          "wall_clock_s_ci_margin": 88.7061,
           "tool_inputs_repaired_mean": 0.0,
           "tool_inputs_repaired_ci_low": null,
           "tool_inputs_repaired_ci_high": null,
           "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 23.083333,
-          "mb_injected_calls_ci_low": 20.341009,
-          "mb_injected_calls_ci_high": 25.825657,
-          "mb_injected_calls_ci_margin": 2.742324,
+          "mb_injected_calls_mean": 23.230769,
+          "mb_injected_calls_ci_low": 20.713033,
+          "mb_injected_calls_ci_high": 25.748506,
+          "mb_injected_calls_ci_margin": 2.517737,
           "aborted_mean": 0.0,
           "aborted_ci_low": null,
           "aborted_ci_high": null,
@@ -575,6 +1336,12 @@
             {
               "run_id": "7ce8d439-22ce-466c-ba85-5b2a9ebe3fda",
               "timestamp": "2026-07-01T22:14:49.307963",
+              "trial_index": 0,
+              "prompt_variant": null
+            },
+            {
+              "run_id": "b9aab6d1-0c5e-4415-b99b-128e7f2f02fe",
+              "timestamp": "2026-07-04T23:08:21.338569",
               "trial_index": 0,
               "prompt_variant": null
             }
@@ -2401,8 +3168,8 @@
     "cells": {
       "Claude Sonnet 4.6": {
         "box_pocket_detailed": {
-          "runs": 17,
-          "graded": 9
+          "runs": 18,
+          "graded": 10
         },
         "box_pocket_explicit": {
           "runs": 1,

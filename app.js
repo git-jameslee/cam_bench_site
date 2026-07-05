@@ -1,6 +1,10 @@
-// app.js — renders bench_site/summary.json into per-task tables.
-// Columns are grouped (outcome / post / subjective / tokens / time); each group
-// has a show/hide toggle. Cells show mean with an optional 95% t-distribution CI.
+// app.js — renders bench_site/summary.json.
+// Landing view = Leaderboard: models ranked by metric wins (see eval_etl
+// build_leaderboard) with prompt-variant filter tabs, per-task headline cells,
+// an expandable variant × task matrix per model, and a metric head-to-head
+// table. Task tabs keep the deep-dive: grouped metric columns
+// (outcome / post / subjective / tokens / time) with show/hide toggles and
+// per-run drill-down. Cells show mean with an optional 95% t-distribution CI.
 
 const DASH = "—";
 const GROUP_LABEL = {
@@ -59,7 +63,8 @@ function modelLabel(name) {
 }
 
 let DATA = null;
-let active = "Overview";
+let active = "Leaderboard";
+let variantTab = "all";
 let visible = new Set();
 
 const $ = (s) => document.querySelector(s);
@@ -90,6 +95,159 @@ function el(tag, attrs = {}, ...kids) {
   }
   for (const kid of kids) if (kid != null) n.append(kid);
   return n;
+}
+
+// Short column labels for task groups (full name lives in the tooltip).
+function taskShort(name) {
+  const m = name.match(/^titan_m(\d+)$/);
+  if (m) return "M" + m[1];
+  if (name === "box_pocket") return "BP";
+  if (name === "rounded_rectangle_with_pin_and_hole") return "RR";
+  return name;
+}
+
+// One cell showing the headline metric's mean (dash when ungraded).
+function headlineCell(H, c, extraClass, title) {
+  if (!c || c.mean == null) {
+    return el("td", { class: ("dash " + (extraClass || "")).trim() }, DASH);
+  }
+  const attrs = extraClass ? { class: extraClass } : {};
+  if (title) attrs.title = title;
+  return el("td", attrs, fmtMain(H.fmt, c.mean));
+}
+
+function renderLeaderboard() {
+  const lb = DATA.leaderboard;
+  const board = lb.boards[variantTab] || lb.boards.all;
+  const H = lb.headline;
+  const panel = $("#panel");
+  panel.replaceChildren();
+  panel.append(el("h2", {}, "Leaderboard"));
+  panel.append(el("div", { class: "note" },
+    `Ranked by metric wins — on how many scoring metrics the model posts the best mean in this view (${board.contested} contested; ties shared) — tiebroken by overall ${H.label}. Task cells show mean ${H.label}; click a model for its prompt-variant breakdown.`));
+
+  // Prompt-variant filter (the ablation axis): re-filters + re-ranks the board.
+  const seg = el("div", { class: "seg" });
+  lb.variants.forEach((v) => {
+    const b = el("button", { class: "segbtn" + (v === variantTab ? " active" : "") },
+      v === "all" ? "All variants" : v);
+    b.onclick = () => { variantTab = v; render(); };
+    seg.append(b);
+  });
+  panel.append(seg);
+
+  const table = el("table");
+  const head = el("tr");
+  ["model", "runs", "wins"].forEach((h) => head.append(el("th", {}, h)));
+  head.append(el("th", { class: "grp", title: `mean ${H.key} over every graded run in this view` },
+    H.label + " · overall"));
+  lb.task_groups.forEach((g) => head.append(el("th", { title: g }, taskShort(g))));
+  table.append(el("thead", {}, head));
+
+  const body = el("tbody");
+  const span = 4 + lb.task_groups.length;
+  board.models.forEach((e, i) => {
+    const mtx = lb.matrix[e.model] || {};
+    const expandable = Object.keys(mtx).length > 0;
+    const tr = el("tr", expandable ? { class: "expandable" } : {});
+    // Rank lives inside the sticky model cell so it survives horizontal scroll.
+    const mcell = el("td", { class: "model" });
+    mcell.append(el("span", { class: "rank" }, "" + (i + 1)));
+    if (expandable) mcell.append(el("span", { class: "caret" }, "▸"));
+    mcell.append(modelLabel(e.model));
+    tr.append(mcell);
+    tr.append(el("td", {}, "" + e.runs));
+    const wonLabels = e.won.map((k) => {
+      const wm = lb.wins_metrics.find((m) => m.key === k);
+      return wm ? wm.label : k;
+    });
+    tr.append(el("td", wonLabels.length ? { title: "won: " + wonLabels.join(", ") } : {},
+      `${e.wins}/${board.contested}`));
+
+    const h = e.headline;
+    if (h.mean == null) {
+      tr.append(el("td", { class: "dash grp" }, DASH));
+    } else {
+      const attrs = { class: "grp" };
+      if (showCI() && h.ci_low != null && h.ci_high != null) {
+        attrs.title = `[${fmtMain(H.fmt, h.ci_low)}, ${fmtMain(H.fmt, h.ci_high)}]`;
+      }
+      const td = el("td", attrs, fmtMain(H.fmt, h.mean));
+      if (showCI() && h.ci_margin != null) {
+        td.append(el("span", { class: "ci" }, " ±" + fmtMain(H.fmt, h.ci_margin)));
+      }
+      tr.append(td);
+    }
+    lb.task_groups.forEach((g) => {
+      const c = e.tasks[g];
+      tr.append(headlineCell(H, c, "", c && c.n ? `${g} · n=${c.n}` : g));
+    });
+    body.append(tr);
+
+    if (expandable) {
+      const detail = el("tr", { class: "detail hidden" });
+      const cell = el("td", { class: "detailcell", colspan: "" + span });
+      const sub = el("table", { class: "subtable" });
+      const sh = el("tr");
+      sh.append(el("th", {}, "variant"));
+      lb.task_groups.forEach((g) => sh.append(el("th", { title: g }, taskShort(g))));
+      sub.append(el("thead", {}, sh));
+      const sb = el("tbody");
+      Object.entries(mtx).forEach(([v, cells]) => {
+        const r = el("tr");
+        r.append(el("td", {}, v));
+        lb.task_groups.forEach((g) => {
+          const c = cells[g];
+          r.append(headlineCell(H, c, "", c && c.n ? `n=${c.n}` : null));
+        });
+        sb.append(r);
+      });
+      sub.append(sb);
+      cell.append(el("div", { class: "detail-h" }, `${H.label} by prompt variant`), sub,
+        el("div", { class: "note" },
+          "Per-run detail (transcripts, produced CAM) lives in the task tabs."));
+      detail.append(cell);
+      body.append(detail);
+      tr.onclick = () => {
+        const open = detail.classList.toggle("hidden") === false;
+        tr.classList.toggle("open", open);
+      };
+    }
+  });
+  table.append(body);
+  panel.append(el("div", { class: "scroll" }, table));
+
+  // Head-to-head: every scoring metric × ranked models, winners marked. This
+  // is the wins column's receipts.
+  panel.append(el("div", { class: "detail-h" }, "Metric head-to-head"));
+  const h2h = el("table", { class: "subtable" });
+  const hh = el("tr");
+  hh.append(el("th", {}, "metric"));
+  board.models.forEach((e) => hh.append(el("th", {}, modelLabel(e.model))));
+  h2h.append(el("thead", {}, hh));
+  const hb = el("tbody");
+  lb.wins_metrics.forEach((m) => {
+    const cells = board.models.map((e) => e.metrics[m.key] || { mean: null, n: 0 });
+    if (!cells.some((c) => c.n > 0)) return; // nothing graded in this view
+    const contested = cells.filter((c) => c.n > 0).length >= 2;
+    const r = el("tr");
+    r.append(el("td", { title: `${m.section} · ${m.key}` },
+      m.label + " ", el("span", { class: "args" }, m.direction > 0 ? "↑" : "↓")));
+    board.models.forEach((e, idx) => {
+      const c = cells[idx];
+      if (c.mean == null) { r.append(el("td", { class: "dash" }, DASH)); return; }
+      const winner = contested && e.won.includes(m.key);
+      const td = el("td", { title: `n=${c.n}`, class: winner ? "win" : "" },
+        fmtMain(m.fmt, c.mean));
+      if (winner) td.prepend(el("span", { class: "winmark" }, "● "));
+      r.append(td);
+    });
+    hb.append(r);
+  });
+  h2h.append(hb);
+  panel.append(el("div", { class: "scroll" }, h2h));
+  panel.append(el("div", { class: "note" },
+    "↑ higher is better, ↓ lower is better. ● = best mean in this view (a win; ties share it; a metric only 1 model has data for is uncontested). Curated scoring metrics only — token / time diagnostics never count toward wins."));
 }
 
 function renderOverview() {
@@ -349,8 +507,12 @@ function renderTranscript(run) {
 }
 
 function render() {
-  if (active === "Overview") renderOverview();
+  if (active === "Leaderboard" && DATA.leaderboard) renderLeaderboard();
+  else if (active === "Coverage" || active === "Overview") renderOverview();
   else renderTask(active);
+  // Metric-group toggles only drive the task tables; hide them elsewhere.
+  $("#groups").style.display =
+    (active === "Leaderboard" || active === "Coverage") ? "none" : "flex";
   document.querySelectorAll(".tab").forEach((b) =>
     b.classList.toggle("active", b.dataset.name === active));
 }
@@ -373,7 +535,9 @@ function buildGroupToggles() {
 function buildTabs() {
   const tabs = $("#tabs");
   tabs.replaceChildren();
-  ["Overview", ...DATA.tasks.map((t) => t.name)].forEach((name) => {
+  const names = [...(DATA.leaderboard ? ["Leaderboard"] : []),
+                 "Coverage", ...DATA.tasks.map((t) => t.name)];
+  names.forEach((name) => {
     const b = el("button", { class: "tab", "data-name": name }, name);
     b.onclick = () => { active = name; render(); };
     tabs.append(b);
@@ -391,6 +555,11 @@ async function init() {
   } catch (e) {
     $("#sub").textContent = "failed to load summary.json";
     return;
+  }
+  if (!DATA.leaderboard) active = "Coverage"; // stale summary.json without the board
+  if (DATA.n_runs != null) {
+    const when = DATA.generated ? new Date(DATA.generated).toLocaleDateString() : null;
+    $("#sub").textContent = `${DATA.n_runs} runs` + (when ? ` · updated ${when}` : "");
   }
   $("#ci").addEventListener("change", render);
   const themeBtn = $("#theme");

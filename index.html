@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CAM-LLM Benchmark</title>
+<title>MachineBench</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -167,6 +167,20 @@
   td.dash { color:var(--muted); }
   .ci { color:var(--muted); font-size:12px; margin-left:4px; }
 
+  /* Leaderboard: prompt-variant filter pills + rank / win accents. Flat like
+     everything else — active pill is a solid primary block, wins are marked
+     with the ok color, never shadows. */
+  .seg { display:flex; gap:6px; margin:16px 0 4px; flex-wrap:wrap; }
+  .segbtn { padding:7px 14px; border-radius:9999px; border:0; cursor:pointer;
+            background:var(--canvas); color:var(--muted); text-transform:capitalize;
+            font:600 13px 'Outfit', sans-serif; transition:all .2s; }
+  .segbtn:hover { color:var(--fg); }
+  .segbtn.active { background:var(--primary); color:#fff; }
+  .segbtn.active:hover { background:var(--primary-d); }
+  .rank { display:inline-block; min-width:24px; color:var(--muted); font-weight:700; }
+  td.win { color:var(--ok); font-weight:700; }
+  .winmark { font-size:9px; vertical-align:1px; }
+
   tr.expandable { cursor:pointer; }
   .caret { display:inline-block; width:12px; color:var(--muted); font-size:10px;
            transition:transform .2s ease; }
@@ -225,7 +239,7 @@
     </span>
   </button>
   <header>
-    <h1>CAM-LLM Benchmark</h1>
+    <h1>MachineBench</h1>
     <div class="sub" id="sub"></div>
   </header>
   <div class="barwrap">
