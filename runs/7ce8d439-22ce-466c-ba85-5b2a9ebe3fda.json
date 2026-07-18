@@ -40,8 +40,7 @@
     "air_cut_ratio": 0.0527,
     "rough_before_finish": 1.0,
     "toolpath_length_mm": 13475.93,
-    "tolerance_appropriate": 1.0,
-    "mrr_mm3_per_min": 6600.0
+    "tolerance_appropriate": 1.0
   },
   "transcript": [
     {

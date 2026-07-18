@@ -40,8 +40,7 @@
     "engagement_ok": 1.0,
     "axial_engagement_pct": 24.7019,
     "rough_before_finish": 1.0,
-    "tolerance_appropriate": 1.0,
-    "mrr_mm3_per_min": 3090.0
+    "tolerance_appropriate": 1.0
   },
   "transcript": [
     {

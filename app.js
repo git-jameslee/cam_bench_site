@@ -3,12 +3,12 @@
 // build_leaderboard) with prompt-variant filter tabs, per-task headline cells,
 // an expandable variant × task matrix per model, and a metric head-to-head
 // table. Task tabs keep the deep-dive: grouped metric columns
-// (outcome / post / subjective / tokens / time) with show/hide toggles and
+// (outcome / post / tokens / time) with show/hide toggles and
 // per-run drill-down. Cells show mean with an optional 95% t-distribution CI.
 
 const DASH = "—";
 const GROUP_LABEL = {
-  outcome: "Outcome", post: "Objective", subjective: "Subjective",
+  outcome: "Outcome", post: "Objective",
   tokens: "Tokens", time: "Time", other: "Other",
 };
 
@@ -349,7 +349,7 @@ function renderOverview() {
   panel.replaceChildren();
   panel.append(el("h2", {}, "Coverage"));
   panel.append(el("div", { class: "note" },
-    "Runs per model × task, and whether manual (objective / subjective) scores are graded."));
+    "Runs per model × task, and whether objective scores are graded."));
 
   const table = el("table");
   const head = el("tr");

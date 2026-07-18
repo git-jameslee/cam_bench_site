@@ -9,8 +9,8 @@ columns = the metrics `eval_middleware` logs (grouped, toggleable). PIN-gated.
 ## How it updates
 `summary.json` is regenerated from local `eval_results` and pushed; Cloudflare
 Pages auto-deploys on push. Two triggers:
-- **Auto** — finishing or grading a run runs `update.ps1` (build → commit → push)
-  via the hook in `eval_middleware.py` / `score_run.py`.
+- **Auto** — finishing a run (scoring is automatic, no manual grading step)
+  runs `update.ps1` (build → commit → push) via the hook in `eval_middleware.py`.
 - **Manual** — `..\update.ps1` (build + commit + push on demand).
 
 ## One-time setup

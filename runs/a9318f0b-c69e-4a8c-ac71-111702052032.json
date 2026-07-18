@@ -1,0 +1,249 @@
+{
+  "run_id": "a9318f0b-c69e-4a8c-ac71-111702052032",
+  "model": "Gemma 4 31B",
+  "model_raw": "gemma-4-31B-it",
+  "task": "titan_m2_detailed",
+  "task_group": "titan_m2",
+  "prompt_variant": "detailed",
+  "trial_index": 0,
+  "trials_total": 1,
+  "backend": "openai",
+  "timestamp": "2026-07-07T14:18:01.560125",
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64
+  },
+  "seed": null,
+  "values": {
+    "tool_calls_total": 7.0,
+    "tool_calls_succeeded": 5.0,
+    "tool_calls_failed": 2.0,
+    "tool_call_success_rate": 0.714,
+    "tool_inputs_repaired": 0.0,
+    "mb_injected_calls": 7.0,
+    "hit_round_limit": 0.0,
+    "aborted": 0.0,
+    "input_tokens": 111372.0,
+    "output_tokens": 3067.0,
+    "cache_read_input_tokens": 0.0,
+    "cache_creation_input_tokens": 0.0,
+    "llm_rounds": 8.0,
+    "llm_s": 908.67,
+    "tool_s": 91.82,
+    "wall_clock_s": 1001.83,
+    "iou_voxel": 0.0452,
+    "max_deviation_mm": 64.444,
+    "p99_deviation_mm": 62.0,
+    "operation_count": 4.0,
+    "tool_change_count": 2.0,
+    "cycle_time_s": 1000.83,
+    "toolpath_length_mm": 2730.47,
+    "collision_free": 1.0,
+    "stock_in_bounds": 1.0,
+    "scallop_height_mm": 1.2031,
+    "radial_engagement_pct": 28.0726,
+    "engagement_ok": 1.0,
+    "axial_engagement_pct": 19.685,
+    "rough_before_finish": 1.0,
+    "tolerance_appropriate": 1.0,
+    "air_cut_ratio": 0.1895
+  },
+  "transcript": [
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\ndef run(_context):\n    import mb_cam as mb\n    # Inspect part and CAM state\n    scene = mb.inspect()\n    print(f\"Scene: {scene}\")\n    # Since Setup1 is already pre-configured, we just need to verify its existence and the body\n    return scene\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Scene: {'document': 'gemma-4-31B-it_Titan-M2_detailed_2026-07-07T14-01-02', 'length_unit': 'mm', 'bodies': [{'index': 0, 'name': 'Body1', 'dims_mm': [127.0, 19.05, 49.53], 'bbox_min_mm': [0.0, 0.0, 0.0], 'bbox_max_mm': [127.0, 19.05, 49.53], 'face_count': 84}], 'cam': {'present': True, 'setups': ['Setup1']}}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\ndef run(_context):\n    import mb_cam as mb\n    # Inspect faces to identify pockets and contours\n    # Plane faces are usually the target for 2D ops\n    faces = mb.faces(body_index=0, kind=\"Plane\")\n    print(f\"Faces: {faces}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Faces: [{'index': 0, 'type': 'Plane', 'area_mm2': 558.459, 'centroid_mm': [6.35, 19.05, 24.765], 'normal': [0.0, 1.0, -0.0], 'z_mm': 24.765}, {'index': 1, 'type': 'Plane', 'area_mm2': 2235.441, 'centroid_mm': [63.5, 19.05, 24.765], 'normal': [0.0, 1.0, -0.0], 'z_mm': 24.765}, {'index': 2, 'type': 'Plane', 'area_mm2': 558.459, 'centroid_mm': [120.65, 19.05, 24.765], 'normal': [0.0, 1.0, -0.0], 'z_mm': 24.765}, {'index': 4, 'type': 'Plane', 'area_mm2': 119.355, 'centroid_mm': [123.825, 9.398, 3.175], 'normal': [0.7071, -0.0, -0.7071], 'z_mm': 3.175}, {'index': 6, 'type': 'Plane', 'area_mm2': 1575.591, 'centroid_mm': [63.5, 9.398, -0.0], 'normal': [0.0, -0.0, -1.0], 'z_mm': -0.0}, {'index': 8, 'type': 'Plane', 'area_mm2': 119.355, 'centroid_mm': [3.175, 9.398, 3.175], 'normal': [-0.7071, 0.0, -0.7071], 'z_mm': 3.175}, {'index': 10, 'type': 'Plane', 'area_mm2': 642.818, 'centroid_mm': [0.0, 9.398, 24.765], 'normal': [-1.0, -0.0, 0.0], 'z_mm': 24.765}, {'index': 12, 'type': 'Plane', 'area_mm2': 119.355, 'centroid_mm': [3.175, 9.398, 46.355], 'normal': [-0.7071, -0.0, 0.7071], 'z_mm': 46.355}, {'index': 14, 'type': 'Plane', 'area_mm2': 1575.591, 'centroid_mm': [63.5, 9.398, 49.53], 'normal': [-0.0, -0.0, 1.0], 'z_mm': 49.53}, {'index': 16, 'type': 'Plane', 'area_mm2': 119.355, 'centroid_mm': [123.825, 9.398, 46.355], 'normal': [0.7071, -0.0, 0.7071], 'z_mm': 46.355}, {'index': 18, 'type': 'Plane', 'area_mm2': 642.818, 'centroid_mm': [127.0, 9.398, 24.765], 'normal': [1.0, -0.0, -0.0], 'z_mm': 24.765}, {'index': 19, 'type': 'Plane', 'area_mm2': 6114.822, 'centroid_mm': [63.5, 0.0, 24.765], 'normal': [-0.0, -1.0, 0.0], 'z_mm': 24.765}, {'index': 21, 'type': 'Plane', 'area_mm2': 22.802, 'centroid_mm': [73.025, 14.859, 6.033], 'normal': [-0.0, 1.0, -0.0], 'z_mm': 6.033}, {'index': 24, 'type': 'Plane', 'area_mm2': 22.802, 'centroid_mm': [76.2, 14.859, 21.908], 'normal': [-0.0, 1.0, -0.0], 'z_mm': 21.908}, {'index': 27, 'type': 'Plane', 'area_mm2': 22.802, 'centroid_mm': [73.025, 14.859, 37.782], 'normal': [-0.0, 1.0, -0.0], 'z_mm': 37.782}, {'index': 30, 'type': 'Plane', 'area_mm2': 22.802, 'centroid_mm': [53.975, 14.859, 37.783], 'normal': [-0.0, 1.0, -0.0], 'z_mm': 37.783}, {'index': 33, 'type': 'Plane', 'area_mm2': 22.802, 'centroid_mm': [50.8, 14.859, 21.908], 'normal': [-0.0, 1.0, -0.0], 'z_mm': 21.908}, {'index': 36, 'type': 'Plane', 'area_mm2': 22.802, 'centroid_mm': [53.975, 14.859, 6.033], 'normal': [-0.0, 1.0, -0.0], 'z_mm': 6.033}, {'index': 38, 'type': 'Plane', 'area_mm2': 480.58, 'centroid_mm': [88.9, 13.843, 24.765], 'normal': [1.0, -0.0, -0.0], 'z_mm': 24.765}, {'index': 39, 'type': 'Plane', 'area_mm2': 480.58, 'centroid_mm': [114.3, 13.843, 24.765], 'normal': [-1.0, -0.0, 0.0], 'z_mm': 24.765}, {'index': 40, 'type': 'Plane', 'area_mm2': 1258.284, 'centroid_mm': [101.6, 8.89, 24.765], 'normal': [0.0, 1.0, 0.0], 'z_mm': 24.765}, {'index': 41, 'type': 'Plane', 'area_mm2': 480.58, 'centroid_mm': [12.7, 13.843, 24.765], 'normal': [1.0, -0.0, -0.0], 'z_mm': 24.765}, {'index': 42, 'type': 'Plane', 'area_mm2': 480.58, 'centroid_mm': [38.1, 13.843, 24.765], 'normal': [-1.0, -0.0, 0.0], 'z_mm': 24.765}, {'index': 43, 'type': 'Plane', 'area_mm2': 1258.284, 'centroid_mm': [25.4, 8.89, 24.765], 'normal': [0.0, 1.0, 0.0], 'z_mm': 24.765}, {'index': 52, 'type': 'Plane', 'area_mm2': 17.427, 'centroid_mm': [114.427, 18.923, 24.765], 'normal': [-0.7071, 0.7071, -0.0], 'z_mm': 24.765}, {'index': 55, 'type': 'Plane', 'area_mm2': 1.626, 'centroid_mm': [117.071, 18.923, 49.403], 'normal': [-0.0, 0.7071, 0.7071], 'z_mm': 49.403}, {'index': 56, 'type': 'Plane', 'area_mm2': 1.626, 'centroid_mm': [117.071, 18.923, 0.127], 'normal': [0.0, 0.7071, -0.7071], 'z_mm': 0.127}, {'index': 59, 'type': 'Plane', 'area_mm2': 2.281, 'centroid_mm': [123.735, 18.923, 46.265], 'normal': [0.5, 0.7071, 0.5], 'z_mm': 46.265}, {'index': 60, 'type': 'Plane', 'area_mm2': 2.281, 'centroid_mm': [123.735, 18.923, 3.265], 'normal': [0.5, 0.7071, -0.5], 'z_mm': 3.265}, {'index': 63, 'type': 'Plane', 'area_mm2': 12.285, 'centroid_mm': [126.873, 18.923, 24.765], 'normal': [0.7071, 0.7071, 0.0], 'z_mm': 24.765}, {'index': 64, 'type': 'Plane', 'area_mm2': 17.427, 'centroid_mm': [12.573, 18.923, 24.765], 'normal': [0.7071, 0.7071, -0.0], 'z_mm': 24.765}, {'index': 67, 'type': 'Plane', 'area_mm2': 1.626, 'centroid_mm': [9.929, 18.923, 0.127], 'normal': [0.0, 0.7071, -0.7071], 'z_mm': 0.127}, {'index': 68, 'type': 'Plane', 'area_mm2': 1.626, 'centroid_mm': [9.929, 18.923, 49.403], 'normal': [-0.0, 0.7071, 0.7071], 'z_mm': 49.403}, {'index': 71, 'type': 'Plane', 'area_mm2': 2.281, 'centroid_mm': [3.265, 18.923, 3.265], 'normal': [-0.5, 0.7071, -0.5], 'z_mm': 3.265}, {'index': 72, 'type': 'Plane', 'area_mm2': 2.281, 'centroid_mm': [3.265, 18.923, 46.265], 'normal': [-0.5, 0.7071, 0.5], 'z_mm': 46.265}, {'index': 75, 'type': 'Plane', 'area_mm2': 12.285, 'centroid_mm': [0.127, 18.923, 24.765], 'normal': [-0.7071, 0.7071, 0.0], 'z_mm': 24.765}, {'index': 76, 'type': 'Plane', 'area_mm2': 17.427, 'centroid_mm': [38.227, 18.923, 24.765], 'normal': [-0.7071, 0.7071, 0.0], 'z_mm': 24.765}, {'index': 79, 'type': 'Plane', 'area_mm2': 17.883, 'centroid_mm': [63.5, 18.923, 0.127], 'normal': [0.0, 0.7071, -0.7071], 'z_mm': 0.127}, {'index': 80, 'type': 'Plane', 'area_mm2': 17.883, 'centroid_mm': [63.5, 18.923, 49.403], 'normal': [-0.0, 0.7071, 0.7071], 'z_mm': 49.403}, {'index': 83, 'type': 'Plane', 'area_mm2': 17.427, 'centroid_mm': [88.773, 18.923, 24.765], 'normal': [0.7071, 0.7071, -0.0], 'z_mm': 24.765}]\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\ndef run(_context):\n    import mb_cam as mb\n    # List tools in TIW library\n    tools = mb.list_library_tools(contains=\"TIW\")\n    print(f\"Available Tools: {tools}\")\n"
+        }
+      },
+      "result": "{\n    \"message\": \"Available Tools: [{'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 0, 'description': '9/32\\\" Cobalt Drill', 'diameter_mm': 7.1437, 'corner_radius_mm': 0.0, 'flute_length_mm': 27.94, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 1, 'description': '3/4\\\" HSS 2Fl Square Endmill', 'diameter_mm': 19.05, 'corner_radius_mm': 0.0, 'flute_length_mm': 34.304, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 2, 'description': '(REMOVED T49) diy engrave as a center drill', 'diameter_mm': 1.0541, 'corner_radius_mm': 0.0, 'flute_length_mm': 0.3048, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 3, 'description': '1/4\\\" HSS Ball Endmill', 'diameter_mm': 6.35, 'corner_radius_mm': 3.175, 'flute_length_mm': 19.05, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 4, 'description': 'Tormach SuperFly Fly Cutter', 'diameter_mm': 58.42, 'corner_radius_mm': 0.0, 'flute_length_mm': 2.54, 'flutes': 1}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 5, 'description': '11/32\\\" Long Cobalt Drill', 'diameter_mm': 8.7312, 'corner_radius_mm': 0.0, 'flute_length_mm': 90.6145, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 6, 'description': '1/8\\\" - 5/16\\\" Center Drill w/ countersink', 'diameter_mm': 7.9375, 'corner_radius_mm': 0.0, 'flute_length_mm': 17.0561, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 7, 'description': '3/4\\\" HSS TiN Flat Endmill', 'diameter_mm': 19.05, 'corner_radius_mm': 0.0, 'flute_length_mm': 44.45, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 8, 'description': '7/64\\\" - 1/4\\\" Center Drill w/ countersink', 'diameter_mm': 6.35, 'corner_radius_mm': 0.0, 'flute_length_mm': 14.4145, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 9, 'description': '9/16\\\" HSS 6FL T-Slot Cutter', 'diameter_mm': 14.2875, 'corner_radius_mm': 0.0, 'flute_length_mm': 6.0452, 'flutes': 6}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 10, 'description': '5/31\\\" Cobalt Drill', 'diameter_mm': 3.9688, 'corner_radius_mm': 0.0, 'flute_length_mm': 28.575, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 11, 'description': '1/8\\\" Cobalt Drill', 'diameter_mm': 3.175, 'corner_radius_mm': 0.0, 'flute_length_mm': 37.3761, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 12, 'description': '1/8\\\" Cobalt Drill', 'diameter_mm': 3.175, 'corner_radius_mm': 0.0, 'flute_length_mm': 17.78, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 13, 'description': '7/16\\\" HSS Ball Endmill', 'diameter_mm': 11.1125, 'corner_radius_mm': 5.5563, 'flute_length_mm': 25.4, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 14, 'description': '1/2\\\" 3Fl Carb TiCN Flat Endmill', 'diameter_mm': 12.7, 'corner_radius_mm': 0.0, 'flute_length_mm': 50.8, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 15, 'description': '5/16\\\" Carbide 2Fl Flat Endmill', 'diameter_mm': 7.9375, 'corner_radius_mm': 0.0, 'flute_length_mm': 40.64, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 16, 'description': '7/32\\\" Cobalt Drill', 'diameter_mm': 5.5563, 'corner_radius_mm': 0.0, 'flute_length_mm': 25.4, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 17, 'description': '5/16\\\" HSS Ball Endmill', 'diameter_mm': 7.9375, 'corner_radius_mm': 3.9688, 'flute_length_mm': 12.7, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 18, 'description': '1/8\\\" HSS Ball Endmill', 'diameter_mm': 3.175, 'corner_radius_mm': 1.5875, 'flute_length_mm': 10.16, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 19, 'description': '1/4\\\" Carbide Uncoated Ball Endmill', 'diameter_mm': 6.35, 'corner_radius_mm': 3.175, 'flute_length_mm': 27.94, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 20, 'description': '7/16\\\" HSS TiN Flat Endmill', 'diameter_mm': 11.1125, 'corner_radius_mm': 0.0, 'flute_length_mm': 25.4, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 21, 'description': '(REMOVED T79) 1/16\\\" Long Flat Endmill 3FL', 'diameter_mm': 1.5875, 'corner_radius_mm': 0.0, 'flute_length_mm': 2.54, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 22, 'description': '5/8\\\" HSS 4 Flute Endmill', 'diameter_mm': 15.875, 'corner_radius_mm': 0.0, 'flute_length_mm': 42.8244, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 23, 'description': '3/8\\\" HSS 4 Flute Flat Endmill', 'diameter_mm': 9.525, 'corner_radius_mm': 0.0, 'flute_length_mm': 19.05, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 24, 'description': '3/4\\\" HSS 2Fl Ball Endmill', 'diameter_mm': 19.05, 'corner_radius_mm': 9.525, 'flute_length_mm': 34.29, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 25, 'description': '3/4\\\" HSS 4 Flute Flat Endmill', 'diameter_mm': 19.05, 'corner_radius_mm': 0.0, 'flute_length_mm': 43.7642, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 26, 'description': '5/16\\\" HSS 2Fl Square Endmill', 'diameter_mm': 7.9375, 'corner_radius_mm': 0.0, 'flute_length_mm': 55.372, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 27, 'description': '5/8\\\" HSS TiN Flat Endmill', 'diameter_mm': 15.875, 'corner_radius_mm': 0.0, 'flute_length_mm': 40.64, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 28, 'description': '3/8\\\" 3FL Carb ZrN Flat Endmill', 'diameter_mm': 9.525, 'corner_radius_mm': 0.0, 'flute_length_mm': 25.4, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 29, 'description': '3/16\\\" Cobalt Drill', 'diameter_mm': 4.7625, 'corner_radius_mm': 0.0, 'flute_length_mm': 22.86, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 30, 'description': '3/64\\\" - 1/8\\\" Center Drill', 'diameter_mm': 3.175, 'corner_radius_mm': 0.0, 'flute_length_mm': 7.62, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 31, 'description': '5/16\\\" Cobalt Drill', 'diameter_mm': 7.9375, 'corner_radius_mm': 0.0, 'flute_length_mm': 31.75, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 32, 'description': 'Tormach SuperFly Fly Cutter', 'diameter_mm': 76.2, 'corner_radius_mm': 0.0, 'flute_length_mm': 2.54, 'flutes': 1}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 33, 'description': '5/8\\\" HSS Ball Endmill', 'diameter_mm': 15.875, 'corner_radius_mm': 7.9375, 'flute_length_mm': 29.21, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 34, 'description': '1/2\\\" HSS 4 Flute Flat Endmill', 'diameter_mm': 12.7, 'corner_radius_mm': 0.0, 'flute_length_mm': 31.75, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 35, 'description': '1/4\\\" 3fl TiCN Carb Flat Endmill', 'diameter_mm': 6.35, 'corner_radius_mm': 0.0, 'flute_length_mm': 27.94, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 36, 'description': '(REMOVED T63) 5/16\\\" HSS TiN Flat Endmill', 'diameter_mm': 7.9375, 'corner_radius_mm': 0.0, 'flute_length_mm': 17.78, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 37, 'description': '1/2\\\" HSS Ball Endmill', 'diameter_mm': 12.7, 'corner_radius_mm': 6.35, 'flute_length_mm': 25.4, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 38, 'description': '15/32\\\" Cobalt Drill', 'diameter_mm': 11.9062, 'corner_radius_mm': 0.0, 'flute_length_mm': 35.56, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 39, 'description': '3/8\\\" HSS 3fl Chamfer Mill (41 degree - 82 degree incl.)', 'diameter_mm': 9.525, 'corner_radius_mm': 0.0, 'flute_length_mm': 6.35, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 40, 'description': '3/8\\\" Long Cobalt drill', 'diameter_mm': 9.525, 'corner_radius_mm': 0.0, 'flute_length_mm': 89.916, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 41, 'description': '3/16\\\" HSS 4 Flute Flat Endmill', 'diameter_mm': 4.7625, 'corner_radius_mm': 0.0, 'flute_length_mm': 12.7, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 42, 'description': '(REMOVED T77) 1/16\\\" HSS Flat End Mill', 'diameter_mm': 1.5875, 'corner_radius_mm': 0.0, 'flute_length_mm': 7.62, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 43, 'description': '5/16\\\" TiCN Carbide 2Fl Flat Endmill', 'diameter_mm': 7.9375, 'corner_radius_mm': 0.0, 'flute_length_mm': 42.9768, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 44, 'description': '1/2\\\" Cobalt Drill', 'diameter_mm': 12.7, 'corner_radius_mm': 0.0, 'flute_length_mm': 35.56, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 45, 'description': '3/16\\\" 3Fl ZrN Carb Flat Endmill', 'diameter_mm': 4.7625, 'corner_radius_mm': 0.0, 'flute_length_mm': 15.24, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 46, 'description': '3/32\\\" - 3/16\\\" Center Drill', 'diameter_mm': 4.7625, 'corner_radius_mm': 0.0, 'flute_length_mm': 12.7, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 47, 'description': '1/4\\\" Cobalt Drill', 'diameter_mm': 6.35, 'corner_radius_mm': 0.0, 'flute_length_mm': 30.48, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 48, 'description': '3/8\\\" HSS Ball Endmill', 'diameter_mm': 9.525, 'corner_radius_mm': 4.7625, 'flute_length_mm': 12.7, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 49, 'description': '1/2\\\" 3Fl Carb ZrN Flat Endmill', 'diameter_mm': 12.7, 'corner_radius_mm': 0.0, 'flute_length_mm': 31.75, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 50, 'description': '(REMOVED T78) 1/16\\\" Tapered Ball Endmill', 'diameter_mm': 1.5875, 'corner_radius_mm': 0.7937, 'flute_length_mm': 5.08, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 51, 'description': '0.0098\\\" Cobalt 2 Flute Drill', 'diameter_mm': 2.4892, 'corner_radius_mm': 0.0, 'flute_length_mm': 31.3182, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 52, 'description': '1/4\\\" HSS Flat Endmill', 'diameter_mm': 6.35, 'corner_radius_mm': 0.0, 'flute_length_mm': 24.13, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 53, 'description': '(CUSTOMIZIABLE) 0.09\\\" 2Fl HSS Drill', 'diameter_mm': 2.286, 'corner_radius_mm': 0.0, 'flute_length_mm': 19.05, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 54, 'description': '1/2\\\" 3Fl Carb ZrN Flat Endmill', 'diameter_mm': 12.7, 'corner_radius_mm': 0.0, 'flute_length_mm': 31.75, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 55, 'description': '1/16\\\" TICN Carbide Square Endmill', 'diameter_mm': 1.5875, 'corner_radius_mm': 0.0, 'flute_length_mm': 3.81, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 56, 'description': '3/8\\\" 0.065in Thread Mill', 'diameter_mm': 8.89, 'corner_radius_mm': 0.0, 'flute_length_mm': 22.86, 'flutes': 4}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 57, 'description': '1/4\\\" 60 deg Inclusive Engraver', 'diameter_mm': 6.35, 'corner_radius_mm': 0.0, 'flute_length_mm': 6.35, 'flutes': 1}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 58, 'description': '7/16\\\" Cobalt Drill', 'diameter_mm': 11.1125, 'corner_radius_mm': 0.0, 'flute_length_mm': 35.56, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 59, 'description': '3/16\\\" HSS Ball Endmill', 'diameter_mm': 4.7625, 'corner_radius_mm': 2.3812, 'flute_length_mm': 10.16, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 60, 'description': '3/8\\\" Cobalt Drill', 'diameter_mm': 9.525, 'corner_radius_mm': 0.0, 'flute_length_mm': 27.94, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 61, 'description': '1/2\\\" HSS 2Fl Flat Endmill', 'diameter_mm': 12.7, 'corner_radius_mm': 0.0, 'flute_length_mm': 53.975, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 62, 'description': '3/16 - 7/16\\\" Center Drill w/countersink', 'diameter_mm': 11.1125, 'corner_radius_mm': 0.0, 'flute_length_mm': 21.082, 'flutes': 2}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 63, 'description': '1/8\\\" 3Fl ZrN Carb Flat End Mill - 45 Degree Helix', 'diameter_mm': 3.175, 'corner_radius_mm': 0.0, 'flute_length_mm': 12.192, 'flutes': 3}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 64, 'description': '7/16\\\" Reamer', 'diameter_mm': 11.1125, 'corner_radius_mm': 0.0, 'flute_length_mm': 43.7896, 'flutes': 6}, {'library_url': 'toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 'index': 65, 'description': '1/4\\\" HSS 5fl Chamfer Mill (41 degree - 82 incl.)', 'diameter_mm': 6.35, 'corner_radius_mm': 0.0, 'flute_length_mm': 3.81, 'flutes': 5}]\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\ndef run(_context):\n    import mb_cam as mb\n    import json\n\n    # 1. Tool Selection\n    # Face mill: Fly cutter (idx 4)\n    # Roughing/Finishing Endmill: 1/2\" Flat Endmill (idx 14) - 12.7mm\n    # Small pocket/detail: 1/4\" (not found in snippet, let's use 5/16\" idx 15)\n    \n    t_face = mb.add_tool('toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 4)[\"document_tool_index\"]\n    t_rough = mb.add_tool('toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 14)[\"document_tool_index\"]\n    t_detail = mb.add_tool('toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 15)[\"document_tool_index\"]\n\n    # 2. Facing Operation\n    # Face the top (Z=49.53 is the top face centroid's Z in my inspection, but we have 1mm stock)\n    # Setup1 is already there.\n    op_face = mb.add_operation(\"Setup1\", strategy=\"face\", tool=t_face, name=\"Facing\")\n    mb.set_params(op_face[\"operation\"], {\n        \"stepover\": {\"value\": 20, \"unit\": \"mm\"},\n        \"maximumStepdown\": {\"value\": 0.5, \"unit\": \"mm\"},\n        \"tool_feedCutting\": {\"value\": 1000, \"unit\": \"mm\"},\n        \"tool_spindleSpeed\": {\"value\": 2000, \"unit\": \"raw\"},\n    })\n\n    # 3. Roughing the outer contour\n    # The top face (idx 14) is the boundary.\n    op_rough = mb.add_operation(\"Setup1\", strategy=\"adaptive2d\", tool=t_rough, \n                                geometry={\"faces\": [14], \"type\": \"contour\", \"loop\": \"OnlyOutsideLoops\", \"side\": \"AlwaysOutsideSideType\"},\n                                name=\"Rough_Outer\")\n    # We need to set the bottom height to the part bottom.\n    # The part dimensions are ~127x19x49.5. Bottom is Z=0.\n    mb.set_params(op_rough[\"operation\"], {\n        \"optimalLoad\": {\"value\": 2.0, \"unit\": \"mm\"},\n        \"maximumStepdown\": {\"value\": 10.0, \"unit\": \"mm\"},\n        \"tool_feedCutting\": {\"value\": 1200, \"unit\": \"mm\"},\n        \"tool_spindleSpeed\": {\"value\": 5000, \"unit\": \"raw\"},\n        \"bottomHeight_mode\": {\"value\": \"bottomPlane\", \"unit\": \"choice\"},\n        \"bottomHeight_offset\": {\"value\": 0, \"unit\": \"mm\"}\n    })\n\n    # 4. Finishing the outer contour\n    op_finish = mb.add_operation(\"Setup1\", strategy=\"contour2d\", tool=t_rough,\n                                 geometry={\"faces\": [14], \"type\": \"contour\", \"loop\": \"OnlyOutsideLoops\", \"side\": \"AlwaysOutsideSideType\"},\n                                 name=\"Finish_Outer\")\n    mb.set_params(op_finish[\"operation\"], {\n        \"stepdown\": {\"value\": 50, \"unit\": \"mm\"}, # Full depth in one go or multiple\n        \"tool_feedCutting\": {\"value\": 600, \"unit\": \"mm\"},\n        \"tool_spindleSpeed\": {\"value\": 5000, \"unit\": \"raw\"},\n        \"bottomHeight_mode\": {\"value\": \"bottomPlane\", \"unit\": \"choice\"},\n        \"bottomHeight_offset\": {\"value\": 0, \"unit\": \"mm\"}\n    })\n\n    # Generate all\n    res = mb.generate(setup=\"Setup1\")\n    print(json.dumps(res))\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 58, in <module>\\n  File \\\"<string>\\\", line 28, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 493, in add_operation\\n    raise RuntimeError(\\n    ...<2 lines>...\\n        f\\\"\u2014 do NOT create a new operation.\\\") from None\\nRuntimeError: Op 'Rough_Outer' created but geometry selection failed: operation has no 'contours' geometry parameter for this strategy. Fix with mb.set_geometry('Rough_Outer', <corrected_geometry>) \u2014 do NOT create a new operation.\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": false,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\ndef run(_context):\n    import mb_cam as mb\n    import json\n\n    # Setup1 exists. We might have created some ops before the crash.\n    # Let's check current state.\n    state = mb.probe()\n    print(f\"Current State: {state}\")\n\n    # We need a 1/2\" Flat Endmill (idx 14) and a Fly Cutter (idx 4)\n    t_face = mb.add_tool('toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 4)[\"document_tool_index\"]\n    t_rough = mb.add_tool('toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 14)[\"document_tool_index\"]\n\n    # Fix Facing if it exists or create it\n    op_face_name = \"Facing\"\n    try:\n        op_face = mb.add_operation(\"Setup1\", strategy=\"face\", tool=t_face, name=op_face_name)\n        mb.set_params(op_face[\"operation\"], {\n            \"stepover\": {\"value\": 20, \"unit\": \"mm\"},\n            \"maximumStepdown\": {\"value\": 0.5, \"unit\": \"mm\"},\n            \"tool_feedCutting\": {\"value\": 1000, \"unit\": \"mm\"},\n            \"tool_spindleSpeed\": {\"value\": 2000, \"unit\": \"raw\"},\n        })\n    except:\n        pass # Already exists\n\n    # Fix Roughing: Adaptive2D requires \"pocket\" geometry type typically, even for outer contours\n    op_rough_name = \"Rough_Outer\"\n    try:\n        # If it exists but failed geometry, we use set_geometry\n        mb.set_geometry(op_rough_name, {\"faces\": [14], \"type\": \"pocket\", \"loop\": \"OnlyOutsideLoops\", \"side\": \"AlwaysOutsideSideType\"})\n    except:\n        op_rough = mb.add_operation(\"Setup1\", strategy=\"adaptive2d\", tool=t_rough, name=op_rough_name)\n        mb.set_geometry(op_rough_name, {\"faces\": [14], \"type\": \"pocket\", \"loop\": \"OnlyOutsideLoops\", \"side\": \"AlwaysOutsideSideType\"})\n\n    mb.set_params(op_rough_name, {\n        \"optimalLoad\": {\"value\": 2.0, \"unit\": \"mm\"},\n        \"maximumStepdown\": {\"value\": 10.0, \"unit\": \"mm\"},\n        \"tool_feedCutting\": {\"value\": 1200, \"unit\": \"mm\"},\n        \"tool_spindleSpeed\": {\"value\": 5000, \"unit\": \"raw\"},\n        \"bottomHeight_mode\": {\"value\": \"bottomPlane\", \"unit\": \"choice\"},\n        \"bottomHeight_offset\": {\"value\": 0, \"unit\": \"mm\"}\n    })\n\n    # Finish Outer\n    op_finish_name = \"Finish_Outer\"\n    try:\n        op_finish = mb.add_operation(\"Setup1\", strategy=\"contour2d\", tool=t_rough, \n                                     geometry={\"faces\": [14], \"type\": \"contour\", \"loop\": \"OnlyOutsideLoops\", \"side\": \"AlwaysOutsideSideType\"},\n                                     name=op_finish_name)\n        mb.set_params(op_finish[\"operation\"], {\n            \"stepdown\": {\"value\": 50, \"unit\": \"mm\"},\n            \"tool_feedCutting\": {\"value\": 600, \"unit\": \"mm\"},\n            \"tool_spindleSpeed\": {\"value\": 5000, \"unit\": \"raw\"},\n            \"bottomHeight_mode\": {\"value\": \"bottomPlane\", \"unit\": \"choice\"},\n            \"bottomHeight_offset\": {\"value\": 0, \"unit\": \"mm\"}\n        })\n    except:\n        pass\n\n    # Generate\n    res = mb.generate(setup=\"Setup1\")\n    print(json.dumps(res))\n"
+        }
+      },
+      "result": "{\n    \"error\": \"Current State: {'setups': [{'name': 'Setup1', 'operations': [{'name': 'Facing', 'strategy': 'face', 'has_toolpath': True, 'is_valid': False, 'tool_diameter_mm': 58.42}, {'name': 'Rough_Outer', 'strategy': 'adaptive2d', 'has_toolpath': False, 'is_valid': True, 'tool_diameter_mm': 12.7}]}], 'cam_present': True}\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 66, in <module>\\n  File \\\"<string>\\\", line 37, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 586, in set_params\\n    _set_choice_expr(p, param_name, value)\\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 317, in _set_choice_expr\\n    raise RuntimeError(\\n        f\\\"Parameter {param_name!r} rejected value {value!r}: {e}{hint}\\\"\\n    ) from None\\nRuntimeError: Parameter 'bottomHeight_mode' rejected value 'bottomPlane': 3 : Invalid enumeration value. Valid choices for 'bottomHeight_mode': ['from clearance height', 'from contour', 'from fixture bottom', 'from fixture top', 'from highest of', 'from lowest of', 'from point', 'from retract height', 'from stock bottom', 'from stock top', 'from surface bottom', 'from surface top', 'from top', 'from wcs'].\\n\",\n    \"success\": false\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\ndef run(_context):\n    import mb_cam as mb\n    import json\n\n    # Correcting bottomHeight_mode to \"from stock bottom\"\n    # Rough_Outer needs to go to Z=0 (which is the stock bottom)\n    \n    mb.set_param(\"Rough_Outer\", \"bottomHeight_mode\", \"from stock bottom\", unit=\"choice\")\n    mb.set_param(\"Rough_Outer\", \"bottomHeight_offset\", 0, unit=\"mm\")\n\n    # Now try Finish_Outer again\n    t_rough = mb.add_tool('toollibraryroot://Local/TIW CNC Tool Library (4-28-26)', 14)[\"document_tool_index\"]\n    \n    op_finish_name = \"Finish_Outer\"\n    try:\n        op_finish = mb.add_operation(\"Setup1\", strategy=\"contour2d\", tool=t_rough, \n                                     geometry={\"faces\": [14], \"type\": \"contour\", \"loop\": \"OnlyOutsideLoops\", \"side\": \"AlwaysOutsideSideType\"},\n                                     name=op_finish_name)\n        mb.set_params(op_finish[\"operation\"], {\n            \"stepdown\": {\"value\": 50, \"unit\": \"mm\"},\n            \"tool_feedCutting\": {\"value\": 600, \"unit\": \"mm\"},\n            \"tool_spindleSpeed\": {\"value\": 5000, \"unit\": \"raw\"},\n            \"bottomHeight_mode\": {\"value\": \"from stock bottom\", \"unit\": \"choice\"},\n            \"bottomHeight_offset\": {\"value\": 0, \"unit\": \"mm\"}\n        })\n    except:\n        pass\n\n    # Generate and verify\n    res = mb.generate(setup=\"Setup1\")\n    print(json.dumps(res))\n"
+        }
+      },
+      "result": "{\n    \"message\": \"{\\\"completed\\\": true, \\\"operations\\\": [{\\\"name\\\": \\\"Facing\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Rough_Outer\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Facing1\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Finish_Outer\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}]}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_execute",
+      "success": true,
+      "input": {
+        "featureType": "script",
+        "object": {
+          "script": "import sys as _mbsys; _mbsys.path.insert(0, 'C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge'); import mb_cam as mb\ndef run(_context):\n    import mb_cam as mb\n    # Post the G-code\n    res = mb.post(\"Setup1\", output_path=\"C:/temp/Titan-M2.nc\")\n    print(res)\n"
+        }
+      },
+      "result": "{\n    \"message\": \"{'nc_path': 'C:/temp/Titan-M2.nc', 'post_file': 'C:\\\\\\\\Users\\\\\\\\Nanja\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Autodesk\\\\\\\\Autodesk Fusion 360\\\\\\\\CAM\\\\\\\\cache\\\\\\\\posts\\\\\\\\haas next generation.cps', 'units': 'mm'}\\n\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    }
+  ],
+  "provenance": {
+    "system_prompt_sha": "a29f35110b45",
+    "mb_cam_sha": "7d4103553336",
+    "task_file": "tasks/titan_m2/titan_m2_detailed.yaml",
+    "cloud_file": "Titan-M2",
+    "cad_file": null,
+    "fusion_mcp_url": "http://127.0.0.1:60835/mcp"
+  },
+  "artifacts": {
+    "video": null,
+    "image": null
+  },
+  "cam_summary": {
+    "doc": "gemma-4-31B-it_Titan-M2_detailed_2026-07-07T14-01-02",
+    "cam_product": true,
+    "setups": [
+      {
+        "name": "Setup1",
+        "strategy": "setup",
+        "operation_type": 0,
+        "stock_mode": 1,
+        "stock_size_mm": [
+          129.0,
+          21.05,
+          50.53
+        ],
+        "machine": {
+          "vendor": "HAAS",
+          "model": "Mini Mill"
+        },
+        "machining_time_s": 1000.830655,
+        "feed_time_s": 954.4633970304809,
+        "rapid_time_s": 1.3672588457175243,
+        "tool_change_time_s": 45.0,
+        "operations": [
+          {
+            "name": "Facing",
+            "strategy": "face",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "2.cm",
+            "stepdown": "0.05cm",
+            "tool": {
+              "number": 21,
+              "type": "face mill",
+              "diameter": "2.3in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.1in",
+              "flutes": 1
+            }
+          },
+          {
+            "name": "Rough_Outer",
+            "strategy": "adaptive2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "0.2cm",
+            "stepdown": "1.cm",
+            "tool": {
+              "number": 3,
+              "type": "flat end mill",
+              "diameter": "0.5in",
+              "corner_radius": "0.0in",
+              "flute_length": "2.in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Facing1",
+            "strategy": "face",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "2.cm",
+            "stepdown": "0.05cm",
+            "tool": {
+              "number": 21,
+              "type": "face mill",
+              "diameter": "2.3in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.1in",
+              "flutes": 1
+            }
+          },
+          {
+            "name": "Finish_Outer",
+            "strategy": "contour2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "Math.max((tool_diameter - (2 * tool_cornerRadius)) * 0.95; tool_diameter * 0.20)",
+            "stepdown": "tool_fluteLength * 0.75",
+            "tool": {
+              "number": 3,
+              "type": "flat end mill",
+              "diameter": "0.5in",
+              "corner_radius": "0.0in",
+              "flute_length": "2.in",
+              "flutes": 3
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
