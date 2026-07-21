@@ -6,7 +6,7 @@
 <title>MachineBench</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <script>
   /* Set the theme BEFORE first paint (no flash): saved choice → system
      preference → dark fallback. The rest of the theming is pure CSS vars. */
@@ -24,201 +24,223 @@
   })();
 </script>
 <style>
-  /* Flat Design with a light/dark toggle. Both palettes live in [data-theme]
-     blocks; the zero-build static deploy stays intact. Surfaces are separated
-     by LIGHTNESS steps (panel vs canvas), never shadows (banned here). */
-  :root { --r:8px; --rm:6px; }            /* shape tokens, theme-independent */
+  /* Minimal / emotional-subtraction restyle. Warm paper neutrals, one saturated
+     ultramarine accent used sparingly (wordmark mark, active filter, win marks),
+     serene serif headings over a clean sans for dense tabular data. Surfaces are
+     separated by gentle LIGHTNESS steps + whitespace, never heavy fills. Every
+     class name app.js emits is preserved so rendering is untouched.
+     Both palettes live in [data-theme] blocks; the zero-build deploy stays intact. */
+  :root { --r:5px; --rm:4px; }            /* restrained shape tokens */
 
   :root[data-theme="light"] {
-    --canvas:#f3f4f6;   /* gray-100  — page */
-    --panel:#ffffff;    /* white     — color-block card */
-    --fg:#111827;       /* gray-900  — text */
-    --muted:#6b7280;    /* gray-500  — secondary text */
-    --line:#e5e7eb;     /* gray-200  — sparse separators */
-    --primary:#3b82f6;  /* blue-500  — action */
-    --primary-d:#2563eb;/* blue-600  — hover */
-    --secondary:#10b981;/* emerald-500 */
-    --accent:#f59e0b;   /* amber-500 */
-    --ok:#059669;       /* emerald-600 — AA on white */
-    --bad:#dc2626;      /* red-600     — AA on white */
-    --row-hover:rgba(59,130,246,.06);
-    --deco-op:.05;
-    --sw-track:#d1d5db; /* gray-300 — reads on the gray-100 canvas */
-    --sw-knob:#ffffff;
+    --canvas:#F4F2EC;   /* warm paper — the room */
+    --panel:#FCFBF8;    /* near-white wall — where the work hangs */
+    --fg:#1C1B16;       /* warm near-black ink */
+    --muted:#8B8578;    /* warm grey — secondary text */
+    --line:#E7E2D7;     /* hairline */
+    --primary:#1B27E6;  /* the single stroke of color — electric ultramarine */
+    --primary-d:#131CBE;/* pressed */
+    --secondary:#1B27E6;
+    --accent:#1B27E6;
+    --ok:#2F7D5B;       /* muted semantic green — CAM validity only */
+    --bad:#B23A34;      /* muted semantic red */
+    --row-hover:rgba(27,39,230,.045);
+    --sw-track:#E7E2D7;
+    --sw-knob:#FCFBF8;
   }
   :root[data-theme="dark"] {
-    --canvas:#0a0e17;   /* near-black slate — page */
-    --panel:#141a24;    /* elevated surface (lighter, not shadowed) */
-    --fg:#f3f4f6;       /* gray-100  — text */
-    --muted:#9ca3af;    /* gray-400  — secondary text (AA on dark) */
-    --line:#2a3140;     /* subtle separator on dark */
-    --primary:#3b82f6;  /* blue-500  — action */
-    --primary-d:#2563eb;/* blue-600  — hover (darken keeps white text legible) */
-    --secondary:#10b981;/* emerald-500 */
-    --accent:#f59e0b;   /* amber-500 */
-    --ok:#34d399;       /* emerald-400 — AA on dark */
-    --bad:#f87171;      /* red-400     — AA on dark */
-    --row-hover:rgba(59,130,246,.12);
-    --deco-op:.08;
-    --sw-track:#1c2433; /* lighter than canvas → pill is visible */
-    --sw-knob:#454f66;
+    --canvas:#14130F;   /* warm near-black — the room after dark */
+    --panel:#1B1A15;    /* gently lifted wall */
+    --fg:#F1EDE4;       /* warm paper ink */
+    --muted:#948E81;    /* warm grey (AA on dark) */
+    --line:#2A2820;     /* hairline on dark */
+    --primary:#6E78FF;  /* brightened ultramarine for the dark ground */
+    --primary-d:#8A92FF;
+    --secondary:#6E78FF;
+    --accent:#6E78FF;
+    --ok:#5FB68C;       /* semantic green (AA on dark) */
+    --bad:#E4746B;      /* semantic red (AA on dark) */
+    --row-hover:rgba(110,120,255,.10);
+    --sw-track:#2A2820;
+    --sw-knob:#3A382F;
   }
   * { box-sizing:border-box; }
   body {
     margin:0;
-    font:15px/1.5 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font:15px/1.55 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     background:var(--canvas); color:var(--fg);
-    -webkit-font-smoothing:antialiased;
-    transition:background .2s, color .2s;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    transition:background .35s ease, color .35s ease;
   }
-  /* Poster decoration: one large flat circle, low opacity, behind content. */
-  body::before {
-    content:""; position:fixed; top:-160px; right:-160px;
-    width:460px; height:460px; border-radius:9999px;
-    background:var(--primary); opacity:var(--deco-op); pointer-events:none; z-index:0;
-  }
-  /* All sections share one centered column so their left edges line up. */
+  /* All sections share one centered column so their left edges line up.
+     Generous side gutters give the content air. */
   header, .barwrap, .tabs, main { position:relative; z-index:1;
     max-width:1200px; margin-left:auto; margin-right:auto; }
 
-  header { padding:32px 28px 4px; }
-  h1 { font-size:30px; font-weight:800; letter-spacing:-.02em; margin:0;
-       display:flex; align-items:center; gap:12px; }
-  h1::before { content:""; width:18px; height:18px; border-radius:5px;
+  /* Gentle arrival: the page rises into place once, like a held breath released. */
+  main { animation:rise .8s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes rise { from { opacity:0; transform:translateY(10px); }
+                    to   { opacity:1; transform:none; } }
+
+  header { padding:64px 40px 8px; }
+  h1 { font-family:'Spectral', Georgia, serif; font-size:34px; font-weight:400;
+       letter-spacing:-.01em; margin:0; display:flex; align-items:center; gap:13px; }
+  /* The single signature: one small accent mark beside the wordmark. */
+  h1::before { content:""; width:9px; height:9px; border-radius:50%;
                background:var(--primary); display:inline-block; }
-  .sub { color:var(--muted); font-size:13px; margin-top:6px; }
+  .sub { color:var(--muted); font-size:12.5px; margin-top:10px;
+         letter-spacing:.02em; padding-left:22px; }
   .sub:empty { display:none; }
 
-  /* Vertical theme switch, floating at the page's top-right corner. */
+  /* Theme switch, quietly at the top-right corner. */
   .theme-switch {
-    position:fixed; top:24px; right:28px; z-index:50;
-    width:84px; height:44px; padding:0; border:0; cursor:pointer;
+    position:fixed; top:30px; right:36px; z-index:50;
+    width:78px; height:40px; padding:0; border:1px solid var(--line); cursor:pointer;
     border-radius:9999px; background:var(--sw-track);
-    transition:background .2s;
+    transition:background .35s ease, border-color .35s ease;
   }
   .theme-switch .rail-sun, .theme-switch .rail-moon {
     position:absolute; top:50%; transform:translateY(-50%);
-    width:18px; height:18px; color:var(--muted); opacity:.55; pointer-events:none;
+    width:16px; height:16px; color:var(--muted); opacity:.5; pointer-events:none;
   }
   .theme-switch .rail-sun { left:11px; }
   .theme-switch .rail-moon { right:11px; }
   .theme-switch .knob {
     position:absolute; top:50%; transform:translateY(-50%); left:4px; z-index:1;
-    width:36px; height:36px; border-radius:9999px; background:var(--sw-knob);
+    width:32px; height:32px; border-radius:9999px; background:var(--sw-knob);
     display:flex; align-items:center; justify-content:center;
-    transition:left .25s cubic-bezier(.4,0,.2,1), transform .2s;
+    transition:left .4s cubic-bezier(.22,.61,.36,1), transform .3s ease;
   }
-  :root[data-theme="dark"] .theme-switch .knob { left:calc(100% - 36px - 4px); }
-  .theme-switch:hover .knob { transform:translateY(-50%) scale(1.08); }
-  .theme-switch .knob svg { width:20px; height:20px; }
+  :root[data-theme="dark"] .theme-switch .knob { left:calc(100% - 32px - 4px); }
+  .theme-switch:hover .knob { transform:translateY(-50%) scale(1.06); }
+  .theme-switch .knob svg { width:18px; height:18px; }
   .theme-switch .knob .i-sun, .theme-switch .knob .i-moon { display:none; }
-  :root[data-theme="light"] .theme-switch .knob .i-sun { display:block; color:var(--accent); }
+  :root[data-theme="light"] .theme-switch .knob .i-sun { display:block; color:var(--muted); }
   :root[data-theme="dark"]  .theme-switch .knob .i-moon { display:block; color:var(--primary); }
 
-  /* Controls = a flat panel block, inset to share the title/panel left edge. */
-  .barwrap { padding:18px 28px 0; }
-  .bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap;
-         padding:14px 18px;
-         background:var(--panel); border-radius:var(--r); }
-  .bar .group { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-  .bar label { color:var(--fg); font-size:13px; font-weight:500;
-               display:inline-flex; align-items:center; gap:6px; cursor:pointer; }
-  .bar input[type=checkbox] { accent-color:var(--primary); width:15px; height:15px; }
-  a.logout { color:var(--muted); font-size:13px; font-weight:600; text-decoration:none;
-             margin-left:auto; text-transform:uppercase; letter-spacing:.04em;
-             transition:color .2s; }
+  /* Controls: quiet, borderless, resting on the paper. No filled block. */
+  .barwrap { padding:28px 40px 0; }
+  .bar { display:flex; align-items:center; gap:26px; flex-wrap:wrap;
+         padding:14px 0; border-bottom:1px solid var(--line); }
+  .bar .group { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .bar label { color:var(--muted); font-size:12px; font-weight:500;
+               letter-spacing:.02em;
+               display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+               transition:color .3s ease; }
+  .bar label:hover { color:var(--fg); }
+  .bar input[type=checkbox] { accent-color:var(--primary); width:14px; height:14px; }
+  a.logout { color:var(--muted); font-size:11px; font-weight:500; text-decoration:none;
+             margin-left:auto; text-transform:uppercase; letter-spacing:.14em;
+             transition:color .3s ease; }
   a.logout:hover { color:var(--fg); }
 
-  /* Tabs: flat blocks. Active = solid primary, white text. No skeuomorphic merge. */
-  .tabs { display:flex; gap:8px; padding:0 28px; margin-top:16px; flex-wrap:wrap; }
-  .tab { padding:9px 16px; border-radius:var(--rm); background:transparent;
-         color:var(--muted); border:0; cursor:pointer;
-         font:600 14px 'Outfit', sans-serif; transition:all .2s; }
-  .tab:hover { background:var(--panel); color:var(--fg); }
-  .tab.active { background:var(--primary); color:#fff; }
-  .tab.active:hover { background:var(--primary-d); }
+  /* Tabs: text with a thin accent underline when active — no solid block. */
+  .tabs { display:flex; gap:28px; padding:0 40px; margin-top:22px; flex-wrap:wrap; }
+  .tab { padding:8px 0; background:transparent; color:var(--muted); border:0;
+         border-bottom:2px solid transparent; cursor:pointer;
+         font:500 13px 'Inter', sans-serif; letter-spacing:.02em;
+         transition:color .3s ease, border-color .3s ease; }
+  .tab:hover { color:var(--fg); }
+  .tab.active { color:var(--fg); border-bottom-color:var(--primary); }
 
-  main { padding:16px 28px 48px; }
-  /* Panel: flat color block. No border, no shadow, generous padding. */
-  .panel { background:var(--panel); border-radius:var(--r); padding:28px 28px 22px; }
-  h2 { font-size:20px; font-weight:700; letter-spacing:-.01em; margin:0 0 4px; }
-  .note { color:var(--muted); font-size:13px; margin:10px 0 0; }
+  main { padding:40px 40px 96px; }
+  /* Panel: the paper itself, generously spaced — no card fill, no border. */
+  .panel { background:transparent; padding:0; }
+  h2 { font-family:'Spectral', Georgia, serif; font-size:25px; font-weight:400;
+       letter-spacing:-.01em; margin:0 0 6px; }
+  .note { color:var(--muted); font-size:12.5px; line-height:1.65; margin:12px 0 0;
+          max-width:80ch; }
 
-  .scroll { overflow-x:auto; }
+  .scroll { overflow-x:auto; margin-top:22px; }
   table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
-  th, td { text-align:right; padding:10px 14px; border-bottom:1px solid var(--line);
+  th, td { text-align:right; padding:13px 18px; border-bottom:1px solid var(--line);
            white-space:nowrap; }
   th:first-child, td:first-child { text-align:left; position:sticky; left:0;
-                                   background:var(--panel); }
-  thead th { color:var(--muted); font-weight:600; font-size:11px;
-             text-transform:uppercase; letter-spacing:.05em; }
-  /* Group delimiter: a neutral VERTICAL divider at each metric group's first
-     column (header + body), so groups read clearly without a floating blue
-     horizontal bar that looks wrong during horizontal scroll. */
+                                   background:var(--canvas); }
+  thead th { color:var(--muted); font-weight:500; font-size:10.5px;
+             text-transform:uppercase; letter-spacing:.12em; padding-bottom:11px; }
+  /* Group delimiter: a neutral VERTICAL hairline at each metric group's first
+     column (header + body), so groups read without a loud horizontal bar. */
   thead th.grp, tbody td.grp { border-left:1px solid var(--line); }
   tbody tr:hover td { background:var(--row-hover); }
-  /* The sticky first column must stay OPAQUE under the hover tint, or
-     horizontally-scrolled cells bleed through it. Layer the translucent tint
-     over a solid panel base so it still tints but never shows through. */
+  /* The sticky first column must stay OPAQUE under the hover tint. */
   tbody tr:hover td:first-child {
-    background:linear-gradient(var(--row-hover), var(--row-hover)), var(--panel); }
-  td.model { font-weight:700; }
-  .logo { width:16px; height:16px; vertical-align:-3px; margin-right:7px; }
+    background:linear-gradient(var(--row-hover), var(--row-hover)), var(--canvas); }
+  td.model { font-weight:500; }
+  .logo { width:16px; height:16px; vertical-align:-3px; margin-right:9px; }
   td.dash { color:var(--muted); }
-  .ci { color:var(--muted); font-size:12px; margin-left:4px; }
+  .ci { color:var(--muted); font-size:11.5px; margin-left:5px; }
 
-  /* Leaderboard: prompt-variant filter pills + rank / win accents. Flat like
-     everything else — active pill is a solid primary block, wins are marked
-     with the ok color, never shadows. */
-  .seg { display:flex; gap:6px; margin:16px 0 4px; flex-wrap:wrap; }
-  .segbtn { padding:7px 14px; border-radius:9999px; border:0; cursor:pointer;
-            background:var(--canvas); color:var(--muted); text-transform:capitalize;
-            font:600 13px 'Outfit', sans-serif; transition:all .2s; }
+  /* Prompt-variant filter: quiet text pills; active carries the accent, thinly. */
+  .seg { display:flex; gap:22px; margin:26px 0 2px; flex-wrap:wrap; }
+  .segbtn { padding:6px 0; border:0; border-bottom:1.5px solid transparent; cursor:pointer;
+            background:transparent; color:var(--muted); text-transform:capitalize;
+            font:500 12.5px 'Inter', sans-serif; letter-spacing:.02em;
+            transition:color .3s ease, border-color .3s ease; }
   .segbtn:hover { color:var(--fg); }
-  .segbtn.active { background:var(--primary); color:#fff; }
-  .segbtn.active:hover { background:var(--primary-d); }
-  .rank { display:inline-block; min-width:24px; color:var(--muted); font-weight:700; }
-  td.win { color:var(--ok); font-weight:700; }
-  .winmark { font-size:9px; vertical-align:1px; }
+  .segbtn.active { color:var(--primary); border-bottom-color:var(--primary); }
+  .rank { display:inline-block; min-width:26px; color:var(--muted); font-weight:500;
+          font-variant-numeric:tabular-nums; }
+  /* Wins carry the single accent — the signature landing on the best cell. */
+  td.win { color:var(--primary); font-weight:600; }
+  .winmark { font-size:8px; vertical-align:1.5px; color:var(--primary); }
   /* Model links + the #model detail page header. */
-  a.mlink { color:inherit; text-decoration:none; }
-  a.mlink:hover { color:var(--primary); }
-  .backlink { color:var(--muted); font-size:13px; font-weight:600;
-              text-decoration:none; display:inline-block; margin-bottom:12px; }
+  a.mlink { color:inherit; text-decoration:none;
+            border-bottom:1px solid transparent; transition:border-color .3s ease; }
+  a.mlink:hover { border-bottom-color:var(--primary); }
+  .backlink { color:var(--muted); font-size:12px; font-weight:500;
+              text-decoration:none; display:inline-block; margin-bottom:20px;
+              letter-spacing:.03em; transition:color .3s ease; }
   .backlink:hover { color:var(--fg); }
-  .model-head { font-size:26px; font-weight:800; letter-spacing:-.02em; }
-  .model-head .logo { width:26px; height:26px; vertical-align:-4px; margin-right:11px; }
+  .model-head { font-family:'Spectral', Georgia, serif; font-size:30px; font-weight:400;
+                letter-spacing:-.01em; }
+  .model-head .logo { width:27px; height:27px; vertical-align:-5px; margin-right:13px; }
 
   tr.expandable { cursor:pointer; }
-  .caret { display:inline-block; width:12px; color:var(--muted); font-size:10px;
-           transition:transform .2s ease; }
-  tr.open > td > .caret, tr.open > td .caret { transform:rotate(90deg); }
+  .caret { display:inline-block; width:14px; color:var(--muted); font-size:9px;
+           transition:transform .3s ease; }
+  tr.open > td > .caret, tr.open > td .caret { transform:rotate(90deg); color:var(--primary); }
   tr.detail.hidden { display:none; }
-  /* Nested detail = a flat recessed block (back to canvas) inside the panel. */
-  td.detailcell { text-align:left; background:var(--canvas); padding:14px 18px;
-                  border-radius:var(--rm); }
+  /* Nested detail = a gently recessed block (paper) inside the panel. */
+  td.detailcell { text-align:left; background:var(--panel); padding:18px 22px;
+                  border-radius:var(--rm); border:1px solid var(--line); }
   td.detailcell, td.detailcell:first-child { position:static; }
   table.subtable { margin:2px 0; }
   table.subtable th, table.subtable td { border-bottom:1px solid var(--line); }
   table.subtable td:first-child, table.subtable th:first-child { background:transparent; }
-  .detail-h { color:var(--muted); font-size:11px; text-transform:uppercase;
-              letter-spacing:.05em; font-weight:600; margin:14px 0 6px; }
+  .detail-h { color:var(--muted); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.12em; font-weight:500; margin:18px 0 8px; }
   .camsum { padding:2px 0; }
-  .camsum-setup { font-size:13px; margin:8px 0 4px; }
-  table.camsum-ops td, table.camsum-ops th { font-size:12px; padding:5px 12px; }
+  .camsum-setup { font-size:13px; margin:10px 0 4px; }
+  table.camsum-ops td, table.camsum-ops th { font-size:12px; padding:6px 14px; }
   .transcript { padding:6px 0 2px; }
   .transcript .prov { margin:0 0 6px; font-size:12px; }
-  ol.tcalls { margin:0; padding-left:20px; color:var(--fg); }
-  ol.tcalls li { padding:2px 0; font-size:13px; white-space:normal; }
-  ol.tcalls code { color:var(--fg); }
+  ol.tcalls { margin:0; padding-left:22px; color:var(--fg); }
+  ol.tcalls li { padding:3px 0; font-size:13px; white-space:normal; }
+  ol.tcalls code { color:var(--fg);
+                   font-family:'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+                   font-size:12.5px; }
   ol.tcalls .args { color:var(--muted); font-size:12px; }
   .args { color:var(--muted); }
-  .ok { color:var(--ok); font-weight:700; }
-  .bad { color:var(--bad); font-weight:700; }
+  .ok { color:var(--ok); font-weight:600; }
+  .bad { color:var(--bad); font-weight:600; }
 
-  /* No shadows → focus must be a hard, high-contrast outline. */
+  /* Restrained, high-contrast focus ring. */
   a:focus-visible, button:focus-visible, input:focus-visible {
-    outline:2px solid var(--primary); outline-offset:2px; border-radius:9999px;
+    outline:2px solid var(--primary); outline-offset:3px; border-radius:3px;
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    main { animation:none; }
+    * { transition:none !important; }
+  }
+
+  @media (max-width:640px) {
+    header { padding:40px 22px 8px; }
+    .barwrap { padding:20px 22px 0; }
+    .tabs { padding:0 22px; gap:20px; }
+    main { padding:28px 22px 72px; }
+    .theme-switch { top:20px; right:20px; }
   }
 </style>
 </head>
