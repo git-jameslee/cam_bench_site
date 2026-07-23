@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-23T16:10:07.968748+00:00",
-  "n_runs": 62,
+  "generated": "2026-07-23T17:26:37.937473+00:00",
+  "n_runs": 63,
   "group_order": [
     "outcome",
     "post",
@@ -130,106 +130,11 @@
         "contested": 11,
         "models": [
           {
-            "model": "glm-5.2",
-            "runs": 7,
-            "wins": 6,
-            "won": [
-              "iou_voxel",
-              "max_deviation_mm",
-              "air_cut_ratio",
-              "engagement_ok",
-              "collision_free",
-              "hit_round_limit"
-            ],
-            "headline": {
-              "mean": 0.8439,
-              "n": 3,
-              "ci_low": 0.385737,
-              "ci_high": 1.0,
-              "ci_margin": 0.307132
-            },
-            "tasks": {
-              "box_pocket": {
-                "mean": 0.8439,
-                "n": 3
-              },
-              "rounded_rectangle_with_pin_and_hole": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m1": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m10": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m2": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m3": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m4": {
-                "mean": null,
-                "n": 0
-              }
-            },
-            "metrics": {
-              "iou_voxel": {
-                "mean": 0.8439,
-                "n": 3
-              },
-              "max_deviation_mm": {
-                "mean": 6.9714,
-                "n": 3
-              },
-              "cycle_time_s": {
-                "mean": 12608.01,
-                "n": 3
-              },
-              "scallop_height_mm": {
-                "mean": 0.6884,
-                "n": 3
-              },
-              "air_cut_ratio": {
-                "mean": 0.024967,
-                "n": 3
-              },
-              "engagement_ok": {
-                "mean": 1.0,
-                "n": 3
-              },
-              "collision_free": {
-                "mean": 1.0,
-                "n": 3
-              },
-              "rough_before_finish": {
-                "mean": null,
-                "n": 0
-              },
-              "tolerance_appropriate": {
-                "mean": null,
-                "n": 0
-              },
-              "tool_call_success_rate": {
-                "mean": 0.664714,
-                "n": 7
-              },
-              "hit_round_limit": {
-                "mean": 0.0,
-                "n": 7
-              }
-            }
-          },
-          {
             "model": "claude-opus-4-8",
-            "runs": 9,
-            "wins": 6,
+            "runs": 10,
+            "wins": 7,
             "won": [
+              "max_deviation_mm",
               "scallop_height_mm",
               "engagement_ok",
               "collision_free",
@@ -238,11 +143,11 @@
               "hit_round_limit"
             ],
             "headline": {
-              "mean": 0.709571,
-              "n": 7,
-              "ci_low": 0.362888,
+              "mean": 0.749011,
+              "n": 9,
+              "ci_low": 0.491288,
               "ci_high": 1.0,
-              "ci_margin": 0.318556
+              "ci_margin": 0.254356
             },
             "tasks": {
               "box_pocket": {
@@ -266,58 +171,58 @@
                 "n": 1
               },
               "titan_m3": {
-                "mean": null,
-                "n": 0
+                "mean": 0.9472,
+                "n": 1
               },
               "titan_m4": {
-                "mean": 0.65385,
-                "n": 2
+                "mean": 0.711533,
+                "n": 3
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": 0.709571,
-                "n": 7
+                "mean": 0.749011,
+                "n": 9
               },
               "max_deviation_mm": {
-                "mean": 7.366186,
-                "n": 7
+                "mean": 6.047333,
+                "n": 9
               },
               "cycle_time_s": {
-                "mean": 8683.037143,
-                "n": 7
+                "mean": 7336.533333,
+                "n": 9
               },
               "scallop_height_mm": {
-                "mean": 0.444914,
-                "n": 7
+                "mean": 0.4297,
+                "n": 8
               },
               "air_cut_ratio": {
-                "mean": 0.219857,
-                "n": 7
+                "mean": 0.219644,
+                "n": 9
               },
               "engagement_ok": {
                 "mean": 1.0,
-                "n": 7
+                "n": 8
               },
               "collision_free": {
                 "mean": 1.0,
-                "n": 7
+                "n": 9
               },
               "rough_before_finish": {
                 "mean": 1.0,
-                "n": 7
+                "n": 9
               },
               "tolerance_appropriate": {
                 "mean": 1.0,
-                "n": 7
+                "n": 9
               },
               "tool_call_success_rate": {
-                "mean": 0.811333,
-                "n": 9
+                "mean": 0.8188,
+                "n": 10
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 9
+                "n": 10
               }
             }
           },
@@ -414,6 +319,101 @@
               "hit_round_limit": {
                 "mean": 0.0,
                 "n": 4
+              }
+            }
+          },
+          {
+            "model": "glm-5.2",
+            "runs": 7,
+            "wins": 5,
+            "won": [
+              "iou_voxel",
+              "air_cut_ratio",
+              "engagement_ok",
+              "collision_free",
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": 0.8439,
+              "n": 3,
+              "ci_low": 0.385737,
+              "ci_high": 1.0,
+              "ci_margin": 0.307132
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.8439,
+                "n": 3
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m10": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m2": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m3": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m4": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.8439,
+                "n": 3
+              },
+              "max_deviation_mm": {
+                "mean": 6.9714,
+                "n": 3
+              },
+              "cycle_time_s": {
+                "mean": 12608.01,
+                "n": 3
+              },
+              "scallop_height_mm": {
+                "mean": 0.6884,
+                "n": 3
+              },
+              "air_cut_ratio": {
+                "mean": 0.024967,
+                "n": 3
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 3
+              },
+              "collision_free": {
+                "mean": 1.0,
+                "n": 3
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.664714,
+                "n": 7
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 7
               }
             }
           },
@@ -1071,106 +1071,11 @@
         "contested": 11,
         "models": [
           {
-            "model": "glm-5.2",
-            "runs": 7,
-            "wins": 6,
-            "won": [
-              "iou_voxel",
-              "max_deviation_mm",
-              "air_cut_ratio",
-              "engagement_ok",
-              "collision_free",
-              "hit_round_limit"
-            ],
-            "headline": {
-              "mean": 0.8439,
-              "n": 3,
-              "ci_low": 0.385737,
-              "ci_high": 1.0,
-              "ci_margin": 0.307132
-            },
-            "tasks": {
-              "box_pocket": {
-                "mean": 0.8439,
-                "n": 3
-              },
-              "rounded_rectangle_with_pin_and_hole": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m1": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m10": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m2": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m3": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m4": {
-                "mean": null,
-                "n": 0
-              }
-            },
-            "metrics": {
-              "iou_voxel": {
-                "mean": 0.8439,
-                "n": 3
-              },
-              "max_deviation_mm": {
-                "mean": 6.9714,
-                "n": 3
-              },
-              "cycle_time_s": {
-                "mean": 12608.01,
-                "n": 3
-              },
-              "scallop_height_mm": {
-                "mean": 0.6884,
-                "n": 3
-              },
-              "air_cut_ratio": {
-                "mean": 0.024967,
-                "n": 3
-              },
-              "engagement_ok": {
-                "mean": 1.0,
-                "n": 3
-              },
-              "collision_free": {
-                "mean": 1.0,
-                "n": 3
-              },
-              "rough_before_finish": {
-                "mean": null,
-                "n": 0
-              },
-              "tolerance_appropriate": {
-                "mean": null,
-                "n": 0
-              },
-              "tool_call_success_rate": {
-                "mean": 0.664714,
-                "n": 7
-              },
-              "hit_round_limit": {
-                "mean": 0.0,
-                "n": 7
-              }
-            }
-          },
-          {
             "model": "claude-opus-4-8",
-            "runs": 9,
-            "wins": 6,
+            "runs": 10,
+            "wins": 7,
             "won": [
+              "max_deviation_mm",
               "scallop_height_mm",
               "engagement_ok",
               "collision_free",
@@ -1179,11 +1084,11 @@
               "hit_round_limit"
             ],
             "headline": {
-              "mean": 0.709571,
-              "n": 7,
-              "ci_low": 0.362888,
+              "mean": 0.749011,
+              "n": 9,
+              "ci_low": 0.491288,
               "ci_high": 1.0,
-              "ci_margin": 0.318556
+              "ci_margin": 0.254356
             },
             "tasks": {
               "box_pocket": {
@@ -1207,58 +1112,58 @@
                 "n": 1
               },
               "titan_m3": {
-                "mean": null,
-                "n": 0
+                "mean": 0.9472,
+                "n": 1
               },
               "titan_m4": {
-                "mean": 0.65385,
-                "n": 2
+                "mean": 0.711533,
+                "n": 3
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": 0.709571,
-                "n": 7
+                "mean": 0.749011,
+                "n": 9
               },
               "max_deviation_mm": {
-                "mean": 7.366186,
-                "n": 7
+                "mean": 6.047333,
+                "n": 9
               },
               "cycle_time_s": {
-                "mean": 8683.037143,
-                "n": 7
+                "mean": 7336.533333,
+                "n": 9
               },
               "scallop_height_mm": {
-                "mean": 0.444914,
-                "n": 7
+                "mean": 0.4297,
+                "n": 8
               },
               "air_cut_ratio": {
-                "mean": 0.219857,
-                "n": 7
+                "mean": 0.219644,
+                "n": 9
               },
               "engagement_ok": {
                 "mean": 1.0,
-                "n": 7
+                "n": 8
               },
               "collision_free": {
                 "mean": 1.0,
-                "n": 7
+                "n": 9
               },
               "rough_before_finish": {
                 "mean": 1.0,
-                "n": 7
+                "n": 9
               },
               "tolerance_appropriate": {
                 "mean": 1.0,
-                "n": 7
+                "n": 9
               },
               "tool_call_success_rate": {
-                "mean": 0.811333,
-                "n": 9
+                "mean": 0.8188,
+                "n": 10
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 9
+                "n": 10
               }
             }
           },
@@ -1355,6 +1260,101 @@
               "hit_round_limit": {
                 "mean": 0.0,
                 "n": 2
+              }
+            }
+          },
+          {
+            "model": "glm-5.2",
+            "runs": 7,
+            "wins": 5,
+            "won": [
+              "iou_voxel",
+              "air_cut_ratio",
+              "engagement_ok",
+              "collision_free",
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": 0.8439,
+              "n": 3,
+              "ci_low": 0.385737,
+              "ci_high": 1.0,
+              "ci_margin": 0.307132
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.8439,
+                "n": 3
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m1": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m10": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m2": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m3": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m4": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.8439,
+                "n": 3
+              },
+              "max_deviation_mm": {
+                "mean": 6.9714,
+                "n": 3
+              },
+              "cycle_time_s": {
+                "mean": 12608.01,
+                "n": 3
+              },
+              "scallop_height_mm": {
+                "mean": 0.6884,
+                "n": 3
+              },
+              "air_cut_ratio": {
+                "mean": 0.024967,
+                "n": 3
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 3
+              },
+              "collision_free": {
+                "mean": 1.0,
+                "n": 3
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.664714,
+                "n": 7
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 7
               }
             }
           },
@@ -1787,12 +1787,12 @@
             "n": 1
           },
           "titan_m3": {
-            "mean": null,
-            "n": 0
+            "mean": 0.9472,
+            "n": 1
           },
           "titan_m4": {
-            "mean": 0.65385,
-            "n": 2
+            "mean": 0.711533,
+            "n": 3
           }
         }
       },
@@ -8582,68 +8582,68 @@
               "n": 1
             },
             "iou_voxel": {
-              "mean": null,
-              "n": 0
+              "mean": 0.9472,
+              "n": 1
             },
             "max_deviation_mm": {
-              "mean": null,
-              "n": 0
+              "mean": 1.2762,
+              "n": 1
             },
             "p99_deviation_mm": {
-              "mean": null,
-              "n": 0
+              "mean": 1.1435,
+              "n": 1
             },
             "operation_count": {
-              "mean": null,
-              "n": 0
+              "mean": 8.0,
+              "n": 1
             },
             "tool_change_count": {
-              "mean": null,
-              "n": 0
+              "mean": 6.0,
+              "n": 1
             },
             "cycle_time_s": {
-              "mean": null,
-              "n": 0
+              "mean": 1031.3,
+              "n": 1
             },
             "toolpath_length_mm": {
-              "mean": null,
-              "n": 0
+              "mean": 7056.14,
+              "n": 1
             },
             "collision_free": {
-              "mean": null,
-              "n": 0
+              "mean": 1.0,
+              "n": 1
             },
             "stock_in_bounds": {
-              "mean": null,
-              "n": 0
+              "mean": 1.0,
+              "n": 1
             },
             "scallop_height_mm": {
-              "mean": null,
-              "n": 0
+              "mean": 0.3232,
+              "n": 1
             },
             "radial_engagement_pct": {
-              "mean": null,
-              "n": 0
+              "mean": 31.4961,
+              "n": 1
             },
             "engagement_ok": {
-              "mean": null,
-              "n": 0
+              "mean": 1.0,
+              "n": 1
             },
             "axial_engagement_pct": {
-              "mean": null,
-              "n": 0
+              "mean": 15.3305,
+              "n": 1
             },
             "rough_before_finish": {
-              "mean": null,
-              "n": 0
+              "mean": 1.0,
+              "n": 1
             },
             "tolerance_appropriate": {
-              "mean": null,
-              "n": 0
+              "mean": 1.0,
+              "n": 1
             },
             "air_cut_ratio": {
-              "mean": null,
-              "n": 0
+              "mean": 0.1998,
+              "n": 1
             },
             "input_tokens": {
               "mean": 1562632.0,
@@ -9879,63 +9879,63 @@
         },
         {
           "model": "claude-opus-4-8",
-          "runs": 3,
+          "runs": 4,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.634333,
-              "n": 3
+              "mean": 0.69725,
+              "n": 4
             },
             "tool_calls_total": {
-              "mean": 29.0,
-              "n": 3
+              "mean": 30.5,
+              "n": 4
             },
             "tool_calls_succeeded": {
-              "mean": 27.666667,
-              "n": 3
+              "mean": 28.5,
+              "n": 4
             },
             "tool_calls_failed": {
-              "mean": 1.333333,
-              "n": 3
+              "mean": 2.0,
+              "n": 4
             },
             "hit_round_limit": {
               "mean": 0.0,
-              "n": 3
+              "n": 4
             },
             "iou_voxel": {
-              "mean": 0.65385,
-              "n": 2
+              "mean": 0.711533,
+              "n": 3
             },
             "max_deviation_mm": {
-              "mean": 2.119,
-              "n": 2
+              "mean": 1.9415,
+              "n": 3
             },
             "p99_deviation_mm": {
-              "mean": 1.9263,
-              "n": 2
+              "mean": 1.717533,
+              "n": 3
             },
             "operation_count": {
               "mean": 5.0,
-              "n": 2
+              "n": 3
             },
             "tool_change_count": {
-              "mean": 4.5,
-              "n": 2
+              "mean": 4.0,
+              "n": 3
             },
             "cycle_time_s": {
-              "mean": 2371.54,
-              "n": 2
+              "mean": 2986.44,
+              "n": 3
             },
             "toolpath_length_mm": {
-              "mean": 33450.49,
-              "n": 2
+              "mean": 29553.236667,
+              "n": 3
             },
             "collision_free": {
               "mean": 1.0,
-              "n": 2
+              "n": 3
             },
             "stock_in_bounds": {
               "mean": 1.0,
-              "n": 2
+              "n": 3
             },
             "scallop_height_mm": {
               "mean": 0.68265,
@@ -9950,122 +9950,122 @@
               "n": 2
             },
             "axial_engagement_pct": {
-              "mean": 5.2577,
-              "n": 2
+              "mean": 5.4299,
+              "n": 3
             },
             "rough_before_finish": {
               "mean": 1.0,
-              "n": 2
+              "n": 3
             },
             "tolerance_appropriate": {
               "mean": 1.0,
-              "n": 2
+              "n": 3
             },
             "air_cut_ratio": {
-              "mean": 0.2381,
-              "n": 2
+              "mean": 0.238067,
+              "n": 3
             },
             "input_tokens": {
-              "mean": 956767.333333,
-              "n": 3
+              "mean": 979778.75,
+              "n": 4
             },
             "output_tokens": {
-              "mean": 12834.333333,
-              "n": 3
+              "mean": 12778.75,
+              "n": 4
             },
             "cache_read_input_tokens": {
-              "mean": 921280.666667,
-              "n": 3
+              "mean": 941476.0,
+              "n": 4
             },
             "cache_creation_input_tokens": {
-              "mean": 35429.333333,
-              "n": 3
+              "mean": 38242.5,
+              "n": 4
             },
             "llm_rounds": {
-              "mean": 29.0,
-              "n": 3
+              "mean": 30.5,
+              "n": 4
             },
             "llm_s": {
-              "mean": 295.05,
-              "n": 3
+              "mean": 282.9325,
+              "n": 4
             },
             "tool_s": {
-              "mean": 68.703333,
-              "n": 3
+              "mean": 57.445,
+              "n": 4
             },
             "wall_clock_s": {
-              "mean": 368.96,
-              "n": 3
+              "mean": 344.3925,
+              "n": 4
             },
             "tool_inputs_repaired": {
               "mean": 0.0,
-              "n": 3
+              "n": 4
             },
             "mb_injected_calls": {
-              "mean": 25.666667,
-              "n": 3
+              "mean": 27.25,
+              "n": 4
             },
             "aborted": {
-              "mean": 0.333333,
-              "n": 3
+              "mean": 0.25,
+              "n": 4
             }
           },
-          "tool_call_success_rate_mean": 0.634333,
+          "tool_call_success_rate_mean": 0.69725,
           "tool_call_success_rate_ci_low": 0.0,
           "tool_call_success_rate_ci_high": 1.0,
           "tool_call_success_rate_ci_margin": 0.5,
-          "tool_calls_total_mean": 29.0,
+          "tool_calls_total_mean": 30.5,
           "tool_calls_total_ci_low": 0.0,
-          "tool_calls_total_ci_high": 95.702683,
-          "tool_calls_total_ci_margin": 47.851341,
-          "tool_calls_succeeded_mean": 27.666667,
+          "tool_calls_total_ci_high": 65.711243,
+          "tool_calls_total_ci_margin": 32.855622,
+          "tool_calls_succeeded_mean": 28.5,
           "tool_calls_succeeded_ci_low": 0.0,
-          "tool_calls_succeeded_ci_high": 91.694483,
-          "tool_calls_succeeded_ci_margin": 45.847241,
-          "tool_calls_failed_mean": 1.333333,
+          "tool_calls_succeeded_ci_high": 62.092024,
+          "tool_calls_succeeded_ci_margin": 31.046012,
+          "tool_calls_failed_mean": 2.0,
           "tool_calls_failed_ci_low": 0.0,
-          "tool_calls_failed_ci_high": 4.201768,
-          "tool_calls_failed_ci_margin": 2.100884,
+          "tool_calls_failed_ci_high": 4.598457,
+          "tool_calls_failed_ci_margin": 2.299228,
           "hit_round_limit_mean": 0.0,
           "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.707598,
-          "hit_round_limit_ci_margin": 0.353799,
-          "iou_voxel_mean": 0.65385,
-          "iou_voxel_ci_low": 0.0,
+          "hit_round_limit_ci_high": 0.602365,
+          "hit_round_limit_ci_margin": 0.301182,
+          "iou_voxel_mean": 0.711533,
+          "iou_voxel_ci_low": 0.038241,
           "iou_voxel_ci_high": 1.0,
-          "iou_voxel_ci_margin": 0.5,
-          "max_deviation_mm_mean": 2.119,
-          "max_deviation_mm_ci_low": 0.0,
-          "max_deviation_mm_ci_high": 8.885054,
-          "max_deviation_mm_ci_margin": 4.442527,
-          "p99_deviation_mm_mean": 1.9263,
-          "p99_deviation_mm_ci_low": 0.0,
-          "p99_deviation_mm_ci_high": 6.773717,
-          "p99_deviation_mm_ci_margin": 3.386859,
+          "iou_voxel_ci_margin": 0.48088,
+          "max_deviation_mm_mean": 1.9415,
+          "max_deviation_mm_ci_low": 0.414058,
+          "max_deviation_mm_ci_high": 3.468942,
+          "max_deviation_mm_ci_margin": 1.527442,
+          "p99_deviation_mm_mean": 1.717533,
+          "p99_deviation_mm_ci_low": 0.411782,
+          "p99_deviation_mm_ci_high": 3.023285,
+          "p99_deviation_mm_ci_margin": 1.305751,
           "operation_count_mean": 5.0,
           "operation_count_ci_low": null,
           "operation_count_ci_high": null,
           "operation_count_ci_margin": null,
-          "tool_change_count_mean": 4.5,
-          "tool_change_count_ci_low": 0.0,
-          "tool_change_count_ci_high": 10.853102,
-          "tool_change_count_ci_margin": 5.426551,
-          "cycle_time_s_mean": 2371.54,
+          "tool_change_count_mean": 4.0,
+          "tool_change_count_ci_low": 1.515862,
+          "tool_change_count_ci_high": 6.484138,
+          "tool_change_count_ci_margin": 2.484138,
+          "cycle_time_s_mean": 2986.44,
           "cycle_time_s_ci_low": 0.0,
-          "cycle_time_s_ci_high": 14551.326674,
-          "cycle_time_s_ci_margin": 7275.663337,
-          "toolpath_length_mm_mean": 33450.49,
+          "cycle_time_s_ci_high": 6545.92631,
+          "cycle_time_s_ci_margin": 3272.963155,
+          "toolpath_length_mm_mean": 29553.236667,
           "toolpath_length_mm_ci_low": 0.0,
-          "toolpath_length_mm_ci_high": 212285.747428,
-          "toolpath_length_mm_ci_margin": 106142.873714,
+          "toolpath_length_mm_ci_high": 68329.762361,
+          "toolpath_length_mm_ci_margin": 34164.88118,
           "collision_free_mean": 1.0,
-          "collision_free_ci_low": 0.158114,
+          "collision_free_ci_low": 0.292402,
           "collision_free_ci_high": 1.0,
-          "collision_free_ci_margin": 0.420943,
+          "collision_free_ci_margin": 0.353799,
           "stock_in_bounds_mean": 1.0,
-          "stock_in_bounds_ci_low": 0.158114,
+          "stock_in_bounds_ci_low": 0.292402,
           "stock_in_bounds_ci_high": 1.0,
-          "stock_in_bounds_ci_margin": 0.420943,
+          "stock_in_bounds_ci_margin": 0.353799,
           "scallop_height_mm_mean": 0.68265,
           "scallop_height_mm_ci_low": 0.0,
           "scallop_height_mm_ci_high": 8.792385,
@@ -10078,66 +10078,66 @@
           "engagement_ok_ci_low": 0.158114,
           "engagement_ok_ci_high": 1.0,
           "engagement_ok_ci_margin": 0.420943,
-          "axial_engagement_pct_mean": 5.2577,
-          "axial_engagement_pct_ci_low": 0.0,
-          "axial_engagement_pct_ci_high": 25.374163,
-          "axial_engagement_pct_ci_margin": 12.687082,
+          "axial_engagement_pct_mean": 5.4299,
+          "axial_engagement_pct_ci_low": 1.427831,
+          "axial_engagement_pct_ci_high": 9.431969,
+          "axial_engagement_pct_ci_margin": 4.002069,
           "rough_before_finish_mean": 1.0,
-          "rough_before_finish_ci_low": 0.158114,
+          "rough_before_finish_ci_low": 0.292402,
           "rough_before_finish_ci_high": 1.0,
-          "rough_before_finish_ci_margin": 0.420943,
+          "rough_before_finish_ci_margin": 0.353799,
           "tolerance_appropriate_mean": 1.0,
-          "tolerance_appropriate_ci_low": 0.158114,
+          "tolerance_appropriate_ci_low": 0.292402,
           "tolerance_appropriate_ci_high": 1.0,
-          "tolerance_appropriate_ci_margin": 0.420943,
-          "air_cut_ratio_mean": 0.2381,
-          "air_cut_ratio_ci_low": 0.0,
-          "air_cut_ratio_ci_high": 1.0,
-          "air_cut_ratio_ci_margin": 0.5,
-          "input_tokens_mean": 956767.333333,
+          "tolerance_appropriate_ci_margin": 0.353799,
+          "air_cut_ratio_mean": 0.238067,
+          "air_cut_ratio_ci_low": 0.055979,
+          "air_cut_ratio_ci_high": 0.420154,
+          "air_cut_ratio_ci_margin": 0.182087,
+          "input_tokens_mean": 979778.75,
           "input_tokens_ci_low": 0.0,
-          "input_tokens_ci_high": 3144671.016528,
-          "input_tokens_ci_margin": 1572335.508264,
-          "output_tokens_mean": 12834.333333,
+          "input_tokens_ci_high": 2126414.701619,
+          "input_tokens_ci_margin": 1063207.35081,
+          "output_tokens_mean": 12778.75,
           "output_tokens_ci_low": 0.0,
-          "output_tokens_ci_high": 40703.677624,
-          "output_tokens_ci_margin": 20351.838812,
-          "cache_read_input_tokens_mean": 921280.666667,
+          "output_tokens_ci_high": 27355.762334,
+          "output_tokens_ci_margin": 13677.881167,
+          "cache_read_input_tokens_mean": 941476.0,
           "cache_read_input_tokens_ci_low": 0.0,
-          "cache_read_input_tokens_ci_high": 3037784.852276,
-          "cache_read_input_tokens_ci_margin": 1518892.426138,
-          "cache_creation_input_tokens_mean": 35429.333333,
+          "cache_read_input_tokens_ci_high": 2050292.573192,
+          "cache_read_input_tokens_ci_margin": 1025146.286596,
+          "cache_creation_input_tokens_mean": 38242.5,
           "cache_creation_input_tokens_ci_low": 0.0,
-          "cache_creation_input_tokens_ci_high": 111653.589348,
-          "cache_creation_input_tokens_ci_margin": 55826.794674,
-          "llm_rounds_mean": 29.0,
+          "cache_creation_input_tokens_ci_high": 79101.429131,
+          "cache_creation_input_tokens_ci_margin": 39550.714566,
+          "llm_rounds_mean": 30.5,
           "llm_rounds_ci_low": 0.0,
-          "llm_rounds_ci_high": 95.702683,
-          "llm_rounds_ci_margin": 47.851341,
-          "llm_s_mean": 295.05,
+          "llm_rounds_ci_high": 65.711243,
+          "llm_rounds_ci_margin": 32.855622,
+          "llm_s_mean": 282.9325,
           "llm_s_ci_low": 0.0,
-          "llm_s_ci_high": 930.112594,
-          "llm_s_ci_margin": 465.056297,
-          "tool_s_mean": 68.703333,
+          "llm_s_ci_high": 617.307619,
+          "llm_s_ci_margin": 308.65381,
+          "tool_s_mean": 57.445,
           "tool_s_ci_low": 0.0,
-          "tool_s_ci_high": 229.377204,
-          "tool_s_ci_margin": 114.688602,
-          "wall_clock_s_mean": 368.96,
+          "tool_s_ci_high": 148.798345,
+          "tool_s_ci_margin": 74.399173,
+          "wall_clock_s_mean": 344.3925,
           "wall_clock_s_ci_low": 0.0,
-          "wall_clock_s_ci_high": 1133.531595,
-          "wall_clock_s_ci_margin": 566.765797,
+          "wall_clock_s_ci_high": 751.842612,
+          "wall_clock_s_ci_margin": 375.921306,
           "tool_inputs_repaired_mean": 0.0,
           "tool_inputs_repaired_ci_low": null,
           "tool_inputs_repaired_ci_high": null,
           "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 25.666667,
+          "mb_injected_calls_mean": 27.25,
           "mb_injected_calls_ci_low": 0.0,
-          "mb_injected_calls_ci_high": 89.016237,
-          "mb_injected_calls_ci_margin": 44.508119,
-          "aborted_mean": 0.333333,
+          "mb_injected_calls_ci_high": 60.763416,
+          "mb_injected_calls_ci_margin": 30.381708,
+          "aborted_mean": 0.25,
           "aborted_ci_low": 0.0,
-          "aborted_ci_high": 1.767551,
-          "aborted_ci_margin": 0.883775,
+          "aborted_ci_high": 1.045612,
+          "aborted_ci_margin": 0.522806,
           "run_index": [
             {
               "run_id": "4b484c25-a860-4870-af57-5f26f26eb581",
@@ -10154,6 +10154,12 @@
             {
               "run_id": "f52259bc-738b-40c0-958e-32373aa5771b",
               "timestamp": "2026-07-22T22:50:20.850737",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "8fd6dbeb-1818-4bc0-a087-8d1c04fc8879",
+              "timestamp": "2026-07-23T13:26:18.105149",
               "trial_index": 0,
               "prompt_variant": "detailed"
             }
@@ -10383,15 +10389,15 @@
         },
         "titan_m3_detailed": {
           "runs": 1,
-          "graded": 0
+          "graded": 1
         },
         "titan_m3_minimal": {
           "runs": 0,
           "graded": 0
         },
         "titan_m4_detailed": {
-          "runs": 3,
-          "graded": 2
+          "runs": 4,
+          "graded": 3
         }
       },
       "glm-5.2": {

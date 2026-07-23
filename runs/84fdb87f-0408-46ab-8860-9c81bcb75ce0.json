@@ -27,7 +27,23 @@
     "llm_rounds": 47.0,
     "llm_s": 359.87,
     "tool_s": 17.42,
-    "wall_clock_s": 377.96
+    "wall_clock_s": 377.96,
+    "iou_voxel": 0.9472,
+    "max_deviation_mm": 1.2762,
+    "p99_deviation_mm": 1.1435,
+    "operation_count": 8.0,
+    "tool_change_count": 6.0,
+    "cycle_time_s": 1031.3,
+    "toolpath_length_mm": 7056.14,
+    "collision_free": 1.0,
+    "stock_in_bounds": 1.0,
+    "scallop_height_mm": 0.3232,
+    "radial_engagement_pct": 31.4961,
+    "engagement_ok": 1.0,
+    "axial_engagement_pct": 15.3305,
+    "rough_before_finish": 1.0,
+    "tolerance_appropriate": 1.0,
+    "air_cut_ratio": 0.1998
   },
   "transcript": [
     {
@@ -469,9 +485,174 @@
     "image": null
   },
   "cam_summary": {
-    "doc": null,
-    "cam_product": null,
-    "setups": [],
-    "probe_error": true
+    "doc": "claude-opus-4-8_Titan-M3_detailed_2026-07-23T12-03-39",
+    "cam_product": true,
+    "setups": [
+      {
+        "name": "Setup1",
+        "strategy": "setup",
+        "operation_type": 0,
+        "stock_mode": 1,
+        "stock_size_mm": [
+          51.53,
+          51.53,
+          20.05
+        ],
+        "machine": {
+          "vendor": "HAAS",
+          "model": "Mini Mill"
+        },
+        "machining_time_s": 1031.299657,
+        "feed_time_s": 954.2935950802014,
+        "rapid_time_s": 2.0060626357792066,
+        "tool_change_time_s": 75.0,
+        "operations": [
+          {
+            "name": "Face_Top",
+            "strategy": "face",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "Math.max((tool_diameter - 2 * tool_cornerRadius) * 0.7; tool_diameter * 0.05)",
+            "stepdown": "1.0mm",
+            "tool": {
+              "number": 21,
+              "type": "face mill",
+              "diameter": "2.3in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.1in",
+              "flutes": 1
+            }
+          },
+          {
+            "name": "Rough_Pocket",
+            "strategy": "adaptive2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "0.4cm",
+            "stepdown": "0.2cm",
+            "tool": {
+              "number": 3,
+              "type": "flat end mill",
+              "diameter": "0.5in",
+              "corner_radius": "0.0in",
+              "flute_length": "2.in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Contour_Outer",
+            "strategy": "contour2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "Math.max((tool_diameter - (2 * tool_cornerRadius)) * 0.95; tool_diameter * 0.20)",
+            "stepdown": "0.3cm",
+            "tool": {
+              "number": 3,
+              "type": "flat end mill",
+              "diameter": "0.5in",
+              "corner_radius": "0.0in",
+              "flute_length": "2.in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Finish_Pocket",
+            "strategy": "pocket2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "tool_diameter * 0.6",
+            "stepdown": "0.4cm",
+            "tool": {
+              "number": 9,
+              "type": "flat end mill",
+              "diameter": "0.25in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.1in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Groove_Boss",
+            "strategy": "pocket2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "tool_diameter * 0.6",
+            "stepdown": "0.05cm",
+            "tool": {
+              "number": 56,
+              "type": "flat end mill",
+              "diameter": "0.0625in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.15in",
+              "flutes": 4
+            }
+          },
+          {
+            "name": "Spot_Drill",
+            "strategy": "drill",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": null,
+            "stepdown": null,
+            "tool": {
+              "number": 46,
+              "type": "center drill",
+              "diameter": "0.25in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.5675in",
+              "flutes": 2
+            }
+          },
+          {
+            "name": "Bore_Holes",
+            "strategy": "bore",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "tool_diameter * 0.5",
+            "stepdown": null,
+            "tool": {
+              "number": 11,
+              "type": "flat end mill",
+              "diameter": "0.125in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.48in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Bore_Counterbore",
+            "strategy": "bore",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "tool_diameter * 0.5",
+            "stepdown": null,
+            "tool": {
+              "number": 11,
+              "type": "flat end mill",
+              "diameter": "0.125in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.48in",
+              "flutes": 3
+            }
+          }
+        ]
+      }
+    ]
   }
 }
