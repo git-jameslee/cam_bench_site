@@ -1,0 +1,925 @@
+{
+  "run_id": "cf5f4f08-ca06-415f-bf57-c56ec4d4f0fe",
+  "model": "claude-opus-4-8",
+  "model_raw": "claude-opus-4-8",
+  "task": "titan_m6_detailed",
+  "task_group": "titan_m6",
+  "prompt_variant": "detailed",
+  "trial_index": 0,
+  "trials_total": 1,
+  "backend": "anthropic",
+  "timestamp": "2026-07-23T13:42:17.433145",
+  "sampling": {},
+  "seed": null,
+  "values": {
+    "tool_calls_total": 78.0,
+    "tool_calls_succeeded": 67.0,
+    "tool_calls_failed": 11.0,
+    "tool_call_success_rate": 0.859,
+    "tool_inputs_repaired": 0.0,
+    "mb_injected_calls": 72.0,
+    "hit_round_limit": 0.0,
+    "aborted": 0.0,
+    "input_tokens": 3752914.0,
+    "output_tokens": 35408.0,
+    "cache_read_input_tokens": 3674322.0,
+    "cache_creation_input_tokens": 78435.0,
+    "llm_rounds": 79.0,
+    "llm_s": 622.87,
+    "tool_s": 27.37,
+    "wall_clock_s": 650.91,
+    "iou_voxel": 0.6969,
+    "max_deviation_mm": 12.2349,
+    "p99_deviation_mm": 10.7486,
+    "operation_count": 7.0,
+    "tool_change_count": 5.0,
+    "cycle_time_s": 913.26,
+    "toolpath_length_mm": 9287.88,
+    "collision_free": 1.0,
+    "stock_in_bounds": 1.0,
+    "axial_engagement_pct": 8.1872,
+    "rough_before_finish": 1.0,
+    "tolerance_appropriate": 1.0,
+    "air_cut_ratio": 0.1718
+  },
+  "transcript": [
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    doc = app.activeDocument\n    print(\"Active doc:\", doc.name)\n    # List products\n    for p in doc.products:\n        print(\"Product:\", p.productType)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Active doc: claude-opus-4-8_Titan-M6_detailed_2026-07-23T13-31-16\\nProduct: DesignProductType\\nProduct: CAMProductType\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    doc = app.activeDocument\n    des = doc.products.itemByProductType('DesignProductType')\n    root = des.rootComponent\n    bb = root.boundingBox\n    print(\"BBox min:\", [round(x*10,3) for x in bb.minPoint.asArray()])\n    print(\"BBox max:\", [round(x*10,3) for x in bb.maxPoint.asArray()])\n    # Bodies\n    for b in root.bRepBodies:\n        print(\"Body:\", b.name, \"faces:\", b.faces.count)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"BBox min: [-24.775, -12.71, -24.775]\\nBBox max: [24.775, 6.36, 24.775]\\nBody: Body1 faces: 110\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    doc = app.activeDocument\n    cam = doc.products.itemByProductType('CAMProductType')\n    print(\"Setups:\", cam.setups.count)\n    for s in cam.setups:\n        print(\"Setup:\", s.name, \"type:\", s.operationType, \"ops:\", s.operations.count)\n        wcs = s.workCoordinateSystem\n        print(\"  origin:\", [round(v*10,3) for v in wcs.origin.asArray()])\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"message\": \"Setups: 1\\nSetup: Setup1 type: 0 ops: 0\",\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 54, in run\\n  File \\\"<string>\\\", line 38, in run\\nAttributeError: 'Matrix3D' object has no attribute 'origin'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    doc = app.activeDocument\n    des = doc.products.itemByProductType('DesignProductType')\n    root = des.rootComponent\n\n    # Analyze faces: group by orientation and Z level\n    from collections import defaultdict\n    b = root.bRepBodies.item(0)\n    print(\"Face analysis (mm):\")\n    for i, f in enumerate(b.faces):\n        geom = f.geometry\n        gt = type(geom).__name__\n        c = f.centroid\n        area = f.area*100\n        info = \"%s area=%.2f centroid=(%.2f,%.2f,%.2f)\" % (gt, area,\n            c.x*10, c.y*10, c.z*10)\n        if gt == 'Cylinder':\n            info += \" r=%.3f\" % (geom.radius*10)\n        if gt == 'Plane':\n            n = geom.normal\n            info += \" n=(%.2f,%.2f,%.2f)\" % (n.x,n.y,n.z)\n        print(i, info)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Face analysis (mm):\\n0 Plane area=1325.98 centroid=(-0.00,0.00,-0.00) n=(0.00,1.00,0.00)\\n1 Cylinder area=1936.64 centroid=(-0.00,-6.22,-0.00) r=24.765\\n2 Plane area=1760.76 centroid=(0.00,-12.70,0.00) n=(0.00,1.00,0.00)\\n3 Cone area=55.61 centroid=(0.00,-12.57,-0.00)\\n4 Cylinder area=248.29 centroid=(-11.23,-6.48,11.23) r=3.175\\n5 Cylinder area=248.29 centroid=(11.23,-6.48,-11.23) r=3.175\\n6 Cylinder area=248.29 centroid=(11.23,-6.48,11.23) r=3.175\\n7 Cylinder area=248.29 centroid=(-11.23,-6.48,-11.23) r=3.175\\n8 Plane area=54.97 centroid=(21.27,3.05,-0.00) n=(-1.00,0.00,0.00)\\n9 Plane area=54.97 centroid=(16.51,3.05,-4.76) n=(-0.00,0.00,1.00)\\n10 Plane area=56.52 centroid=(11.75,3.05,0.13) n=(1.00,0.00,0.00)\\n11 Plane area=56.52 centroid=(16.38,3.05,4.76) n=(-0.00,0.00,-1.00)\\n12 Plane area=45.72 centroid=(16.52,6.35,0.01) n=(0.00,-1.00,0.00)\\n13 Plane area=54.97 centroid=(4.76,3.05,-0.00) n=(-1.00,0.00,0.00)\\n14 Plane area=54.97 centroid=(0.00,3.05,-4.76) n=(0.00,-0.00,1.00)\\n15 Plane area=54.97 centroid=(-4.76,3.05,-0.00) n=(1.00,-0.00,0.00)\\n16 Plane area=54.97 centroid=(0.00,3.05,4.76) n=(0.00,0.00,-1.00)\\n17 Plane area=45.72 centroid=(0.01,6.35,0.01) n=(0.00,-1.00,0.00)\\n18 Plane area=54.97 centroid=(4.76,3.05,-16.51) n=(-1.00,0.00,-0.00)\\n19 Plane area=54.97 centroid=(0.00,3.05,-21.27) n=(0.00,-0.00,1.00)\\n20 Plane area=54.97 centroid=(-4.76,3.05,-16.51) n=(1.00,0.00,-0.00)\\n21 Plane area=54.97 centroid=(0.00,3.05,-11.75) n=(0.00,0.00,-1.00)\\n22 Plane area=45.72 centroid=(0.01,6.35,-16.50) n=(0.00,-1.00,0.00)\\n23 Plane area=54.97 centroid=(-11.75,3.05,0.00) n=(-1.00,0.00,0.00)\\n24 Plane area=54.97 centroid=(-16.51,3.05,-4.76) n=(0.00,-0.00,1.00)\\n25 Plane area=54.97 centroid=(-21.27,3.05,0.00) n=(1.00,0.00,0.00)\\n26 Plane area=54.97 centroid=(-16.51,3.05,4.76) n=(0.00,0.00,-1.00)\\n27 Plane area=45.72 centroid=(-16.50,6.35,0.01) n=(-0.00,-1.00,0.00)\\n28 Plane area=54.97 centroid=(4.76,3.05,16.51) n=(-1.00,0.00,0.00)\\n29 Plane area=54.97 centroid=(0.00,3.05,11.75) n=(0.00,-0.00,1.00)\\n30 Plane area=54.97 centroid=(-4.76,3.05,16.51) n=(1.00,-0.00,0.00)\\n31 Plane area=54.97 centroid=(0.00,3.05,21.27) n=(0.00,0.00,-1.00)\\n32 Plane area=45.72 centroid=(0.01,6.35,16.52) n=(0.00,-1.00,0.00)\\n33 Plane area=2.19 centroid=(21.15,3.05,-4.64) n=(-0.71,0.00,0.71)\\n34 Plane area=2.19 centroid=(11.87,3.05,-4.64) n=(0.71,0.00,0.71)\\n35 Plane area=3.24 centroid=(16.51,6.22,-4.64) n=(-0.00,-0.71,0.71)\\n36 Plane area=0.06 centroid=(21.10,6.18,-4.59) n=(0.58,0.58,-0.58)\\n37 Plane area=0.06 centroid=(11.92,6.18,-4.59) n=(-0.58,0.58,-0.58)\\n38 Plane area=3.24 centroid=(21.15,6.22,-0.00) n=(-0.71,-0.71,0.00)\\n39 Plane area=2.19 centroid=(21.15,3.05,4.64) n=(-0.71,-0.00,-0.71)\\n40 Plane area=3.28 centroid=(11.87,6.22,0.06) n=(0.71,-0.71,0.00)\\n41 Plane area=0.06 centroid=(21.10,6.18,4.59) n=(0.58,0.58,0.58)\\n42 Plane area=3.28 centroid=(16.45,6.22,4.64) n=(-0.00,-0.71,-0.71)\\n43 Plane area=2.19 centroid=(-4.64,3.05,11.87) n=(0.71,0.00,0.71)\\n44 Plane area=3.24 centroid=(0.00,6.22,11.87) n=(0.00,-0.71,0.71)\\n45 Plane area=2.19 centroid=(4.64,3.05,11.87) n=(-0.71,0.00,0.71)\\n46 Plane area=0.06 centroid=(-4.59,6.18,11.92) n=(-0.58,0.58,-0.58)\\n47 Plane area=0.06 centroid=(4.59,6.18,11.92) n=(0.58,0.58,-0.58)\\n48 Plane area=2.19 centroid=(-4.64,3.05,21.15) n=(0.71,0.00,-0.71)\\n49 Plane area=3.24 centroid=(-4.64,6.22,16.51) n=(0.71,-0.71,0.00)\\n50 Plane area=3.24 centroid=(4.64,6.22,16.51) n=(-0.71,-0.71,0.00)\\n51 Plane area=2.19 centroid=(4.64,3.05,21.15) n=(-0.71,-0.00,-0.71)\\n52 Plane area=0.06 centroid=(-4.59,6.18,21.10) n=(-0.58,0.58,0.58)\\n53 Plane area=0.06 centroid=(4.59,6.18,21.10) n=(0.58,0.58,0.58)\\n54 Plane area=3.24 centroid=(0.00,6.22,21.15) n=(0.00,-0.71,-0.71)\\n55 Plane area=2.19 centroid=(-4.64,3.05,-4.64) n=(0.71,0.00,0.71)\\n56 Plane area=3.24 centroid=(-0.00,6.22,-4.64) n=(0.00,-0.71,0.71)\\n57 Plane area=2.19 centroid=(4.64,3.05,-4.64) n=(-0.71,0.00,0.71)\\n58 Plane area=0.06 centroid=(-4.59,6.18,-4.59) n=(-0.58,0.58,-0.58)\\n59 Plane area=0.06 centroid=(4.59,6.18,-4.59) n=(0.58,0.58,-0.58)\\n60 Plane area=2.19 centroid=(-4.64,3.05,4.64) n=(0.71,0.00,-0.71)\\n61 Plane area=3.24 centroid=(-4.64,6.22,0.00) n=(0.71,-0.71,0.00)\\n62 Plane area=3.24 centroid=(4.64,6.22,-0.00) n=(-0.71,-0.71,0.00)\\n63 Plane area=2.19 centroid=(4.64,3.05,4.64) n=(-0.71,-0.00,-0.71)\\n64 Plane area=0.06 centroid=(-4.59,6.18,4.59) n=(-0.58,0.58,0.58)\\n65 Plane area=0.06 centroid=(4.59,6.18,4.59) n=(0.58,0.58,0.58)\\n66 Plane area=3.24 centroid=(0.00,6.22,4.64) n=(0.00,-0.71,-0.71)\\n67 Plane area=2.19 centroid=(-4.64,3.05,-21.15) n=(0.71,0.00,0.71)\\n68 Plane area=3.24 centroid=(0.00,6.22,-21.15) n=(0.00,-0.71,0.71)\\n69 Plane area=2.19 centroid=(4.64,3.05,-21.15) n=(-0.71,0.00,0.71)\\n70 Plane area=0.06 centroid=(-4.59,6.18,-21.10) n=(-0.58,0.58,-0.58)\\n71 Plane area=0.06 centroid=(4.59,6.18,-21.10) n=(0.58,0.58,-0.58)\\n72 Plane area=2.19 centroid=(-4.64,3.05,-11.87) n=(0.71,0.00,-0.71)\\n73 Plane area=3.24 centroid=(-4.64,6.22,-16.51) n=(0.71,-0.71,-0.00)\\n74 Plane area=3.24 centroid=(4.64,6.22,-16.51) n=(-0.71,-0.71,-0.00)\\n75 Plane area=2.19 centroid=(4.64,3.05,-11.87) n=(-0.71,-0.00,-0.71)\\n76 Plane area=0.06 centroid=(-4.59,6.18,-11.92) n=(-0.58,0.58,0.58)\\n77 Plane area=0.06 centroid=(4.59,6.18,-11.92) n=(0.58,0.58,0.58)\\n78 Plane area=3.24 centroid=(0.00,6.22,-11.87) n=(0.00,-0.71,-0.71)\\n79 Plane area=2.19 centroid=(-21.15,3.05,-4.64) n=(0.71,0.00,0.71)\\n80 Plane area=3.24 centroid=(-16.51,6.22,-4.64) n=(0.00,-0.71,0.71)\\n81 Plane area=2.19 centroid=(-11.87,3.05,-4.64) n=(-0.71,0.00,0.71)\\n82 Plane area=0.06 centroid=(-21.10,6.18,-4.59) n=(-0.58,0.58,-0.58)\\n83 Plane area=0.06 centroid=(-11.92,6.18,-4.59) n=(0.58,0.58,-0.58)\\n84 Plane area=2.19 centroid=(-21.15,3.05,4.64) n=(0.71,0.00,-0.71)\\n85 Plane area=3.24 centroid=(-21.15,6.22,0.00) n=(0.71,-0.71,0.00)\\n86 Plane area=3.24 centroid=(-11.87,6.22,0.00) n=(-0.71,-0.71,0.00)\\n87 Plane area=2.19 centroid=(-11.87,3.05,4.64) n=(-0.71,-0.00,-0.71)\\n88 Plane area=0.06 centroid=(-21.10,6.18,4.59) n=(-0.58,0.58,0.58)\\n89 Plane area=0.06 centroid=(-11.92,6.18,4.59) n=(0.58,0.58,0.58)\\n90 Plane area=3.24 centroid=(-16.51,6.22,4.64) n=(0.00,-0.71,-0.71)\\n91 Cone area=7.45 centroid=(11.23,-0.13,-11.23)\\n92 Cone area=7.45 centroid=(11.23,-0.13,11.23)\\n93 Cone area=7.45 centroid=(-11.23,-0.13,-11.23)\\n94 Cone area=7.45 centroid=(-11.23,-0.13,11.23)\\n95 Cone area=36.95 centroid=(-16.52,1.90,-0.01)\\n96 Cylinder area=66.83 centroid=(-16.52,4.22,-0.01) r=3.175\\n97 Cone area=10.23 centroid=(-16.52,6.12,-0.01)\\n98 Cone area=36.95 centroid=(16.50,1.90,-0.01)\\n99 Cylinder area=66.83 centroid=(16.50,4.22,-0.01) r=3.175\\n100 Cone area=10.23 centroid=(16.50,6.12,-0.01)\\n101 Cone area=36.95 centroid=(-0.01,1.90,-16.52)\\n102 Cylinder area=66.83 centroid=(-0.01,4.22,-16.52) r=3.175\\n103 Cone area=10.23 centroid=(-0.01,6.12,-16.52)\\n104 Cone area=36.95 centroid=(-0.01,1.90,-0.01)\\n105 Cylinder area=66.83 centroid=(-0.01,4.22,-0.01) r=3.175\\n106 Cone area=10.23 centroid=(-0.01,6.12,-0.01)\\n107 Cone area=36.95 centroid=(-0.01,1.90,16.50)\\n108 Cylinder area=66.83 centroid=(-0.01,4.22,16.50) r=3.175\\n109 Cone area=10.23 centroid=(-0.01,6.12,16.50)\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_read",
+      "success": true,
+      "input": {
+        "queryType": "screenshot",
+        "direction": "iso-top-right"
+      },
+      "result": "[non-text result: image (image/png) - image not shown to the model]",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    des = app.activeDocument.products.itemByProductType('DesignProductType')\n    root = des.rootComponent\n    b = root.bRepBodies.item(0)\n    # Y is vertical (up). Top of part y=6.36, bottom y=-12.71\n    # face 0 n=(0,1,0) at y=0 area 1325 -> top flat at y=0? centroid (0,0,0)\n    # Cylinder face1 r=24.765 -> outer round of part? centroid y=-6.22\n    # face2 at y=-12.70 bottom\n    # So the part is cylindrical? r=24.765mm. But bbox is 49.55 square -> cylinder inscribed? Actually r*2=49.53 ~ bbox. So it's a round part.\n    # Let's collect distinct planar Y levels\n    from collections import Counter\n    ylevels = Counter()\n    for f in b.faces:\n        if type(f.geometry).__name__=='Plane':\n            n=f.geometry.normal\n            if abs(n.y)>0.99:\n                ylevels[round(f.centroid.y*10,2)]+=1\n    print(\"Horizontal plane Y levels (mm):\", dict(ylevels))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Horizontal plane Y levels (mm): {0.0: 1, -12.7: 1, 6.35: 5}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    des = app.activeDocument.products.itemByProductType('DesignProductType')\n    root = des.rootComponent\n    b = root.bRepBodies.item(0)\n    # The 5 planes at y=6.35 are the tops of raised features. Their centroids:\n    for i,f in enumerate(b.faces):\n        g=f.geometry\n        if type(g).__name__=='Plane' and abs(g.normal.y)>0.99 and round(f.centroid.y*10,2)==6.35:\n            print(\"Top boss face\", i, \"centroid\", [round(v*10,2) for v in f.centroid.asArray()], \"area\", round(f.area*100,2))\n    # cone face3\n    print(\"Cone face3 at bottom - chamfer likely\")\n    # Check the vertical extent: bosses go from y=0 top ring up to y=6.35. height 6.35\n    # Outer cylinder r 24.765 spans full height\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Top boss face 12 centroid [16.52, 6.35, 0.01] area 45.72\\nTop boss face 17 centroid [0.01, 6.35, 0.01] area 45.72\\nTop boss face 22 centroid [0.01, 6.35, -16.5] area 45.72\\nTop boss face 27 centroid [-16.5, 6.35, 0.01] area 45.72\\nTop boss face 32 centroid [0.01, 6.35, 16.52] area 45.72\\nCone face3 at bottom - chamfer likely\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    print(\"Setup:\", s.name)\n    # Model params - WCS\n    m = s.workCoordinateSystem\n    a = m.asArray()\n    print(\"WCS matrix rows:\")\n    for r in range(4):\n        print([round(a[r*4+c],4) for c in range(4)])\n    # Stock\n    try:\n        params = s.parameters\n        for p in params:\n            if 'stock' in p.name.lower() or 'Stock' in p.name:\n                try:\n                    print(p.name, \"=\", p.expression, p.value.value if hasattr(p.value,'value') else '')\n                except:\n                    print(p.name)\n    except Exception as e:\n        print(\"param err\", e)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Setup: Setup1\\nWCS matrix rows:\\n[1.0, 0.0, 0.0, 0.0]\\n[0.0, 1.0, 0.0, -3.175]\\n[0.0, 0.0, 1.0, 25.765]\\n[0.0, 0.0, 0.0, 1.0]\\nstockZHigh = 0.0 0.0\\nstockZLow = -50.52999999999999 -5.053000000000001\\nstockXLow = -25.765 -2.5765\\nstockXHigh = 25.765 2.5765\\nstockYLow = -10.525 -1.0525\\nstockYHigh = 10.525 1.0525\\nstockDiameter = NaN nan\\nstockDiameterInner = NaN nan\\nstockLength = NaN nan\\nwcs_stock_point = true <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C1488A80> >\\njob_enableStockSimForAdditive = false False\\njob_groupStock = true True\\njob_stockMode = (job_type == 'turning') ? 'fixedcylinder' : (job_type == 'additive' && job_enableStockSimForAdditive) ? 'solid' : 'default' default\\njob_groundStockModelOrigin = false False\\njob_stockOffsetMode = 'simple' simple\\njob_stockSolid = false <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C1488A80> >\\njob_stockOffsetSides = 1mm 0.1\\njob_stockOffsetTop = 1mm 0.1\\njob_stockOffsetBottom = 0mm 0.0\\njob_stockOffsetXBack = 0mm 0.0\\njob_stockOffsetXFront = 0mm 0.0\\njob_stockOffsetYBack = 0mm 0.0\\njob_stockOffsetYFront = 0mm 0.0\\njob_stockOffsetZBack = 0mm 0.0\\njob_stockOffsetZFront = 0mm 0.0\\njob_stockFixedX = Math.ceilto(surfaceXHigh - surfaceXLow; job_stockFixedRoundingValue) 4.952999999999999\\njob_stockFixedXMode = job_groundStockModelOrigin ? 'model' : 'center' center\\njob_stockFixedXOffset = (job_stockFixedX - (surfaceXHigh - surfaceXLow)) / 2 0.0\\njob_stockFixedY = Math.ceilto(surfaceYHigh - surfaceYLow; job_stockFixedRoundingValue) 1.9050000000000002\\njob_stockFixedYMode = job_groundStockModelOrigin ? 'model' : 'center' center\\njob_stockFixedYOffset = (job_stockFixedY - (surfaceYHigh - surfaceYLow)) / 2 0.0\\njob_stockFixedZ = Math.ceilto(surfaceZHigh - surfaceZLow; job_stockFixedRoundingValue) 4.953\\njob_stockFixedZMode = job_groundStockModelOrigin ? 'model' : 'center' center\\njob_stockFixedZOffset = (job_stockFixedZ - (surfaceZHigh - surfaceZLow)) / 2 0.0\\njob_stockOffset = 0mm 0.0\\njob_stockHeight = 10mm 1.0\\njob_stockAxisEnabled = false False\\njob_stockAxis = false <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C1408A80> >\\njob_stockDiameter = Math.ceilto(modelDiameter; job_stockFixedRoundingValue) nan\\njob_stockDiameterInner = Math.floorto(modelDiameterInner; job_stockFixedRoundingValue) 0.0\\njob_stockLength = Math.ceilto(modelLength; job_stockFixedRoundingValue) 4.953\\njob_stockLengthMode = 'center' center\\njob_stockLengthOffset = 0 0.0\\njob_stockRadialOffset = 1mm 0.1\\njob_stockOffsetFront = 0mm 0.0\\njob_stockOffsetBack = 0mm 0.0\\njob_stockFixedRoundingValue = ((job_stockMode == 'default') || (job_stockMode == 'relativecylinder') || (job_stockMode == 'relativetube')) ? 0.0mm : 10mm 0.0\\njob_stockSpecificCuttingForce = 1500.0 1500.0\\njob_stockSpecificCuttingForceUnit = 'N/mm2' N/mm2\\njob_stockInitialToolWear = 0.0 0.0\\njob_stockInitialToolWearUnit = 'J' J\\njob_stockCuttingForceOutputFolder = '' \\njob_groupStockMaterial = true True\\njob_groupStockInfo = true True\\njob_stockInfoDiameter = stockDiameter nan\\njob_stockInfoLength = stockLength nan\\njob_stockInfoDimensionX = stockXHigh - stockXLow 5.153\\njob_stockInfoDimensionY = stockYHigh - stockYLow 2.105\\njob_stockInfoDimensionZ = stockZHigh - stockZLow 5.053000000000001\\njob_positionReference_stock_point = true <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C1488A80> >\\nconnectionMoveClearanceAreaCylinderRadiusFromOutermost_checkStock = 'outer diameter' outer diameter\\nconnectionMoveClearanceAreaSphereRadiusFromOutermost_checkStock = 'outer diameter' outer diameter\\nmilling_connectionMoveClearanceAreaCylinderRadiusFromOutermost_checkStock = 'outer diameter' outer diameter\\nmilling_connectionMoveClearanceAreaSphereRadiusFromOutermost_checkStock = 'outer diameter' outer diameter\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    p = s.parameters\n    for name in ['job_setupOrientationMode','wcs_orientationMode','job_wcsOrigin','setupWCS','job_setupOriginMode']:\n        try:\n            pp=p.itemByName(name)\n            print(name,'=',pp.expression, pp.value.value if hasattr(pp.value,'value') else '')\n        except Exception as e:\n            print(name,'MISSING')\n    # print all param names containing orient or origin or wcs or axis\n    for pp in p:\n        n=pp.name.lower()\n        if 'orient' in n or 'origin' in n or 'wcs' in n or 'axis' in n or 'flip' in n:\n            try:\n                print(pp.name,'=',pp.expression)\n            except: pass\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"job_setupOrientationMode MISSING\\nwcs_orientationMode MISSING\\njob_wcsOrigin MISSING\\nsetupWCS MISSING\\njob_setupOriginMode MISSING\\nlicenseMultiaxis = true\\njob_enableWCSForAdditive = false\\njob_groupWCS = true\\nwcs_orientation_mode = (job_type!='turning') ? ('modelOrientation'): ('axesXZ')\\njob_rotaryAxis = false\\nwcs_orientation_axisZ = false\\nwcs_orientation_flipZ = false\\nwcs_orientation_axesZX_unselected_default = 'model'\\nwcs_orientation_axesZY_unselected_default = 'model'\\nwcs_orientation_axesXY_unselected_default = 'model'\\nwcs_orientation_axesXZ_unselected_default = 'model'\\nwcs_orientation_cSys = false\\njob_axisXPosition = false\\nwcs_orientation_axisX = false\\nwcs_orientation_flipX = false\\nwcs_orientation_axisY = false\\nwcs_orientation_flipY = false\\nwcs_origin_turning = 'stock front'\\nwcs_origin_mode = (job_type == 'additive') ? ('modelOrigin') : 'stockPoint'\\nwcs_origin_point = false\\nwcs_model_point = true\\nwcs_origin_boxPoint = 'top center'\\nwcs_stock_point = true\\njob_groundStockModelOrigin = false\\njob_useBoundingSolidWCS = false\\njob_stockAxisEnabled = false\\njob_stockAxis = false\\njob_positionReference_origin_mode = 'fixturePoint'\\njob_positionReference_origin_point = false\\njob_positionReference_origin_boxPoint = 'bottom center'\\nconnectionMoveClearanceArea_orientation_mode = 'setupAxisZ'\\nconnectionMoveClearanceArea_orientation_selAxis = false\\nconnectionMoveClearanceArea_orientation_flipAxis = false\\nconnectionMoveClearanceArea_flipDirection = false\\nconnectionMoveClearanceAreaUp_orientation_mode = 'setupAxisZ'\\nconnectionMoveClearanceAreaUp_orientation_selAxis = false\\nconnectionMoveClearanceAreaUp_orientation_flipAxis = false\\nconnectionMoveClearanceAreaUp_flipDirection = false\\nconnectionMoveClearanceArea_origin_mode = (connectionMoveClearanceArea_orientation_mode == 'surfaceNormalX' || connectionMoveClearanceArea_orientation_mode == 'surfaceNormalY') ? 'surfacePointOrigin' : 'jobOrigin'\\nconnectionMoveClearanceArea_origin_point = false\\nmilling_connectionMoveClearanceArea_orientation_mode = 'setupAxisZ'\\nmilling_connectionMoveClearanceArea_orientation_selAxis = false\\nmilling_connectionMoveClearanceArea_orientation_flipAxis = false\\nmilling_connectionMoveClearanceArea_flipDirection = false\\nmilling_connectionMoveClearanceAreaUp_orientation_mode = 'setupAxisZ'\\nmilling_connectionMoveClearanceAreaUp_orientation_selAxis = false\\nmilling_connectionMoveClearanceAreaUp_orientation_flipAxis = false\\nmilling_connectionMoveClearanceAreaUp_flipDirection = false\\nmilling_connectionMoveClearanceArea_origin_mode = (milling_connectionMoveClearanceArea_orientation_mode == 'surfaceNormalX' || milling_connectionMoveClearanceArea_orientation_mode == 'surfaceNormalY') ? 'surfacePointOrigin' : 'jobOrigin'\\nmilling_connectionMoveClearanceArea_origin_point = false\\njob_groupMachineWCS = true\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_read",
+      "success": true,
+      "input": {
+        "queryType": "screenshot",
+        "direction": "front"
+      },
+      "result": "[non-text result: image (image/png) - image not shown to the model]",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    # Setup has a display/stock; check the models\n    models = s.models\n    print(\"models count\", models.count if hasattr(models,'count') else 'n/a')\n    for m in models:\n        print(\" model:\", m.name if hasattr(m,'name') else m)\n    # Try to get stock solid via s.stockSolid?\n    # The WCS: setup.workCoordinateSystem is orientation matrix in model space.\n    m = s.workCoordinateSystem\n    x = m.getCell(0,0),m.getCell(1,0),m.getCell(2,0)\n    y = m.getCell(0,1),m.getCell(1,1),m.getCell(2,1)\n    z = m.getCell(0,2),m.getCell(1,2),m.getCell(2,2)\n    o = m.getCell(0,3),m.getCell(1,3),m.getCell(2,3)\n    print(\"X axis(model):\",[round(v,3) for v in x])\n    print(\"Y axis(model):\",[round(v,3) for v in y])\n    print(\"Z axis(model):\",[round(v,3) for v in z])\n    print(\"Origin(model,cm):\",[round(v,3) for v in o])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"models count 1\\n model: Body1\\nX axis(model): [1.0, 0.0, 0.0]\\nY axis(model): [0.0, 1.0, 0.0]\\nZ axis(model): [0.0, 0.0, 1.0]\\nOrigin(model,cm): [0.0, -3.175, 25.765]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    p=s.parameters\n    for n in ['surfaceXLow','surfaceXHigh','surfaceYLow','surfaceYHigh','surfaceZLow','surfaceZHigh']:\n        try:\n            pp=p.itemByName(n); print(n,'=',pp.value.value if hasattr(pp.value,'value') else pp.expression)\n        except Exception as e:\n            print(n,'MISSING',e)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"surfaceXLow = -2.4764999999999997\\nsurfaceXHigh = 2.4764999999999997\\nsurfaceYLow = -0.9525000000000001\\nsurfaceYHigh = 0.9525000000000001\\nsurfaceZLow = -5.053000000000001\\nsurfaceZHigh = -0.1\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    des = app.activeDocument.products.itemByProductType('DesignProductType')\n    b = des.rootComponent.bRepBodies.item(0)\n    m = s.workCoordinateSystem\n    m.invert()  # world->wcs\n    def to_wcs(pt):\n        p = adsk.core.Point3D.create(pt.x,pt.y,pt.z)\n        p.transformBy(m)\n        return (p.x*10,p.y*10,p.z*10)\n    # WCS Z is tool axis (down negative). Find faces with highest WCS Z (nearest top)\n    faces=[]\n    for i,f in enumerate(b.faces):\n        c=to_wcs(f.centroid)\n        faces.append((round(c[2],2),i,type(f.geometry).__name__,[round(v,2) for v in c],round(f.area*100,2)))\n    faces.sort(reverse=True)\n    for fz,i,gt,c,a in faces[:15]:\n        print(\"wZ=%.2f f%d %s c=%s A=%.1f\"%(fz,i,gt,c,a))\n    print(\"---lowest---\")\n    for fz,i,gt,c,a in faces[-5:]:\n        print(\"wZ=%.2f f%d %s c=%s A=%.1f\"%(fz,i,gt,c,a))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"wZ=-236.38 f31 Plane c=[0.0, 34.8, -236.38] A=55.0\\nwZ=-236.50 f54 Plane c=[0.0, 37.97, -236.5] A=3.2\\nwZ=-236.50 f51 Plane c=[4.64, 34.8, -236.5] A=2.2\\nwZ=-236.50 f48 Plane c=[-4.64, 34.8, -236.5] A=2.2\\nwZ=-236.55 f53 Plane c=[4.59, 37.93, -236.55] A=0.1\\nwZ=-236.55 f52 Plane c=[-4.59, 37.93, -236.55] A=0.1\\nwZ=-241.13 f32 Plane c=[0.01, 38.1, -241.13] A=45.7\\nwZ=-241.14 f50 Plane c=[4.64, 37.97, -241.14] A=3.2\\nwZ=-241.14 f49 Plane c=[-4.64, 37.97, -241.14] A=3.2\\nwZ=-241.14 f30 Plane c=[-4.76, 34.8, -241.14] A=55.0\\nwZ=-241.14 f28 Plane c=[4.76, 34.8, -241.14] A=55.0\\nwZ=-241.15 f109 Cone c=[-0.01, 37.87, -241.15] A=10.2\\nwZ=-241.15 f108 Cylinder c=[-0.01, 35.97, -241.15] A=66.8\\nwZ=-241.15 f107 Cone c=[-0.01, 33.65, -241.15] A=37.0\\nwZ=-245.73 f47 Plane c=[4.59, 37.93, -245.73] A=0.1\\n---lowest---\\nwZ=-278.75 f70 Plane c=[-4.59, 37.93, -278.75] A=0.1\\nwZ=-278.80 f69 Plane c=[4.64, 34.8, -278.8] A=2.2\\nwZ=-278.80 f68 Plane c=[0.0, 37.97, -278.8] A=3.2\\nwZ=-278.80 f67 Plane c=[-4.64, 34.8, -278.8] A=2.2\\nwZ=-278.92 f19 Plane c=[0.0, 34.8, -278.92] A=55.0\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    # model bbox (mm): X \u00b124.775, Y -12.71..6.36, Z \u00b124.775\n    # surface WCS (mm): X \u00b124.765, Y \u00b19.525, Z -50.53..-1.0\n    # Rotation identity. Solve translation per axis: wcs = model + t\n    # X: model 24.775 -> wcs 24.765 => t_x = -0.01 (~0)\n    # Y: model 6.36 -> wcs 9.525? no. model span 19.07, wcs span 19.05. model max 6.36 -> wcs 9.525 => t=+3.165; model min -12.71 -> -9.545 ~ -9.525 ok\n    # Z: model max 24.775 -> wcs -1.0 => t_z = -25.775 ; model min -24.775 -> -50.55 ~ -50.53 ok\n    # So identity rotation is WRONG for Z sign? model max maps to wcs max(-1.0) yes same direction. t_z=-25.775.\n    # So WCS = (model.x, model.y+3.165, model.z-25.775)  approx. Rotation identity, no flip.\n    # BUT that means tool axis Z = model Z. Top of stock at model Z=+24.775.\n    # The part's round cylinder axis: face1 Cylinder r=24.765 centroid (0,-6.22,0), axis along? \n    print(\"Transform: wcs = model + (0, +3.165, -25.775) mm, identity rotation\")\n    # So features: top flat face0 at model y=0 -> wcs y=3.165 (a vertical wall, since Z is up!)\n    # Tool comes down -Z. The face nearest top (max wcs Z) is model max Z faces.\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Transform: wcs = model + (0, +3.165, -25.775) mm, identity rotation\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    des = app.activeDocument.products.itemByProductType('DesignProductType')\n    b = des.rootComponent.bRepBodies.item(0)\n    f=b.faces.item(1)\n    g=f.geometry\n    ax=g.axis\n    print(\"Cyl1 axis:\",[round(v,3) for v in ax.asArray()],\"origin\",[round(v*10,3) for v in g.origin.asArray()],\"r\",round(g.radius*10,3))\n    f3=b.faces.item(3).geometry\n    print(\"Cone3 axis:\",[round(v,3) for v in f3.axis.asArray()])\n    # holes\n    for i in [4,5,6,7]:\n        gg=b.faces.item(i).geometry\n        print(\"Hole f%d axis\"%i,[round(v,3) for v in gg.axis.asArray()],\"r\",round(gg.radius*10,3),\"origin\",[round(v*10,3) for v in gg.origin.asArray()])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Cyl1 axis: [0.0, 1.0, 0.0] origin [0.0, -12.7, 0.0] r 24.765\\nCone3 axis: [-0.0, 1.0, 0.0]\\nHole f4 axis [-0.0, 1.0, 0.0] r 3.175 origin [-11.225, -12.7, 11.225]\\nHole f5 axis [-0.0, 1.0, 0.0] r 3.175 origin [11.225, -12.7, -11.225]\\nHole f6 axis [-0.0, 1.0, 0.0] r 3.175 origin [11.225, -12.7, 11.225]\\nHole f7 axis [-0.0, 1.0, 0.0] r 3.175 origin [-11.225, -12.7, -11.225]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    m = s.workCoordinateSystem\n    # Print full matrix with getCell, note units are internal cm for translation\n    print(\"Full WCS matrix (getCell):\")\n    for r in range(4):\n        print([round(m.getCell(r,c),4) for c in range(4)])\n    # Z column is tool axis direction in MODEL space\n    print(\"Tool axis (model):\", [round(m.getCell(i,2),3) for i in range(3)])\n    print(\"X axis (model):\", [round(m.getCell(i,0),3) for i in range(3)])\n    print(\"Y axis (model):\", [round(m.getCell(i,1),3) for i in range(3)])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Full WCS matrix (getCell):\\n[1.0, 0.0, 0.0, 0.0]\\n[0.0, 1.0, 0.0, -3.175]\\n[0.0, 0.0, 1.0, 25.765]\\n[0.0, 0.0, 0.0, 1.0]\\nTool axis (model): [0.0, 0.0, 1.0]\\nX axis (model): [1.0, 0.0, 0.0]\\nY axis (model): [0.0, 1.0, 0.0]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_read",
+      "success": true,
+      "input": {
+        "queryType": "apiDocumentation",
+        "searchPattern": "wcs_orientation",
+        "apiCategory": "member"
+      },
+      "result": "{\n    \"message\": \"API documentation query completed\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    p=s.parameters\n    # Set orientation mode to axesZ selection or use a construction. Simpler: set wcs_orientation_mode to axesXY? \n    # We want Z = model +Y. Use mode 'axesZX' picking Z=+Y. \n    # Let's inspect current mode value\n    def show(n):\n        try:\n            pp=p.itemByName(n); print(n,'=',repr(pp.expression),'val=',pp.value.value if hasattr(pp.value,'value') else '')\n        except Exception as e:\n            print(n,'ERR',e)\n    for n in ['wcs_orientation_mode','wcs_orientation_flipZ','wcs_orientation_flipY','wcs_orientation_axisZ']:\n        show(n)\n    # list choices for orientation mode\n    pp=p.itemByName('wcs_orientation_mode')\n    print(\"type\", type(pp).__name__)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"wcs_orientation_mode = \\\"(job_type!='turning') ? ('modelOrientation'): ('axesXZ')\\\" val= modelOrientation\\nwcs_orientation_flipZ = 'false' val= False\\nwcs_orientation_flipY = 'false' val= False\\nwcs_orientation_axisZ = 'false' val= <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C1488A80> >\\ntype CAMParameter\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    # Build orientation: tool axis Z' = model +Y, X' = model +X, Y' = model -Z (right handed: X x Y = Z => X(1,0,0) x Y? need Y' = Z' x X' = (+Y)x(+X)= -Z)\n    import adsk.core as ac\n    Xp = ac.Vector3D.create(1,0,0)\n    Zp = ac.Vector3D.create(0,1,0)   # tool axis = model +Y\n    Yp = Zp.crossProduct(Xp)         # = (0,1,0)x(1,0,0) = (0,0,-1)\n    print(\"Yp\",Yp.asArray())\n    mat = ac.Matrix3D.create()\n    # setWithCoordinateSystem(origin, x, y, z)\n    origin = ac.Point3D.create(0,0,0)\n    mat.setWithCoordinateSystem(origin, Xp, Yp, Zp)\n    try:\n        s.workCoordinateSystem = mat\n        print(\"set WCS ok\")\n    except Exception as e:\n        print(\"set failed:\", e)\n    # recheck\n    m=s.workCoordinateSystem\n    print(\"Z axis now:\", [round(m.getCell(i,2),3) for i in range(3)])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Yp (0.0, 0.0, -1.0)\\nset failed: property '_get_workCoordinateSystem' of 'Setup' object has no setter\\nZ axis now: [0.0, 0.0, 1.0]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_read",
+      "success": true,
+      "input": {
+        "queryType": "apiDocumentation",
+        "searchPattern": "CADOrientation|orientation",
+        "apiCategory": "all",
+        "filter": "adsk.cam"
+      },
+      "result": "{\n    \"classes\": [\n        {\n            \"attributes\": [\n                {\n                    \"doc\": \"Contains all support operations.\",\n                    \"name\": \"SupportCAMAdditiveContainerType\"\n                },\n                {\n                    \"doc\": \"Contains all optimized orientation operations.\",\n                    \"name\": \"OptimizedOrientationCAMAdditiveContainerType\"\n                },\n                {\n                    \"doc\": \"Contains all body presets used in the setup. Containers of this type cannot be deleted.\",\n                    \"name\": \"BodyPresetCAMAdditiveContainerType\"\n                },\n                {\n                    \"doc\": \"Contains all additive process simulation studies. Containers of this type cannot be deleted.\",\n                    \"name\": \"AdditiveProcessSimulationCAMAdditiveContainerType\"\n                }\n            ],\n            \"doc\": \"\\nEnum specifying the types of additive containers available in Fusion.\\nSome additive containers not listed here are available via other API classes, i.e. PrintSetting\\n\\nAttributes:\\n    SupportCAMAdditiveContainerType: Contains all support operations.\\n    OptimizedOrientationCAMAdditiveContainerType: Contains all optimized orientation operations.\\n    BodyPresetCAMAdditiveContainerType: Contains all body presets used in the setup. Containers of this type cannot be deleted.\\n    AdditiveProcessSimulationCAMAdditiveContainerType: Contains all additive process simulation studies. Containers of this type cannot be deleted.\\n\",\n            \"name\": \"CAMAdditiveContainerTypes\",\n            \"namespace\": \"adsk.cam\",\n            \"type\": \"class\"\n        },\n        {\n            \"attributes\": [\n                {\n                    \"doc\": \"Optimized orientation identifier\",\n                    \"name\": \"OptimizedOrientationGeneratedDataType\"\n                },\n                {\n                    \"doc\": \"Additive FEA identifier.\",\n                    \"name\": \"AdditiveFEAGeneratedDataType\"\n                },\n                {\n                    \"doc\": \"Additive Interference identifier.\",\n                    \"name\": \"AdditiveInterferenceAnalysisGeneratedDataType\"\n                }\n            ],\n            \"doc\": \"\\nEnum for the identifiers of generated results an OperationBase object can have\\n\\nAttributes:\\n    OptimizedOrientationGeneratedDataType: Optimized orientation identifier\\n    AdditiveFEAGeneratedDataType: Additive FEA identifier.\\n    AdditiveInterferenceAnalysisGeneratedDataType: Additive Interference identifier.\\n\",\n            \"name\": \"GeneratedDataType\",\n            \"namespace\": \"adsk.cam\",\n            \"type\": \"class\"\n        },\n        {\n            \"attributes\": [\n                {\n                    \"doc\": \"Basic type for machine parts. Can be used to represent non-moving elements of the\\nmachine such as the machine's base or an enclosure.\",\n                    \"name\": \"BasicMachinePartType\"\n                },\n                {\n                    \"doc\": \"Part type for a part that represents a machine axis.\",\n                    \"name\": \"AxisMachinePartType\"\n                },\n                {\n                    \"doc\": \"Part type for a part that represents the attachment point and orientation for a\\ntool or tool holder.\",\n                    \"name\": \"ToolAttachmentMachinePartType\"\n                },\n                {\n                    \"doc\": \"Part type for a part that represents the attachment point and orientation for\\nwork holding.\",\n                    \"name\": \"FixtureAttachmentMachinePartType\"\n                }\n            ],\n            \"doc\": \"\\nList of part types for MachinePart\\n\\nAttributes:\\n    BasicMachinePartType: Basic type for machine parts. Can be used to represent non-moving elements of the\\n        machine such as the machine's base or an enclosure.\\n    AxisMachinePartType: Part type for a part that represents a machine axis.\\n    ToolAttachmentMachinePartType: Part type for a part that represents the attachment point and orientation for a\\n        tool or tool holder.\\n    FixtureAttachmentMachinePartType: Part type for a part that represents the attachment point and orientation for\\n        work holding.\\n\",\n            \"name\": \"MachinePartTypes\",\n            \"namespace\": \"adsk.cam\",\n            \"type\": \"class\"\n        }\n    ],\n    \"members\": [\n        {\n            \"class\": \"CAMAdditiveContainerTypes\",\n            \"doc\": \"Contains all optimized orientation operations.\",\n            \"name\": \"OptimizedOrientationCAMAdditiveContainerType\",\n            \"namespace\": \"adsk.cam\",\n            \"type\": \"attribute\",\n            \"value\": 1\n        },\n        {\n            \"class\": \"GeneratedDataType\",\n            \"doc\": \"Optimized orientation identifier\",\n            \"name\": \"OptimizedOrientationGeneratedDataType\",\n            \"namespace\": \"adsk.cam\",\n            \"type\": \"attribute\",\n            \"value\": 0\n        }\n    ],\n    \"message\": \"API documentation query completed\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    p=s.parameters\n    # Try setting orientation mode expression to 'axisZ'\n    modes_to_try = ['axisZ','axesZX','axesZY']\n    pp=p.itemByName('wcs_orientation_mode')\n    print(\"current expr:\", pp.expression)\n    # The CADOrientation param - try value type\n    for nm in ['wcs_orientation_axisZ','wcs_orientation_axisX','wcs_orientation_axisY']:\n        q=p.itemByName(nm)\n        v=q.value\n        print(nm,\"valueType:\",type(v).__name__, \"hasGeom:\", hasattr(v,'geometry'), dir(v)[:0])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"current expr: (job_type!='turning') ? ('modelOrientation'): ('axesXZ')\\nwcs_orientation_axisZ valueType: CadObjectParameterValue hasGeom: False []\\nwcs_orientation_axisX valueType: CadObjectParameterValue hasGeom: False []\\nwcs_orientation_axisY valueType: CadObjectParameterValue hasGeom: False []\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    des = app.activeDocument.products.itemByProductType('DesignProductType')\n    b = des.rootComponent.bRepBodies.item(0)\n    p=s.parameters\n    # face0: plane normal +Y (this is top flat at y=0). Use as Z axis (points up +Y) \n    topFace = b.faces.item(0)   # n=(0,1,0)\n    # a face with normal +X for X axis: face10 n=(1,0,0) at x=11.75\n    xFace = b.faces.item(10)\n    pMode=p.itemByName('wcs_orientation_mode')\n    pMode.expression = \"'axesZX'\"\n    pZ=p.itemByName('wcs_orientation_axisZ')\n    pX=p.itemByName('wcs_orientation_axisX')\n    okZ = pZ.value.setToCadObject(topFace)  # guess method\n    print(\"wrote mode\", pMode.value.value if hasattr(pMode.value,'value') else pMode.expression)\n    print(\"okZ\", okZ)\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 63, in run\\n  File \\\"<string>\\\", line 45, in run\\nAttributeError: 'CadObjectParameterValue' object has no attribute 'setToCadObject'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_read",
+      "success": true,
+      "input": {
+        "queryType": "apiDocumentation",
+        "searchPattern": "CadObjectParameterValue",
+        "apiCategory": "all"
+      },
+      "result": "{\n    \"classes\": [\n        {\n            \"doc\": \"A parameter value that is a collection of cad objects.\",\n            \"name\": \"CadObjectParameterValue\",\n            \"namespace\": \"adsk.cam\",\n            \"properties\": [\n                {\n                    \"doc\": \"Get or set the value of the parameter\",\n                    \"name\": \"value\"\n                }\n            ],\n            \"type\": \"class\"\n        }\n    ],\n    \"message\": \"API documentation query completed\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    des = app.activeDocument.products.itemByProductType('DesignProductType')\n    b = des.rootComponent.bRepBodies.item(0)\n    p=s.parameters\n    topFace = b.faces.item(0)   # +Y up\n    xFace = b.faces.item(10)    # +X\n    p.itemByName('wcs_orientation_mode').expression = \"'axesZX'\"\n    pZ=p.itemByName('wcs_orientation_axisZ')\n    pX=p.itemByName('wcs_orientation_axisX')\n    pZ.value.value = [topFace]\n    pX.value.value = [xFace]\n    m=s.workCoordinateSystem\n    print(\"Z axis(model):\", [round(m.getCell(i,2),3) for i in range(3)])\n    print(\"X axis(model):\", [round(m.getCell(i,0),3) for i in range(3)])\n    print(\"Y axis(model):\", [round(m.getCell(i,1),3) for i in range(3)])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Z axis(model): [0.0, 1.0, 0.0]\\nX axis(model): [-1.0, 0.0, 0.0]\\nY axis(model): [0.0, -0.0, 1.0]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    p=s.parameters\n    for n in ['surfaceXLow','surfaceXHigh','surfaceYLow','surfaceYHigh','surfaceZLow','surfaceZHigh',\n              'stockXLow','stockXHigh','stockYLow','stockYHigh','stockZLow','stockZHigh',\n              'wcs_origin_boxPoint']:\n        pp=p.itemByName(n)\n        v=pp.value.value if hasattr(pp.value,'value') else pp.expression\n        print(n,'=',round(v*10,3) if isinstance(v,float) else v)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"surfaceXLow = -24.765\\nsurfaceXHigh = 24.765\\nsurfaceYLow = -24.765\\nsurfaceYHigh = 24.765\\nsurfaceZLow = -20.05\\nsurfaceZHigh = -1.0\\nstockXLow = -25.765\\nstockXHigh = 25.765\\nstockYLow = -25.765\\nstockYHigh = 25.765\\nstockZLow = -20.05\\nstockZHigh = 0.0\\nwcs_origin_boxPoint = top center\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    des = app.activeDocument.products.itemByProductType('DesignProductType')\n    b = des.rootComponent.bRepBodies.item(0)\n    m = s.workCoordinateSystem.copy()\n    m.invert()\n    def wcs(pt):\n        q=adsk.core.Point3D.create(pt.x,pt.y,pt.z); q.transformBy(m); return (q.x*10,q.y*10,q.z*10)\n    # Key features\n    print(\"Boss top (f17 model y6.35):\", [round(v,2) for v in wcs(b.faces.item(17).centroid)])\n    print(\"Flat ring (f0 model y0):\", [round(v,2) for v in wcs(b.faces.item(0).centroid)])\n    print(\"Bottom (f2 model y-12.7):\", [round(v,2) for v in wcs(b.faces.item(2).centroid)])\n    # hole centers in wcs\n    for i in [4,5,6,7]:\n        g=b.faces.item(i).geometry\n        print(\"hole f%d center wcs:\"%i,[round(v,2) for v in wcs(g.origin)],\"r\",round(g.radius*10,3))\n    # boss centers XY in wcs\n    for i in [12,17,22,27,32]:\n        print(\"boss f%d wcs:\"%i,[round(v,2) for v in wcs(b.faces.item(i).centroid)])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Boss top (f17 model y6.35): [-0.01, 0.01, -67.15]\\nFlat ring (f0 model y0): [0.0, -0.0, -73.5]\\nBottom (f2 model y-12.7): [-0.0, 0.0, -86.2]\\nhole f4 center wcs: [11.23, 11.23, -86.2] r 3.175\\nhole f5 center wcs: [-11.23, -11.23, -86.2] r 3.175\\nhole f6 center wcs: [-11.23, 11.23, -86.2] r 3.175\\nhole f7 center wcs: [11.23, -11.23, -86.2] r 3.175\\nboss f12 wcs: [-16.52, 0.01, -67.15]\\nboss f17 wcs: [-0.01, 0.01, -67.15]\\nboss f22 wcs: [-0.01, -16.5, -67.15]\\nboss f27 wcs: [16.5, 0.01, -67.15]\\nboss f32 wcs: [-0.01, 16.52, -67.15]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    # Tool libraries\n    tl = cam.toolLibraries\n    urls=[]\n    def walk(url,depth=0):\n        try:\n            for c in tl.childAssetURLs(url):\n                print(\"  \"*depth+c.leafName if hasattr(c,'leafName') else str(c))\n                urls.append(c)\n                walk(c,depth+1)\n        except: pass\n    from adsk.core import URL\n    root = tl.urlByLocation(adsk.cam.LibraryLocations.LocalLibraryLocation)\n    print(\"Local root:\", root.toString() if root else None)\n    for c in tl.childAssetURLs(root):\n        print(\"child:\", c.toString())\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 63, in run\\n  File \\\"<string>\\\", line 34, in run\\nAttributeError: 'CAM' object has no attribute 'toolLibraries'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    mgr = adsk.cam.CAMManager.get()\n    lib = mgr.libraryManager\n    tl = lib.toolLibraries\n    def find(url, name, depth=0, results=None):\n        for c in tl.childAssetURLs(url):\n            s=c.toString()\n            if name.lower() in s.lower():\n                results.append(c)\n            find(c,name,depth+1,results)\n    for loc in [adsk.cam.LibraryLocations.LocalLibraryLocation, adsk.cam.LibraryLocations.CloudLibraryLocation]:\n        root=tl.urlByLocation(loc)\n        res=[]\n        try:\n            find(root,'TIW',0,res)\n        except Exception as e:\n            print(\"loc\",loc,\"err\",e)\n        for r in res:\n            print(loc, r.toString())\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"0 toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    mgr = adsk.cam.CAMManager.get()\n    tl = mgr.libraryManager.toolLibraries\n    url = tl.urlByString(\"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\")\n    library = tl.toolLibraryAtURL(url)\n    print(\"tools:\", library.count)\n    for i in range(library.count):\n        t=library.item(i)\n        tp=t.parameters\n        def gv(n):\n            try: return tp.itemByName(n).value.value\n            except: return None\n        num = gv('tool_number')\n        dia = gv('tool_diameter')\n        typ = t.parameters.itemByName('tool_type').value.value if tp.itemByName('tool_type') else '?'\n        desc = gv('tool_description')\n        print(i, \"T%s\"%num, typ, \"\u00d8%.2f\"%(dia*10 if dia else 0), desc)\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 63, in run\\n  File \\\"<string>\\\", line 34, in run\\nAttributeError: 'ToolLibraries' object has no attribute 'urlByString'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    mgr = adsk.cam.CAMManager.get()\n    tl = mgr.libraryManager.toolLibraries\n    root=tl.urlByLocation(adsk.cam.LibraryLocations.LocalLibraryLocation)\n    target=None\n    for c in tl.childAssetURLs(root):\n        if 'TIW' in c.toString():\n            target=c; break\n    library = tl.toolLibraryAtURL(target)\n    print(\"tools:\", library.count)\n    for i in range(library.count):\n        t=library.item(i)\n        tp=t.parameters\n        def gv(n):\n            try: return tp.itemByName(n).value.value\n            except: return None\n        print(i, \"T%s\"%gv('tool_number'), t.parameters.itemByName('tool_type').value.value,\n              \"\u00d8%.3f\"%((gv('tool_diameter') or 0)*10), \"flutes\", gv('tool_numberOfFlutes'),\n              \"| corner %.2f\"%((gv('tool_cornerRadius') or 0)*10),\n              \"|\", gv('tool_description'))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"tools: 66\\n0 T36 drill \\u00c3\\u00987.144 flutes 2 | corner 0.00 | 9/32\\\" Cobalt Drill\\n1 T80 flat end mill \\u00c3\\u009819.050 flutes 2 | corner 0.00 | 3/4\\\" HSS 2Fl Square Endmill\\n2 T105 chamfer mill \\u00c3\\u00981.054 flutes 2 | corner 0.00 | (REMOVED T49) diy engrave as a center drill\\n3 T18 ball end mill \\u00c3\\u00986.350 flutes 4 | corner 3.17 | 1/4\\\" HSS Ball Endmill\\n4 T21 face mill \\u00c3\\u009858.420 flutes 1 | corner 0.00 | Tormach SuperFly Fly Cutter\\n5 T70 drill \\u00c3\\u00988.731 flutes 2 | corner 0.00 | 11/32\\\" Long Cobalt Drill\\n6 T45 center drill \\u00c3\\u00987.938 flutes 2 | corner 0.00 | 1/8\\\" - 5/16\\\" Center Drill w/ countersink\\n7 T1 flat end mill \\u00c3\\u009819.050 flutes 4 | corner 0.00 | 3/4\\\" HSS TiN Flat Endmill\\n8 T46 center drill \\u00c3\\u00986.350 flutes 2 | corner 0.00 | 7/64\\\" - 1/4\\\" Center Drill w/ countersink\\n9 T92 slot mill \\u00c3\\u009814.287 flutes 6 | corner 0.00 | 9/16\\\" HSS 6FL T-Slot Cutter\\n10 T40 drill \\u00c3\\u00983.969 flutes 2 | corner 0.00 | 5/31\\\" Cobalt Drill\\n11 T42 drill \\u00c3\\u00983.175 flutes 2 | corner 0.00 | 1/8\\\" Cobalt Drill\\n12 T41 drill \\u00c3\\u00983.175 flutes 2 | corner 0.00 | 1/8\\\" Cobalt Drill\\n13 T15 ball end mill \\u00c3\\u009811.113 flutes 2 | corner 5.56 | 7/16\\\" HSS Ball Endmill\\n14 T3 flat end mill \\u00c3\\u009812.700 flutes 3 | corner 0.00 | 1/2\\\" 3Fl Carb TiCN Flat Endmill\\n15 T83 flat end mill \\u00c3\\u00987.938 flutes 2 | corner 0.00 | 5/16\\\" Carbide 2Fl Flat Endmill\\n16 T38 drill \\u00c3\\u00985.556 flutes 2 | corner 0.00 | 7/32\\\" Cobalt Drill\\n17 T17 ball end mill \\u00c3\\u00987.938 flutes 2 | corner 3.97 | 5/16\\\" HSS Ball Endmill\\n18 T20 ball end mill \\u00c3\\u00983.175 flutes 2 | corner 1.59 | 1/8\\\" HSS Ball Endmill\\n19 T30 ball end mill \\u00c3\\u00986.350 flutes 3 | corner 3.17 | 1/4\\\" Carbide Uncoated Ball Endmill\\n20 T6 flat end mill \\u00c3\\u009811.113 flutes 4 | corner 0.00 | 7/16\\\" HSS TiN Flat Endmill\\n21 T104 flat end mill \\u00c3\\u00981.587 flutes 3 | corner 0.00 | (REMOVED T79) 1/16\\\" Long Flat Endmill 3FL\\n22 T51 flat end mill \\u00c3\\u009815.875 flutes 4 | corner 0.00 | 5/8\\\" HSS 4 Flute Endmill\\n23 T53 flat end mill \\u00c3\\u00989.525 flutes 4 | corner 0.00 | 3/8\\\" HSS 4 Flute Flat Endmill\\n24 T12 ball end mill \\u00c3\\u009819.050 flutes 2 | corner 9.52 | 3/4\\\" HSS 2Fl Ball Endmill\\n25 T50 flat end mill \\u00c3\\u009819.050 flutes 4 | corner 0.00 | 3/4\\\" HSS 4 Flute Flat Endmill\\n26 T84 flat end mill \\u00c3\\u00987.938 flutes 2 | corner 0.00 | 5/16\\\" HSS 2Fl Square Endmill\\n27 T2 flat end mill \\u00c3\\u009815.875 flutes 4 | corner 0.00 | 5/8\\\" HSS TiN Flat Endmill\\n28 T7 flat end mill \\u00c3\\u00989.525 flutes 3 | corner 0.00 | 3/8\\\" 3FL Carb ZrN Flat Endmill\\n29 T39 drill \\u00c3\\u00984.762 flutes 2 | corner 0.00 | 3/16\\\" Cobalt Drill\\n30 T48 center drill \\u00c3\\u00983.175 flutes 2 | corner 0.00 | 3/64\\\" - 1/8\\\" Center Drill\\n31 T35 drill \\u00c3\\u00987.938 flutes 2 | corner 0.00 | 5/16\\\" Cobalt Drill\\n32 T22 face mill \\u00c3\\u009876.200 flutes 1 | corner 0.00 | Tormach SuperFly Fly Cutter\\n33 T13 ball end mill \\u00c3\\u009815.875 flutes 2 | corner 7.94 | 5/8\\\" HSS Ball Endmill\\n34 T52 flat end mill \\u00c3\\u009812.700 flutes 4 | corner 0.00 | 1/2\\\" HSS 4 Flute Flat Endmill\\n35 T9 flat end mill \\u00c3\\u00986.350 flutes 3 | corner 0.00 | 1/4\\\" 3fl TiCN Carb Flat Endmill\\n36 T101 flat end mill \\u00c3\\u00987.938 flutes 4 | corner 0.00 | (REMOVED T63) 5/16\\\" HSS TiN Flat Endmill\\n37 T14 ball end mill \\u00c3\\u009812.700 flutes 2 | corner 6.35 | 1/2\\\" HSS Ball Endmill\\n38 T32 drill \\u00c3\\u009811.906 flutes 2 | corner 0.00 | 15/32\\\" Cobalt Drill\\n39 T25 chamfer mill \\u00c3\\u00989.525 flutes 3 | corner 0.00 | 3/8\\\" HSS 3fl Chamfer Mill (41 degree - 82 degree incl.)\\n40 T71 drill \\u00c3\\u00989.525 flutes 2 | corner 0.00 | 3/8\\\" Long Cobalt drill\\n41 T55 flat end mill \\u00c3\\u00984.762 flutes 4 | corner 0.00 | 3/16\\\" HSS 4 Flute Flat Endmill\\n42 T102 flat end mill \\u00c3\\u00981.587 flutes 2 | corner 0.00 | (REMOVED T77) 1/16\\\" HSS Flat End Mill\\n43 T8 flat end mill \\u00c3\\u00987.938 flutes 2 | corner 0.00 | 5/16\\\" TiCN Carbide 2Fl Flat Endmill\\n44 T31 drill \\u00c3\\u009812.700 flutes 2 | corner 0.00 | 1/2\\\" Cobalt Drill\\n45 T10 flat end mill \\u00c3\\u00984.762 flutes 3 | corner 0.00 | 3/16\\\" 3Fl ZrN Carb Flat Endmill\\n46 T47 center drill \\u00c3\\u00984.762 flutes 2 | corner 0.00 | 3/32\\\" - 3/16\\\" Center Drill\\n47 T37 drill \\u00c3\\u00986.350 flutes 2 | corner 0.00 | 1/4\\\" Cobalt Drill\\n48 T16 ball end mill \\u00c3\\u00989.525 flutes 2 | corner 4.76 | 3/8\\\" HSS Ball Endmill\\n49 T4 flat end mill \\u00c3\\u009812.700 flutes 3 | corner 0.00 | 1/2\\\" 3Fl Carb ZrN Flat Endmill\\n50 T103 ball end mill \\u00c3\\u00981.587 flutes 2 | corner 0.79 | (REMOVED T78) 1/16\\\" Tapered Ball Endmill\\n51 T43 drill \\u00c3\\u00982.489 flutes 2 | corner 0.00 | 0.0098\\\" Cobalt 2 Flute Drill\\n52 T54 flat end mill \\u00c3\\u00986.350 flutes 4 | corner 0.00 | 1/4\\\" HSS Flat Endmill\\n53 T100 drill \\u00c3\\u00982.286 flutes 2 | corner 0.00 | (CUSTOMIZIABLE) 0.09\\\" 2Fl HSS Drill\\n54 T5 flat end mill \\u00c3\\u009812.700 flutes 3 | corner 0.00 | 1/2\\\" 3Fl Carb ZrN Flat Endmill\\n55 T56 flat end mill \\u00c3\\u00981.587 flutes 4 | corner 0.00 | 1/16\\\" TICN Carbide Square Endmill\\n56 T90 thread mill \\u00c3\\u00988.890 flutes 4 | corner 0.00 | 3/8\\\" 0.065in Thread Mill\\n57 T91 chamfer mill \\u00c3\\u00986.350 flutes 1 | corner 0.00 | 1/4\\\" 60 deg Inclusive Engraver\\n58 T33 drill \\u00c3\\u009811.113 flutes 2 | corner 0.00 | 7/16\\\" Cobalt Drill\\n59 T19 ball end mill \\u00c3\\u00984.762 flutes 2 | corner 2.38 | 3/16\\\" HSS Ball Endmill\\n60 T34 drill \\u00c3\\u00989.525 flutes 2 | corner 0.00 | 3/8\\\" Cobalt Drill\\n61 T81 flat end mill \\u00c3\\u009812.700 flutes 2 | corner 0.00 | 1/2\\\" HSS 2Fl Flat Endmill\\n62 T44 center drill \\u00c3\\u009811.113 flutes 2 | corner 0.00 | 3/16 - 7/16\\\" Center Drill w/countersink\\n63 T11 flat end mill \\u00c3\\u00983.175 flutes 3 | corner 0.00 | 1/8\\\" 3Fl ZrN Carb Flat End Mill - 45 Degree Helix\\n64 T72 reamer \\u00c3\\u009811.113 flutes 6 | corner 0.00 | 7/16\\\" Reamer\\n65 T26 chamfer mill \\u00c3\\u00986.350 flutes 5 | corner 0.00 | 1/4\\\" HSS 5fl Chamfer Mill (41 degree - 82 incl.)\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    mgr = adsk.cam.CAMManager.get()\n    tl = mgr.libraryManager.toolLibraries\n    root=tl.urlByLocation(adsk.cam.LibraryLocations.LocalLibraryLocation)\n    for c in tl.childAssetURLs(root):\n        if 'TIW' in c.toString(): lib=tl.toolLibraryAtURL(c); break\n    # find tools by tool_number\n    want={}\n    for i in range(lib.count):\n        t=lib.item(i)\n        n=t.parameters.itemByName('tool_number').value.value\n        want[n]=i\n    for n in [2,3,9,37,46,54,52,1,50]:\n        print(\"T%d -> idx %s\"%(n, want.get(n)))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"T2 -> idx 27\\nT3 -> idx 14\\nT9 -> idx 35\\nT37 -> idx 47\\nT46 -> idx 8\\nT54 -> idx 52\\nT52 -> idx 34\\nT1 -> idx 7\\nT50 -> idx 25\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import inspect\n    print(\"mb type:\", type(mb))\n    members=[m for m in dir(mb) if not m.startswith('__')]\n    print(\"mb members:\", members)\n    for m in members:\n        obj=getattr(mb,m)\n        if callable(obj):\n            try:\n                print(\"  \",m, str(inspect.signature(obj)))\n            except:\n                print(\"  \",m,\"(...)\")\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"mb type: <class 'module'>\\nmb members: ['MM', '_MAX_CHOICES_IN_ERROR', '_MODEL_AXES', '_PARAM_ALIASES', '_STRATEGY_PARAMS', '_all_bodies', '_app', '_axis_label', '_design', '_doc', '_doc_tool', '_expr_mm', '_face_type', '_find_op', '_find_param_name', '_find_setup', '_read_params', '_resolve_choice', '_resolve_param', '_resolve_post_file', '_root', '_safe', '_select_geometry', '_set_choice', '_set_choice_expr', '_set_length_mm', '_tool_libs', '_tool_param', '_tool_summary', '_walk_library_urls', 'add_operation', 'add_tool', 'adsk', 'create_setup', 'faces', 'generate', 'get_cam', 'inspect', 'list_library_tools', 'list_params', 'make_tool', 'post', 'probe', 'set_geometry', 'set_param', 'set_params', 'set_wcs', 'strategy_guide', 'time', 'wcs_state']\\n   _all_bodies ()\\n   _app ()\\n   _axis_label (vec)\\n   _design ()\\n   _doc ()\\n   _doc_tool (cam, tool_ref)\\n   _expr_mm (get_param)\\n   _face_type (face)\\n   _find_op (cam, name)\\n   _find_param_name (params, *substrings)\\n   _find_setup (cam, name)\\n   _read_params (op)\\n   _resolve_choice (value, display_names, exprs)\\n   _resolve_param (op, param_name)\\n   _resolve_post_file (cam, post_file)\\n   _root ()\\n   _safe (fn, default=None)\\n   _select_geometry (op, body, geometry)\\n   _set_choice (params, name, value)\\n   _set_choice_expr (p, param_name, value)\\n   _set_length_mm (params, name, mm)\\n   _tool_libs ()\\n   _tool_param (tool, name)\\n   _tool_summary (tool, i, lib_url)\\n   _walk_library_urls (libs, root)\\n   add_operation (setup, *, strategy, tool, geometry=None, body_index=0, name=None)\\n   add_tool (library_url, index)\\n   create_setup (body_index, *, wcs_origin, stock, wcs_orientation='modelOrientation', name=None)\\n   faces (body_index=0, kind=None)\\n   generate (setup=None, operation=None, timeout=120)\\n   get_cam (activate=True)\\n   inspect ()\\n   list_library_tools (contains=None, location='local', limit=200)\\n   list_params (op_name)\\n   make_tool (json_str)\\n   post (setup, *, output_path, units='mm', post_file=None, number=1001)\\n   probe ()\\n   set_geometry (op_name, geometry, body_index=0)\\n   set_param (op_name, param_name, value, *, unit='mm')\\n   set_params (op_name, params)\\n   set_wcs (setup, *, z_face, origin, x_face=None, body_index=0)\\n   strategy_guide (strategy: str) -> dict\\n   wcs_state (setup=None)\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    print(\"=== add_operation doc ===\")\n    print(mb.add_operation.__doc__)\n    print(\"=== set_wcs doc ===\")\n    print(mb.set_wcs.__doc__)\n    print(\"=== add_tool doc ===\")\n    print(mb.add_tool.__doc__)\n    print(\"=== set_geometry doc ===\")\n    print(mb.set_geometry.__doc__)\n    print(\"=== faces doc ===\")\n    print(mb.faces.__doc__)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"=== add_operation doc ===\\nAdd an operation to a setup. Required decisions:\\n  strategy: Fusion strategy string (\\\"face\\\",\\\"pocket2d\\\",\\\"adaptive2d\\\",\\\"contour2d\\\",...)\\n  tool:     document-tool index (int) or description substring\\n  geometry: {\\\"faces\\\":[idx,...], \\\"type\\\":\\\"pocket\\\"|\\\"contour\\\"|\\\"drill\\\", \\\"loop\\\":.., \\\"side\\\":..}\\n            REQUIRED for area/contour/drilling strategies; omit for \\\"face\\\".\\n            For drilling-family strategies (drill, center drill, spot drill,\\n            bore, counterbore, tap) pass type=\\\"drill\\\" with the hole faces.\\n\\nTool is attached on the INPUT before add() (post-add setter is unreliable).\\nReturns {\\\"operation\\\": <name>, \\\"params\\\": {param_name: {value, expression}, ...}}\\n\\u2014 the full Fusion parameter list is included so you can read param names and\\nunits, then pass them all to mb.set_params() in one call.\\n=== set_wcs doc ===\\nReorient a setup's WCS so machining +Z EXITS the face you name.\\n\\nWHICH face is 'up' and WHERE the origin sits are YOUR CAM decisions and are\\nREQUIRED \\u2014 this helper picks nothing. It only does the mechanics: sets\\naxesXZ mode, assigns your face to the Z axis, and auto-flips so +Z points\\nOUT of the body through that face (never into it). Returns a wcs_state()\\necho so you can confirm the result.\\n\\n  setup:  setup name.\\n  z_face: face index (from mb.faces()) that machining +Z should exit.\\n  origin: stock-box point string, e.g. \\\"top center\\\" (as in create_setup).\\n  x_face: optional face index to pin the X axis (else Fusion chooses).\\n=== add_tool doc ===\\nAdd the chosen library tool to the document tool library; return its\\ndocument-tool index + summary. Re-fetches the library by URL (stable across\\nscripts) and the tool by index.\\n=== set_geometry doc ===\\nSet or replace the geometry selection on an existing operation.\\nUse this to fix a geometry error from add_operation() without recreating the op.\\ngeometry: {\\\"faces\\\":[idx,...], \\\"type\\\":\\\"pocket\\\"|\\\"contour\\\", \\\"loop\\\":.., \\\"side\\\":..}\\n=== faces doc ===\\nFaces of a body as compact dicts: index, type, area_mm2, centroid_mm, normal,\\nz_mm. `kind` optionally filters by type substring (e.g. \\\"Plane\\\", \\\"Cylinder\\\").\\n\\nThe face `index` is stable for the static part body, so the model selects\\nmachining geometry by passing these indices to add_operation(geometry=...).\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    faces = mb.faces(0, kind='Plane')\n    # find the top face: normal ~ (0,1,0) model = up; highest boss top\n    # Print planes with normal +Y\n    ups=[f for f in faces if abs(f['normal'][1])>0.99 and f['normal'][1]>0]\n    for f in ups:\n        print(f['index'], \"n\",[round(x,2) for x in f['normal']], \"centroid\", [round(x,2) for x in f['centroid_mm']], \"A\", round(f['area_mm2'],1))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"0 n [0.0, 1.0, 0.0] centroid [-0.0, 0.0, 10.0] A 1326.0\\n12 n [-0.0, 1.0, -0.0] centroid [19.95, 6.35, 3.44] A 45.7\\n17 n [-0.0, 1.0, -0.0] centroid [3.44, 6.35, 3.44] A 45.7\\n22 n [-0.0, 1.0, -0.0] centroid [3.44, 6.35, -13.07] A 45.7\\n27 n [0.0, 1.0, -0.0] centroid [-13.07, 6.35, 3.44] A 45.7\\n32 n [-0.0, 1.0, -0.0] centroid [3.44, 6.35, 19.95] A 45.7\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    # z exits face 0 (up), pin X with a +X normal side face (face 10 in model). \n    # find an X-normal planar face\n    faces = mb.faces(0, kind='Plane')\n    xf=[f for f in faces if abs(f['normal'][0])>0.99]\n    print(\"X-normal faces:\", [(f['index'],[round(v,2) for v in f['normal']]) for f in xf][:4])\n    res = mb.set_wcs('Setup1', z_face=0, origin='top center', x_face=xf[0]['index'])\n    print(json.dumps(res, indent=1, default=str))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"X-normal faces: [(8, [1.0, -0.0, -0.0]), (10, [-1.0, -0.0, -0.0]), (13, [1.0, -0.0, -0.0]), (15, [-1.0, 0.0, -0.0])]\\n{\\n \\\"setup\\\": \\\"Setup1\\\",\\n \\\"z_face\\\": 0,\\n \\\"wcs\\\": {\\n  \\\"setup\\\": \\\"Setup1\\\",\\n  \\\"x_points_to\\\": \\\"model +X\\\",\\n  \\\"y_points_to\\\": \\\"model -Z\\\",\\n  \\\"z_points_to\\\": \\\"model +Y\\\",\\n  \\\"origin_mm\\\": [\\n   0.0,\\n   7.35,\\n   0.0\\n  ]\\n }\\n}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app = adsk.core.Application.get()\n    cam = app.activeDocument.products.itemByProductType('CAMProductType')\n    s = cam.setups.item(0)\n    p=s.parameters\n    for n in ['surfaceZLow','surfaceZHigh','stockZLow','stockZHigh','surfaceXLow','surfaceXHigh','surfaceYLow','surfaceYHigh']:\n        pp=p.itemByName(n); print(n,'=',round(pp.value.value*10,3))\n    # feature z levels via faces()\n    for idx in [0,17]:\n        f=[x for x in mb.faces(0) if x['index']==idx][0]\n        print(\"face%d z_mm\"%idx, round(f['z_mm'],3), \"centroid\", [round(v,2) for v in f['centroid_mm']])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"surfaceZLow = -20.05\\nsurfaceZHigh = -1.0\\nstockZLow = -20.05\\nstockZHigh = 0.0\\nsurfaceXLow = -24.765\\nsurfaceXHigh = 24.765\\nsurfaceYLow = -24.765\\nsurfaceYHigh = 24.765\\nface0 z_mm 10.001 centroid [-0.0, 0.0, 10.0]\\nface17 z_mm 3.438 centroid [3.44, 6.35, 3.44]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import json\n    # library url\n    import adsk.core, adsk.cam\n    mgr = adsk.cam.CAMManager.get()\n    tl = mgr.libraryManager.toolLibraries\n    root=tl.urlByLocation(adsk.cam.LibraryLocations.LocalLibraryLocation)\n    lib_url=None\n    for c in tl.childAssetURLs(root):\n        if 'TIW' in c.toString(): lib_url=c; break\n    print(\"lib:\", lib_url.toString())\n    # add tools: face T2(idx27), rough T3(idx14), finish T9(idx35), center drill T46(idx8), drill T37(idx47)\n    idxs = {'face':27,'rough':14,'finish':35,'cdrill':8,'drill':47}\n    out={}\n    for k,i in idxs.items():\n        r=mb.add_tool(lib_url, i)\n        out[k]=r\n        print(k, \"->\", json.dumps(r, default=str)[:180])\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"message\": \"lib: toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\",\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 62, in run\\n  File \\\"<string>\\\", line 44, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 238, in add_tool\\n    url = adsk.core.URL.create(library_url)\\n  File \\\"C:\\\\Users/Nanja/AppData/Local/Autodesk/webdeploy/production/9c5312dfff2e4569cd1d269973ddf11cb999f782/Api/Python/packages\\\\adsk\\\\core.py\\\", line 25203, in create\\n    return _core.URL_create(url)\\n           ~~~~~~~~~~~~~~~~^^^^^\\nTypeError: in method 'URL_create', argument 1 of type 'std::string const &'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    lib_url = \"toollibraryroot://Local/TIW CNC Tool Library (4-28-26)\"\n    idxs = {'face':27,'rough':14,'finish':35,'cdrill':8,'drill':47}\n    out={}\n    for k,i in idxs.items():\n        r=mb.add_tool(lib_url, i)\n        out[k]=r\n        print(k, \"->\", json.dumps(r, default=str)[:200])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"face -> {\\\"library_url\\\": null, \\\"index\\\": 0, \\\"description\\\": \\\"5/8\\\\\\\" HSS TiN Flat Endmill\\\", \\\"diameter_mm\\\": 15.875, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 40.64, \\\"flutes\\\": 4, \\\"document_tool_index\\\": 0}\\nrough -> {\\\"library_url\\\": null, \\\"index\\\": 1, \\\"description\\\": \\\"1/2\\\\\\\" 3Fl Carb TiCN Flat Endmill\\\", \\\"diameter_mm\\\": 12.7, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 50.8, \\\"flutes\\\": 3, \\\"document_tool_index\\\": 1}\\nfinish -> {\\\"library_url\\\": null, \\\"index\\\": 2, \\\"description\\\": \\\"1/4\\\\\\\" 3fl TiCN Carb Flat Endmill\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 27.94, \\\"flutes\\\": 3, \\\"document_tool_index\\\": 2}\\ncdrill -> {\\\"library_url\\\": null, \\\"index\\\": 3, \\\"description\\\": \\\"7/64\\\\\\\" - 1/4\\\\\\\" Center Drill w/ countersink\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 14.4145, \\\"flutes\\\": 2, \\\"document_tool_ind\\ndrill -> {\\\"library_url\\\": null, \\\"index\\\": 4, \\\"description\\\": \\\"1/4\\\\\\\" Cobalt Drill\\\", \\\"diameter_mm\\\": 6.35, \\\"corner_radius_mm\\\": 0.0, \\\"flute_length_mm\\\": 30.48, \\\"flutes\\\": 2, \\\"document_tool_index\\\": 4}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.add_operation('Setup1', strategy='face', tool=0, name='Face_Top')\n    # print params of interest\n    params=r.get('params',{})\n    print(\"op:\", r.get('operation'))\n    for k in params:\n        kl=k.lower()\n        if any(s in kl for s in ['depth','stepdown','stepover','stock','clearance','tolerance','bottom','top','pass']):\n            print(k,'=',params[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"op: Face_Top\\ntool_stockDiameter = {'value': 1.5875000000000001, 'expression': \\\"tool_isTurning ? (tool_unit == 'millimeters' ? 25mm : 1.0in) : tool_diameter\\\"}\\nstockZHigh = {'value': 0.0, 'expression': '0.0'}\\nstockZLow = {'value': -2.0050000000000003, 'expression': '-20.05'}\\nstockXLow = {'value': -2.5765, 'expression': '-25.765'}\\nstockXHigh = {'value': 2.5765, 'expression': '25.765'}\\nstockYLow = {'value': -2.5765, 'expression': '-25.765'}\\nstockYHigh = {'value': 2.5765, 'expression': '25.765'}\\nview_stock_point = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C178B120> >, 'expression': 'true'}\\nuseStockContours = {'value': True, 'expression': 'true'}\\nstockContours = {'value': None, 'expression': 'false'}\\nisClearanceAreaEnabled = {'value': False, 'expression': 'false'}\\nclearanceHeight_group = {'value': True, 'expression': 'true'}\\nclearanceHeight_mode = {'value': 'from retract height', 'expression': \\\"'from retract height'\\\"}\\nclearanceHeight_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C17880F0> >, 'expression': 'false'}\\nclearanceHeightFromHighest_checkStock = {'value': 'top', 'expression': \\\"'top'\\\"}\\nclearanceHeightFromLowest_checkStock = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nclearanceHeightFromHighest_checkModel = {'value': 'top', 'expression': \\\"'top'\\\"}\\nclearanceHeightFromLowest_checkModel = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nclearanceHeightFromHighest_checkFixture = {'value': 'top', 'expression': \\\"'top'\\\"}\\nclearanceHeightFromLowest_checkFixture = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nclearanceHeight_offset = {'value': 1.0, 'expression': '10mm'}\\nclearanceHeight_value = {'value': 1.5, 'expression': '15.'}\\nclearanceHeight_absolute = {'value': True, 'expression': 'true'}\\nretractHeightFromHighest_checkStock = {'value': 'top', 'expression': \\\"'top'\\\"}\\nretractHeightFromLowest_checkStock = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nfeedHeightFromHighest_checkStock = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\nfeedHeightFromLowest_checkStock = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\ntopHeight_group = {'value': True, 'expression': 'true'}\\ntopHeight_mode = {'value': 'from stock top', 'expression': \\\"'from stock top'\\\"}\\ntopHeight_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C176EDC0> >, 'expression': 'false'}\\ntopHeightFromHighest_checkStock = {'value': 'top', 'expression': \\\"'top'\\\"}\\ntopHeightFromLowest_checkStock = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\ntopHeightFromHighest_checkModel = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\ntopHeightFromLowest_checkModel = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\ntopHeightFromHighest_checkFixture = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\ntopHeightFromLowest_checkFixture = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\ntopHeight_offset = {'value': 0.0, 'expression': '0mm'}\\ntopHeight_value = {'value': 0.0, 'expression': '0.0'}\\ntopHeight_absolute = {'value': True, 'expression': 'true'}\\nbottomHeight_group = {'value': True, 'expression': 'true'}\\nbottomHeight_mode = {'value': 'from surface top', 'expression': \\\"'from surface top'\\\"}\\nbottomHeight_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C176E4F0> >, 'expression': 'false'}\\nbottomHeightFromHighest_checkStock = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nbottomHeightFromLowest_checkStock = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\nbottomHeightFromHighest_checkModel = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nbottomHeightFromLowest_checkModel = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nbottomHeightFromHighest_checkFixture = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\nbottomHeightFromLowest_checkFixture = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\nbottomHeight_offset = {'value': 0.0, 'expression': '0mm'}\\nbottomHeight_value = {'value': -0.1, 'expression': '-1.'}\\nbottomHeight_absolute = {'value': True, 'expression': 'true'}\\ngroup_passes = {'value': True, 'expression': 'true'}\\ntolerance = {'value': 0.001, 'expression': '0.01mm'}\\ncontourTolerance = {'value': 0.0005, 'expression': 'tolerance * 0.5'}\\ncalculationTolerance = {'value': 0.001, 'expression': 'tolerance'}\\nthinningTolerance = {'value': 1e-05, 'expression': '0.01*calculationTolerance'}\\nchainingTolerance = {'value': 0.001, 'expression': '0.01mm'}\\ngougingTolerance = {'value': 0.001, 'expression': 'calculationTolerance'}\\ntotalPassAngle = {'value': 0.0, 'expression': '0.0'}\\npassReference = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239C176F210> >, 'expression': 'false'}\\npassAngle = {'value': 0.0, 'expression': '0deg'}\\npassExtension = {'value': 0.7947500000000001, 'expression': 'tool_diameter/2 + tolerance'}\\nstockOffset = {'value': 0.0, 'expression': '0mm'}\\nstepover = {'value': 1.1112499999999998, 'expression': 'Math.max((tool_diameter - 2 * tool_cornerRadius) * 0.7; tool_diameter * 0.05)'}\\nextendEndPasses = {'value': False, 'expression': 'false'}\\ndoMultipleDepths = {'value': False, 'expression': 'false'}\\nmaximumStepdown = {'value': 0.0, 'expression': '1.0mm'}\\nfinishingStepdown = {'value': -0.1, 'expression': 'maximumStepdown'}\\nuseEvenStepdowns = {'value': False, 'expression': 'false'}\\nuseStockToLeave = {'value': False, 'expression': 'false'}\\nverticalStockToLeave = {'value': 0.0, 'expression': '0.1mm'}\\nconnectionMoveClearanceAreaType = {'value': 'plane', 'expression': \\\"'plane'\\\"}\\nconnectionMoveClearanceArea_orientation_mode = {'value': 'setupAxisZ', 'expression': \\\"'setupAxisZ'\\\"}\\nconnectionMoveClearanceArea_orientation_selAxis = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239A9A41F50> >, 'expression': 'false'}\\nconnectionMoveClearanceArea_orientation_flipAxis = {'value': False, 'expression': 'false'}\\nconnectionMoveClearanceArea_flipDirection = {'value': False, 'expression': 'false'}\\nconnectionMoveClearanceAreaUp_orientation_mode = {'value': 'setupAxisZ', 'expression': \\\"'setupAxisZ'\\\"}\\nconnectionMoveClearanceAreaUp_orientation_selAxis = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239A9A40300> >, 'expression': 'false'}\\nconnectionMoveClearanceAreaUp_orientation_flipAxis = {'value': False, 'expression': 'false'}\\nconnectionMoveClearanceAreaUp_flipDirection = {'value': False, 'expression': 'false'}\\nconnectionMoveClearanceArea_origin_mode = {'value': 'jobOrigin', 'expression': \\\"(connectionMoveClearanceArea_orientation_mode == 'surfaceNormalX' || connectionMoveClearanceArea_orientation_mode == 'surfaceNormalY') ? 'surfacePointOrigin' : 'jobOrigin'\\\"}\\nconnectionMoveClearanceArea_origin_point = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239A9A41470> >, 'expression': 'false'}\\nconnectionMoveClearanceAreaHeight_mode = {'value': 'from stock top', 'expression': \\\"'from stock top'\\\"}\\nconnectionMoveClearanceAreaHeight_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239A9A42B20> >, 'expression': 'false'}\\nconnectionMoveClearanceAreaHeight_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaHeight_value = {'value': 0.0, 'expression': '10.'}\\nconnectionMoveClearanceAreaHeight_absolute = {'value': False, 'expression': 'true'}\\nconnectionMoveClearanceAreaCylinderRadius_mode = {'value': 'from stock od', 'expression': \\\"'from stock od'\\\"}\\nconnectionMoveClearanceAreaCylinderRadius_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239A9A41950> >, 'expression': 'false'}\\nconnectionMoveClearanceAreaCylinderRadiusFromOutermost_checkStock = {'value': 'outer diameter', 'expression': \\\"'outer diameter'\\\"}\\nconnectionMoveClearanceAreaCylinderRadiusFromOutermost_checkModel = {'value': 'outer diameter', 'expression': \\\"'outer diameter'\\\"}\\nconnectionMoveClearanceAreaCylinderRadiusFromOutermost_checkFixture = {'value': 'outer diameter', 'expression': \\\"'outer diameter'\\\"}\\nconnectionMoveClearanceAreaCylinderRadius_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaCylinderRadius_direct = {'value': 0.2, 'expression': \\\"connectionMoveClearanceAreaCylinderRadius_mode == 'radius' ? connectionMoveClearanceAreaCylinderRadius_value : connectionMoveClearanceAreaCylinderRadius_value * 2\\\"}\\nconnectionMoveClearanceAreaCylinderRadius_value = {'value': 0.1, 'expression': '10.'}\\nconnectionMoveClearanceAreaCylinderRadius_absolute = {'value': True, 'expression': 'true'}\\nconnectionMoveClearanceAreaCylinderCapPosZHeight_mode = {'value': 'from stock top', 'expression': \\\"'from stock top'\\\"}\\nconnectionMoveClearanceAreaCylinderCapPosZHeight_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239A9A42CA0> >, 'expression': 'false'}\\nconnectionMoveClearanceAreaCylinderCapPosZHeight_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaCylinderCapPosZHeight_value = {'value': 0.0, 'expression': '10.'}\\nconnectionMoveClearanceAreaCylinderCapPosZHeight_absolute = {'value': False, 'expression': 'true'}\\nconnectionMoveClearanceAreaSphereRadius_mode = {'value': 'from stock od', 'expression': \\\"'from stock od'\\\"}\\nconnectionMoveClearanceAreaSphereRadius_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239A9A402A0> >, 'expression': 'false'}\\nconnectionMoveClearanceAreaSphereRadiusFromOutermost_checkStock = {'value': 'outer diameter', 'expression': \\\"'outer diameter'\\\"}\\nconnectionMoveClearanceAreaSphereRadiusFromOutermost_checkModel = {'value': 'outer diameter', 'expression': \\\"'outer diameter'\\\"}\\nconnectionMoveClearanceAreaSphereRadiusFromOutermost_checkFixture = {'value': 'outer diameter', 'expression': \\\"'outer diameter'\\\"}\\nconnectionMoveClearanceAreaSphereRadius_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaSphereRadius_direct = {'value': 0.2, 'expression': \\\"connectionMoveClearanceAreaSphereRadius_mode == 'radius' ? connectionMoveClearanceAreaSphereRadius_value : connectionMoveClearanceAreaSphereRadius_value * 2\\\"}\\nconnectionMoveClearanceAreaSphereRadius_value = {'value': 0.1, 'expression': '10.'}\\nconnectionMoveClearanceAreaSphereRadius_absolute = {'value': True, 'expression': 'true'}\\nconnectionMoveClearanceAreaCuboid_mode = {'value': 'from stock box', 'expression': \\\"'from stock box'\\\"}\\nconnectionMoveClearanceAreaCuboid_symmetricalOffsets = {'value': True, 'expression': 'true'}\\nconnectionMoveClearanceAreaCuboidPosX_value = {'value': 0.0, 'expression': '35.765'}\\nconnectionMoveClearanceAreaCuboidPosX_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaCuboidNegX_value = {'value': 0.0, 'expression': '35.765'}\\nconnectionMoveClearanceAreaCuboidNegX_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaCuboidPosY_value = {'value': 0.0, 'expression': '35.765'}\\nconnectionMoveClearanceAreaCuboidPosY_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaCuboidNegY_value = {'value': 0.0, 'expression': '35.765'}\\nconnectionMoveClearanceAreaCuboidNegY_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaCuboidPosZ_value = {'value': 0.0, 'expression': '10.'}\\nconnectionMoveClearanceAreaCuboidPosZ_offset = {'value': 1.0, 'expression': '10mm'}\\nconnectionMoveClearanceAreaCuboidNegZ_value = {'value': 0.0, 'expression': '30.05'}\\nconnectionMoveClearanceAreaCuboidNegZ_offset = {'value': 1.0, 'expression': '10mm'}\\nuse_tool_stepdown = {'value': False, 'expression': 'false'}\\ntool_stepdown = {'value': 3.6576000000000004, 'expression': 'tool_fluteLength * 0.9'}\\ntool_finishingStepdown = {'value': 0.020000000000000004, 'expression': '0.2mm'}\\nuse_tool_stepover = {'value': False, 'expression': 'false'}\\ntool_stepover = {'value': 0.47625000000000006, 'expression': 'tool_diameter * 0.3'}\\ntool_finishingStepover = {'value': 0.15875000000000003, 'expression': 'tool_diameter * 0.1'}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    for strat in ['adaptive','pocket2d','contour2d','face']:\n        try:\n            g=mb.strategy_guide(strat)\n            print(\"===\",strat,\"===\")\n            print(json.dumps(g, indent=1, default=str)[:900])\n        except Exception as e:\n            print(strat,\"err\",e)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"=== adaptive ===\\n{}\\n=== pocket2d ===\\n{\\n \\\"advancedMode\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"allowContourRamps\\\": {\\n  \\\"expression\\\": \\\"(rampType == 'helix') || (rampType == 'smooth profile')\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowHelicalRamps\\\": {\\n  \\\"expression\\\": \\\"rampType == 'helix'\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowPlunging\\\": {\\n  \\\"expression\\\": \\\"(rampType == 'plunge')\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowPlungingOutsideStockJl\\\": {\\n  \\\"expression\\\": \\\"(rampType == 'disabled')\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowRapidRetract\\\": {\\n  \\\"expression\\\": \\\"true\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"allowSmoothContourRamps\\\": {\\n  \\\"expression\\\": \\\"(rampType == 'helix') || (rampType == 'smooth profile')\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowStepoverCusps\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"allowZigZagRamps\\\": {\\n  \\\"expression\\\": \\\"rampType == 'zigzag'\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"alphaMode\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"applyFinalSmoothingDeviation\\\": {\\n  \\\"exp\\n=== contour2d ===\\n{\\n \\\"advancedMode\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"allowContourRamps\\\": {\\n  \\\"expression\\\": \\\"(rampType == 'helix') || (rampType == 'smooth profile')\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowHelicalRamps\\\": {\\n  \\\"expression\\\": \\\"rampType == 'helix'\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowPlunging\\\": {\\n  \\\"expression\\\": \\\"true\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"allowRapidRetract\\\": {\\n  \\\"expression\\\": \\\"true\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"allowSmoothContourRamps\\\": {\\n  \\\"expression\\\": \\\"(rampType == 'helix') || (rampType == 'smooth profile')\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"allowZigZagRamps\\\": {\\n  \\\"expression\\\": \\\"rampType == 'zigzag'\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"alphaMode\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"alwaysMakeContourRamp\\\": {\\n  \\\"expression\\\": \\\"doRamp\\\",\\n  \\\"unit\\\": \\\"raw\\\"\\n },\\n \\\"applyFinalSmoothingDeviation\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"associatedView\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"aut\\n=== face ===\\n{\\n \\\"advancedMode\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"allowRapidRetract\\\": {\\n  \\\"expression\\\": \\\"true\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"alphaMode\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"associatedView\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"betaMode\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"bothSides\\\": {\\n  \\\"expression\\\": \\\"false\\\",\\n  \\\"unit\\\": \\\"bool\\\"\\n },\\n \\\"bottomHeightFromHighest_checkFixture\\\": {\\n  \\\"expression\\\": \\\"'ignore'\\\",\\n  \\\"unit\\\": \\\"choice\\\"\\n },\\n \\\"bottomHeightFromHighest_checkModel\\\": {\\n  \\\"expression\\\": \\\"'bottom'\\\",\\n  \\\"unit\\\": \\\"choice\\\"\\n },\\n \\\"bottomHeightFromHighest_checkStock\\\": {\\n  \\\"expression\\\": \\\"'bottom'\\\",\\n  \\\"unit\\\": \\\"choice\\\"\\n },\\n \\\"bottomHeightFromLowest_checkFixture\\\": {\\n  \\\"expression\\\": \\\"'ignore'\\\",\\n  \\\"unit\\\": \\\"choice\\\"\\n },\\n \\\"bottomHeightFromLowest_checkModel\\\": {\\n  \\\"expression\\\": \\\"'bottom'\\\",\\n  \\\"unit\\\": \\\"choice\\\"\\n },\\n \\\"bottomHeightFromLowest_checkStock\\\": {\\n  \\\"express\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    cyls = mb.faces(0, kind='Cylinder')\n    for f in cyls:\n        print(f['index'], \"A\", round(f['area_mm2'],1), \"centroid\", [round(v,2) for v in f['centroid_mm']])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"1 A 1936.6 centroid [24.77, -6.22, 0.0]\\n4 A 248.3 centroid [-8.05, -6.48, 11.22]\\n5 A 248.3 centroid [14.4, -6.48, -11.22]\\n6 A 248.3 centroid [14.4, -6.48, 11.22]\\n7 A 248.3 centroid [-8.05, -6.48, -11.22]\\n96 A 66.8 centroid [-13.35, 4.21, -0.01]\\n99 A 66.8 centroid [19.67, 4.21, -0.01]\\n102 A 66.8 centroid [3.16, 4.21, -16.52]\\n105 A 66.8 centroid [3.16, 4.21, -0.01]\\n108 A 66.8 centroid [3.16, 4.21, 16.5]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.add_operation('Setup1', strategy='adaptive2d', tool=1,\n                         geometry={'faces':[1], 'type':'contour', 'side':'outside'},\n                         name='Rough_Outer_Adaptive')\n    print(\"op:\", r.get('operation'))\n    p=r.get('params',{})\n    for k in ['bottomHeight_mode','bottomHeight_value','bottomHeight_offset','topHeight_mode','topHeight_value',\n              'maximumStepdown','optimalLoad','stepover','useStockToLeave','stockToLeave','tangentialStockToLeave',\n              'radialStockToLeave','axialStockToLeave','tool_diameter']:\n        if k in p: print(k,'=',p[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 55, in run\\n  File \\\"<string>\\\", line 31, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 645, in add_operation\\n    raise RuntimeError(\\n    ...<2 lines>...\\n        f\\\"\\u2014 do NOT create a new operation.\\\") from None\\nRuntimeError: Op 'Rough_Outer_Adaptive' created but geometry selection failed: operation has no 'contours' geometry parameter for this strategy. Fix with mb.set_geometry('Rough_Outer_Adaptive', <corrected_geometry>) \\u2014 do NOT create a new operation.\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    lp = mb.list_params('Rough_Outer_Adaptive')\n    # find geometry-related params\n    for k in lp:\n        kl=k.lower()\n        if any(s in kl for s in ['geom','contour','pocket','stock_selection','machiningboundary','boundary','selection','side','tag']):\n            print(k,'=',lp[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"tool_selectionMethod = {'value': 'specific', 'expression': \\\"'specific'\\\"}\\ngroup_geometry = {'value': True, 'expression': 'true'}\\nisContourGeometry = {'value': False, 'expression': 'false'}\\ngeometryType = {'value': 'chains', 'expression': \\\"'chains'\\\"}\\npockets = {'value': None, 'expression': 'false'}\\npockets_detectOpenPockets = {'value': True, 'expression': 'true'}\\npockets_connectOpenPockets = {'value': True, 'expression': 'true'}\\npockets_errorCheck = {'value': True, 'expression': 'true'}\\npockets_detectOverlaps = {'value': False, 'expression': 'false'}\\nuseStockContours = {'value': False, 'expression': 'false'}\\nstockContours = {'value': None, 'expression': 'false'}\\ncontourTolerance = {'value': 0.005000000000000001, 'expression': 'tolerance * 0.5'}\\nuseSilhouetteAsStockBoundary = {'value': False, 'expression': 'false'}\\nallowPlungingOutsideStockJl = {'value': False, 'expression': \\\"(rampType == 'disabled')\\\"}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.set_geometry('Rough_Outer_Adaptive', {'faces':[0], 'type':'pocket'})\n    print(json.dumps(r, default=str)[:400])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"{\\\"operation\\\": \\\"Rough_Outer_Adaptive\\\", \\\"geometry_set\\\": true}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    lp = mb.list_params('Rough_Outer_Adaptive')\n    for k in ['bottomHeight_mode','bottomHeight_value','bottomHeight_offset','bottomHeight_absolute',\n              'topHeight_mode','topHeight_value','topHeight_offset',\n              'maximumStepdown','optimalLoad','useStockToLeave','tangentialStockToLeave','axialStockToLeave','tool_diameter']:\n        if k in lp: print(k,'=',lp[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"bottomHeight_mode = {'value': 'from contour', 'expression': \\\"'from contour'\\\"}\\nbottomHeight_value = {'value': 0.0, 'expression': '0.0'}\\nbottomHeight_offset = {'value': 0.0, 'expression': '0mm'}\\nbottomHeight_absolute = {'value': False, 'expression': 'false'}\\ntopHeight_mode = {'value': 'from stock top', 'expression': \\\"'from stock top'\\\"}\\ntopHeight_value = {'value': 0.0, 'expression': '0.0'}\\ntopHeight_offset = {'value': 0.0, 'expression': '0mm'}\\nmaximumStepdown = {'value': 0.0, 'expression': 'Math.min(tool_fluteLength * 0.75; tool_diameter * 2.5)'}\\noptimalLoad = {'value': 0.508, 'expression': 'tool_diameter * 0.4'}\\nuseStockToLeave = {'value': True, 'expression': 'true'}\\ntool_diameter = {'value': 1.27, 'expression': '0.5in'}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.fusion, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=None\n    for s in cam.setups:\n        for o in s.operations:\n            if o.name=='Rough_Outer_Adaptive': op=o\n    op.name='Rough_Recess'\n    # set stock to leave 0.3mm radial, 0.15 axial\n    mb.set_params('Rough_Recess', {\n        'tangentialStockToLeave':'0.3mm',\n        'axialStockToLeave':'0.15mm',\n        'maximumStepdown':'2mm',\n    })\n    lp=mb.list_params('Rough_Recess')\n    for k in ['tangentialStockToLeave','axialStockToLeave','maximumStepdown','bottomHeight_mode']:\n        print(k,lp.get(k))\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 62, in run\\n  File \\\"<string>\\\", line 39, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 757, in set_params\\n    value = spec[\\\"value\\\"]\\n            ~~~~^^^^^^^^^\\nTypeError: string indices must be integers, not 'str'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    print(mb.set_param.__doc__)\n    print(\"---set_params---\")\n    print(mb.set_params.__doc__)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Set any operation parameter by name.\\n  unit=\\\"mm\\\"     \\u2192 length in mm or feed in mm/min \\u2014 divided by 10 for Fusion's cm\\n  unit=\\\"raw\\\"    \\u2192 dimensionless value set directly (RPM, pure counts)\\n  unit=\\\"bool\\\"   \\u2192 True/False flag (e.g. doMultipleDepths)\\n  unit=\\\"choice\\\" \\u2192 string choice for mode params (e.g. bottomHeight_mode)\\nWrong param name raises RuntimeError listing available names.\\n---set_params---\\nSet multiple parameters on an operation in one call.\\n  params: {param_name: {\\\"value\\\": <v>, \\\"unit\\\": \\\"mm\\\"|\\\"raw\\\"|\\\"bool\\\"|\\\"choice\\\"}, ...}\\nUse the param names and expressions returned by add_operation() or list_params()\\nto build this dict. Wrong param name \\u2192 error listing all available names.\\nReturns {param_name: {value, unit}, ...} for every param that was set.\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    for s in cam.setups:\n        for o in s.operations:\n            if o.name=='Rough_Outer_Adaptive': o.name='Rough_Recess'\n    r=mb.set_params('Rough_Recess', {\n        'tangentialStockToLeave':{'value':0.3,'unit':'mm'},\n        'axialStockToLeave':{'value':0.15,'unit':'mm'},\n        'maximumStepdown':{'value':2.0,'unit':'mm'},\n    })\n    print(r)\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 57, in run\\n  File \\\"<string>\\\", line 36, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 764, in set_params\\n    raise RuntimeError(f\\\"Parameter {param_name!r} not found on {op_name!r}. \\\"\\n                       f\\\"Available: {avail}\\\")\\nRuntimeError: Parameter 'tangentialStockToLeave' not found on 'Rough_Recess'. Available: ['advancedMode', 'allowHelicalRamps', 'allowPlunging', 'allowPlungingOutsideStockJl', 'allowRapidRetract', 'alphaMode', 'associatedView', 'astarSpeedRatioJl', 'auto_holeTopDiameter', 'betaMode', 'bothWays', 'bottomHeightFromHighest_checkFixture', 'bottomHeightFromHighest_checkModel', 'bottomHeightFromHighest_checkStock', 'bottomHeightFromLowest_checkFixture', 'bottomHeightFromLowest_checkModel', 'bottomHeightFromLowest_checkStock', 'bottomHeight_absolute', 'bottomHeight_group', 'bottomHeight_mode', 'bottomHeight_offset', 'bottomHeight_ref', 'bottomHeight_value', 'calculationTolerance', 'canBeFallbackOperation', 'chainingTolerance', 'clearanceHeightFromHighest_checkFixture', 'clearanceHeightFromHighest_checkModel', 'clearanceHeightFromHighest_checkStock', 'clearanceHeightFromLowest_checkFixture', 'clearanceHeightFromLowest_checkModel', 'clearanceHeightFromLowest_checkStock', 'clearanceHeight_absolute', 'clearanceHeight_group', 'clearanceHeight_mode', 'clearanceHeight_offset', 'clearanceHeight_ref', 'clearanceHeight_value', 'connectionMoveClearanceAreaCuboidNegX_offset', 'connectionMoveClearanceAreaCuboidNegX_value', 'connectionMoveClearanceAreaCuboidNegY_offset', 'connectionMoveClearanceAreaCuboidNegY_value', 'connectionMoveClearanceAreaCuboidNegZ_offset', 'connectionMoveClearanceAreaCuboidNegZ_value', 'connectionMoveClearanceAreaCuboidPosX_offset', 'connectionMoveClearanceAreaCuboidPosX_value', 'connectionMoveClearanceAreaCuboidPosY_offset', 'connectionMoveClearanceAreaCuboidPosY_value', 'connectionMoveClearanceAreaCuboidPosZ_offset', 'connectionMoveClearanceAreaCuboidPosZ_value', 'connectionMoveClearanceAreaCuboid_mode', 'connectionMoveClearanceAreaCuboid_symmetricalOffsets', 'connectionMoveClearanceAreaCylinderCapPosZHeight_absolute', 'connectionMoveClearanceAreaCylinderCapPosZHeight_mode', 'connectionMoveClearanceAreaCylinderCapPosZHeight_offset', 'connectionMoveClearanceAreaCylinderCapPosZHeight_ref', 'connectionMoveClearanceAreaCylinderCapPosZHeight_value', 'connectionMoveClearanceAreaCylinderRadiusFromOutermost_checkFixture', 'connectionMoveClearanceAreaCylinderRadiusFromOutermost_checkModel', 'connectionMoveClearanceAreaCylinderRadiusFromOutermost_checkStock', 'connectionMoveClearanceAreaCylinderRadius_absolute', 'connectionMoveClearanceAreaCylinderRadius_direct', 'connectionMoveClearanceAreaCylinderRadius_mode', 'connectionMoveClearanceAreaCylinderRadius_offset', 'connectionMoveClearanceAreaCylinderRadius_ref', 'connectionMoveClearanceAreaCylinderRadius_value', 'connectionMoveClearanceAreaHeight_absolute', 'connectionMoveClearanceAreaHeight_mode', 'connectionMoveClearanceAreaHeight_offset', 'connectionMoveClearanceAreaHeight_ref', 'connectionMoveClearanceAreaHeight_value', 'connectionMoveClearanceAreaSphereRadiusFromOutermost_checkFixture', 'connectionMoveClearanceAreaSphereRadiusFromOutermost_checkModel', 'connectionMoveClearanceAreaSphereRadiusFromOutermost_checkStock', 'connectionMoveClearanceAreaSphereRadius_absolute', 'connectionMoveClearanceAreaSphereRadius_direct', 'connectionMoveClearanceAreaSphereRadius_mode', 'connectionMoveClearanceAreaSphereRadius_offset', 'connectionMoveClearanceAreaSphereRadius_ref', 'connectionMoveClearanceAreaSphereRadius_value', 'connectionMoveClearanceAreaType', 'connectionMoveClearanceAreaUp_flipDirection', 'connectionMoveClearanceAreaUp_orientation_flipAxis', 'connectionMoveClearanceAreaUp_orientation_mode', 'connectionMoveClearanceAreaUp_orientation_selAxis', 'connectionMoveClearanceArea_flipDirection', 'connectionMoveClearanceArea_orientation_flipAxis', 'connectionMoveClearanceArea_orientation_mode', 'connectionMoveClearanceArea_orientation_selAxis', 'connectionMoveClearanceArea_origin_mode', 'connectionMoveClearanceArea_origin_point', 'connections_retraction_type', 'context', 'contourTolerance', 'curveInRadius', 'direction', 'doMultipleDepths', 'doRamp', 'entryPositions', 'exitPositions', 'featureOperationId', 'feedWeight', 'fineStepdown', 'fineStepdownJl', 'generate_connections', 'geometryType', 'gougingTolerance', 'group_entry_drill_positions', 'group_feedspeed', 'group_geometry', 'group_leadsTranstions', 'group_linking', 'group_passes', 'group_tool', 'helicalRampDiameter', 'highFeedrate', 'highFeedrateMode', 'highFeedrateModeProxy', 'holder_attached', 'holder_comment', 'holder_description', 'holder_libraryName', 'holder_productId', 'holder_productLink', 'holder_vendor', 'isAssemblyDocument', 'isClearanceAreaEnabled', 'isContourGeometry', 'isDrillingOperation', 'isFallbackOperation', 'isOperationTemplate', 'isTappingOperation', 'isXpress', 'leadInRadius', 'leadInVerticalRadius', 'leadLean', 'leadOutRadius', 'leadOutVerticalRadius', 'leadRadius', 'license3D', 'licenseMultiaxis', 'liftHeight', 'loadDeviation', 'loadDeviationOtherWay', 'machineCavities', 'machiningTypeGroup', 'maximumCuspHeight', 'maximumIncreasedFeedrateExternalArc', 'maximumIncreasedFeedrateExternalArcFinishing', 'maximumLoad', 'maximumLoadOtherWay', 'maximumReducedFeedrateInternalArc', 'maximumReducedFeedrateInternalArcFinishing', 'maximumStepdown', 'maximumStepdownJl', 'metric', 'minimumCuttingRadius', 'minimumCuttingRadiusJl', 'minimumRampDiameter', 'minimumStayDownClearance', 'minimumStepdownJobline', 'multiAxisMachiningType', 'noEngagementFeedrate', 'operation_description', 'optimalLoad', 'optimalLoadOtherWay', 'optimalLoadWeight', 'orderByArea', 'orderByAreaBufferSize', 'orderByDepth', 'otherWayFeedrate', 'overrideToolView', 'pockets', 'pockets_connectOpenPockets', 'pockets_detectOpenPockets', 'pockets_detectOverlaps', 'pockets_errorCheck', 'polarLineAngle', 'polarMachiningGroup', 'polarMode', 'predrillPositions', 'preset_contains', 'preset_search', 'rampAngle', 'rampClearanceHeight', 'rampTaperAngle', 'rampType', 'reduceOnlyInnerCorners', 'reducedFeedChange', 'reducedFeedDistance', 'reducedFeedRadius', 'reducedFeedrate', 'restMaterialCornerRadius', 'restMaterialCutterDiameter', 'restMaterialShoulderLength', 'restMaterialStockToLeave', 'restMaterialTaperAngle', 'restMaterialTool', 'retractHeightFromHighest_checkFixture', 'retractHeightFromHighest_checkModel', 'retractHeightFromHighest_checkStock', 'retractHeightFromLowest_checkFixture', 'retractHeightFromLowest_checkModel', 'retractHeightFromLowest_checkStock', 'retractHeight_absolute', 'retractHeight_group', 'retractHeight_mode', 'retractHeight_offset', 'retractHeight_ref', 'retractHeight_value', 'retractionPolicy', 'show_machine', 'simpleStockToLeave', 'slopeAngle', 'slotClearingWidth', 'smoothingFilter', 'smoothingFilterMaxAngle', 'smoothingFilterMaxSpacing', 'smoothingFilterMode', 'smoothingFilterTolerance', 'speedWeight', 'stayDownDistance', 'stayDownLevel', 'stockContours', 'stockToLeave', 'stockXHigh', 'stockXLow', 'stockYHigh', 'stockYLow', 'stockZHigh', 'stockZLow', 'strategy', 'surfaceSpeedOnArcs', 'surfaceTriangulationTolerance', 'surfaceXHigh', 'surfaceXLow', 'surfaceYHigh', 'surfaceYLow', 'surfaceZHigh', 'surfaceZLow', 'thinningTolerance', 'threeAxisPolarLineAngle', 'threeAxisPolarMode', 'tiltTool', 'tolerance', 'tool_assemblyGaugeLength', 'tool_axialDistance', 'tool_bodyLength', 'tool_breakControl', 'tool_chamferAngle', 'tool_chamferWidth', 'tool_checkCornerRadius', 'tool_checkLengthBelowHolder', 'tool_clockwise', 'tool_comment', 'tool_compensationOffset', 'tool_coolant', 'tool_cornerRadius', 'tool_description', 'tool_diameter', 'tool_diameterOffset', 'tool_diameterRatio', 'tool_exactDiameter', 'tool_feedCutting', 'tool_feedEntry', 'tool_feedExit', 'tool_feedPerRevolution', 'tool_feedPerTooth', 'tool_feedPlunge', 'tool_feedRamp', 'tool_feedRetract', 'tool_feedTransition', 'tool_finishingStepdown', 'tool_finishingStepover', 'tool_fluteLength', 'tool_holderGaugeLength', 'tool_inclusiveAngle', 'tool_isDepositing', 'tool_isDrill', 'tool_isJet', 'tool_isMill', 'tool_isTurning', 'tool_lengthOffset', 'tool_live', 'tool_lowerRadius', 'tool_manualToolChange', 'tool_material', 'tool_maxCornerRadius', 'tool_maxDiameter', 'tool_maxDiameterRatio', 'tool_maxLengthBelowHolder', 'tool_maximumCuttingDiameter', 'tool_maximumThreadPitch', 'tool_minCornerRadius', 'tool_minDiameter', 'tool_minDiameterRatio', 'tool_minLengthBelowHolder', 'tool_minimumThreadPitch', 'tool_number', 'tool_numberOfFlutes', 'tool_numberOfTeeth', 'tool_overallLength', 'tool_productId', 'tool_productLink', 'tool_profileRadius', 'tool_rampAngle', 'tool_rampSpindleSpeed', 'tool_rampType', 'tool_searchMethod', 'tool_searchTolerance', 'tool_segmentDiameterLower', 'tool_segmentDiameterUpper', 'tool_segmentHeight', 'tool_selectionMethod', 'tool_shaftDiameter', 'tool_shaftSegmentDiameterLower', 'tool_shaftSegmentDiameterUpper', 'tool_shaftSegmentHeight', 'tool_shoulderDiameter', 'tool_shoulderLength', 'tool_spindleSpeed', 'tool_stepdown', 'tool_stepover', 'tool_stockDiameter', 'tool_surfaceSpeed', 'tool_taperAngle', 'tool_taperedType', 'tool_threadPitch', 'tool_threadProfileAngle', 'tool_threadTipRadius', 'tool_threadTipType', 'tool_threadTipWidth', 'tool_tipAngle', 'tool_tipDiameter', 'tool_tipLength', 'tool_tipOffset', 'tool_turret', 'tool_type', 'tool_unit', 'tool_upperRadius', 'tool_vendor', 'topHeightFromHighest_checkFixture', 'topHeightFromHighest_checkModel', 'topHeightFromHighest_checkStock', 'topHeightFromLowest_checkFixture', 'topHeightFromLowest_checkModel', 'topHeightFromLowest_checkStock', 'topHeight_absolute', 'topHeight_group', 'topHeight_mode', 'topHeight_offset', 'topHeight_ref', 'topHeight_value', 'totalSurfaceTolerance', 'undercut', 'unwrap', 'useCombinedFilter', 'useDMKSmoothing', 'useEvenStepdowns', 'useFeedOptimization', 'usePolarWhenNecessary', 'useRestMachining', 'useRotaryAxisMoves', 'useSilhouetteAsStockBoundary', 'useSlotClearing', 'useStockContours', 'useStockToLeave', 'use_tool_stepdown', 'use_tool_stepover', 'verticalLeadRadius', 'verticalStockToLeave', 'view_align_to_view_direction', 'view_model_point', 'view_orientation_axesXY_unselected_default', 'view_orientation_axesZX_unselected_default', 'view_orientation_axesZY_unselected_default', 'view_orientation_axisX', 'view_orientation_axisY', 'view_orientation_axisZ', 'view_orientation_cSys', 'view_orientation_flipX', 'view_orientation_flipY', 'view_orientation_flipZ', 'view_orientation_mode', 'view_orientation_surfaceNormal', 'view_origin_boxPoint', 'view_origin_mode', 'view_origin_point', 'view_select_angles', 'view_stock_point', 'view_tilt_from_recipe', 'view_turn_from_recipe', 'wrapGroup', 'wrap_cylinder', 'wrap_cylinder_radius', 'wrap_nominalRadius_offset', 'wrap_nominalRadius_value']\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    lp=mb.list_params('Rough_Recess')\n    for k in lp:\n        kl=k.lower()\n        if 'stocktoleave' in kl or 'stockto' in kl:\n            print(k,'=',lp[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"restMaterialStockToLeave = {'value': 0.0, 'expression': '0mm'}\\nuseStockToLeave = {'value': True, 'expression': 'true'}\\nstockToLeave = {'value': 0.05, 'expression': '0.5mm'}\\nverticalStockToLeave = {'value': 0.05, 'expression': 'stockToLeave'}\\nsimpleStockToLeave = {'value': False, 'expression': 'false'}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    r=mb.set_params('Rough_Recess', {\n        'stockToLeave':{'value':0.3,'unit':'mm'},\n        'verticalStockToLeave':{'value':0.15,'unit':'mm'},\n        'maximumStepdown':{'value':2.0,'unit':'mm'},\n    })\n    print(r)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"{'op': 'Rough_Recess', 'params_set': {'stockToLeave': {'value': 0.3, 'unit': 'mm'}, 'verticalStockToLeave': {'value': 0.15, 'unit': 'mm'}, 'maximumStepdown': {'value': 2.0, 'unit': 'mm'}}}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.add_operation('Setup1', strategy='contour2d', tool=1,\n                         geometry={'faces':[1], 'type':'contour', 'side':'outside'},\n                         name='Rough_Outer_Profile')\n    print(\"op:\", r.get('operation'))\n    p=r.get('params',{})\n    for k in ['bottomHeight_mode','bottomHeight_value','topHeight_mode','topHeight_value',\n              'doMultipleDepths','maximumStepdown','numberOfSteps','stockToLeave','roughingStockToLeave',\n              'doMultipleStepovers','numberOfStepovers','stepover','useStockToLeave']:\n        if k in p: print(k,'=',p[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 55, in run\\n  File \\\"<string>\\\", line 31, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 645, in add_operation\\n    raise RuntimeError(\\n    ...<2 lines>...\\n        f\\\"\\u2014 do NOT create a new operation.\\\") from None\\nRuntimeError: Op 'Rough_Outer_Profile' created but geometry selection failed: contour face-selection rejected face(s) [1]: a contour traces the boundary of a HORIZONTAL face (e.g. the pocket opening / top face), so to finish pocket WALLS pass that opening face with side='AlwaysInsideSideType' \\u2014 NOT the vertical wall faces, which are not valid contour input.. Fix with mb.set_geometry('Rough_Outer_Profile', <corrected_geometry>) \\u2014 do NOT create a new operation.\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    import json\n    # face 2 is bottom disc (model y=-12.7). Its outer edge = round profile.\n    r = mb.set_geometry('Rough_Outer_Profile', {'faces':[2], 'type':'contour', 'side':'outside'})\n    print(json.dumps(r, default=str)[:300])\n    lp=mb.list_params('Rough_Outer_Profile')\n    for k in ['bottomHeight_mode','bottomHeight_value','topHeight_mode','topHeight_value']:\n        print(k,lp.get(k))\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 52, in run\\n  File \\\"<string>\\\", line 32, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 661, in set_geometry\\n    _select_geometry(op, body, geometry)\\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 595, in _select_geometry\\n    sel.sideType = getattr(adsk.cam.SideTypes, side)\\n                   ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\\nAttributeError: type object 'SideTypes' has no attribute 'outside'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "fusion_mcp_read",
+      "success": true,
+      "input": {
+        "queryType": "apiDocumentation",
+        "searchPattern": "SideTypes",
+        "apiCategory": "all"
+      },
+      "result": "{\n    \"classes\": [\n        {\n            \"attributes\": [\n                {\n                    \"doc\": \"AlwaysOutside\",\n                    \"name\": \"AlwaysOutsideSideType\"\n                },\n                {\n                    \"doc\": \"AlwaysInside\",\n                    \"name\": \"AlwaysInsideSideType\"\n                },\n                {\n                    \"doc\": \"StartOutside has the order outside - inside - outside ...\",\n                    \"name\": \"StartOutsideSideType\"\n                },\n                {\n                    \"doc\": \"StartInside has the order inside - outside - inside ...\",\n                    \"name\": \"StartInsideSideType\"\n                }\n            ],\n            \"doc\": \"\\nEnum for the order of loops.\\n\\nAttributes:\\n    AlwaysOutsideSideType: AlwaysOutside\\n    AlwaysInsideSideType: AlwaysInside\\n    StartOutsideSideType: StartOutside has the order outside - inside - outside ...\\n    StartInsideSideType: StartInside has the order inside - outside - inside ...\\n\",\n            \"name\": \"SideTypes\",\n            \"namespace\": \"adsk.cam\",\n            \"type\": \"class\"\n        }\n    ],\n    \"message\": \"API documentation query completed\",\n    \"success\": true\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.set_geometry('Rough_Outer_Profile', {'faces':[2], 'type':'contour', 'side':'AlwaysOutsideSideType'})\n    print(json.dumps(r, default=str)[:300])\n    lp=mb.list_params('Rough_Outer_Profile')\n    for k in ['bottomHeight_mode','bottomHeight_value','topHeight_mode','topHeight_value',\n              'doMultipleDepths','maximumStepdown','stockToLeave','roughingPasses','numberOfStepovers']:\n        print(k,lp.get(k))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"{\\\"operation\\\": \\\"Rough_Outer_Profile\\\", \\\"geometry_set\\\": true}\\nbottomHeight_mode {'value': 'from contour', 'expression': \\\"'from contour'\\\"}\\nbottomHeight_value {'value': 0.0, 'expression': '0.0'}\\ntopHeight_mode {'value': 'from stock top', 'expression': \\\"'from stock top'\\\"}\\ntopHeight_value {'value': 0.0, 'expression': '0.0'}\\ndoMultipleDepths {'value': False, 'expression': 'false'}\\nmaximumStepdown {'value': 0.0, 'expression': 'tool_fluteLength * 0.75'}\\nstockToLeave {'value': 0.0, 'expression': '0.1mm'}\\nroughingPasses None\\nnumberOfStepovers None\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    lp=mb.list_params('Rough_Outer_Profile')\n    for k in lp:\n        kl=k.lower()\n        if any(s in kl for s in ['multiplepass','multipass','numberofstep','finishing','roughing','stepover','stepdown','multipledepth']):\n            print(k,'=',lp[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"finishingSmoothingDeviation = {'value': 0.0, 'expression': '0mm'}\\ndoMultipleFinishingPasses = {'value': False, 'expression': 'false'}\\nnumberOfFinishingStepovers = {'value': 1, 'expression': '2'}\\nfinishingStepover = {'value': 0.127, 'expression': 'Math.min(tool_diameter * 0.1; maximumStepover)'}\\nleadsForAllFinishingPasses = {'value': False, 'expression': \\\"compensationType != 'computer'\\\"}\\nfinishingOverlap = {'value': 0.0, 'expression': '0mm'}\\ndoRoughingPasses = {'value': False, 'expression': 'false'}\\nmaximumStepover = {'value': 1.2065000000000001, 'expression': 'Math.max((tool_diameter - (2 * tool_cornerRadius)) * 0.95; tool_diameter * 0.20)'}\\nminimumRoughingStepover = {'value': 0.12065000000000002, 'expression': '0.1 * maximumStepover'}\\nmaximumRoughingSteps = {'value': 0, 'expression': '1'}\\nminimumFinishingStepover = {'value': 0.03175, 'expression': '0.25*finishingStepover'}\\ndoMultipleDepths = {'value': False, 'expression': 'false'}\\nmaximumStepdown = {'value': 0.0, 'expression': 'tool_fluteLength * 0.75'}\\nnumberOfFinishingStepdowns = {'value': 0, 'expression': '0'}\\nfinishingStepdown = {'value': 0.0, 'expression': '0.2mm'}\\nuseEvenStepdowns = {'value': False, 'expression': 'false'}\\nmaximumReducedFeedrateInternalArcFinishing = {'value': 100.0, 'expression': '100'}\\nmaximumIncreasedFeedrateExternalArcFinishing = {'value': 100.0, 'expression': '100'}\\nmaximumRampZStepdown = {'value': 5.08, 'expression': 'maximumStepdown > 0 ? maximumStepdown : tool_fluteLength'}\\nuse_tool_stepdown = {'value': False, 'expression': 'false'}\\ntool_stepdown = {'value': 4.572, 'expression': 'tool_fluteLength * 0.9'}\\ntool_finishingStepdown = {'value': 0.020000000000000004, 'expression': '0.2mm'}\\nuse_tool_stepover = {'value': False, 'expression': 'false'}\\ntool_stepover = {'value': 0.381, 'expression': 'tool_diameter * 0.3'}\\ntool_finishingStepover = {'value': 0.127, 'expression': 'tool_diameter * 0.1'}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": false,
+      "input": {
+        "script": "def run(_context):\n    r=mb.set_params('Rough_Outer_Profile', {\n        'doMultipleDepths':{'value':True,'unit':'bool'},\n        'maximumStepdown':{'value':3.0,'unit':'mm'},\n        'doRoughingPasses':{'value':True,'unit':'bool'},\n        'maximumRoughingSteps':{'value':8,'unit':'raw'},\n        'stockToLeave':{'value':0.3,'unit':'mm'},\n    })\n    print(r)\n    return None\n"
+      },
+      "result": "{\n  \"success\": false,\n  \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 53, in run\\n  File \\\"<string>\\\", line 30, in run\\n  File \\\"C:\\\\Users\\\\Nanja\\\\MachineBench\\\\machinebench\\\\bridge\\\\mb_cam.py\\\", line 773, in set_params\\n    p.value.value = float(value)\\n    ^^^^^^^^^^^^^\\n  File \\\"C:\\\\Users/Nanja/AppData/Local/Autodesk/webdeploy/production/9c5312dfff2e4569cd1d269973ddf11cb999f782/Api/Python/packages\\\\adsk\\\\cam.py\\\", line 25259, in _set_value\\n    return _cam.IntegerParameterValue__set_value(self, value)\\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\\nTypeError: in method 'IntegerParameterValue__set_value', argument 2 of type 'int'\\n\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Rough_Outer_Profile'][0]\n    p=op.parameters\n    p.itemByName('doMultipleDepths').expression='true'\n    p.itemByName('maximumStepdown').expression='3mm'\n    p.itemByName('doRoughingPasses').expression='true'\n    p.itemByName('maximumRoughingSteps').expression='8'\n    p.itemByName('stockToLeave').expression='0.3mm'\n    for k in ['doMultipleDepths','maximumStepdown','doRoughingPasses','maximumRoughingSteps','stockToLeave']:\n        print(k,'=',p.itemByName(k).expression)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"doMultipleDepths = true\\nmaximumStepdown = 3mm\\ndoRoughingPasses = true\\nmaximumRoughingSteps = 8\\nstockToLeave = 0.3mm\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.add_operation('Setup1', strategy='contour2d', tool=2,\n                         geometry={'faces':[2], 'type':'contour', 'side':'AlwaysOutsideSideType'},\n                         name='Finish_Outer_Profile')\n    print(\"op:\", r.get('operation'))\n    lp=mb.list_params('Finish_Outer_Profile')\n    for k in ['bottomHeight_mode','topHeight_mode','doMultipleDepths','maximumStepdown','stockToLeave','tool_diameter']:\n        print(k,lp.get(k))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"op: Finish_Outer_Profile\\nbottomHeight_mode {'value': 'from contour', 'expression': \\\"'from contour'\\\"}\\ntopHeight_mode {'value': 'from stock top', 'expression': \\\"'from stock top'\\\"}\\ndoMultipleDepths {'value': False, 'expression': 'false'}\\nmaximumStepdown {'value': 0.0, 'expression': 'tool_fluteLength * 0.75'}\\nstockToLeave {'value': 0.0, 'expression': '0.1mm'}\\ntool_diameter {'value': 0.635, 'expression': '0.25in'}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Finish_Outer_Profile'][0]\n    p=op.parameters\n    p.itemByName('stockToLeave').expression='0mm'\n    p.itemByName('doMultipleDepths').expression='true'\n    p.itemByName('maximumStepdown').expression='5mm'\n    print('outer finish set')\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"outer finish set\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.add_operation('Setup1', strategy='pocket2d', tool=2,\n                         geometry={'faces':[0], 'type':'pocket'},\n                         name='Finish_Recess')\n    print(\"op:\", r.get('operation'))\n    lp=mb.list_params('Finish_Recess')\n    for k in ['bottomHeight_mode','bottomHeight_value','topHeight_mode','maximumStepdown','stockToLeave',\n              'useStockToLeave','doMultipleDepths','finishingStepdown']:\n        print(k,lp.get(k))\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"op: Finish_Recess\\nbottomHeight_mode {'value': 'from contour', 'expression': \\\"'from contour'\\\"}\\nbottomHeight_value {'value': 0.0, 'expression': '0.0'}\\ntopHeight_mode {'value': 'from stock top', 'expression': \\\"'from stock top'\\\"}\\nmaximumStepdown {'value': 0.0, 'expression': 'Math.min(tool_fluteLength * 0.75; tool_diameter * 0.1)'}\\nstockToLeave {'value': 0.05, 'expression': '0.5mm'}\\nuseStockToLeave {'value': True, 'expression': 'true'}\\ndoMultipleDepths {'value': False, 'expression': 'false'}\\nfinishingStepdown {'value': 0.0, 'expression': '0.2mm'}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Finish_Recess'][0]\n    p=op.parameters\n    p.itemByName('useStockToLeave').expression='false'\n    p.itemByName('stockToLeave').expression='0mm'\n    p.itemByName('verticalStockToLeave').expression='0mm'\n    p.itemByName('maximumStepdown').expression='3mm'\n    p.itemByName('doMultipleDepths').expression='true'\n    print('recess finish set')\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"recess finish set\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.add_operation('Setup1', strategy='drill', tool=3,\n                         geometry={'faces':[4,5,6,7], 'type':'drill'},\n                         name='Spot_Drill')\n    print(\"op:\", r.get('operation'))\n    lp=mb.list_params('Spot_Drill')\n    for k in lp:\n        kl=k.lower()\n        if any(s in kl for s in ['cycletype','dwell','bottomheight','depth','peck','holedepth']):\n            print(k,'=',lp[k])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"op: Spot_Drill\\nauto_threadDepth = {'value': 0.0, 'expression': 'abs(auto_threadMajorDiameter - auto_threadMinorDiameter) / 2'}\\nauto_threadDepthSharpTip = {'value': 0.0, 'expression': '0.5 * auto_threadHeightSharpTip + 0.5 * abs(auto_threadCrestDiameter - auto_threadPitchDiameter)'}\\nfullDepthShortfall = {'value': 0.0, 'expression': '0mm'}\\nselectSameDepth = {'value': False, 'expression': 'false'}\\nselectSameDepths = {'value': False, 'expression': 'false'}\\norderHolesByDepth = {'value': False, 'expression': 'false'}\\nbottomHeight_group = {'value': True, 'expression': 'true'}\\nbottomHeight_mode = {'value': 'from hole bottom', 'expression': \\\"isDrillingRefTrimming ? (drillingReference.bottomHeight_mode == 'from point' ? 'from reference operation' : drillingReference.bottomHeight_mode) : (holeMode == 'selection-points' ? 'from hole top' : 'from hole bottom')\\\"}\\nbottomHeight_componentIndex = {'value': '1', 'expression': \\\"'1'\\\"}\\nbottomHeight_ref = {'value': <adsk.core.BaseVector; proxy of <Swig Object of type 'std::vector< adsk::core::Ptr< adsk::core::Base > > *' at 0x00000239FC5F1BF0> >, 'expression': 'false'}\\nbottomHeightFromHighest_checkStock = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nbottomHeightFromLowest_checkStock = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\nbottomHeightFromHighest_checkModel = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nbottomHeightFromLowest_checkModel = {'value': 'bottom', 'expression': \\\"'bottom'\\\"}\\nbottomHeightFromHighest_checkFixture = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\nbottomHeightFromLowest_checkFixture = {'value': 'ignore', 'expression': \\\"'ignore'\\\"}\\nbottomHeight_offset = {'value': 0.0, 'expression': 'isDrillingRefTrimming ? drillingReference.bottomHeight_offset : 0mm'}\\nbottomHeight_value = {'value': 0.0, 'expression': '0.0'}\\nbottomHeight_absolute = {'value': False, 'expression': 'false'}\\nbreakThroughDepth = {'value': 0.0, 'expression': '0mm'}\\ncycleType = {'value': 'drilling', 'expression': \\\"isDrillingRefTrimming ? drillingReference.cycleType : ((tool_selectionMethod == 'specific') ? (tool_isMill ? ('drilling') : ((tool_type == 'tap right hand' || tool_type == 'tap left hand') ? ('tapping') : ((tool_type == 'reamer') ? ('reaming') : ('drilling')))) : ('drilling'))\\\"}\\nincrementalDepth = {'value': 0.2, 'expression': '2mm'}\\npeckingDepth = {'value': 0.15875, 'expression': 'tool_diameter * 0.25'}\\npeckingDepthReduction = {'value': 0.0, 'expression': '0mm'}\\nminimumPeckingDepth = {'value': 0.15875, 'expression': 'peckingDepth'}\\naccumulatedPeckingDepth = {'value': 1.5875000000000001, 'expression': 'Math.max(tool_diameter * 2.5; peckingDepth)'}\\ndwellBeforeRetract = {'value': False, 'expression': 'false'}\\ndwellingPeriod = {'value': 0.0, 'expression': '0s'}\\nstartingDepth = {'value': 0.635, 'expression': 'tool_diameter'}\\ndwellDepth = {'value': 0.0, 'expression': '0mm'}\\nstartingDepthOffset = {'value': 0.15875, 'expression': '0.25 * tool_diameter'}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    # holes faces 4,5,6,7 - find their z extent in wcs\n    for idx in [4,5,6,7]:\n        f=[x for x in mb.faces(0) if x['index']==idx][0]\n        print(\"hole\",idx,\"z_mm\",round(f['z_mm'],2),\"centroid\",[round(v,2) for v in f['centroid_mm']])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"hole 4 z_mm 11.22 centroid [-8.05, -6.48, 11.22]\\nhole 5 z_mm -11.22 centroid [14.4, -6.48, -11.22]\\nhole 6 z_mm 11.22 centroid [14.4, -6.48, 11.22]\\nhole 7 z_mm -11.22 centroid [-8.05, -6.48, -11.22]\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Spot_Drill'][0]\n    p=op.parameters\n    p.itemByName('bottomHeight_mode').expression=\"'from hole top'\"\n    p.itemByName('bottomHeight_offset').expression='-2mm'\n    p.itemByName('cycleType').expression=\"'drilling'\"\n    print('spot mode',p.itemByName('bottomHeight_mode').expression, p.itemByName('bottomHeight_offset').expression)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"spot mode 'from hole top' -2mm\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.add_operation('Setup1', strategy='drill', tool=4,\n                         geometry={'faces':[4,5,6,7], 'type':'drill'},\n                         name='Drill_Holes')\n    print(\"op:\", r.get('operation'))\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Drill_Holes'][0]\n    p=op.parameters\n    # through hole: peck cycle, breakthrough beyond bottom\n    p.itemByName('cycleType').expression=\"'chip-breaking'\"\n    p.itemByName('bottomHeight_mode').expression=\"'from hole bottom'\"\n    p.itemByName('bottomHeight_offset').expression='-1mm'  # break through\n    print('cycle',p.itemByName('cycleType').expression,'bottom',p.itemByName('bottomHeight_mode').expression, p.itemByName('bottomHeight_offset').expression)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"op: Drill_Holes\\ncycle 'chip-breaking' bottom 'from hole bottom' -1mm\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    r = mb.generate('Setup1', timeout=300)\n    print(json.dumps(r, default=str)[:1500])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"{\\\"completed\\\": true, \\\"operations\\\": [{\\\"name\\\": \\\"Face_Top\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Rough_Recess\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Rough_Outer_Profile\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Finish_Outer_Profile\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Finish_Recess\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Spot_Drill\\\", \\\"has_toolpath\\\": false, \\\"is_valid\\\": false}, {\\\"name\\\": \\\"Drill_Holes\\\", \\\"has_toolpath\\\": false, \\\"is_valid\\\": false}]}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    for name in ['Spot_Drill','Drill_Holes']:\n        op=[o for s in cam.setups for o in s.operations if o.name==name][0]\n        print(name, \"hasToolpath\", op.hasToolpath)\n        try:\n            err=op.generateErrorMessage() if hasattr(op,'generateErrorMessage') else None\n        except: err=None\n        # check error/warning\n        for attr in ['error','warning','generationError']:\n            if hasattr(op,attr):\n                try: print(\"  \",attr, getattr(op,attr))\n                except: pass\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Spot_Drill hasToolpath False\\n   error Hole Faces: No faces selected for drill operation.\\n\\n   warning \\nDrill_Holes hasToolpath False\\n   error Hole Faces: No faces selected for drill operation.\\n\\n   warning\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json\n    for name in ['Spot_Drill','Drill_Holes']:\n        try:\n            r=mb.set_geometry(name, {'faces':[4,5,6,7], 'type':'drill'})\n            print(name, json.dumps(r,default=str)[:200])\n        except Exception as e:\n            print(name,\"ERR\",e)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Spot_Drill {\\\"operation\\\": \\\"Spot_Drill\\\", \\\"geometry_set\\\": true}\\nDrill_Holes {\\\"operation\\\": \\\"Drill_Holes\\\", \\\"geometry_set\\\": true}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Spot_Drill'][0]\n    # inspect the drill geometry param\n    p=op.parameters\n    for k in ['holes','holeMode','geometryType']:\n        try:\n            pp=p.itemByName(k); print(k,'val',pp.value.value if hasattr(pp.value,'value') else '', 'expr',pp.expression)\n        except Exception as e: print(k,'err',e)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"holes err 'NoneType' object has no attribute 'value'\\nholeMode val selection-faces expr 'selection-faces'\\ngeometryType val chains expr 'chains'\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import inspect\n    src = inspect.getsource(mb._select_geometry)\n    print(src)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"def _select_geometry(op, body, geometry):\\n    \\\"\\\"\\\"Commit geometry selection for a 2D-milling or drilling op. geometry:\\n        {\\\"faces\\\":[idx,...], \\\"type\\\":\\\"pocket\\\"|\\\"contour\\\"|\\\"drill\\\",\\n         \\\"loop\\\":\\\"OnlyOutsideLoops\\\"|..., \\\"side\\\":\\\"AlwaysInsideSideType\\\"|...}\\n    For drilling-family strategies (drill, center drill, spot drill, bore,\\n    counterbore, tap) pass type=\\\"drill\\\" with the hole's cylindrical faces.\\\"\\\"\\\"\\n    sel_type = geometry.get(\\\"type\\\", \\\"pocket\\\")\\n\\n    # Drilling ops carry their geometry on a 'holeModel' parameter whose value is a\\n    # CadObjectParameterValue \\u2014 not the 'pockets'/'contours' curve params used by 2D\\n    # milling. Geometry is committed by assigning .value a PLAIN LIST of the hole's\\n    # cylindrical faces (an ObjectCollection is rejected by the vector<Base> typemap).\\n    if sel_type in (\\\"drill\\\", \\\"hole\\\", \\\"holes\\\"):\\n        p = op.parameters.itemByName(\\\"holeModel\\\")\\n        if p is None:\\n            raise RuntimeError(\\\"operation has no 'holeModel' geometry parameter \\u2014 \\\"\\n                               \\\"type='drill' needs a drilling-family strategy\\\")\\n        cv = adsk.cam.CadObjectParameterValue.cast(p.value)\\n        cv.value = [body.faces.item(i) for i in geometry[\\\"faces\\\"]]\\n        return\\n\\n    param_name = \\\"pockets\\\" if sel_type == \\\"pocket\\\" else \\\"contours\\\"\\n    p = op.parameters.itemByName(param_name)\\n    if p is None:\\n        raise RuntimeError(f\\\"operation has no {param_name!r} geometry parameter \\\"\\n                           f\\\"for this strategy\\\")\\n    cv = adsk.cam.CadContours2dParameterValue.cast(p.value)\\n    css = cv.getCurveSelections()\\n    css.clear()\\n    faces_sel = [body.faces.item(i) for i in geometry[\\\"faces\\\"]]\\n    if sel_type == \\\"pocket\\\":\\n        sel = css.createNewPocketSelection()\\n        sel.inputGeometry = faces_sel\\n    else:\\n        sel = css.createNewFaceContourSelection()\\n        try:\\n            sel.inputGeometry = faces_sel\\n        except Exception:\\n            # Fusion rejects a vertical wall face here with the cryptic \\\"Chosen\\n            # geometry is not compatible with input type\\\". A face-contour traces the\\n            # OUTER BOUNDARY of a HORIZONTAL face, so steer the caller to the right\\n            # geometry instead of letting them churn on the opaque message.\\n            raise RuntimeError(\\n                \\\"contour face-selection rejected face(s) \\\"\\n                f\\\"{geometry['faces']}: a contour traces the boundary of a HORIZONTAL \\\"\\n                \\\"face (e.g. the pocket opening / top face), so to finish pocket WALLS \\\"\\n                \\\"pass that opening face with side='AlwaysInsideSideType' \\u2014 NOT the \\\"\\n                \\\"vertical wall faces, which are not valid contour input.\\\") from None\\n        loop = geometry.get(\\\"loop\\\")\\n        side = geometry.get(\\\"side\\\")\\n        if loop:\\n            sel.loopType = getattr(adsk.cam.LoopTypes, loop)\\n        if side:\\n            sel.sideType = getattr(adsk.cam.SideTypes, side)\\n    cv.applyCurveSelections(css)\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam, adsk.fusion\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    des=app.activeDocument.products.itemByProductType('DesignProductType')\n    body=des.rootComponent.bRepBodies.item(0)\n    op=[o for s in cam.setups for o in s.operations if o.name=='Spot_Drill'][0]\n    p=op.parameters\n    hm=p.itemByName('holeModel')\n    print('holeModel present:', hm is not None)\n    if hm:\n        cv=adsk.cam.CadObjectParameterValue.cast(hm.value)\n        faces=[body.faces.item(i) for i in [4,5,6,7]]\n        cv.value=faces\n        # read back\n        cv2=adsk.cam.CadObjectParameterValue.cast(p.itemByName('holeModel').value)\n        got=cv2.value\n        print('assigned count:', len(got) if got else 0)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"holeModel present: True\\nassigned count: 4\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    des=app.activeDocument.products.itemByProductType('DesignProductType')\n    body=des.rootComponent.bRepBodies.item(0)\n    for name in ['Spot_Drill','Drill_Holes']:\n        op=[o for s in cam.setups for o in s.operations if o.name==name][0]\n        cv=adsk.cam.CadObjectParameterValue.cast(op.parameters.itemByName('holeModel').value)\n        cv.value=[body.faces.item(i) for i in [4,5,6,7]]\n        cnt=len(adsk.cam.CadObjectParameterValue.cast(op.parameters.itemByName('holeModel').value).value)\n        print(name,'holes',cnt)\n    import json\n    r=mb.generate('Setup1', timeout=300)\n    print(json.dumps(r,default=str)[:1200])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Spot_Drill holes 4\\nDrill_Holes holes 4\\n{\\\"completed\\\": true, \\\"operations\\\": [{\\\"name\\\": \\\"Face_Top\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Rough_Recess\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Rough_Outer_Profile\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Finish_Outer_Profile\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Finish_Recess\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Spot_Drill\\\", \\\"has_toolpath\\\": false, \\\"is_valid\\\": false}, {\\\"name\\\": \\\"Drill_Holes\\\", \\\"has_toolpath\\\": false, \\\"is_valid\\\": false}]}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Spot_Drill'][0]\n    print(\"error:\", repr(op.error) if hasattr(op,'error') else '?')\n    cv=adsk.cam.CadObjectParameterValue.cast(op.parameters.itemByName('holeModel').value)\n    print(\"holeModel count after gen:\", len(cv.value) if cv.value else 0)\n    # also check 'holes' param\n    hp=op.parameters.itemByName('holes')\n    print(\"holes param:\", hp.value if hp else 'none')\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"error: 'Hole Faces: No faces selected for drill operation.\\\\n'\\nholeModel count after gen: 4\\nholes param: none\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    op=[o for s in cam.setups for o in s.operations if o.name=='Spot_Drill'][0]\n    for p in op.parameters:\n        v=p.value\n        tn=type(v).__name__\n        if 'CadObject' in tn or 'CadContours' in tn or 'Cad' in tn:\n            try:\n                cnt=len(v.value) if hasattr(v,'value') and v.value else 0\n            except: cnt='?'\n            print(p.name, tn, 'count', cnt)\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"view_orientation_axisZ CadObjectParameterValue count 0\\nview_orientation_cSys CadObjectParameterValue count 0\\nview_orientation_surfaceNormal CadObjectParameterValue count 0\\nview_orientation_axisX CadObjectParameterValue count 0\\nview_orientation_axisY CadObjectParameterValue count 0\\nview_align_to_view_direction CadObjectParameterValue count 0\\nview_origin_point CadObjectParameterValue count 0\\nview_model_point CadObjectParameterValue count 0\\nview_stock_point CadObjectParameterValue count 0\\nmultiAxisRotaryAxis_orientation_axisRotary CadObjectParameterValue count 0\\nmultiAxisRotaryAxis_orientation_cSys CadObjectParameterValue count 0\\nmultiAxisRotaryAxis_origin_point CadObjectParameterValue count 0\\noperationHoleSignature CadObjectParameterValue count 0\\nholePoints CadObjectParameterValue count 0\\nholeFaces CadObjectParameterValue count 0\\ncontainmentBoundary CadContours2dParameterValue count 0\\ndrillingReference CadObjectParameterValue count 0\\nholeModel CadObjectParameterValue count 4\\ncheckSurfaceSelectionSets CadMachineAvoidGroupsParameterValue count 0\\nclearanceArea_orientation_selAxis CadObjectParameterValue count 0\\nclearanceArea_origin_point CadObjectParameterValue count 0\\nclearanceArea_model_point CadObjectParameterValue count 0\\nclearanceArea_stock_point CadObjectParameterValue count 0\\nclearanceHeight_ref CadObjectParameterValue count 0\\nclearanceAreaHeight_ref CadObjectParameterValue count 0\\nclearanceAreaCylinderRadius_ref CadObjectParameterValue count 0\\nclearanceAreaSphereRadius_ref CadObjectParameterValue count 0\\nretractHeight_ref CadObjectParameterValue count 0\\nretractAreaHeight_ref CadObjectParameterValue count 0\\nretractAreaCylinderRadius_ref CadObjectParameterValue count 0\\nretractAreaSphereRadius_ref CadObjectParameterValue count 0\\nfeedHeight_ref CadObjectParameterValue count 0\\ntopHeight_ref CadObjectParameterValue count 0\\nbottomHeight_ref CadObjectParameterValue count 0\\npolarRotationCenter_origin_point CadObjectParameterValue count 0\\nconnectionMoveClearanceArea_orientation_selAxis CadObjectParameterValue count 0\\nconnectionMoveClearanceAreaUp_orientation_selAxis CadObjectParameterValue count 0\\nconnectionMoveClearanceArea_origin_point CadObjectParameterValue count 0\\nconnectionMoveClearanceAreaHeight_ref CadObjectParameterValue count 0\\nconnectionMoveClearanceAreaCylinderRadius_ref CadObjectParameterValue count 0\\nconnectionMoveClearanceAreaCylinderCapPosZHeight_ref CadObjectParameterValue count 0\\nconnectionMoveClearanceAreaSphereRadius_ref CadObjectParameterValue count 0\\nassociatedView CadObjectParameterValue count 0\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    des=app.activeDocument.products.itemByProductType('DesignProductType')\n    body=des.rootComponent.bRepBodies.item(0)\n    for name in ['Spot_Drill','Drill_Holes']:\n        op=[o for s in cam.setups for o in s.operations if o.name==name][0]\n        cv=adsk.cam.CadObjectParameterValue.cast(op.parameters.itemByName('holeFaces').value)\n        cv.value=[body.faces.item(i) for i in [4,5,6,7]]\n        cnt=len(adsk.cam.CadObjectParameterValue.cast(op.parameters.itemByName('holeFaces').value).value)\n        print(name,'holeFaces',cnt)\n    import json\n    r=mb.generate('Setup1', timeout=300)\n    print(json.dumps(r,default=str)[:1200])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Spot_Drill holeFaces 4\\nDrill_Holes holeFaces 4\\n{\\\"completed\\\": true, \\\"operations\\\": [{\\\"name\\\": \\\"Face_Top\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Rough_Recess\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Rough_Outer_Profile\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Finish_Outer_Profile\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Finish_Recess\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Spot_Drill\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}, {\\\"name\\\": \\\"Drill_Holes\\\", \\\"has_toolpath\\\": true, \\\"is_valid\\\": true}]}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import adsk.core, adsk.cam\n    app=adsk.core.Application.get()\n    cam=app.activeDocument.products.itemByProductType('CAMProductType')\n    for s in cam.setups:\n        for o in s.operations:\n            tp=o.toolpath if hasattr(o,'toolpath') else None\n            info=''\n            try:\n                bb=o.boundingBox if hasattr(o,'boundingBox') else None\n            except: bb=None\n            print(o.name, \"valid\", o.hasToolpath)\n    # verify no interference: quick check that finish outer profile went to -20.05\n    return \"ok\"\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"Face_Top valid True\\nRough_Recess valid True\\nRough_Outer_Profile valid True\\nFinish_Outer_Profile valid True\\nFinish_Recess valid True\\nSpot_Drill valid True\\nDrill_Holes valid True\",\n  \"result\": \"ok\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    import json, tempfile, os\n    out_dir = tempfile.gettempdir()\n    out_path = os.path.join(out_dir, \"Titan_M6_Setup1.nc\")\n    r = mb.post('Setup1', output_path=out_path, units='mm')\n    print(json.dumps(r, default=str)[:1000])\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"{\\\"nc_path\\\": \\\"C:\\\\\\\\Users\\\\\\\\Nanja\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\Titan_M6_Setup1.nc\\\", \\\"setup\\\": \\\"Setup1\\\", \\\"post_file\\\": \\\"C:\\\\\\\\Users\\\\\\\\Nanja\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Autodesk\\\\\\\\Autodesk Fusion 360\\\\\\\\CAM\\\\\\\\cache\\\\\\\\posts\\\\\\\\haas next generation.cps\\\", \\\"units\\\": \\\"mm\\\"}\"\n}",
+      "prompt_index": 1
+    },
+    {
+      "tool": "run_fusion_python",
+      "success": true,
+      "input": {
+        "script": "def run(_context):\n    p=r\"C:\\Users\\Nanja\\AppData\\Local\\Temp\\Titan_M6_Setup1.nc\"\n    with open(p) as f:\n        lines=f.readlines()\n    print(\"total lines:\", len(lines))\n    print(\"--- head ---\")\n    print(''.join(lines[:25]))\n    print(\"--- tail ---\")\n    print(''.join(lines[-10:]))\n    # count tool changes\n    tc=[l for l in lines if 'T' in l and 'M06' in l]\n    print(\"tool changes:\", len(tc))\n    for l in tc: print(l.strip())\n    return None\n"
+      },
+      "result": "{\n  \"success\": true,\n  \"message\": \"total lines: 1967\\n--- head ---\\n%\\nO01001\\n(Using high feed G1 F5000. instead of G0.)\\n(Machine)\\n(  vendor: HAAS)\\n(  model: Mini Mill)\\n(  description: Haas Mini Mill)\\n(T2 D=15.875 CR=0. - ZMIN=-1. - flat end mill)\\n(T3 D=12.7 CR=0. - ZMIN=-7.2 - flat end mill)\\n(T9 D=6.35 CR=0. - ZMIN=-7.35 - flat end mill)\\n(T37 D=6.35 CR=0. TAPER=135deg - ZMIN=-21.05 - drill)\\n(T46 D=6.35 CR=0. TAPER=120deg - ZMIN=-9.604 - center drill)\\nN10 G90 G94 G17\\nN15 G21\\nN20 G53 G0 Z0.\\n\\n(Face_Top)\\nN25 M0\\n(MANUAL TOOL CHANGE TO T2)\\nN30 S3100 M3\\nN35 G17 G90 G94\\nN40 G54\\nN45 G1 X36.084 Y-23.25 F5000.\\nN50 G0 G43 Z15. H2\\nN55 T3\\n\\n--- tail ---\\nN9645 G80\\nN9650 G0 Z15.\\n\\nN9655 M5\\nN9660 M9\\nN9665 G53 G0 Z0.\\nN9670 G53 G0 X0. Y0.\\nN9675 M30\\n\\n%\\n\\ntool changes: 0\"\n}",
+      "prompt_index": 1
+    }
+  ],
+  "provenance": {
+    "system_prompt_sha": "59a4b8957309",
+    "mb_cam_sha": "02a702847ebd",
+    "task_file": "tasks/titan_m6/titan_m6_detailed.yaml",
+    "cloud_file": "Titan-M6",
+    "cad_file": null,
+    "fusion_mcp_url": "http://127.0.0.1:62330/mcp"
+  },
+  "artifacts": {
+    "video": null,
+    "image": null
+  },
+  "cam_summary": {
+    "doc": "claude-opus-4-8_Titan-M6_detailed_2026-07-23T13-31-16",
+    "cam_product": true,
+    "setups": [
+      {
+        "name": "Setup1",
+        "strategy": "setup",
+        "operation_type": 0,
+        "stock_mode": 1,
+        "stock_size_mm": [
+          51.53,
+          51.53,
+          20.05
+        ],
+        "machine": {
+          "vendor": "HAAS",
+          "model": "Mini Mill"
+        },
+        "machining_time_s": 913.26403,
+        "feed_time_s": 850.6948160016989,
+        "rapid_time_s": 2.569214928647053,
+        "tool_change_time_s": 60.0,
+        "operations": [
+          {
+            "name": "Face_Top",
+            "strategy": "face",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "Math.max((tool_diameter - 2 * tool_cornerRadius) * 0.7; tool_diameter * 0.05)",
+            "stepdown": "1.0mm",
+            "tool": {
+              "number": 2,
+              "type": "flat end mill",
+              "diameter": "0.625in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.6in",
+              "flutes": 4
+            }
+          },
+          {
+            "name": "Rough_Recess",
+            "strategy": "adaptive2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "tool_diameter * 0.4",
+            "stepdown": "0.2cm",
+            "tool": {
+              "number": 3,
+              "type": "flat end mill",
+              "diameter": "0.5in",
+              "corner_radius": "0.0in",
+              "flute_length": "2.in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Rough_Outer_Profile",
+            "strategy": "contour2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "Math.max((tool_diameter - (2 * tool_cornerRadius)) * 0.95; tool_diameter * 0.20)",
+            "stepdown": "3mm",
+            "tool": {
+              "number": 3,
+              "type": "flat end mill",
+              "diameter": "0.5in",
+              "corner_radius": "0.0in",
+              "flute_length": "2.in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Finish_Outer_Profile",
+            "strategy": "contour2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "Math.max((tool_diameter - (2 * tool_cornerRadius)) * 0.95; tool_diameter * 0.20)",
+            "stepdown": "5mm",
+            "tool": {
+              "number": 9,
+              "type": "flat end mill",
+              "diameter": "0.25in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.1in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Finish_Recess",
+            "strategy": "pocket2d",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": "tool_diameter * 0.6",
+            "stepdown": "3mm",
+            "tool": {
+              "number": 9,
+              "type": "flat end mill",
+              "diameter": "0.25in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.1in",
+              "flutes": 3
+            }
+          },
+          {
+            "name": "Spot_Drill",
+            "strategy": "drill",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": null,
+            "stepdown": null,
+            "tool": {
+              "number": 46,
+              "type": "center drill",
+              "diameter": "0.25in",
+              "corner_radius": "0.0in",
+              "flute_length": "0.5675in",
+              "flutes": 2
+            }
+          },
+          {
+            "name": "Drill_Holes",
+            "strategy": "drill",
+            "has_toolpath": true,
+            "is_valid": true,
+            "is_toolpath_valid": true,
+            "is_suppressed": false,
+            "stepover": null,
+            "stepdown": null,
+            "tool": {
+              "number": 37,
+              "type": "drill",
+              "diameter": "0.25in",
+              "corner_radius": "0.0in",
+              "flute_length": "1.2in",
+              "flutes": 2
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
