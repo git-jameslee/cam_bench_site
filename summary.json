@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-24T17:23:13.764232+00:00",
-  "n_runs": 69,
+  "generated": "2026-07-24T17:23:35.959081+00:00",
+  "n_runs": 70,
   "group_order": [
     "outcome",
     "post",
@@ -252,7 +252,7 @@
           },
           {
             "model": "claude-opus-4-8",
-            "runs": 16,
+            "runs": 17,
             "wins": 6,
             "won": [
               "scallop_height_mm",
@@ -357,12 +357,12 @@
                 "n": 14
               },
               "tool_call_success_rate": {
-                "mean": 0.791313,
-                "n": 16
+                "mean": 0.744765,
+                "n": 17
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 16
+                "n": 17
               }
             }
           },
@@ -1393,7 +1393,7 @@
           },
           {
             "model": "claude-opus-4-8",
-            "runs": 16,
+            "runs": 17,
             "wins": 6,
             "won": [
               "scallop_height_mm",
@@ -1498,12 +1498,12 @@
                 "n": 14
               },
               "tool_call_success_rate": {
-                "mean": 0.791313,
-                "n": 16
+                "mean": 0.744765,
+                "n": 17
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 16
+                "n": 17
               }
             }
           },
@@ -12718,27 +12718,27 @@
       "models": [
         {
           "model": "claude-opus-4-8",
-          "runs": 1,
+          "runs": 2,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.95,
-              "n": 1
+              "mean": 0.475,
+              "n": 2
             },
             "tool_calls_total": {
-              "mean": 20.0,
-              "n": 1
+              "mean": 10.0,
+              "n": 2
             },
             "tool_calls_succeeded": {
-              "mean": 19.0,
-              "n": 1
+              "mean": 9.5,
+              "n": 2
             },
             "tool_calls_failed": {
-              "mean": 1.0,
-              "n": 1
+              "mean": 0.5,
+              "n": 2
             },
             "hit_round_limit": {
               "mean": 0.0,
-              "n": 1
+              "n": 2
             },
             "iou_voxel": {
               "mean": 0.5168,
@@ -12805,70 +12805,70 @@
               "n": 1
             },
             "input_tokens": {
-              "mean": 348556.0,
-              "n": 1
+              "mean": 174278.0,
+              "n": 2
             },
             "output_tokens": {
-              "mean": 9965.0,
-              "n": 1
+              "mean": 4982.5,
+              "n": 2
             },
             "cache_read_input_tokens": {
-              "mean": 323688.0,
-              "n": 1
+              "mean": 161844.0,
+              "n": 2
             },
             "cache_creation_input_tokens": {
-              "mean": 24829.0,
-              "n": 1
+              "mean": 12414.5,
+              "n": 2
             },
             "llm_rounds": {
-              "mean": 20.0,
-              "n": 1
+              "mean": 10.0,
+              "n": 2
             },
             "llm_s": {
-              "mean": 185.19,
-              "n": 1
+              "mean": 92.595,
+              "n": 2
             },
             "tool_s": {
-              "mean": 37.42,
-              "n": 1
+              "mean": 18.71,
+              "n": 2
             },
             "wall_clock_s": {
-              "mean": 222.78,
-              "n": 1
+              "mean": 118.125,
+              "n": 2
             },
             "tool_inputs_repaired": {
               "mean": 0.0,
-              "n": 1
+              "n": 2
             },
             "mb_injected_calls": {
-              "mean": 18.0,
-              "n": 1
+              "mean": 9.0,
+              "n": 2
             },
             "aborted": {
-              "mean": 0.0,
-              "n": 1
+              "mean": 0.5,
+              "n": 2
             }
           },
-          "tool_call_success_rate_mean": null,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": null,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": null,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": null,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": null,
-          "hit_round_limit_ci_low": null,
-          "hit_round_limit_ci_high": null,
-          "hit_round_limit_ci_margin": null,
+          "tool_call_success_rate_mean": 0.475,
+          "tool_call_success_rate_ci_low": 0.0,
+          "tool_call_success_rate_ci_high": 1.0,
+          "tool_call_success_rate_ci_margin": 0.5,
+          "tool_calls_total_mean": 10.0,
+          "tool_calls_total_ci_low": 0.0,
+          "tool_calls_total_ci_high": 137.062047,
+          "tool_calls_total_ci_margin": 68.531024,
+          "tool_calls_succeeded_mean": 9.5,
+          "tool_calls_succeeded_ci_low": 0.0,
+          "tool_calls_succeeded_ci_high": 130.208945,
+          "tool_calls_succeeded_ci_margin": 65.104472,
+          "tool_calls_failed_mean": 0.5,
+          "tool_calls_failed_ci_low": 0.0,
+          "tool_calls_failed_ci_high": 6.853102,
+          "tool_calls_failed_ci_margin": 3.426551,
+          "hit_round_limit_mean": 0.0,
+          "hit_round_limit_ci_low": 0.0,
+          "hit_round_limit_ci_high": 0.841886,
+          "hit_round_limit_ci_margin": 0.420943,
           "iou_voxel_mean": null,
           "iou_voxel_ci_low": null,
           "iou_voxel_ci_high": null,
@@ -12933,54 +12933,60 @@
           "air_cut_ratio_ci_low": null,
           "air_cut_ratio_ci_high": null,
           "air_cut_ratio_ci_margin": null,
-          "input_tokens_mean": null,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": null,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": null,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": null,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": null,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": null,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": null,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": null,
-          "wall_clock_s_ci_low": null,
-          "wall_clock_s_ci_high": null,
-          "wall_clock_s_ci_margin": null,
-          "tool_inputs_repaired_mean": null,
+          "input_tokens_mean": 174278.0,
+          "input_tokens_ci_low": 0.0,
+          "input_tokens_ci_high": 2388689.949011,
+          "input_tokens_ci_margin": 1194344.974506,
+          "output_tokens_mean": 4982.5,
+          "output_tokens_ci_low": 0.0,
+          "output_tokens_ci_high": 68291.165098,
+          "output_tokens_ci_margin": 34145.582549,
+          "cache_read_input_tokens_mean": 161844.0,
+          "cache_read_input_tokens_ci_low": 0.0,
+          "cache_read_input_tokens_ci_high": 2218266.999321,
+          "cache_read_input_tokens_ci_margin": 1109133.499661,
+          "cache_creation_input_tokens_mean": 12414.5,
+          "cache_creation_input_tokens_ci_low": 0.0,
+          "cache_creation_input_tokens_ci_high": 170155.678697,
+          "cache_creation_input_tokens_ci_margin": 85077.839349,
+          "llm_rounds_mean": 10.0,
+          "llm_rounds_ci_low": 0.0,
+          "llm_rounds_ci_high": 137.062047,
+          "llm_rounds_ci_margin": 68.531024,
+          "llm_s_mean": 92.595,
+          "llm_s_ci_low": 0.0,
+          "llm_s_ci_high": 1269.126028,
+          "llm_s_ci_margin": 634.563014,
+          "tool_s_mean": 18.71,
+          "tool_s_ci_low": 0.0,
+          "tool_s_ci_high": 256.443091,
+          "tool_s_ci_margin": 128.221545,
+          "wall_clock_s_mean": 118.125,
+          "wall_clock_s_ci_low": 0.0,
+          "wall_clock_s_ci_high": 1447.892857,
+          "wall_clock_s_ci_margin": 723.946428,
+          "tool_inputs_repaired_mean": 0.0,
           "tool_inputs_repaired_ci_low": null,
           "tool_inputs_repaired_ci_high": null,
           "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": null,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": null,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
+          "mb_injected_calls_mean": 9.0,
+          "mb_injected_calls_ci_low": 0.0,
+          "mb_injected_calls_ci_high": 123.355843,
+          "mb_injected_calls_ci_margin": 61.677921,
+          "aborted_mean": 0.5,
+          "aborted_ci_low": 0.0,
+          "aborted_ci_high": 6.853102,
+          "aborted_ci_margin": 3.426551,
           "run_index": [
             {
               "run_id": "805f01df-6515-47ba-b898-b0a1aed69303",
               "timestamp": "2026-07-23T14:06:19.550640",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "2614577c-477a-4cf3-bc25-120ad2772dc7",
+              "timestamp": "2026-07-24T13:23:33.613925",
               "trial_index": 0,
               "prompt_variant": "detailed"
             }
@@ -13322,7 +13328,7 @@
           "graded": 1
         },
         "titan_m9_detailed": {
-          "runs": 1,
+          "runs": 2,
           "graded": 1
         }
       },
