@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-27T15:46:14.836852+00:00",
-  "n_runs": 6,
+  "generated": "2026-07-27T16:20:12.606661+00:00",
+  "n_runs": 7,
   "group_order": [
     "outcome",
     "post",
@@ -28,7 +28,8 @@
     ],
     "task_groups": [
       "box_pocket",
-      "rounded_rectangle_with_pin_and_hole"
+      "rounded_rectangle_with_pin_and_hole",
+      "titan_m10"
     ],
     "wins_metrics": [
       {
@@ -126,7 +127,7 @@
         "models": [
           {
             "model": "claude-fable-5",
-            "runs": 6,
+            "runs": 7,
             "wins": 0,
             "won": [],
             "headline": {
@@ -144,6 +145,10 @@
               "rounded_rectangle_with_pin_and_hole": {
                 "mean": 0.686933,
                 "n": 3
+              },
+              "titan_m10": {
+                "mean": null,
+                "n": 0
               }
             },
             "metrics": {
@@ -184,12 +189,12 @@
                 "n": 6
               },
               "tool_call_success_rate": {
-                "mean": 0.831,
-                "n": 6
+                "mean": 0.843571,
+                "n": 7
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 6
+                "n": 7
               }
             }
           }
@@ -218,6 +223,10 @@
               "rounded_rectangle_with_pin_and_hole": {
                 "mean": 0.9915,
                 "n": 1
+              },
+              "titan_m10": {
+                "mean": null,
+                "n": 0
               }
             },
             "metrics": {
@@ -292,6 +301,10 @@
               "rounded_rectangle_with_pin_and_hole": {
                 "mean": 0.5245,
                 "n": 1
+              },
+              "titan_m10": {
+                "mean": null,
+                "n": 0
               }
             },
             "metrics": {
@@ -348,7 +361,7 @@
         "models": [
           {
             "model": "claude-fable-5",
-            "runs": 2,
+            "runs": 3,
             "wins": 0,
             "won": [],
             "headline": {
@@ -366,6 +379,10 @@
               "rounded_rectangle_with_pin_and_hole": {
                 "mean": 0.5448,
                 "n": 1
+              },
+              "titan_m10": {
+                "mean": null,
+                "n": 0
               }
             },
             "metrics": {
@@ -406,12 +423,12 @@
                 "n": 2
               },
               "tool_call_success_rate": {
-                "mean": 0.8565,
-                "n": 2
+                "mean": 0.877333,
+                "n": 3
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 2
+                "n": 3
               }
             }
           }
@@ -428,6 +445,10 @@
           "rounded_rectangle_with_pin_and_hole": {
             "mean": 0.9915,
             "n": 1
+          },
+          "titan_m10": {
+            "mean": null,
+            "n": 0
           }
         },
         "explicit": {
@@ -438,6 +459,10 @@
           "rounded_rectangle_with_pin_and_hole": {
             "mean": 0.5245,
             "n": 1
+          },
+          "titan_m10": {
+            "mean": null,
+            "n": 0
           }
         },
         "detailed": {
@@ -448,6 +473,10 @@
           "rounded_rectangle_with_pin_and_hole": {
             "mean": 0.5448,
             "n": 1
+          },
+          "titan_m10": {
+            "mean": null,
+            "n": 0
           }
         }
       }
@@ -3369,6 +3398,267 @@
           ]
         }
       ]
+    },
+    {
+      "name": "titan_m10_detailed",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "claude-fable-5",
+          "runs": 1,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.919,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 37.0,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 34.0,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 3.0,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 1
+            },
+            "input_tokens": {
+              "mean": 835641.0,
+              "n": 1
+            },
+            "output_tokens": {
+              "mean": 97631.0,
+              "n": 1
+            },
+            "cache_read_input_tokens": {
+              "mean": 798609.0,
+              "n": 1
+            },
+            "cache_creation_input_tokens": {
+              "mean": 36965.0,
+              "n": 1
+            },
+            "llm_rounds": {
+              "mean": 34.0,
+              "n": 1
+            },
+            "llm_s": {
+              "mean": 1601.52,
+              "n": 1
+            },
+            "tool_s": {
+              "mean": 423.44,
+              "n": 1
+            },
+            "wall_clock_s": {
+              "mean": 2028.27,
+              "n": 1
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "n": 1
+            },
+            "mb_injected_calls": {
+              "mean": 33.0,
+              "n": 1
+            },
+            "aborted": {
+              "mean": 1.0,
+              "n": 1
+            }
+          },
+          "tool_call_success_rate_mean": null,
+          "tool_call_success_rate_ci_low": null,
+          "tool_call_success_rate_ci_high": null,
+          "tool_call_success_rate_ci_margin": null,
+          "tool_calls_total_mean": null,
+          "tool_calls_total_ci_low": null,
+          "tool_calls_total_ci_high": null,
+          "tool_calls_total_ci_margin": null,
+          "tool_calls_succeeded_mean": null,
+          "tool_calls_succeeded_ci_low": null,
+          "tool_calls_succeeded_ci_high": null,
+          "tool_calls_succeeded_ci_margin": null,
+          "tool_calls_failed_mean": null,
+          "tool_calls_failed_ci_low": null,
+          "tool_calls_failed_ci_high": null,
+          "tool_calls_failed_ci_margin": null,
+          "hit_round_limit_mean": null,
+          "hit_round_limit_ci_low": null,
+          "hit_round_limit_ci_high": null,
+          "hit_round_limit_ci_margin": null,
+          "input_tokens_mean": null,
+          "input_tokens_ci_low": null,
+          "input_tokens_ci_high": null,
+          "input_tokens_ci_margin": null,
+          "output_tokens_mean": null,
+          "output_tokens_ci_low": null,
+          "output_tokens_ci_high": null,
+          "output_tokens_ci_margin": null,
+          "cache_read_input_tokens_mean": null,
+          "cache_read_input_tokens_ci_low": null,
+          "cache_read_input_tokens_ci_high": null,
+          "cache_read_input_tokens_ci_margin": null,
+          "cache_creation_input_tokens_mean": null,
+          "cache_creation_input_tokens_ci_low": null,
+          "cache_creation_input_tokens_ci_high": null,
+          "cache_creation_input_tokens_ci_margin": null,
+          "llm_rounds_mean": null,
+          "llm_rounds_ci_low": null,
+          "llm_rounds_ci_high": null,
+          "llm_rounds_ci_margin": null,
+          "llm_s_mean": null,
+          "llm_s_ci_low": null,
+          "llm_s_ci_high": null,
+          "llm_s_ci_margin": null,
+          "tool_s_mean": null,
+          "tool_s_ci_low": null,
+          "tool_s_ci_high": null,
+          "tool_s_ci_margin": null,
+          "wall_clock_s_mean": null,
+          "wall_clock_s_ci_low": null,
+          "wall_clock_s_ci_high": null,
+          "wall_clock_s_ci_margin": null,
+          "tool_inputs_repaired_mean": null,
+          "tool_inputs_repaired_ci_low": null,
+          "tool_inputs_repaired_ci_high": null,
+          "tool_inputs_repaired_ci_margin": null,
+          "mb_injected_calls_mean": null,
+          "mb_injected_calls_ci_low": null,
+          "mb_injected_calls_ci_high": null,
+          "mb_injected_calls_ci_margin": null,
+          "aborted_mean": null,
+          "aborted_ci_low": null,
+          "aborted_ci_high": null,
+          "aborted_ci_margin": null,
+          "run_index": [
+            {
+              "run_id": "6062a22a-8125-48bd-9378-63db16ccd25e",
+              "timestamp": "2026-07-27T12:20:09.447046",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            }
+          ]
+        }
+      ]
     }
   ],
   "overview": {
@@ -3381,7 +3671,8 @@
       "box_pocket_minimal",
       "rounded_rectangle_with_pin_and_hole_detailed",
       "rounded_rectangle_with_pin_and_hole_explicit",
-      "rounded_rectangle_with_pin_and_hole_minimal"
+      "rounded_rectangle_with_pin_and_hole_minimal",
+      "titan_m10_detailed"
     ],
     "cells": {
       "claude-fable-5": {
@@ -3408,6 +3699,10 @@
         "rounded_rectangle_with_pin_and_hole_minimal": {
           "runs": 1,
           "graded": 1
+        },
+        "titan_m10_detailed": {
+          "runs": 1,
+          "graded": 0
         }
       }
     }
