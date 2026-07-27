@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-27T14:59:26.965863+00:00",
-  "n_runs": 1,
+  "generated": "2026-07-27T15:07:23.052410+00:00",
+  "n_runs": 2,
   "group_order": [
     "outcome",
     "post",
@@ -22,6 +22,7 @@
     },
     "variants": [
       "all",
+      "explicit",
       "detailed"
     ],
     "task_groups": [
@@ -53,10 +54,26 @@
         "fmt": "secs"
       },
       {
+        "key": "scallop_height_mm",
+        "section": "post",
+        "direction": -1,
+        "label": "Scallop (mm)",
+        "group": "post",
+        "fmt": "score2"
+      },
+      {
         "key": "air_cut_ratio",
         "section": "post",
         "direction": -1,
         "label": "Air-cut",
+        "group": "post",
+        "fmt": "pct"
+      },
+      {
+        "key": "engagement_ok",
+        "section": "post",
+        "direction": 1,
+        "label": "Engagement OK",
         "group": "post",
         "fmt": "pct"
       },
@@ -107,11 +124,81 @@
         "models": [
           {
             "model": "claude-fable-5",
+            "runs": 2,
+            "wins": 0,
+            "won": [],
+            "headline": {
+              "mean": 0.7926,
+              "n": 2,
+              "ci_low": 0.0,
+              "ci_high": 1.0,
+              "ci_margin": 0.5
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.7926,
+                "n": 2
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.7926,
+                "n": 2
+              },
+              "max_deviation_mm": {
+                "mean": 7.75,
+                "n": 2
+              },
+              "cycle_time_s": {
+                "mean": 855.87,
+                "n": 2
+              },
+              "scallop_height_mm": {
+                "mean": 0.895,
+                "n": 1
+              },
+              "air_cut_ratio": {
+                "mean": 0.1322,
+                "n": 2
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 1
+              },
+              "collision_free": {
+                "mean": 1.0,
+                "n": 2
+              },
+              "rough_before_finish": {
+                "mean": 1.0,
+                "n": 2
+              },
+              "tolerance_appropriate": {
+                "mean": 0.5,
+                "n": 2
+              },
+              "tool_call_success_rate": {
+                "mean": 0.7735,
+                "n": 2
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 2
+              }
+            }
+          }
+        ]
+      },
+      "explicit": {
+        "contested": 0,
+        "models": [
+          {
+            "model": "claude-fable-5",
             "runs": 1,
             "wins": 0,
             "won": [],
             "headline": {
-              "mean": 1.0,
+              "mean": 0.5852,
               "n": 1,
               "ci_low": null,
               "ci_high": null,
@@ -119,25 +206,33 @@
             },
             "tasks": {
               "box_pocket": {
-                "mean": 1.0,
+                "mean": 0.5852,
                 "n": 1
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": 1.0,
+                "mean": 0.5852,
                 "n": 1
               },
               "max_deviation_mm": {
-                "mean": 0.0,
+                "mean": 15.5,
                 "n": 1
               },
               "cycle_time_s": {
-                "mean": 981.46,
+                "mean": 730.28,
+                "n": 1
+              },
+              "scallop_height_mm": {
+                "mean": 0.895,
                 "n": 1
               },
               "air_cut_ratio": {
-                "mean": 0.1276,
+                "mean": 0.1368,
+                "n": 1
+              },
+              "engagement_ok": {
+                "mean": 1.0,
                 "n": 1
               },
               "collision_free": {
@@ -149,11 +244,11 @@
                 "n": 1
               },
               "tolerance_appropriate": {
-                "mean": 1.0,
+                "mean": 0.0,
                 "n": 1
               },
               "tool_call_success_rate": {
-                "mean": 0.895,
+                "mean": 0.652,
                 "n": 1
               },
               "hit_round_limit": {
@@ -198,9 +293,17 @@
                 "mean": 981.46,
                 "n": 1
               },
+              "scallop_height_mm": {
+                "mean": null,
+                "n": 0
+              },
               "air_cut_ratio": {
                 "mean": 0.1276,
                 "n": 1
+              },
+              "engagement_ok": {
+                "mean": null,
+                "n": 0
               },
               "collision_free": {
                 "mean": 1.0,
@@ -229,6 +332,12 @@
     },
     "matrix": {
       "claude-fable-5": {
+        "explicit": {
+          "box_pocket": {
+            "mean": 0.5852,
+            "n": 1
+          }
+        },
         "detailed": {
           "box_pocket": {
             "mean": 1.0,
@@ -694,6 +803,507 @@
           ]
         }
       ]
+    },
+    {
+      "name": "box_pocket_explicit",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "iou_voxel",
+          "section": "post",
+          "label": "IoU",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "max_deviation_mm",
+          "section": "post",
+          "label": "Max deviation (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "p99_deviation_mm",
+          "section": "post",
+          "label": "P99 deviation (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "operation_count",
+          "section": "post",
+          "label": "Ops",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_change_count",
+          "section": "post",
+          "label": "Tool changes",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "cycle_time_s",
+          "section": "post",
+          "label": "Cycle time",
+          "group": "post",
+          "fmt": "secs"
+        },
+        {
+          "key": "toolpath_length_mm",
+          "section": "post",
+          "label": "Toolpath length (mm)",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "collision_free",
+          "section": "post",
+          "label": "Collision-free",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "stock_in_bounds",
+          "section": "post",
+          "label": "Stock in bounds",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "scallop_height_mm",
+          "section": "post",
+          "label": "Scallop (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "radial_engagement_pct",
+          "section": "post",
+          "label": "Radial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "engagement_ok",
+          "section": "post",
+          "label": "Engagement OK",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "axial_engagement_pct",
+          "section": "post",
+          "label": "Axial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "rough_before_finish",
+          "section": "post",
+          "label": "Sequencing",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "tolerance_appropriate",
+          "section": "post",
+          "label": "Tolerance",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "air_cut_ratio",
+          "section": "post",
+          "label": "Air-cut",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "claude-fable-5",
+          "runs": 1,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.652,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 23.0,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 15.0,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 8.0,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 1
+            },
+            "iou_voxel": {
+              "mean": 0.5852,
+              "n": 1
+            },
+            "max_deviation_mm": {
+              "mean": 15.5,
+              "n": 1
+            },
+            "p99_deviation_mm": {
+              "mean": 14.5,
+              "n": 1
+            },
+            "operation_count": {
+              "mean": 5.0,
+              "n": 1
+            },
+            "tool_change_count": {
+              "mean": 2.0,
+              "n": 1
+            },
+            "cycle_time_s": {
+              "mean": 730.28,
+              "n": 1
+            },
+            "toolpath_length_mm": {
+              "mean": 15303.45,
+              "n": 1
+            },
+            "collision_free": {
+              "mean": 1.0,
+              "n": 1
+            },
+            "stock_in_bounds": {
+              "mean": 1.0,
+              "n": 1
+            },
+            "scallop_height_mm": {
+              "mean": 0.895,
+              "n": 1
+            },
+            "radial_engagement_pct": {
+              "mean": 48.119,
+              "n": 1
+            },
+            "engagement_ok": {
+              "mean": 1.0,
+              "n": 1
+            },
+            "axial_engagement_pct": {
+              "mean": 30.1837,
+              "n": 1
+            },
+            "rough_before_finish": {
+              "mean": 1.0,
+              "n": 1
+            },
+            "tolerance_appropriate": {
+              "mean": 0.0,
+              "n": 1
+            },
+            "air_cut_ratio": {
+              "mean": 0.1368,
+              "n": 1
+            },
+            "input_tokens": {
+              "mean": 580931.0,
+              "n": 1
+            },
+            "output_tokens": {
+              "mean": 24234.0,
+              "n": 1
+            },
+            "cache_read_input_tokens": {
+              "mean": 546725.0,
+              "n": 1
+            },
+            "cache_creation_input_tokens": {
+              "mean": 34161.0,
+              "n": 1
+            },
+            "llm_rounds": {
+              "mean": 23.0,
+              "n": 1
+            },
+            "llm_s": {
+              "mean": 393.51,
+              "n": 1
+            },
+            "tool_s": {
+              "mean": 15.8,
+              "n": 1
+            },
+            "wall_clock_s": {
+              "mean": 409.83,
+              "n": 1
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "n": 1
+            },
+            "mb_injected_calls": {
+              "mean": 21.0,
+              "n": 1
+            },
+            "aborted": {
+              "mean": 0.0,
+              "n": 1
+            }
+          },
+          "tool_call_success_rate_mean": null,
+          "tool_call_success_rate_ci_low": null,
+          "tool_call_success_rate_ci_high": null,
+          "tool_call_success_rate_ci_margin": null,
+          "tool_calls_total_mean": null,
+          "tool_calls_total_ci_low": null,
+          "tool_calls_total_ci_high": null,
+          "tool_calls_total_ci_margin": null,
+          "tool_calls_succeeded_mean": null,
+          "tool_calls_succeeded_ci_low": null,
+          "tool_calls_succeeded_ci_high": null,
+          "tool_calls_succeeded_ci_margin": null,
+          "tool_calls_failed_mean": null,
+          "tool_calls_failed_ci_low": null,
+          "tool_calls_failed_ci_high": null,
+          "tool_calls_failed_ci_margin": null,
+          "hit_round_limit_mean": null,
+          "hit_round_limit_ci_low": null,
+          "hit_round_limit_ci_high": null,
+          "hit_round_limit_ci_margin": null,
+          "iou_voxel_mean": null,
+          "iou_voxel_ci_low": null,
+          "iou_voxel_ci_high": null,
+          "iou_voxel_ci_margin": null,
+          "max_deviation_mm_mean": null,
+          "max_deviation_mm_ci_low": null,
+          "max_deviation_mm_ci_high": null,
+          "max_deviation_mm_ci_margin": null,
+          "p99_deviation_mm_mean": null,
+          "p99_deviation_mm_ci_low": null,
+          "p99_deviation_mm_ci_high": null,
+          "p99_deviation_mm_ci_margin": null,
+          "operation_count_mean": null,
+          "operation_count_ci_low": null,
+          "operation_count_ci_high": null,
+          "operation_count_ci_margin": null,
+          "tool_change_count_mean": null,
+          "tool_change_count_ci_low": null,
+          "tool_change_count_ci_high": null,
+          "tool_change_count_ci_margin": null,
+          "cycle_time_s_mean": null,
+          "cycle_time_s_ci_low": null,
+          "cycle_time_s_ci_high": null,
+          "cycle_time_s_ci_margin": null,
+          "toolpath_length_mm_mean": null,
+          "toolpath_length_mm_ci_low": null,
+          "toolpath_length_mm_ci_high": null,
+          "toolpath_length_mm_ci_margin": null,
+          "collision_free_mean": null,
+          "collision_free_ci_low": null,
+          "collision_free_ci_high": null,
+          "collision_free_ci_margin": null,
+          "stock_in_bounds_mean": null,
+          "stock_in_bounds_ci_low": null,
+          "stock_in_bounds_ci_high": null,
+          "stock_in_bounds_ci_margin": null,
+          "scallop_height_mm_mean": null,
+          "scallop_height_mm_ci_low": null,
+          "scallop_height_mm_ci_high": null,
+          "scallop_height_mm_ci_margin": null,
+          "radial_engagement_pct_mean": null,
+          "radial_engagement_pct_ci_low": null,
+          "radial_engagement_pct_ci_high": null,
+          "radial_engagement_pct_ci_margin": null,
+          "engagement_ok_mean": null,
+          "engagement_ok_ci_low": null,
+          "engagement_ok_ci_high": null,
+          "engagement_ok_ci_margin": null,
+          "axial_engagement_pct_mean": null,
+          "axial_engagement_pct_ci_low": null,
+          "axial_engagement_pct_ci_high": null,
+          "axial_engagement_pct_ci_margin": null,
+          "rough_before_finish_mean": null,
+          "rough_before_finish_ci_low": null,
+          "rough_before_finish_ci_high": null,
+          "rough_before_finish_ci_margin": null,
+          "tolerance_appropriate_mean": null,
+          "tolerance_appropriate_ci_low": null,
+          "tolerance_appropriate_ci_high": null,
+          "tolerance_appropriate_ci_margin": null,
+          "air_cut_ratio_mean": null,
+          "air_cut_ratio_ci_low": null,
+          "air_cut_ratio_ci_high": null,
+          "air_cut_ratio_ci_margin": null,
+          "input_tokens_mean": null,
+          "input_tokens_ci_low": null,
+          "input_tokens_ci_high": null,
+          "input_tokens_ci_margin": null,
+          "output_tokens_mean": null,
+          "output_tokens_ci_low": null,
+          "output_tokens_ci_high": null,
+          "output_tokens_ci_margin": null,
+          "cache_read_input_tokens_mean": null,
+          "cache_read_input_tokens_ci_low": null,
+          "cache_read_input_tokens_ci_high": null,
+          "cache_read_input_tokens_ci_margin": null,
+          "cache_creation_input_tokens_mean": null,
+          "cache_creation_input_tokens_ci_low": null,
+          "cache_creation_input_tokens_ci_high": null,
+          "cache_creation_input_tokens_ci_margin": null,
+          "llm_rounds_mean": null,
+          "llm_rounds_ci_low": null,
+          "llm_rounds_ci_high": null,
+          "llm_rounds_ci_margin": null,
+          "llm_s_mean": null,
+          "llm_s_ci_low": null,
+          "llm_s_ci_high": null,
+          "llm_s_ci_margin": null,
+          "tool_s_mean": null,
+          "tool_s_ci_low": null,
+          "tool_s_ci_high": null,
+          "tool_s_ci_margin": null,
+          "wall_clock_s_mean": null,
+          "wall_clock_s_ci_low": null,
+          "wall_clock_s_ci_high": null,
+          "wall_clock_s_ci_margin": null,
+          "tool_inputs_repaired_mean": null,
+          "tool_inputs_repaired_ci_low": null,
+          "tool_inputs_repaired_ci_high": null,
+          "tool_inputs_repaired_ci_margin": null,
+          "mb_injected_calls_mean": null,
+          "mb_injected_calls_ci_low": null,
+          "mb_injected_calls_ci_high": null,
+          "mb_injected_calls_ci_margin": null,
+          "aborted_mean": null,
+          "aborted_ci_low": null,
+          "aborted_ci_high": null,
+          "aborted_ci_margin": null,
+          "run_index": [
+            {
+              "run_id": "9d41570f-0d65-4043-9442-26b6e4bcd35d",
+              "timestamp": "2026-07-27T11:06:23.388461",
+              "trial_index": 0,
+              "prompt_variant": "explicit"
+            }
+          ]
+        }
+      ]
     }
   ],
   "overview": {
@@ -701,11 +1311,16 @@
       "claude-fable-5"
     ],
     "tasks": [
-      "box_pocket_detailed"
+      "box_pocket_detailed",
+      "box_pocket_explicit"
     ],
     "cells": {
       "claude-fable-5": {
         "box_pocket_detailed": {
+          "runs": 1,
+          "graded": 1
+        },
+        "box_pocket_explicit": {
           "runs": 1,
           "graded": 1
         }
