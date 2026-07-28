@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-28T14:54:01.315903+00:00",
-  "n_runs": 5,
+  "generated": "2026-07-28T14:54:36.707194+00:00",
+  "n_runs": 10,
   "group_order": [
     "outcome",
     "post",
@@ -22,6 +22,7 @@
     },
     "variants": [
       "all",
+      "explicit",
       "detailed"
     ],
     "task_groups": [
@@ -123,7 +124,7 @@
         "models": [
           {
             "model": "claude-fable-5",
-            "runs": 5,
+            "runs": 10,
             "wins": 0,
             "won": [],
             "headline": {
@@ -177,7 +178,77 @@
                 "n": 3
               },
               "tool_call_success_rate": {
-                "mean": 0.7444,
+                "mean": 0.3722,
+                "n": 10
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 10
+              }
+            }
+          }
+        ]
+      },
+      "explicit": {
+        "contested": 0,
+        "models": [
+          {
+            "model": "claude-fable-5",
+            "runs": 5,
+            "wins": 0,
+            "won": [],
+            "headline": {
+              "mean": null,
+              "n": 0,
+              "ci_low": null,
+              "ci_high": null,
+              "ci_margin": null
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": null,
+                "n": 0
+              },
+              "max_deviation_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "cycle_time_s": {
+                "mean": null,
+                "n": 0
+              },
+              "scallop_height_mm": {
+                "mean": null,
+                "n": 0
+              },
+              "air_cut_ratio": {
+                "mean": null,
+                "n": 0
+              },
+              "engagement_ok": {
+                "mean": null,
+                "n": 0
+              },
+              "collision_free": {
+                "mean": null,
+                "n": 0
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.0,
                 "n": 5
               },
               "hit_round_limit": {
@@ -795,6 +866,291 @@
           ]
         }
       ]
+    },
+    {
+      "name": "box_pocket_explicit",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "claude-fable-5",
+          "runs": 5,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_calls_total": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_calls_succeeded": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_calls_failed": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "output_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "llm_rounds": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "llm_s": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_s": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "wall_clock_s": {
+              "mean": 0.292,
+              "n": 5
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "mb_injected_calls": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "aborted": {
+              "mean": 1.0,
+              "n": 5
+            }
+          },
+          "tool_call_success_rate_mean": 0.0,
+          "tool_call_success_rate_ci_low": null,
+          "tool_call_success_rate_ci_high": null,
+          "tool_call_success_rate_ci_margin": null,
+          "tool_calls_total_mean": 0.0,
+          "tool_calls_total_ci_low": null,
+          "tool_calls_total_ci_high": null,
+          "tool_calls_total_ci_margin": null,
+          "tool_calls_succeeded_mean": 0.0,
+          "tool_calls_succeeded_ci_low": null,
+          "tool_calls_succeeded_ci_high": null,
+          "tool_calls_succeeded_ci_margin": null,
+          "tool_calls_failed_mean": 0.0,
+          "tool_calls_failed_ci_low": null,
+          "tool_calls_failed_ci_high": null,
+          "tool_calls_failed_ci_margin": null,
+          "hit_round_limit_mean": 0.0,
+          "hit_round_limit_ci_low": 0.0,
+          "hit_round_limit_ci_high": 0.521824,
+          "hit_round_limit_ci_margin": 0.260912,
+          "input_tokens_mean": 0.0,
+          "input_tokens_ci_low": null,
+          "input_tokens_ci_high": null,
+          "input_tokens_ci_margin": null,
+          "output_tokens_mean": 0.0,
+          "output_tokens_ci_low": null,
+          "output_tokens_ci_high": null,
+          "output_tokens_ci_margin": null,
+          "cache_read_input_tokens_mean": 0.0,
+          "cache_read_input_tokens_ci_low": null,
+          "cache_read_input_tokens_ci_high": null,
+          "cache_read_input_tokens_ci_margin": null,
+          "cache_creation_input_tokens_mean": 0.0,
+          "cache_creation_input_tokens_ci_low": null,
+          "cache_creation_input_tokens_ci_high": null,
+          "cache_creation_input_tokens_ci_margin": null,
+          "llm_rounds_mean": 0.0,
+          "llm_rounds_ci_low": null,
+          "llm_rounds_ci_high": null,
+          "llm_rounds_ci_margin": null,
+          "llm_s_mean": 0.0,
+          "llm_s_ci_low": null,
+          "llm_s_ci_high": null,
+          "llm_s_ci_margin": null,
+          "tool_s_mean": 0.0,
+          "tool_s_ci_low": null,
+          "tool_s_ci_high": null,
+          "tool_s_ci_margin": null,
+          "wall_clock_s_mean": 0.292,
+          "wall_clock_s_ci_low": 0.215761,
+          "wall_clock_s_ci_high": 0.368239,
+          "wall_clock_s_ci_margin": 0.076239,
+          "tool_inputs_repaired_mean": 0.0,
+          "tool_inputs_repaired_ci_low": null,
+          "tool_inputs_repaired_ci_high": null,
+          "tool_inputs_repaired_ci_margin": null,
+          "mb_injected_calls_mean": 0.0,
+          "mb_injected_calls_ci_low": null,
+          "mb_injected_calls_ci_high": null,
+          "mb_injected_calls_ci_margin": null,
+          "aborted_mean": 1.0,
+          "aborted_ci_low": null,
+          "aborted_ci_high": null,
+          "aborted_ci_margin": null,
+          "run_index": [
+            {
+              "run_id": "7e5c6c2f-6ab7-4c22-b58e-d34d3c132df0",
+              "timestamp": "2026-07-28T10:54:06.272029",
+              "trial_index": 0,
+              "prompt_variant": "explicit"
+            },
+            {
+              "run_id": "bfce65ac-270c-4937-873b-85b23d405147",
+              "timestamp": "2026-07-28T10:54:12.364329",
+              "trial_index": 1,
+              "prompt_variant": "explicit"
+            },
+            {
+              "run_id": "0294f8a2-2617-42f9-b9c9-bfa0fbd57851",
+              "timestamp": "2026-07-28T10:54:19.191331",
+              "trial_index": 2,
+              "prompt_variant": "explicit"
+            },
+            {
+              "run_id": "7815da77-e134-4ed0-929e-16fecb00e63f",
+              "timestamp": "2026-07-28T10:54:27.963769",
+              "trial_index": 3,
+              "prompt_variant": "explicit"
+            },
+            {
+              "run_id": "a52bc3a2-a353-4afe-9007-8d389376f543",
+              "timestamp": "2026-07-28T10:54:35.345005",
+              "trial_index": 4,
+              "prompt_variant": "explicit"
+            }
+          ]
+        }
+      ]
     }
   ],
   "overview": {
@@ -802,13 +1158,18 @@
       "claude-fable-5"
     ],
     "tasks": [
-      "box_pocket_detailed"
+      "box_pocket_detailed",
+      "box_pocket_explicit"
     ],
     "cells": {
       "claude-fable-5": {
         "box_pocket_detailed": {
           "runs": 5,
           "graded": 3
+        },
+        "box_pocket_explicit": {
+          "runs": 5,
+          "graded": 0
         }
       }
     }
