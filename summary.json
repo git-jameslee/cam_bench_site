@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-28T14:57:29.034466+00:00",
-  "n_runs": 30,
+  "generated": "2026-07-28T14:58:07.354017+00:00",
+  "n_runs": 35,
   "group_order": [
     "outcome",
     "post",
@@ -28,7 +28,8 @@
     ],
     "task_groups": [
       "box_pocket",
-      "rounded_rectangle_with_pin_and_hole"
+      "rounded_rectangle_with_pin_and_hole",
+      "titan_m10"
     ],
     "wins_metrics": [
       {
@@ -126,7 +127,7 @@
         "models": [
           {
             "model": "claude-fable-5",
-            "runs": 30,
+            "runs": 35,
             "wins": 0,
             "won": [],
             "headline": {
@@ -142,6 +143,10 @@
                 "n": 3
               },
               "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m10": {
                 "mean": null,
                 "n": 0
               }
@@ -184,12 +189,12 @@
                 "n": 3
               },
               "tool_call_success_rate": {
-                "mean": 0.124067,
-                "n": 30
+                "mean": 0.106343,
+                "n": 35
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 30
+                "n": 35
               }
             }
           }
@@ -216,6 +221,10 @@
                 "n": 0
               },
               "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m10": {
                 "mean": null,
                 "n": 0
               }
@@ -292,6 +301,10 @@
               "rounded_rectangle_with_pin_and_hole": {
                 "mean": null,
                 "n": 0
+              },
+              "titan_m10": {
+                "mean": null,
+                "n": 0
               }
             },
             "metrics": {
@@ -348,7 +361,7 @@
         "models": [
           {
             "model": "claude-fable-5",
-            "runs": 10,
+            "runs": 15,
             "wins": 0,
             "won": [],
             "headline": {
@@ -364,6 +377,10 @@
                 "n": 3
               },
               "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
+              },
+              "titan_m10": {
                 "mean": null,
                 "n": 0
               }
@@ -406,12 +423,12 @@
                 "n": 3
               },
               "tool_call_success_rate": {
-                "mean": 0.3722,
-                "n": 10
+                "mean": 0.248133,
+                "n": 15
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 10
+                "n": 15
               }
             }
           }
@@ -426,6 +443,10 @@
             "n": 3
           },
           "rounded_rectangle_with_pin_and_hole": {
+            "mean": null,
+            "n": 0
+          },
+          "titan_m10": {
             "mean": null,
             "n": 0
           }
@@ -2383,6 +2404,291 @@
           ]
         }
       ]
+    },
+    {
+      "name": "titan_m10_detailed",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "claude-fable-5",
+          "runs": 5,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_calls_total": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_calls_succeeded": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_calls_failed": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "output_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "llm_rounds": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "llm_s": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_s": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "wall_clock_s": {
+              "mean": 0.502,
+              "n": 5
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "mb_injected_calls": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "aborted": {
+              "mean": 1.0,
+              "n": 5
+            }
+          },
+          "tool_call_success_rate_mean": 0.0,
+          "tool_call_success_rate_ci_low": null,
+          "tool_call_success_rate_ci_high": null,
+          "tool_call_success_rate_ci_margin": null,
+          "tool_calls_total_mean": 0.0,
+          "tool_calls_total_ci_low": null,
+          "tool_calls_total_ci_high": null,
+          "tool_calls_total_ci_margin": null,
+          "tool_calls_succeeded_mean": 0.0,
+          "tool_calls_succeeded_ci_low": null,
+          "tool_calls_succeeded_ci_high": null,
+          "tool_calls_succeeded_ci_margin": null,
+          "tool_calls_failed_mean": 0.0,
+          "tool_calls_failed_ci_low": null,
+          "tool_calls_failed_ci_high": null,
+          "tool_calls_failed_ci_margin": null,
+          "hit_round_limit_mean": 0.0,
+          "hit_round_limit_ci_low": 0.0,
+          "hit_round_limit_ci_high": 0.521824,
+          "hit_round_limit_ci_margin": 0.260912,
+          "input_tokens_mean": 0.0,
+          "input_tokens_ci_low": null,
+          "input_tokens_ci_high": null,
+          "input_tokens_ci_margin": null,
+          "output_tokens_mean": 0.0,
+          "output_tokens_ci_low": null,
+          "output_tokens_ci_high": null,
+          "output_tokens_ci_margin": null,
+          "cache_read_input_tokens_mean": 0.0,
+          "cache_read_input_tokens_ci_low": null,
+          "cache_read_input_tokens_ci_high": null,
+          "cache_read_input_tokens_ci_margin": null,
+          "cache_creation_input_tokens_mean": 0.0,
+          "cache_creation_input_tokens_ci_low": null,
+          "cache_creation_input_tokens_ci_high": null,
+          "cache_creation_input_tokens_ci_margin": null,
+          "llm_rounds_mean": 0.0,
+          "llm_rounds_ci_low": null,
+          "llm_rounds_ci_high": null,
+          "llm_rounds_ci_margin": null,
+          "llm_s_mean": 0.0,
+          "llm_s_ci_low": null,
+          "llm_s_ci_high": null,
+          "llm_s_ci_margin": null,
+          "tool_s_mean": 0.0,
+          "tool_s_ci_low": null,
+          "tool_s_ci_high": null,
+          "tool_s_ci_margin": null,
+          "wall_clock_s_mean": 0.502,
+          "wall_clock_s_ci_low": 0.0,
+          "wall_clock_s_ci_high": 1.065379,
+          "wall_clock_s_ci_margin": 0.532689,
+          "tool_inputs_repaired_mean": 0.0,
+          "tool_inputs_repaired_ci_low": null,
+          "tool_inputs_repaired_ci_high": null,
+          "tool_inputs_repaired_ci_margin": null,
+          "mb_injected_calls_mean": 0.0,
+          "mb_injected_calls_ci_low": null,
+          "mb_injected_calls_ci_high": null,
+          "mb_injected_calls_ci_margin": null,
+          "aborted_mean": 1.0,
+          "aborted_ci_low": null,
+          "aborted_ci_high": null,
+          "aborted_ci_margin": null,
+          "run_index": [
+            {
+              "run_id": "77b4aa84-bddc-4ac6-a2f1-b4eb561278e8",
+              "timestamp": "2026-07-28T10:57:40.811869",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "dcc5cb5f-0a8f-4da0-9760-92db1875748c",
+              "timestamp": "2026-07-28T10:57:46.980046",
+              "trial_index": 1,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "87628ea2-b970-407d-8b8a-bbc2075727c0",
+              "timestamp": "2026-07-28T10:57:53.502362",
+              "trial_index": 2,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "5cde627c-8432-4b2f-a17a-a19665558c3f",
+              "timestamp": "2026-07-28T10:57:59.565294",
+              "trial_index": 3,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "72bb74d6-1541-45b0-9a6c-b68a16a2a1a5",
+              "timestamp": "2026-07-28T10:58:05.913460",
+              "trial_index": 4,
+              "prompt_variant": "detailed"
+            }
+          ]
+        }
+      ]
     }
   ],
   "overview": {
@@ -2395,7 +2701,8 @@
       "box_pocket_minimal",
       "rounded_rectangle_with_pin_and_hole_detailed",
       "rounded_rectangle_with_pin_and_hole_explicit",
-      "rounded_rectangle_with_pin_and_hole_minimal"
+      "rounded_rectangle_with_pin_and_hole_minimal",
+      "titan_m10_detailed"
     ],
     "cells": {
       "claude-fable-5": {
@@ -2420,6 +2727,10 @@
           "graded": 0
         },
         "rounded_rectangle_with_pin_and_hole_minimal": {
+          "runs": 5,
+          "graded": 0
+        },
+        "titan_m10_detailed": {
           "runs": 5,
           "graded": 0
         }
