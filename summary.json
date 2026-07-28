@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-28T15:02:50.419977+00:00",
-  "n_runs": 70,
+  "generated": "2026-07-28T16:05:18.709187+00:00",
+  "n_runs": 5,
   "group_order": [
     "outcome",
     "post",
@@ -22,16 +22,10 @@
     },
     "variants": [
       "all",
-      "minimal",
-      "explicit",
-      "detailed"
+      "explicit"
     ],
     "task_groups": [
-      "box_pocket",
-      "rounded_rectangle_with_pin_and_hole",
-      "titan_m1",
-      "titan_m10",
-      "titan_m2"
+      "box_pocket"
     ],
     "wins_metrics": [
       {
@@ -129,168 +123,66 @@
         "models": [
           {
             "model": "claude-fable-5",
-            "runs": 70,
+            "runs": 5,
             "wins": 0,
             "won": [],
             "headline": {
-              "mean": 1.0,
-              "n": 3,
-              "ci_low": null,
-              "ci_high": null,
-              "ci_margin": null
+              "mean": 0.687825,
+              "n": 4,
+              "ci_low": 0.35666,
+              "ci_high": 1.0,
+              "ci_margin": 0.32167
             },
             "tasks": {
               "box_pocket": {
-                "mean": 1.0,
-                "n": 3
-              },
-              "rounded_rectangle_with_pin_and_hole": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m1": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m10": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m2": {
-                "mean": null,
-                "n": 0
+                "mean": 0.687825,
+                "n": 4
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": 1.0,
-                "n": 3
+                "mean": 0.687825,
+                "n": 4
               },
               "max_deviation_mm": {
-                "mean": 0.0,
-                "n": 3
+                "mean": 11.625,
+                "n": 4
               },
               "cycle_time_s": {
-                "mean": 10120.516667,
-                "n": 3
+                "mean": 438.0925,
+                "n": 4
               },
               "scallop_height_mm": {
-                "mean": 0.959367,
-                "n": 3
+                "mean": 0.79105,
+                "n": 4
               },
               "air_cut_ratio": {
-                "mean": 0.110933,
-                "n": 3
+                "mean": 0.14505,
+                "n": 4
               },
               "engagement_ok": {
                 "mean": 1.0,
-                "n": 3
+                "n": 4
               },
               "collision_free": {
                 "mean": 1.0,
-                "n": 3
+                "n": 4
               },
               "rough_before_finish": {
                 "mean": 1.0,
-                "n": 3
+                "n": 4
               },
               "tolerance_appropriate": {
-                "mean": 0.0,
-                "n": 3
+                "mean": 0.75,
+                "n": 4
               },
               "tool_call_success_rate": {
-                "mean": 0.053171,
-                "n": 70
+                "mean": 0.8852,
+                "n": 5
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 70
-              }
-            }
-          }
-        ]
-      },
-      "minimal": {
-        "contested": 0,
-        "models": [
-          {
-            "model": "claude-fable-5",
-            "runs": 20,
-            "wins": 0,
-            "won": [],
-            "headline": {
-              "mean": null,
-              "n": 0,
-              "ci_low": null,
-              "ci_high": null,
-              "ci_margin": null
-            },
-            "tasks": {
-              "box_pocket": {
-                "mean": null,
-                "n": 0
-              },
-              "rounded_rectangle_with_pin_and_hole": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m1": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m10": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m2": {
-                "mean": null,
-                "n": 0
-              }
-            },
-            "metrics": {
-              "iou_voxel": {
-                "mean": null,
-                "n": 0
-              },
-              "max_deviation_mm": {
-                "mean": null,
-                "n": 0
-              },
-              "cycle_time_s": {
-                "mean": null,
-                "n": 0
-              },
-              "scallop_height_mm": {
-                "mean": null,
-                "n": 0
-              },
-              "air_cut_ratio": {
-                "mean": null,
-                "n": 0
-              },
-              "engagement_ok": {
-                "mean": null,
-                "n": 0
-              },
-              "collision_free": {
-                "mean": null,
-                "n": 0
-              },
-              "rough_before_finish": {
-                "mean": null,
-                "n": 0
-              },
-              "tolerance_appropriate": {
-                "mean": null,
-                "n": 0
-              },
-              "tool_call_success_rate": {
-                "mean": 0.0,
-                "n": 20
-              },
-              "hit_round_limit": {
-                "mean": 0.0,
-                "n": 20
+                "n": 5
               }
             }
           }
@@ -301,168 +193,66 @@
         "models": [
           {
             "model": "claude-fable-5",
-            "runs": 25,
+            "runs": 5,
             "wins": 0,
             "won": [],
             "headline": {
-              "mean": null,
-              "n": 0,
-              "ci_low": null,
-              "ci_high": null,
-              "ci_margin": null
+              "mean": 0.687825,
+              "n": 4,
+              "ci_low": 0.35666,
+              "ci_high": 1.0,
+              "ci_margin": 0.32167
             },
             "tasks": {
               "box_pocket": {
-                "mean": null,
-                "n": 0
-              },
-              "rounded_rectangle_with_pin_and_hole": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m1": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m10": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m2": {
-                "mean": null,
-                "n": 0
+                "mean": 0.687825,
+                "n": 4
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": null,
-                "n": 0
+                "mean": 0.687825,
+                "n": 4
               },
               "max_deviation_mm": {
-                "mean": null,
-                "n": 0
+                "mean": 11.625,
+                "n": 4
               },
               "cycle_time_s": {
-                "mean": null,
-                "n": 0
+                "mean": 438.0925,
+                "n": 4
               },
               "scallop_height_mm": {
-                "mean": null,
-                "n": 0
+                "mean": 0.79105,
+                "n": 4
               },
               "air_cut_ratio": {
-                "mean": null,
-                "n": 0
-              },
-              "engagement_ok": {
-                "mean": null,
-                "n": 0
-              },
-              "collision_free": {
-                "mean": null,
-                "n": 0
-              },
-              "rough_before_finish": {
-                "mean": null,
-                "n": 0
-              },
-              "tolerance_appropriate": {
-                "mean": null,
-                "n": 0
-              },
-              "tool_call_success_rate": {
-                "mean": 0.0,
-                "n": 25
-              },
-              "hit_round_limit": {
-                "mean": 0.0,
-                "n": 25
-              }
-            }
-          }
-        ]
-      },
-      "detailed": {
-        "contested": 0,
-        "models": [
-          {
-            "model": "claude-fable-5",
-            "runs": 25,
-            "wins": 0,
-            "won": [],
-            "headline": {
-              "mean": 1.0,
-              "n": 3,
-              "ci_low": null,
-              "ci_high": null,
-              "ci_margin": null
-            },
-            "tasks": {
-              "box_pocket": {
-                "mean": 1.0,
-                "n": 3
-              },
-              "rounded_rectangle_with_pin_and_hole": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m1": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m10": {
-                "mean": null,
-                "n": 0
-              },
-              "titan_m2": {
-                "mean": null,
-                "n": 0
-              }
-            },
-            "metrics": {
-              "iou_voxel": {
-                "mean": 1.0,
-                "n": 3
-              },
-              "max_deviation_mm": {
-                "mean": 0.0,
-                "n": 3
-              },
-              "cycle_time_s": {
-                "mean": 10120.516667,
-                "n": 3
-              },
-              "scallop_height_mm": {
-                "mean": 0.959367,
-                "n": 3
-              },
-              "air_cut_ratio": {
-                "mean": 0.110933,
-                "n": 3
+                "mean": 0.14505,
+                "n": 4
               },
               "engagement_ok": {
                 "mean": 1.0,
-                "n": 3
+                "n": 4
               },
               "collision_free": {
                 "mean": 1.0,
-                "n": 3
+                "n": 4
               },
               "rough_before_finish": {
                 "mean": 1.0,
-                "n": 3
+                "n": 4
               },
               "tolerance_appropriate": {
-                "mean": 0.0,
-                "n": 3
+                "mean": 0.75,
+                "n": 4
               },
               "tool_call_success_rate": {
-                "mean": 0.14888,
-                "n": 25
+                "mean": 0.8852,
+                "n": 5
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 25
+                "n": 5
               }
             }
           }
@@ -471,26 +261,10 @@
     },
     "matrix": {
       "claude-fable-5": {
-        "detailed": {
+        "explicit": {
           "box_pocket": {
-            "mean": 1.0,
-            "n": 3
-          },
-          "rounded_rectangle_with_pin_and_hole": {
-            "mean": null,
-            "n": 0
-          },
-          "titan_m1": {
-            "mean": null,
-            "n": 0
-          },
-          "titan_m10": {
-            "mean": null,
-            "n": 0
-          },
-          "titan_m2": {
-            "mean": null,
-            "n": 0
+            "mean": 0.687825,
+            "n": 4
           }
         }
       }
@@ -498,7 +272,7 @@
   },
   "tasks": [
     {
-      "name": "box_pocket_detailed",
+      "name": "box_pocket_explicit",
       "metrics": [
         {
           "key": "tool_call_success_rate",
@@ -731,19 +505,19 @@
           "runs": 5,
           "cells": {
             "tool_call_success_rate": {
-              "mean": 0.7444,
+              "mean": 0.8852,
               "n": 5
             },
             "tool_calls_total": {
-              "mean": 10.2,
+              "mean": 30.4,
               "n": 5
             },
             "tool_calls_succeeded": {
-              "mean": 9.4,
+              "mean": 26.8,
               "n": 5
             },
             "tool_calls_failed": {
-              "mean": 0.8,
+              "mean": 3.6,
               "n": 5
             },
             "hit_round_limit": {
@@ -751,99 +525,99 @@
               "n": 5
             },
             "iou_voxel": {
-              "mean": 1.0,
-              "n": 3
+              "mean": 0.687825,
+              "n": 4
             },
             "max_deviation_mm": {
-              "mean": 0.0,
-              "n": 3
+              "mean": 11.625,
+              "n": 4
             },
             "p99_deviation_mm": {
-              "mean": 0.0,
-              "n": 3
+              "mean": 10.875,
+              "n": 4
             },
             "operation_count": {
-              "mean": 5.666667,
-              "n": 3
+              "mean": 4.5,
+              "n": 4
             },
             "tool_change_count": {
-              "mean": 2.666667,
-              "n": 3
+              "mean": 2.25,
+              "n": 4
             },
             "cycle_time_s": {
-              "mean": 10120.516667,
-              "n": 3
+              "mean": 438.0925,
+              "n": 4
             },
             "toolpath_length_mm": {
-              "mean": 9495.47,
-              "n": 3
+              "mean": 9519.3475,
+              "n": 4
             },
             "collision_free": {
               "mean": 1.0,
-              "n": 3
+              "n": 4
             },
             "stock_in_bounds": {
               "mean": 1.0,
-              "n": 3
+              "n": 4
             },
             "scallop_height_mm": {
-              "mean": 0.959367,
-              "n": 3
+              "mean": 0.79105,
+              "n": 4
             },
             "radial_engagement_pct": {
-              "mean": 48.089833,
-              "n": 3
+              "mean": 46.063,
+              "n": 4
             },
             "engagement_ok": {
               "mean": 1.0,
-              "n": 3
+              "n": 4
             },
             "axial_engagement_pct": {
-              "mean": 22.811033,
-              "n": 3
+              "mean": 18.7049,
+              "n": 4
             },
             "rough_before_finish": {
               "mean": 1.0,
-              "n": 3
+              "n": 4
             },
             "tolerance_appropriate": {
-              "mean": 0.0,
-              "n": 3
+              "mean": 0.75,
+              "n": 4
             },
             "air_cut_ratio": {
-              "mean": 0.110933,
-              "n": 3
+              "mean": 0.14505,
+              "n": 4
             },
             "input_tokens": {
-              "mean": 242518.4,
+              "mean": 729249.6,
               "n": 5
             },
             "output_tokens": {
-              "mean": 13225.8,
+              "mean": 26772.2,
               "n": 5
             },
             "cache_read_input_tokens": {
-              "mean": 223442.6,
+              "mean": 696075.8,
               "n": 5
             },
             "cache_creation_input_tokens": {
-              "mean": 19055.0,
+              "mean": 33115.2,
               "n": 5
             },
             "llm_rounds": {
-              "mean": 10.8,
+              "mean": 29.8,
               "n": 5
             },
             "llm_s": {
-              "mean": 211.32,
+              "mean": 411.526,
               "n": 5
             },
             "tool_s": {
-              "mean": 10.164,
+              "mean": 15.972,
               "n": 5
             },
             "wall_clock_s": {
-              "mean": 221.91,
+              "mean": 427.85,
               "n": 5
             },
             "tool_inputs_repaired": {
@@ -851,3875 +625,170 @@
               "n": 5
             },
             "mb_injected_calls": {
-              "mean": 10.2,
+              "mean": 28.4,
               "n": 5
             },
             "aborted": {
-              "mean": 0.4,
+              "mean": 0.0,
               "n": 5
             }
           },
-          "tool_call_success_rate_mean": 0.7444,
-          "tool_call_success_rate_ci_low": 0.224943,
-          "tool_call_success_rate_ci_high": 1.0,
-          "tool_call_success_rate_ci_margin": 0.387528,
-          "tool_calls_total_mean": 10.2,
-          "tool_calls_total_ci_low": 2.278612,
-          "tool_calls_total_ci_high": 18.121388,
-          "tool_calls_total_ci_margin": 7.921388,
-          "tool_calls_succeeded_mean": 9.4,
-          "tool_calls_succeeded_ci_low": 2.34324,
-          "tool_calls_succeeded_ci_high": 16.45676,
-          "tool_calls_succeeded_ci_margin": 7.05676,
-          "tool_calls_failed_mean": 0.8,
-          "tool_calls_failed_ci_low": 0.0,
-          "tool_calls_failed_ci_high": 1.838851,
-          "tool_calls_failed_ci_margin": 0.919425,
+          "tool_call_success_rate_mean": 0.8852,
+          "tool_call_success_rate_ci_low": 0.82197,
+          "tool_call_success_rate_ci_high": 0.94843,
+          "tool_call_success_rate_ci_margin": 0.06323,
+          "tool_calls_total_mean": 30.4,
+          "tool_calls_total_ci_low": 27.045209,
+          "tool_calls_total_ci_high": 33.754791,
+          "tool_calls_total_ci_margin": 3.354791,
+          "tool_calls_succeeded_mean": 26.8,
+          "tool_calls_succeeded_ci_low": 25.439825,
+          "tool_calls_succeeded_ci_high": 28.160175,
+          "tool_calls_succeeded_ci_margin": 1.360175,
+          "tool_calls_failed_mean": 3.6,
+          "tool_calls_failed_ci_low": 1.344405,
+          "tool_calls_failed_ci_high": 5.855595,
+          "tool_calls_failed_ci_margin": 2.255595,
           "hit_round_limit_mean": 0.0,
           "hit_round_limit_ci_low": 0.0,
           "hit_round_limit_ci_high": 0.521824,
           "hit_round_limit_ci_margin": 0.260912,
-          "iou_voxel_mean": 1.0,
-          "iou_voxel_ci_low": null,
-          "iou_voxel_ci_high": null,
-          "iou_voxel_ci_margin": null,
-          "max_deviation_mm_mean": 0.0,
-          "max_deviation_mm_ci_low": null,
-          "max_deviation_mm_ci_high": null,
-          "max_deviation_mm_ci_margin": null,
-          "p99_deviation_mm_mean": 0.0,
-          "p99_deviation_mm_ci_low": null,
-          "p99_deviation_mm_ci_high": null,
-          "p99_deviation_mm_ci_margin": null,
-          "operation_count_mean": 5.666667,
-          "operation_count_ci_low": 4.232449,
-          "operation_count_ci_high": 7.100884,
-          "operation_count_ci_margin": 1.434218,
-          "tool_change_count_mean": 2.666667,
-          "tool_change_count_ci_low": 1.232449,
-          "tool_change_count_ci_high": 4.100884,
-          "tool_change_count_ci_margin": 1.434218,
-          "cycle_time_s_mean": 10120.516667,
-          "cycle_time_s_ci_low": 4299.231526,
-          "cycle_time_s_ci_high": 15941.801807,
-          "cycle_time_s_ci_margin": 5821.28514,
-          "toolpath_length_mm_mean": 9495.47,
-          "toolpath_length_mm_ci_low": 2594.556808,
-          "toolpath_length_mm_ci_high": 16396.383192,
-          "toolpath_length_mm_ci_margin": 6900.913192,
+          "iou_voxel_mean": 0.687825,
+          "iou_voxel_ci_low": 0.35666,
+          "iou_voxel_ci_high": 1.0,
+          "iou_voxel_ci_margin": 0.32167,
+          "max_deviation_mm_mean": 11.625,
+          "max_deviation_mm_ci_low": 0.0,
+          "max_deviation_mm_ci_high": 23.956979,
+          "max_deviation_mm_ci_margin": 11.97849,
+          "p99_deviation_mm_mean": 10.875,
+          "p99_deviation_mm_ci_low": 0.0,
+          "p99_deviation_mm_ci_high": 22.411368,
+          "p99_deviation_mm_ci_margin": 11.205684,
+          "operation_count_mean": 4.5,
+          "operation_count_ci_low": 3.581307,
+          "operation_count_ci_high": 5.418693,
+          "operation_count_ci_margin": 0.918693,
+          "tool_change_count_mean": 2.25,
+          "tool_change_count_ci_low": 1.454388,
+          "tool_change_count_ci_high": 3.045612,
+          "tool_change_count_ci_margin": 0.795612,
+          "cycle_time_s_mean": 438.0925,
+          "cycle_time_s_ci_low": 279.44906,
+          "cycle_time_s_ci_high": 596.73594,
+          "cycle_time_s_ci_margin": 158.64344,
+          "toolpath_length_mm_mean": 9519.3475,
+          "toolpath_length_mm_ci_low": 5798.427708,
+          "toolpath_length_mm_ci_high": 13240.267292,
+          "toolpath_length_mm_ci_margin": 3720.919792,
           "collision_free_mean": 1.0,
-          "collision_free_ci_low": 0.292402,
+          "collision_free_ci_low": 0.397635,
           "collision_free_ci_high": 1.0,
-          "collision_free_ci_margin": 0.353799,
+          "collision_free_ci_margin": 0.301182,
           "stock_in_bounds_mean": 1.0,
-          "stock_in_bounds_ci_low": 0.292402,
+          "stock_in_bounds_ci_low": 0.397635,
           "stock_in_bounds_ci_high": 1.0,
-          "stock_in_bounds_ci_margin": 0.353799,
-          "scallop_height_mm_mean": 0.959367,
-          "scallop_height_mm_ci_low": 0.726785,
-          "scallop_height_mm_ci_high": 1.191948,
-          "scallop_height_mm_ci_margin": 0.232582,
-          "radial_engagement_pct_mean": 48.089833,
-          "radial_engagement_pct_ci_low": 42.963718,
-          "radial_engagement_pct_ci_high": 53.215949,
-          "radial_engagement_pct_ci_margin": 5.126115,
+          "stock_in_bounds_ci_margin": 0.301182,
+          "scallop_height_mm_mean": 0.79105,
+          "scallop_height_mm_ci_low": 0.293137,
+          "scallop_height_mm_ci_high": 1.288963,
+          "scallop_height_mm_ci_margin": 0.497913,
+          "radial_engagement_pct_mean": 46.063,
+          "radial_engagement_pct_ci_low": 35.938529,
+          "radial_engagement_pct_ci_high": 56.187471,
+          "radial_engagement_pct_ci_margin": 10.124471,
           "engagement_ok_mean": 1.0,
-          "engagement_ok_ci_low": 0.292402,
+          "engagement_ok_ci_low": 0.397635,
           "engagement_ok_ci_high": 1.0,
-          "engagement_ok_ci_margin": 0.353799,
-          "axial_engagement_pct_mean": 22.811033,
-          "axial_engagement_pct_ci_low": 18.948829,
-          "axial_engagement_pct_ci_high": 26.673238,
-          "axial_engagement_pct_ci_margin": 3.862205,
+          "engagement_ok_ci_margin": 0.301182,
+          "axial_engagement_pct_mean": 18.7049,
+          "axial_engagement_pct_ci_low": 10.970362,
+          "axial_engagement_pct_ci_high": 26.439438,
+          "axial_engagement_pct_ci_margin": 7.734538,
           "rough_before_finish_mean": 1.0,
-          "rough_before_finish_ci_low": 0.292402,
+          "rough_before_finish_ci_low": 0.397635,
           "rough_before_finish_ci_high": 1.0,
-          "rough_before_finish_ci_margin": 0.353799,
-          "tolerance_appropriate_mean": 0.0,
-          "tolerance_appropriate_ci_low": 0.0,
-          "tolerance_appropriate_ci_high": 0.707598,
-          "tolerance_appropriate_ci_margin": 0.353799,
-          "air_cut_ratio_mean": 0.110933,
-          "air_cut_ratio_ci_low": 0.020187,
-          "air_cut_ratio_ci_high": 0.20168,
-          "air_cut_ratio_ci_margin": 0.090746,
-          "input_tokens_mean": 242518.4,
-          "input_tokens_ci_low": 20325.052449,
-          "input_tokens_ci_high": 464711.747551,
-          "input_tokens_ci_margin": 222193.347551,
-          "output_tokens_mean": 13225.8,
-          "output_tokens_ci_low": 3417.827173,
-          "output_tokens_ci_high": 23033.772827,
-          "output_tokens_ci_margin": 9807.972827,
-          "cache_read_input_tokens_mean": 223442.6,
-          "cache_read_input_tokens_ci_low": 15395.315326,
-          "cache_read_input_tokens_ci_high": 431489.884674,
-          "cache_read_input_tokens_ci_margin": 208047.284674,
-          "cache_creation_input_tokens_mean": 19055.0,
-          "cache_creation_input_tokens_ci_low": 3702.818126,
-          "cache_creation_input_tokens_ci_high": 34407.181874,
-          "cache_creation_input_tokens_ci_margin": 15352.181874,
-          "llm_rounds_mean": 10.8,
-          "llm_rounds_ci_low": 2.314791,
-          "llm_rounds_ci_high": 19.285209,
-          "llm_rounds_ci_margin": 8.485209,
-          "llm_s_mean": 211.32,
-          "llm_s_ci_low": 54.38506,
-          "llm_s_ci_high": 368.25494,
-          "llm_s_ci_margin": 156.93494,
-          "tool_s_mean": 10.164,
-          "tool_s_ci_low": 1.887559,
-          "tool_s_ci_high": 18.440441,
-          "tool_s_ci_margin": 8.276441,
-          "wall_clock_s_mean": 221.91,
-          "wall_clock_s_ci_low": 57.057146,
-          "wall_clock_s_ci_high": 386.762854,
-          "wall_clock_s_ci_margin": 164.852854,
+          "rough_before_finish_ci_margin": 0.301182,
+          "tolerance_appropriate_mean": 0.75,
+          "tolerance_appropriate_ci_low": 0.19412,
+          "tolerance_appropriate_ci_high": 0.993691,
+          "tolerance_appropriate_ci_margin": 0.399785,
+          "air_cut_ratio_mean": 0.14505,
+          "air_cut_ratio_ci_low": 0.122947,
+          "air_cut_ratio_ci_high": 0.167153,
+          "air_cut_ratio_ci_margin": 0.022103,
+          "input_tokens_mean": 729249.6,
+          "input_tokens_ci_low": 568955.816351,
+          "input_tokens_ci_high": 889543.383649,
+          "input_tokens_ci_margin": 160293.783649,
+          "output_tokens_mean": 26772.2,
+          "output_tokens_ci_low": 18975.741854,
+          "output_tokens_ci_high": 34568.658146,
+          "output_tokens_ci_margin": 7796.458146,
+          "cache_read_input_tokens_mean": 696075.8,
+          "cache_read_input_tokens_ci_low": 540412.321014,
+          "cache_read_input_tokens_ci_high": 851739.278986,
+          "cache_read_input_tokens_ci_margin": 155663.478986,
+          "cache_creation_input_tokens_mean": 33115.2,
+          "cache_creation_input_tokens_ci_low": 26017.146362,
+          "cache_creation_input_tokens_ci_high": 40213.253638,
+          "cache_creation_input_tokens_ci_margin": 7098.053638,
+          "llm_rounds_mean": 29.8,
+          "llm_rounds_ci_low": 25.204166,
+          "llm_rounds_ci_high": 34.395834,
+          "llm_rounds_ci_margin": 4.595834,
+          "llm_s_mean": 411.526,
+          "llm_s_ci_low": 285.003246,
+          "llm_s_ci_high": 538.048754,
+          "llm_s_ci_margin": 126.522754,
+          "tool_s_mean": 15.972,
+          "tool_s_ci_low": 12.876103,
+          "tool_s_ci_high": 19.067897,
+          "tool_s_ci_margin": 3.095897,
+          "wall_clock_s_mean": 427.85,
+          "wall_clock_s_ci_low": 299.479731,
+          "wall_clock_s_ci_high": 556.220269,
+          "wall_clock_s_ci_margin": 128.370269,
           "tool_inputs_repaired_mean": 0.0,
           "tool_inputs_repaired_ci_low": null,
           "tool_inputs_repaired_ci_high": null,
           "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 10.2,
-          "mb_injected_calls_ci_low": 2.278612,
-          "mb_injected_calls_ci_high": 18.121388,
-          "mb_injected_calls_ci_margin": 7.921388,
-          "aborted_mean": 0.4,
-          "aborted_ci_low": 0.0,
-          "aborted_ci_high": 1.080087,
-          "aborted_ci_margin": 0.540044,
-          "run_index": [
-            {
-              "run_id": "4dcbd605-faa8-472c-af67-2cc015d391bf",
-              "timestamp": "2026-07-28T10:37:34.316604",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "26f8317a-957d-44eb-8f94-4e0488fd2c0a",
-              "timestamp": "2026-07-28T10:44:04.765808",
-              "trial_index": 1,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "c1d9088d-2c1e-4909-a6cd-6ef2c7e0dc60",
-              "timestamp": "2026-07-28T10:49:25.402789",
-              "trial_index": 2,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "e7ee24d0-f5d7-45f3-bebf-58c399223283",
-              "timestamp": "2026-07-28T10:53:49.549339",
-              "trial_index": 3,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "f47a94d1-4df6-4ceb-ba59-c37ec86e043e",
-              "timestamp": "2026-07-28T10:53:58.034333",
-              "trial_index": 4,
-              "prompt_variant": "detailed"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "box_pocket_explicit",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.292,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.292,
-          "wall_clock_s_ci_low": 0.215761,
-          "wall_clock_s_ci_high": 0.368239,
-          "wall_clock_s_ci_margin": 0.076239,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
+          "mb_injected_calls_mean": 28.4,
+          "mb_injected_calls_ci_low": 25.045209,
+          "mb_injected_calls_ci_high": 31.754791,
+          "mb_injected_calls_ci_margin": 3.354791,
+          "aborted_mean": 0.0,
           "aborted_ci_low": null,
           "aborted_ci_high": null,
           "aborted_ci_margin": null,
           "run_index": [
             {
-              "run_id": "7e5c6c2f-6ab7-4c22-b58e-d34d3c132df0",
-              "timestamp": "2026-07-28T10:54:06.272029",
+              "run_id": "b4f20f21-7c39-4638-abfc-e7b005d3148c",
+              "timestamp": "2026-07-28T11:31:58.654680",
               "trial_index": 0,
               "prompt_variant": "explicit"
             },
             {
-              "run_id": "bfce65ac-270c-4937-873b-85b23d405147",
-              "timestamp": "2026-07-28T10:54:12.364329",
+              "run_id": "b7b5df4b-801b-43d8-8916-cc959dbc864a",
+              "timestamp": "2026-07-28T11:40:11.109160",
               "trial_index": 1,
               "prompt_variant": "explicit"
             },
             {
-              "run_id": "0294f8a2-2617-42f9-b9c9-bfa0fbd57851",
-              "timestamp": "2026-07-28T10:54:19.191331",
+              "run_id": "07690f99-d862-4035-81ba-2c308c72d050",
+              "timestamp": "2026-07-28T11:50:49.960567",
               "trial_index": 2,
               "prompt_variant": "explicit"
             },
             {
-              "run_id": "7815da77-e134-4ed0-929e-16fecb00e63f",
-              "timestamp": "2026-07-28T10:54:27.963769",
+              "run_id": "ac02df67-17ad-460d-bf55-aac3369c9e96",
+              "timestamp": "2026-07-28T11:56:36.109034",
               "trial_index": 3,
               "prompt_variant": "explicit"
             },
             {
-              "run_id": "a52bc3a2-a353-4afe-9007-8d389376f543",
-              "timestamp": "2026-07-28T10:54:35.345005",
-              "trial_index": 4,
-              "prompt_variant": "explicit"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "box_pocket_minimal",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.4,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.4,
-          "wall_clock_s_ci_low": 0.099041,
-          "wall_clock_s_ci_high": 0.700959,
-          "wall_clock_s_ci_margin": 0.300959,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "0bf7deba-156f-4db8-9cb1-ef82c6fadece",
-              "timestamp": "2026-07-28T10:54:44.605785",
-              "trial_index": 0,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "56e1ce0c-03a5-45a2-a75d-be13e4528e19",
-              "timestamp": "2026-07-28T10:54:53.352036",
-              "trial_index": 1,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "ac1fbb43-1461-4979-a00b-269f85ee039d",
-              "timestamp": "2026-07-28T10:54:59.465671",
-              "trial_index": 2,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "2f1eb7da-007b-429d-bbea-da586d3aaecf",
-              "timestamp": "2026-07-28T10:55:06.737139",
-              "trial_index": 3,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "66e32868-e2eb-4a5f-bc30-c25ed7bb2e47",
-              "timestamp": "2026-07-28T10:55:13.365299",
-              "trial_index": 4,
-              "prompt_variant": "minimal"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "rounded_rectangle_with_pin_and_hole_detailed",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.302,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.302,
-          "wall_clock_s_ci_low": 0.190457,
-          "wall_clock_s_ci_high": 0.413543,
-          "wall_clock_s_ci_margin": 0.111543,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "ea05ec6f-d590-41ad-87c0-e3a37edbae40",
-              "timestamp": "2026-07-28T10:55:22.283724",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "65bfff6e-e992-48d7-bffa-6a16493d352d",
-              "timestamp": "2026-07-28T10:55:31.822318",
-              "trial_index": 1,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "ca7bdb93-6083-408b-b538-b86594bb2b0a",
-              "timestamp": "2026-07-28T10:55:42.726714",
-              "trial_index": 2,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "f721a927-2050-4d62-aa03-ef7879e11b2c",
-              "timestamp": "2026-07-28T10:55:49.748180",
-              "trial_index": 3,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "82313d82-c9f2-4f1c-bd73-c051c0a8b95f",
-              "timestamp": "2026-07-28T10:55:58.321522",
-              "trial_index": 4,
-              "prompt_variant": "detailed"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "rounded_rectangle_with_pin_and_hole_explicit",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.44,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.44,
-          "wall_clock_s_ci_low": 0.02828,
-          "wall_clock_s_ci_high": 0.85172,
-          "wall_clock_s_ci_margin": 0.41172,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "5415428f-2170-470f-857d-2bbf86bad340",
-              "timestamp": "2026-07-28T10:56:13.420265",
-              "trial_index": 0,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "8d868c4b-9c5e-469d-99bc-bf3712946d74",
-              "timestamp": "2026-07-28T10:56:20.827081",
-              "trial_index": 1,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "e359d1c7-dfe9-4b65-96c3-9eb7818d5ac5",
-              "timestamp": "2026-07-28T10:56:30.792924",
-              "trial_index": 2,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "d11d3eb4-9f8d-4b36-936a-3e8cadc10383",
-              "timestamp": "2026-07-28T10:56:39.013454",
-              "trial_index": 3,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "c0bbdee8-18e2-406e-a727-63f3a414a6d0",
-              "timestamp": "2026-07-28T10:56:46.986005",
-              "trial_index": 4,
-              "prompt_variant": "explicit"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "rounded_rectangle_with_pin_and_hole_minimal",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.54,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.54,
-          "wall_clock_s_ci_low": 0.273259,
-          "wall_clock_s_ci_high": 0.806741,
-          "wall_clock_s_ci_margin": 0.266741,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "c98446ed-2153-4352-aad5-74e3adc321ef",
-              "timestamp": "2026-07-28T10:56:56.008270",
-              "trial_index": 0,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "7170e1e4-f2c3-43ef-850e-86342e361182",
-              "timestamp": "2026-07-28T10:57:05.568728",
-              "trial_index": 1,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "ac415f44-2a69-49a5-919c-76a8df4c424d",
-              "timestamp": "2026-07-28T10:57:12.250778",
-              "trial_index": 2,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "d31f7e4f-c27a-459a-93a1-c0bf68658ae6",
-              "timestamp": "2026-07-28T10:57:21.266036",
-              "trial_index": 3,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "bf68b957-2dfb-4ca3-85eb-8790b4540936",
-              "timestamp": "2026-07-28T10:57:27.680012",
-              "trial_index": 4,
-              "prompt_variant": "minimal"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m10_detailed",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.502,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.502,
-          "wall_clock_s_ci_low": 0.0,
-          "wall_clock_s_ci_high": 1.065379,
-          "wall_clock_s_ci_margin": 0.532689,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "77b4aa84-bddc-4ac6-a2f1-b4eb561278e8",
-              "timestamp": "2026-07-28T10:57:40.811869",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "dcc5cb5f-0a8f-4da0-9760-92db1875748c",
-              "timestamp": "2026-07-28T10:57:46.980046",
-              "trial_index": 1,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "87628ea2-b970-407d-8b8a-bbc2075727c0",
-              "timestamp": "2026-07-28T10:57:53.502362",
-              "trial_index": 2,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "5cde627c-8432-4b2f-a17a-a19665558c3f",
-              "timestamp": "2026-07-28T10:57:59.565294",
-              "trial_index": 3,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "72bb74d6-1541-45b0-9a6c-b68a16a2a1a5",
-              "timestamp": "2026-07-28T10:58:05.913460",
-              "trial_index": 4,
-              "prompt_variant": "detailed"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m10_explicit",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.244,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.244,
-          "wall_clock_s_ci_low": 0.192355,
-          "wall_clock_s_ci_high": 0.295645,
-          "wall_clock_s_ci_margin": 0.051645,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "99a2e4e2-ba59-4efc-b1b4-10fcc816d4a6",
-              "timestamp": "2026-07-28T10:58:14.107625",
-              "trial_index": 0,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "1e1e8850-ba93-4c0e-914c-41c00525726f",
-              "timestamp": "2026-07-28T10:58:20.365698",
-              "trial_index": 1,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "e0e98be9-7da9-4cdd-8d29-ac8932451af0",
-              "timestamp": "2026-07-28T10:58:26.806199",
-              "trial_index": 2,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "d035f442-5055-4f68-bd88-8f6fcdb29b9d",
-              "timestamp": "2026-07-28T10:58:34.769253",
-              "trial_index": 3,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "0f791eab-c2d6-4bba-ba5a-cf987c23ef4b",
-              "timestamp": "2026-07-28T10:58:41.453739",
-              "trial_index": 4,
-              "prompt_variant": "explicit"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m10_minimal",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.316,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.316,
-          "wall_clock_s_ci_low": 0.187381,
-          "wall_clock_s_ci_high": 0.444619,
-          "wall_clock_s_ci_margin": 0.128619,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "6b99b59b-e612-4592-8024-96e35127dd90",
-              "timestamp": "2026-07-28T10:58:52.320308",
-              "trial_index": 0,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "e4131692-36f5-47ee-a0cf-84cf44e34d52",
-              "timestamp": "2026-07-28T10:58:58.411812",
-              "trial_index": 1,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "91b95af1-9670-41e7-a086-2f48234f8521",
-              "timestamp": "2026-07-28T10:59:04.661593",
-              "trial_index": 2,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "c7801d9f-1601-4316-9ced-ed9b4502dd08",
-              "timestamp": "2026-07-28T10:59:10.419153",
-              "trial_index": 3,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "ccbfcc28-48ed-42f4-a276-31c4a7115926",
-              "timestamp": "2026-07-28T10:59:19.990986",
-              "trial_index": 4,
-              "prompt_variant": "minimal"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m1_detailed",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.266,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.266,
-          "wall_clock_s_ci_low": 0.170384,
-          "wall_clock_s_ci_high": 0.361616,
-          "wall_clock_s_ci_margin": 0.095616,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "372e7e2a-b46d-47f4-bad4-68737de05d77",
-              "timestamp": "2026-07-28T10:59:36.715189",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "bf9f530d-b3f6-4da3-91f4-b1b4e42cc177",
-              "timestamp": "2026-07-28T10:59:47.347436",
-              "trial_index": 1,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "fa54c1fb-6e54-4fb5-9130-a177334c9bd2",
-              "timestamp": "2026-07-28T10:59:54.069301",
-              "trial_index": 2,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "5eef2b26-e2fa-41da-aae4-115744c26ebf",
-              "timestamp": "2026-07-28T11:00:01.296569",
-              "trial_index": 3,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "f1219054-0121-4b53-a990-a5ad6d099d47",
-              "timestamp": "2026-07-28T11:00:07.939758",
-              "trial_index": 4,
-              "prompt_variant": "detailed"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m1_explicit",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.31,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.31,
-          "wall_clock_s_ci_low": 0.156666,
-          "wall_clock_s_ci_high": 0.463334,
-          "wall_clock_s_ci_margin": 0.153334,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "1b9ec4cd-5d99-4f5f-ab4a-e329878afb09",
-              "timestamp": "2026-07-28T11:00:17.157727",
-              "trial_index": 0,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "dd0fe379-1f3d-4b7b-9d5a-fe4d6b597dc7",
-              "timestamp": "2026-07-28T11:00:22.934912",
-              "trial_index": 1,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "bd1940e0-e98f-4d75-a79c-272925b8c068",
-              "timestamp": "2026-07-28T11:00:29.470707",
-              "trial_index": 2,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "872f2357-357a-4ca5-b992-260a8c619890",
-              "timestamp": "2026-07-28T11:00:35.448289",
-              "trial_index": 3,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "663cfa27-aab2-49f8-a24c-1c3b9a793c19",
-              "timestamp": "2026-07-28T11:00:41.738505",
-              "trial_index": 4,
-              "prompt_variant": "explicit"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m1_minimal",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.276,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.276,
-          "wall_clock_s_ci_low": 0.152269,
-          "wall_clock_s_ci_high": 0.399731,
-          "wall_clock_s_ci_margin": 0.123731,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "79e75854-0e0c-40d0-ad0e-4b88cce2c294",
-              "timestamp": "2026-07-28T11:00:50.976463",
-              "trial_index": 0,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "11069eab-b6cc-4969-90c1-944653880c12",
-              "timestamp": "2026-07-28T11:00:59.530399",
-              "trial_index": 1,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "eeec519c-64d3-4129-8b6b-9d5bdfb2c8da",
-              "timestamp": "2026-07-28T11:01:05.686155",
-              "trial_index": 2,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "b7531606-51cf-4bfc-970b-39f48ec820af",
-              "timestamp": "2026-07-28T11:01:13.480081",
-              "trial_index": 3,
-              "prompt_variant": "minimal"
-            },
-            {
-              "run_id": "75a45e76-529c-446b-98cb-571da665e60c",
-              "timestamp": "2026-07-28T11:01:22.704676",
-              "trial_index": 4,
-              "prompt_variant": "minimal"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m2_detailed",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.328,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.328,
-          "wall_clock_s_ci_low": 0.225084,
-          "wall_clock_s_ci_high": 0.430916,
-          "wall_clock_s_ci_margin": 0.102916,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "eb6885f3-bd0d-4811-9a03-af07a89427c0",
-              "timestamp": "2026-07-28T11:01:31.016468",
-              "trial_index": 0,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "c5593efb-f34e-4ded-8b90-052568e589e1",
-              "timestamp": "2026-07-28T11:01:35.838402",
-              "trial_index": 1,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "f7a6da5c-8bae-4488-a64c-d392b8ffb29e",
-              "timestamp": "2026-07-28T11:01:41.861458",
-              "trial_index": 2,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "14fee67c-38d9-483a-a85f-6c19430bd86a",
-              "timestamp": "2026-07-28T11:01:49.361778",
-              "trial_index": 3,
-              "prompt_variant": "detailed"
-            },
-            {
-              "run_id": "fcaa6ad7-0640-4939-a722-b94dda280ad0",
-              "timestamp": "2026-07-28T11:01:55.403167",
-              "trial_index": 4,
-              "prompt_variant": "detailed"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "titan_m2_explicit",
-      "metrics": [
-        {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "input_tokens",
-          "section": "auto",
-          "label": "In tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "output_tokens",
-          "section": "auto",
-          "label": "Out tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_read_input_tokens",
-          "section": "auto",
-          "label": "Cache-read tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "cache_creation_input_tokens",
-          "section": "auto",
-          "label": "Cache-create tok",
-          "group": "tokens",
-          "fmt": "tokens"
-        },
-        {
-          "key": "llm_rounds",
-          "section": "auto",
-          "label": "Rounds",
-          "group": "time",
-          "fmt": "count"
-        },
-        {
-          "key": "llm_s",
-          "section": "auto",
-          "label": "LLM s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_s",
-          "section": "auto",
-          "label": "Tool s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "wall_clock_s",
-          "section": "auto",
-          "label": "Wall s",
-          "group": "time",
-          "fmt": "secs"
-        },
-        {
-          "key": "tool_inputs_repaired",
-          "section": "auto",
-          "label": "Tool inputs repaired",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "mb_injected_calls",
-          "section": "auto",
-          "label": "Mb injected calls",
-          "group": "other",
-          "fmt": "count"
-        },
-        {
-          "key": "aborted",
-          "section": "auto",
-          "label": "Aborted",
-          "group": "other",
-          "fmt": "count"
-        }
-      ],
-      "models": [
-        {
-          "model": "claude-fable-5",
-          "runs": 5,
-          "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_total": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_succeeded": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "output_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_read_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "cache_creation_input_tokens": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_rounds": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "llm_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "tool_s": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "wall_clock_s": {
-              "mean": 0.41,
-              "n": 5
-            },
-            "tool_inputs_repaired": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "mb_injected_calls": {
-              "mean": 0.0,
-              "n": 5
-            },
-            "aborted": {
-              "mean": 1.0,
-              "n": 5
-            }
-          },
-          "tool_call_success_rate_mean": 0.0,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": 0.0,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": 0.0,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": 0.0,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": 0.0,
-          "hit_round_limit_ci_low": 0.0,
-          "hit_round_limit_ci_high": 0.521824,
-          "hit_round_limit_ci_margin": 0.260912,
-          "input_tokens_mean": 0.0,
-          "input_tokens_ci_low": null,
-          "input_tokens_ci_high": null,
-          "input_tokens_ci_margin": null,
-          "output_tokens_mean": 0.0,
-          "output_tokens_ci_low": null,
-          "output_tokens_ci_high": null,
-          "output_tokens_ci_margin": null,
-          "cache_read_input_tokens_mean": 0.0,
-          "cache_read_input_tokens_ci_low": null,
-          "cache_read_input_tokens_ci_high": null,
-          "cache_read_input_tokens_ci_margin": null,
-          "cache_creation_input_tokens_mean": 0.0,
-          "cache_creation_input_tokens_ci_low": null,
-          "cache_creation_input_tokens_ci_high": null,
-          "cache_creation_input_tokens_ci_margin": null,
-          "llm_rounds_mean": 0.0,
-          "llm_rounds_ci_low": null,
-          "llm_rounds_ci_high": null,
-          "llm_rounds_ci_margin": null,
-          "llm_s_mean": 0.0,
-          "llm_s_ci_low": null,
-          "llm_s_ci_high": null,
-          "llm_s_ci_margin": null,
-          "tool_s_mean": 0.0,
-          "tool_s_ci_low": null,
-          "tool_s_ci_high": null,
-          "tool_s_ci_margin": null,
-          "wall_clock_s_mean": 0.41,
-          "wall_clock_s_ci_low": 0.102578,
-          "wall_clock_s_ci_high": 0.717422,
-          "wall_clock_s_ci_margin": 0.307422,
-          "tool_inputs_repaired_mean": 0.0,
-          "tool_inputs_repaired_ci_low": null,
-          "tool_inputs_repaired_ci_high": null,
-          "tool_inputs_repaired_ci_margin": null,
-          "mb_injected_calls_mean": 0.0,
-          "mb_injected_calls_ci_low": null,
-          "mb_injected_calls_ci_high": null,
-          "mb_injected_calls_ci_margin": null,
-          "aborted_mean": 1.0,
-          "aborted_ci_low": null,
-          "aborted_ci_high": null,
-          "aborted_ci_margin": null,
-          "run_index": [
-            {
-              "run_id": "8b7dcbcf-3100-46f8-950d-54958efa9cb6",
-              "timestamp": "2026-07-28T11:02:03.181093",
-              "trial_index": 0,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "2133f442-717b-42ce-80fd-fec87d6b10c0",
-              "timestamp": "2026-07-28T11:02:11.927179",
-              "trial_index": 1,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "94d654c4-49c6-41bb-bdfd-1d19f488c872",
-              "timestamp": "2026-07-28T11:02:21.449770",
-              "trial_index": 2,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "bff96655-c802-40da-96da-39da6ff15c08",
-              "timestamp": "2026-07-28T11:02:34.609999",
-              "trial_index": 3,
-              "prompt_variant": "explicit"
-            },
-            {
-              "run_id": "31d53083-c6d7-4df0-afac-2372e814a13c",
-              "timestamp": "2026-07-28T11:02:49.032193",
+              "run_id": "e9513778-8e7c-46f6-b4c2-26bcbb55ccee",
+              "timestamp": "2026-07-28T12:05:15.781110",
               "trial_index": 4,
               "prompt_variant": "explicit"
             }
@@ -4733,78 +802,13 @@
       "claude-fable-5"
     ],
     "tasks": [
-      "box_pocket_detailed",
-      "box_pocket_explicit",
-      "box_pocket_minimal",
-      "rounded_rectangle_with_pin_and_hole_detailed",
-      "rounded_rectangle_with_pin_and_hole_explicit",
-      "rounded_rectangle_with_pin_and_hole_minimal",
-      "titan_m10_detailed",
-      "titan_m10_explicit",
-      "titan_m10_minimal",
-      "titan_m1_detailed",
-      "titan_m1_explicit",
-      "titan_m1_minimal",
-      "titan_m2_detailed",
-      "titan_m2_explicit"
+      "box_pocket_explicit"
     ],
     "cells": {
       "claude-fable-5": {
-        "box_pocket_detailed": {
-          "runs": 5,
-          "graded": 3
-        },
         "box_pocket_explicit": {
           "runs": 5,
-          "graded": 0
-        },
-        "box_pocket_minimal": {
-          "runs": 5,
-          "graded": 0
-        },
-        "rounded_rectangle_with_pin_and_hole_detailed": {
-          "runs": 5,
-          "graded": 0
-        },
-        "rounded_rectangle_with_pin_and_hole_explicit": {
-          "runs": 5,
-          "graded": 0
-        },
-        "rounded_rectangle_with_pin_and_hole_minimal": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m10_detailed": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m10_explicit": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m10_minimal": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m1_detailed": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m1_explicit": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m1_minimal": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m2_detailed": {
-          "runs": 5,
-          "graded": 0
-        },
-        "titan_m2_explicit": {
-          "runs": 5,
-          "graded": 0
+          "graded": 4
         }
       }
     }
