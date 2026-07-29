@@ -1,7 +1,9 @@
 # CAM-LLM Benchmark — site
 
-Static leaderboard for the CAM-LLM benchmark. One table per task; rows = models;
-columns = the metrics `eval_middleware` logs (grouped, toggleable). PIN-gated.
+Static leaderboard for the CAM-LLM benchmark. Landing view ranks models by
+metric wins with prompt-variant filter tabs; `#model=<name>` opens a per-model
+task/variant/run drill-down. Metric columns are grouped and toggleable.
+PIN-gated.
 
 **This repo holds only the site + `summary.json` (aggregates).** Raw
 `eval_results` jsonl stay on the local machine and are never committed.
@@ -10,7 +12,8 @@ columns = the metrics `eval_middleware` logs (grouped, toggleable). PIN-gated.
 `summary.json` is regenerated from local `eval_results` and pushed; Cloudflare
 Pages auto-deploys on push. Two triggers:
 - **Auto** — finishing a run (scoring is automatic, no manual grading step)
-  runs `update.ps1` (build → commit → push) via the hook in `eval_middleware.py`.
+  runs `update.ps1` (build → commit → push) via `leaderboard/auto_deploy.py`,
+  which every run entry point fires unless `--no-deploy` is passed.
 - **Manual** — `..\update.ps1` (build + commit + push on demand).
 
 ## One-time setup
@@ -21,6 +24,12 @@ Pages auto-deploys on push. Two triggers:
    (random string for cookie signing).
 
 ## Files
-- `index.html`, `app.js` — the table UI (reads `summary.json`)
+- `index.html`, `app.js` — the UI (reads `summary.json`, lazy-loads `runs/<id>.json`)
 - `functions/_middleware.js` — PIN gate (Cloudflare Pages Function)
 - `summary.json` — generated aggregates (committed)
+- `runs/<run_id>.json` — per-run detail: metric values, tool-call transcript,
+  produced-CAM summary, provenance (committed; fetched on demand)
+
+This folder is the frontend SOURCE. `scripts/update.ps1` copies it into the
+deploy repo (`BENCH_SITE_DIR`) alongside the generated data, then pushes — so
+edit here, never in the deploy repo.
