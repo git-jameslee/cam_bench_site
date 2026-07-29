@@ -1,0 +1,71 @@
+{
+  "run_id": "468fdfe8-3e13-45d1-9d5f-bcc9f81f726b",
+  "model": "Claude Opus 5",
+  "model_raw": "claude-opus-5",
+  "task": "box_pocket_explicit",
+  "task_group": "box_pocket",
+  "prompt_variant": "explicit",
+  "trial_index": 0,
+  "trials_total": 5,
+  "backend": "anthropic",
+  "timestamp": "2026-07-29T13:10:44.039464",
+  "sampling": {},
+  "seed": null,
+  "values": {
+    "tool_calls_total": 0.0,
+    "tool_calls_succeeded": 0.0,
+    "tool_calls_failed": 0.0,
+    "tool_call_success_rate": 0.0,
+    "tool_inputs_repaired": 0.0,
+    "mb_injected_calls": 0.0,
+    "hit_round_limit": 0.0,
+    "aborted": 1.0,
+    "input_tokens": 0.0,
+    "output_tokens": 0.0,
+    "cache_read_input_tokens": 0.0,
+    "cache_creation_input_tokens": 0.0,
+    "llm_rounds": 0.0,
+    "llm_s": 0.0,
+    "tool_s": 0.0,
+    "wall_clock_s": 13.62
+  },
+  "transcript": [],
+  "provenance": {
+    "system_prompt_sha": "fb6000cd430e",
+    "mb_cam_sha": "54df0eb1c5db",
+    "task_file": "C:\\Users\\Nanja\\MachineBench\\tasks\\box_pocket\\box_pocket_explicit.yaml",
+    "cloud_file": "Pocket Box",
+    "cad_file": null,
+    "fusion_mcp_url": "http://127.0.0.1:27182/mcp"
+  },
+  "artifacts": {
+    "video": null,
+    "image": null
+  },
+  "cam_summary": {
+    "doc": "claude-opus-5_Pocket_Box_explicit_constraints_2026-07-29T13-10-24",
+    "cam_product": true,
+    "setups": [
+      {
+        "name": "Setup1",
+        "strategy": "setup",
+        "operation_type": 0,
+        "stock_mode": 1,
+        "stock_size_mm": [
+          102.0,
+          102.0,
+          51.0
+        ],
+        "machine": {
+          "vendor": "HAAS",
+          "model": "Mini Mill"
+        },
+        "machining_time_s": null,
+        "feed_time_s": null,
+        "rapid_time_s": null,
+        "tool_change_time_s": null,
+        "operations": []
+      }
+    ]
+  }
+}
