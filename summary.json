@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-29T23:23:20.641388+00:00",
-  "n_runs": 16,
+  "generated": "2026-07-30T00:33:19.668179+00:00",
+  "n_runs": 21,
   "group_order": [
     "outcome",
     "post",
@@ -27,7 +27,8 @@
       "detailed"
     ],
     "task_groups": [
-      "box_pocket"
+      "box_pocket",
+      "rounded_rectangle_with_pin_and_hole"
     ],
     "wins_metrics": [
       {
@@ -125,66 +126,70 @@
         "models": [
           {
             "model": "Claude Opus 5",
-            "runs": 16,
+            "runs": 21,
             "wins": 0,
             "won": [],
             "headline": {
-              "mean": 0.880713,
-              "n": 15,
-              "ci_low": 0.776352,
-              "ci_high": 0.985075,
-              "ci_margin": 0.104361
+              "mean": 0.9024,
+              "n": 19,
+              "ci_low": 0.819596,
+              "ci_high": 0.985204,
+              "ci_margin": 0.082804
             },
             "tasks": {
               "box_pocket": {
                 "mean": 0.880713,
                 "n": 15
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": 0.983725,
+                "n": 4
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": 0.880713,
-                "n": 15
+                "mean": 0.9024,
+                "n": 19
               },
               "max_deviation_mm": {
-                "mean": 4.766667,
-                "n": 15
+                "mean": 4.088147,
+                "n": 19
               },
               "cycle_time_s": {
-                "mean": 9210.870667,
-                "n": 15
+                "mean": 9157.161579,
+                "n": 19
               },
               "scallop_height_mm": {
                 "mean": 0.0,
-                "n": 15
+                "n": 19
               },
               "air_cut_ratio": {
-                "mean": 0.097393,
-                "n": 15
+                "mean": 0.132426,
+                "n": 19
               },
               "engagement_ok": {
                 "mean": 1.0,
-                "n": 15
+                "n": 19
               },
               "collision_free": {
                 "mean": 1.0,
-                "n": 15
+                "n": 19
               },
               "rough_before_finish": {
-                "mean": 0.733333,
-                "n": 15
+                "mean": 0.777778,
+                "n": 18
               },
               "tolerance_appropriate": {
-                "mean": 0.733333,
-                "n": 15
+                "mean": 0.777778,
+                "n": 18
               },
               "tool_call_success_rate": {
-                "mean": 0.834438,
-                "n": 16
+                "mean": 0.825905,
+                "n": 21
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 16
+                "n": 21
               }
             }
           }
@@ -209,6 +214,10 @@
               "box_pocket": {
                 "mean": 0.91704,
                 "n": 5
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
               }
             },
             "metrics": {
@@ -279,6 +288,10 @@
               "box_pocket": {
                 "mean": 0.91684,
                 "n": 5
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
               }
             },
             "metrics": {
@@ -335,66 +348,70 @@
         "models": [
           {
             "model": "Claude Opus 5",
-            "runs": 5,
+            "runs": 10,
             "wins": 0,
             "won": [],
             "headline": {
-              "mean": 0.80826,
-              "n": 5,
-              "ci_low": 0.543499,
+              "mean": 0.886244,
+              "n": 9,
+              "ci_low": 0.750132,
               "ci_high": 1.0,
-              "ci_margin": 0.22825
+              "ci_margin": 0.124934
             },
             "tasks": {
               "box_pocket": {
                 "mean": 0.80826,
                 "n": 5
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": 0.983725,
+                "n": 4
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": 0.80826,
-                "n": 5
+                "mean": 0.886244,
+                "n": 9
               },
               "max_deviation_mm": {
-                "mean": 8.1,
-                "n": 5
+                "mean": 5.186089,
+                "n": 9
               },
               "cycle_time_s": {
-                "mean": 11547.836,
-                "n": 5
+                "mean": 10395.798889,
+                "n": 9
               },
               "scallop_height_mm": {
                 "mean": 0.0,
-                "n": 5
+                "n": 9
               },
               "air_cut_ratio": {
-                "mean": 0.0981,
-                "n": 5
+                "mean": 0.171744,
+                "n": 9
               },
               "engagement_ok": {
                 "mean": 1.0,
-                "n": 5
+                "n": 9
               },
               "collision_free": {
                 "mean": 1.0,
-                "n": 5
+                "n": 9
               },
               "rough_before_finish": {
-                "mean": 0.6,
-                "n": 5
+                "mean": 0.75,
+                "n": 8
               },
               "tolerance_appropriate": {
-                "mean": 0.8,
-                "n": 5
+                "mean": 0.875,
+                "n": 8
               },
               "tool_call_success_rate": {
-                "mean": 0.8956,
-                "n": 5
+                "mean": 0.8471,
+                "n": 10
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 5
+                "n": 10
               }
             }
           }
@@ -407,18 +424,30 @@
           "box_pocket": {
             "mean": 0.91704,
             "n": 5
+          },
+          "rounded_rectangle_with_pin_and_hole": {
+            "mean": null,
+            "n": 0
           }
         },
         "explicit": {
           "box_pocket": {
             "mean": 0.91684,
             "n": 5
+          },
+          "rounded_rectangle_with_pin_and_hole": {
+            "mean": null,
+            "n": 0
           }
         },
         "detailed": {
           "box_pocket": {
             "mean": 0.80826,
             "n": 5
+          },
+          "rounded_rectangle_with_pin_and_hole": {
+            "mean": 0.983725,
+            "n": 4
           }
         }
       }
@@ -2005,6 +2034,531 @@
           ]
         }
       ]
+    },
+    {
+      "name": "rounded_rectangle_with_pin_and_hole_detailed",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "iou_voxel",
+          "section": "post",
+          "label": "IoU",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "max_deviation_mm",
+          "section": "post",
+          "label": "Max deviation (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "p99_deviation_mm",
+          "section": "post",
+          "label": "P99 deviation (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "scallop_height_mm",
+          "section": "post",
+          "label": "Scallop (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "radial_engagement_pct",
+          "section": "post",
+          "label": "Radial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "axial_engagement_pct",
+          "section": "post",
+          "label": "Axial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "engagement_ok",
+          "section": "post",
+          "label": "Engagement OK",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "operation_count",
+          "section": "post",
+          "label": "Ops",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_change_count",
+          "section": "post",
+          "label": "Tool changes",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "cycle_time_s",
+          "section": "post",
+          "label": "Cycle time",
+          "group": "post",
+          "fmt": "secs"
+        },
+        {
+          "key": "toolpath_length_mm",
+          "section": "post",
+          "label": "Toolpath length (mm)",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "collision_free",
+          "section": "post",
+          "label": "Collision-free",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "stock_in_bounds",
+          "section": "post",
+          "label": "Stock in bounds",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "rough_before_finish",
+          "section": "post",
+          "label": "Sequencing",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "tolerance_appropriate",
+          "section": "post",
+          "label": "Tolerance",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "air_cut_ratio",
+          "section": "post",
+          "label": "Air-cut",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "Claude Opus 5",
+          "runs": 5,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.7986,
+              "n": 5
+            },
+            "tool_calls_total": {
+              "mean": 35.8,
+              "n": 5
+            },
+            "tool_calls_succeeded": {
+              "mean": 28.0,
+              "n": 5
+            },
+            "tool_calls_failed": {
+              "mean": 7.8,
+              "n": 5
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "iou_voxel": {
+              "mean": 0.983725,
+              "n": 4
+            },
+            "max_deviation_mm": {
+              "mean": 1.5437,
+              "n": 4
+            },
+            "p99_deviation_mm": {
+              "mean": 1.403075,
+              "n": 4
+            },
+            "scallop_height_mm": {
+              "mean": 0.0,
+              "n": 4
+            },
+            "radial_engagement_pct": {
+              "mean": 65.6165,
+              "n": 4
+            },
+            "axial_engagement_pct": {
+              "mean": 12.487,
+              "n": 4
+            },
+            "engagement_ok": {
+              "mean": 1.0,
+              "n": 4
+            },
+            "operation_count": {
+              "mean": 6.75,
+              "n": 4
+            },
+            "tool_change_count": {
+              "mean": 3.25,
+              "n": 4
+            },
+            "cycle_time_s": {
+              "mean": 8955.7525,
+              "n": 4
+            },
+            "toolpath_length_mm": {
+              "mean": 8717.675,
+              "n": 4
+            },
+            "collision_free": {
+              "mean": 1.0,
+              "n": 4
+            },
+            "stock_in_bounds": {
+              "mean": 1.0,
+              "n": 4
+            },
+            "rough_before_finish": {
+              "mean": 1.0,
+              "n": 3
+            },
+            "tolerance_appropriate": {
+              "mean": 1.0,
+              "n": 3
+            },
+            "air_cut_ratio": {
+              "mean": 0.2638,
+              "n": 4
+            },
+            "input_tokens": {
+              "mean": 1040249.2,
+              "n": 5
+            },
+            "output_tokens": {
+              "mean": 42530.0,
+              "n": 5
+            },
+            "cache_read_input_tokens": {
+              "mean": 995022.4,
+              "n": 5
+            },
+            "cache_creation_input_tokens": {
+              "mean": 45154.4,
+              "n": 5
+            },
+            "llm_rounds": {
+              "mean": 36.2,
+              "n": 5
+            },
+            "llm_s": {
+              "mean": 770.834,
+              "n": 5
+            },
+            "tool_s": {
+              "mean": 44.462,
+              "n": 5
+            },
+            "wall_clock_s": {
+              "mean": 816.848,
+              "n": 5
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "mb_injected_calls": {
+              "mean": 34.0,
+              "n": 5
+            },
+            "aborted": {
+              "mean": 0.0,
+              "n": 5
+            }
+          },
+          "tool_call_success_rate_mean": 0.7986,
+          "tool_call_success_rate_ci_low": 0.500771,
+          "tool_call_success_rate_ci_high": 1.0,
+          "tool_call_success_rate_ci_margin": 0.249615,
+          "tool_calls_total_mean": 35.8,
+          "tool_calls_total_ci_low": 27.686317,
+          "tool_calls_total_ci_high": 43.913683,
+          "tool_calls_total_ci_margin": 8.113683,
+          "tool_calls_succeeded_mean": 28.0,
+          "tool_calls_succeeded_ci_low": 17.391218,
+          "tool_calls_succeeded_ci_high": 38.608782,
+          "tool_calls_succeeded_ci_margin": 10.608782,
+          "tool_calls_failed_mean": 7.8,
+          "tool_calls_failed_ci_low": 0.0,
+          "tool_calls_failed_ci_high": 19.946749,
+          "tool_calls_failed_ci_margin": 9.973375,
+          "hit_round_limit_mean": 0.0,
+          "hit_round_limit_ci_low": 0.0,
+          "hit_round_limit_ci_high": 0.521824,
+          "hit_round_limit_ci_margin": 0.260912,
+          "iou_voxel_mean": 0.983725,
+          "iou_voxel_ci_low": 0.962025,
+          "iou_voxel_ci_high": 1.0,
+          "iou_voxel_ci_margin": 0.018987,
+          "max_deviation_mm_mean": 1.5437,
+          "max_deviation_mm_ci_low": 0.0,
+          "max_deviation_mm_ci_high": 4.014612,
+          "max_deviation_mm_ci_margin": 2.007306,
+          "p99_deviation_mm_mean": 1.403075,
+          "p99_deviation_mm_ci_low": 0.0,
+          "p99_deviation_mm_ci_high": 3.619898,
+          "p99_deviation_mm_ci_margin": 1.809949,
+          "scallop_height_mm_mean": 0.0,
+          "scallop_height_mm_ci_low": null,
+          "scallop_height_mm_ci_high": null,
+          "scallop_height_mm_ci_margin": null,
+          "radial_engagement_pct_mean": 65.6165,
+          "radial_engagement_pct_ci_low": 60.79428,
+          "radial_engagement_pct_ci_high": 70.43872,
+          "radial_engagement_pct_ci_margin": 4.82222,
+          "axial_engagement_pct_mean": 12.487,
+          "axial_engagement_pct_ci_low": 6.582666,
+          "axial_engagement_pct_ci_high": 18.391334,
+          "axial_engagement_pct_ci_margin": 5.904334,
+          "engagement_ok_mean": 1.0,
+          "engagement_ok_ci_low": 0.397635,
+          "engagement_ok_ci_high": 1.0,
+          "engagement_ok_ci_margin": 0.301182,
+          "operation_count_mean": 6.75,
+          "operation_count_ci_low": 4.747755,
+          "operation_count_ci_high": 8.752245,
+          "operation_count_ci_margin": 2.002245,
+          "tool_change_count_mean": 3.25,
+          "tool_change_count_ci_low": 1.72652,
+          "tool_change_count_ci_high": 4.77348,
+          "tool_change_count_ci_margin": 1.52348,
+          "cycle_time_s_mean": 8955.7525,
+          "cycle_time_s_ci_low": 0.0,
+          "cycle_time_s_ci_high": 21498.560749,
+          "cycle_time_s_ci_margin": 10749.280375,
+          "toolpath_length_mm_mean": 8717.675,
+          "toolpath_length_mm_ci_low": 3867.56549,
+          "toolpath_length_mm_ci_high": 13567.78451,
+          "toolpath_length_mm_ci_margin": 4850.10951,
+          "collision_free_mean": 1.0,
+          "collision_free_ci_low": 0.397635,
+          "collision_free_ci_high": 1.0,
+          "collision_free_ci_margin": 0.301182,
+          "stock_in_bounds_mean": 1.0,
+          "stock_in_bounds_ci_low": 0.397635,
+          "stock_in_bounds_ci_high": 1.0,
+          "stock_in_bounds_ci_margin": 0.301182,
+          "rough_before_finish_mean": 1.0,
+          "rough_before_finish_ci_low": 0.292402,
+          "rough_before_finish_ci_high": 1.0,
+          "rough_before_finish_ci_margin": 0.353799,
+          "tolerance_appropriate_mean": 1.0,
+          "tolerance_appropriate_ci_low": 0.292402,
+          "tolerance_appropriate_ci_high": 1.0,
+          "tolerance_appropriate_ci_margin": 0.353799,
+          "air_cut_ratio_mean": 0.2638,
+          "air_cut_ratio_ci_low": 0.2066,
+          "air_cut_ratio_ci_high": 0.321,
+          "air_cut_ratio_ci_margin": 0.0572,
+          "input_tokens_mean": 1040249.2,
+          "input_tokens_ci_low": 703853.067477,
+          "input_tokens_ci_high": 1376645.332523,
+          "input_tokens_ci_margin": 336396.132523,
+          "output_tokens_mean": 42530.0,
+          "output_tokens_ci_low": 26421.803868,
+          "output_tokens_ci_high": 58638.196132,
+          "output_tokens_ci_margin": 16108.196132,
+          "cache_read_input_tokens_mean": 995022.4,
+          "cache_read_input_tokens_ci_low": 677497.30285,
+          "cache_read_input_tokens_ci_high": 1312547.49715,
+          "cache_read_input_tokens_ci_margin": 317525.09715,
+          "cache_creation_input_tokens_mean": 45154.4,
+          "cache_creation_input_tokens_ci_low": 24020.353257,
+          "cache_creation_input_tokens_ci_high": 66288.446743,
+          "cache_creation_input_tokens_ci_margin": 21134.046743,
+          "llm_rounds_mean": 36.2,
+          "llm_rounds_ci_low": 29.154172,
+          "llm_rounds_ci_high": 43.245828,
+          "llm_rounds_ci_margin": 7.045828,
+          "llm_s_mean": 770.834,
+          "llm_s_ci_low": 376.683358,
+          "llm_s_ci_high": 1164.984642,
+          "llm_s_ci_margin": 394.150642,
+          "tool_s_mean": 44.462,
+          "tool_s_ci_low": 26.381915,
+          "tool_s_ci_high": 62.542085,
+          "tool_s_ci_margin": 18.080085,
+          "wall_clock_s_mean": 816.848,
+          "wall_clock_s_ci_low": 416.750608,
+          "wall_clock_s_ci_high": 1216.945392,
+          "wall_clock_s_ci_margin": 400.097392,
+          "tool_inputs_repaired_mean": 0.0,
+          "tool_inputs_repaired_ci_low": null,
+          "tool_inputs_repaired_ci_high": null,
+          "tool_inputs_repaired_ci_margin": null,
+          "mb_injected_calls_mean": 34.0,
+          "mb_injected_calls_ci_low": 27.98081,
+          "mb_injected_calls_ci_high": 40.01919,
+          "mb_injected_calls_ci_margin": 6.01919,
+          "aborted_mean": 0.0,
+          "aborted_ci_low": null,
+          "aborted_ci_high": null,
+          "aborted_ci_margin": null,
+          "run_index": [
+            {
+              "run_id": "b5a44c1f-2a64-487c-9493-10970662fa88",
+              "timestamp": "2026-07-29T19:37:10.311351",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "1251ebf2-c0ef-43a9-b8a5-1f83382c3f35",
+              "timestamp": "2026-07-29T19:51:12.281194",
+              "trial_index": 1,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "8bdfd15b-3f07-44a9-b040-5c56f580dda6",
+              "timestamp": "2026-07-29T20:03:03.548016",
+              "trial_index": 2,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "0284559c-f7e2-4569-89dc-4dbf018c4f34",
+              "timestamp": "2026-07-29T20:25:26.652301",
+              "trial_index": 3,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "fe90c066-f477-4441-b45c-159738d483ec",
+              "timestamp": "2026-07-29T20:33:03.397069",
+              "trial_index": 4,
+              "prompt_variant": "detailed"
+            }
+          ]
+        }
+      ]
     }
   ],
   "overview": {
@@ -2014,7 +2568,8 @@
     "tasks": [
       "box_pocket_detailed",
       "box_pocket_explicit",
-      "box_pocket_minimal"
+      "box_pocket_minimal",
+      "rounded_rectangle_with_pin_and_hole_detailed"
     ],
     "cells": {
       "Claude Opus 5": {
@@ -2029,6 +2584,10 @@
         "box_pocket_minimal": {
           "runs": 5,
           "graded": 5
+        },
+        "rounded_rectangle_with_pin_and_hole_detailed": {
+          "runs": 5,
+          "graded": 4
         }
       }
     }
