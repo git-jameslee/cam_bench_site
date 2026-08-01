@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-01T15:24:36.047219+00:00",
-  "n_runs": 22,
+  "generated": "2026-08-01T16:35:43.984423+00:00",
+  "n_runs": 27,
   "group_order": [
     "outcome",
     "post",
@@ -122,13 +122,99 @@
     ],
     "boards": {
       "all": {
-        "contested": 0,
+        "contested": 11,
         "models": [
+          {
+            "model": "GLM 5.2",
+            "runs": 5,
+            "wins": 10,
+            "won": [
+              "iou_voxel",
+              "max_deviation_mm",
+              "scallop_height_mm",
+              "air_cut_ratio",
+              "engagement_ok",
+              "collision_free",
+              "rough_before_finish",
+              "tolerance_appropriate",
+              "tool_call_success_rate",
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": 0.92854,
+              "n": 5,
+              "ci_low": 0.730135,
+              "ci_high": 1.0,
+              "ci_margin": 0.134932
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.92854,
+                "n": 5
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.92854,
+                "n": 5
+              },
+              "max_deviation_mm": {
+                "mean": 3.9,
+                "n": 5
+              },
+              "cycle_time_s": {
+                "mean": 10519.996,
+                "n": 5
+              },
+              "scallop_height_mm": {
+                "mean": 0.0,
+                "n": 5
+              },
+              "air_cut_ratio": {
+                "mean": 0.08048,
+                "n": 5
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 5
+              },
+              "collision_free": {
+                "mean": 1.0,
+                "n": 5
+              },
+              "rough_before_finish": {
+                "mean": 1.0,
+                "n": 1
+              },
+              "tolerance_appropriate": {
+                "mean": 1.0,
+                "n": 1
+              },
+              "tool_call_success_rate": {
+                "mean": 0.9688,
+                "n": 5
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 5
+              }
+            }
+          },
           {
             "model": "Claude Opus 5",
             "runs": 22,
-            "wins": 0,
-            "won": [],
+            "wins": 5,
+            "won": [
+              "cycle_time_s",
+              "scallop_height_mm",
+              "engagement_ok",
+              "collision_free",
+              "hit_round_limit"
+            ],
             "headline": {
               "mean": 0.906665,
               "n": 20,
@@ -344,13 +430,99 @@
         ]
       },
       "detailed": {
-        "contested": 0,
+        "contested": 11,
         "models": [
+          {
+            "model": "GLM 5.2",
+            "runs": 5,
+            "wins": 10,
+            "won": [
+              "iou_voxel",
+              "max_deviation_mm",
+              "scallop_height_mm",
+              "air_cut_ratio",
+              "engagement_ok",
+              "collision_free",
+              "rough_before_finish",
+              "tolerance_appropriate",
+              "tool_call_success_rate",
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": 0.92854,
+              "n": 5,
+              "ci_low": 0.730135,
+              "ci_high": 1.0,
+              "ci_margin": 0.134932
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.92854,
+                "n": 5
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": null,
+                "n": 0
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.92854,
+                "n": 5
+              },
+              "max_deviation_mm": {
+                "mean": 3.9,
+                "n": 5
+              },
+              "cycle_time_s": {
+                "mean": 10519.996,
+                "n": 5
+              },
+              "scallop_height_mm": {
+                "mean": 0.0,
+                "n": 5
+              },
+              "air_cut_ratio": {
+                "mean": 0.08048,
+                "n": 5
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 5
+              },
+              "collision_free": {
+                "mean": 1.0,
+                "n": 5
+              },
+              "rough_before_finish": {
+                "mean": 1.0,
+                "n": 1
+              },
+              "tolerance_appropriate": {
+                "mean": 1.0,
+                "n": 1
+              },
+              "tool_call_success_rate": {
+                "mean": 0.9688,
+                "n": 5
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 5
+              }
+            }
+          },
           {
             "model": "Claude Opus 5",
             "runs": 11,
-            "wins": 0,
-            "won": [],
+            "wins": 5,
+            "won": [
+              "cycle_time_s",
+              "scallop_height_mm",
+              "engagement_ok",
+              "collision_free",
+              "hit_round_limit"
+            ],
             "headline": {
               "mean": 0.89639,
               "n": 10,
@@ -448,6 +620,18 @@
           "rounded_rectangle_with_pin_and_hole": {
             "mean": 0.98452,
             "n": 5
+          }
+        }
+      },
+      "GLM 5.2": {
+        "detailed": {
+          "box_pocket": {
+            "mean": 0.92854,
+            "n": 5
+          },
+          "rounded_rectangle_with_pin_and_hole": {
+            "mean": null,
+            "n": 0
           }
         }
       }
@@ -972,6 +1156,300 @@
             {
               "run_id": "dafc9d2d-b44e-41fb-90ee-df70266af052",
               "timestamp": "2026-07-29T14:15:35.391254",
+              "trial_index": 4,
+              "prompt_variant": "detailed"
+            }
+          ]
+        },
+        {
+          "model": "GLM 5.2",
+          "runs": 5,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.9688,
+              "n": 5
+            },
+            "tool_calls_total": {
+              "mean": 22.6,
+              "n": 5
+            },
+            "tool_calls_succeeded": {
+              "mean": 21.8,
+              "n": 5
+            },
+            "tool_calls_failed": {
+              "mean": 0.8,
+              "n": 5
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "iou_voxel": {
+              "mean": 0.92854,
+              "n": 5
+            },
+            "max_deviation_mm": {
+              "mean": 3.9,
+              "n": 5
+            },
+            "p99_deviation_mm": {
+              "mean": 3.5,
+              "n": 5
+            },
+            "scallop_height_mm": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "radial_engagement_pct": {
+              "mean": 63.9234,
+              "n": 5
+            },
+            "axial_engagement_pct": {
+              "mean": 35.433,
+              "n": 5
+            },
+            "engagement_ok": {
+              "mean": 1.0,
+              "n": 5
+            },
+            "operation_count": {
+              "mean": 4.8,
+              "n": 5
+            },
+            "tool_change_count": {
+              "mean": 3.0,
+              "n": 5
+            },
+            "cycle_time_s": {
+              "mean": 10519.996,
+              "n": 5
+            },
+            "toolpath_length_mm": {
+              "mean": 15613.748,
+              "n": 5
+            },
+            "collision_free": {
+              "mean": 1.0,
+              "n": 5
+            },
+            "stock_in_bounds": {
+              "mean": 1.0,
+              "n": 5
+            },
+            "rough_before_finish": {
+              "mean": 1.0,
+              "n": 1
+            },
+            "tolerance_appropriate": {
+              "mean": 1.0,
+              "n": 1
+            },
+            "air_cut_ratio": {
+              "mean": 0.08048,
+              "n": 5
+            },
+            "input_tokens": {
+              "mean": 1107149.4,
+              "n": 5
+            },
+            "output_tokens": {
+              "mean": 50041.2,
+              "n": 5
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "llm_rounds": {
+              "mean": 23.0,
+              "n": 5
+            },
+            "llm_s": {
+              "mean": 666.948,
+              "n": 5
+            },
+            "tool_s": {
+              "mean": 14.474,
+              "n": 5
+            },
+            "wall_clock_s": {
+              "mean": 681.876,
+              "n": 5
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "mb_injected_calls": {
+              "mean": 22.6,
+              "n": 5
+            },
+            "aborted": {
+              "mean": 0.0,
+              "n": 5
+            }
+          },
+          "tool_call_success_rate_mean": 0.9688,
+          "tool_call_success_rate_ci_low": 0.911391,
+          "tool_call_success_rate_ci_high": 1.0,
+          "tool_call_success_rate_ci_margin": 0.044304,
+          "tool_calls_total_mean": 22.6,
+          "tool_calls_total_ci_low": 17.904605,
+          "tool_calls_total_ci_high": 27.295395,
+          "tool_calls_total_ci_margin": 4.695395,
+          "tool_calls_succeeded_mean": 21.8,
+          "tool_calls_succeeded_ci_low": 18.244415,
+          "tool_calls_succeeded_ci_high": 25.355585,
+          "tool_calls_succeeded_ci_margin": 3.555585,
+          "tool_calls_failed_mean": 0.8,
+          "tool_calls_failed_ci_low": 0.0,
+          "tool_calls_failed_ci_high": 2.418932,
+          "tool_calls_failed_ci_margin": 1.209466,
+          "hit_round_limit_mean": 0.0,
+          "hit_round_limit_ci_low": 0.0,
+          "hit_round_limit_ci_high": 0.521824,
+          "hit_round_limit_ci_margin": 0.260912,
+          "iou_voxel_mean": 0.92854,
+          "iou_voxel_ci_low": 0.730135,
+          "iou_voxel_ci_high": 1.0,
+          "iou_voxel_ci_margin": 0.134932,
+          "max_deviation_mm_mean": 3.9,
+          "max_deviation_mm_ci_low": 0.0,
+          "max_deviation_mm_ci_high": 14.728136,
+          "max_deviation_mm_ci_margin": 7.364068,
+          "p99_deviation_mm_mean": 3.5,
+          "p99_deviation_mm_ci_low": 0.0,
+          "p99_deviation_mm_ci_high": 13.217558,
+          "p99_deviation_mm_ci_margin": 6.608779,
+          "scallop_height_mm_mean": 0.0,
+          "scallop_height_mm_ci_low": null,
+          "scallop_height_mm_ci_high": null,
+          "scallop_height_mm_ci_margin": null,
+          "radial_engagement_pct_mean": 63.9234,
+          "radial_engagement_pct_ci_low": 36.29714,
+          "radial_engagement_pct_ci_high": 91.54966,
+          "radial_engagement_pct_ci_margin": 27.62626,
+          "axial_engagement_pct_mean": 35.433,
+          "axial_engagement_pct_ci_low": 22.185309,
+          "axial_engagement_pct_ci_high": 48.680691,
+          "axial_engagement_pct_ci_margin": 13.247691,
+          "engagement_ok_mean": 1.0,
+          "engagement_ok_ci_low": 0.478176,
+          "engagement_ok_ci_high": 1.0,
+          "engagement_ok_ci_margin": 0.260912,
+          "operation_count_mean": 4.8,
+          "operation_count_ci_low": 4.244711,
+          "operation_count_ci_high": 5.355289,
+          "operation_count_ci_margin": 0.555289,
+          "tool_change_count_mean": 3.0,
+          "tool_change_count_ci_low": null,
+          "tool_change_count_ci_high": null,
+          "tool_change_count_ci_margin": null,
+          "cycle_time_s_mean": 10519.996,
+          "cycle_time_s_ci_low": 0.0,
+          "cycle_time_s_ci_high": 22144.850806,
+          "cycle_time_s_ci_margin": 11072.425403,
+          "toolpath_length_mm_mean": 15613.748,
+          "toolpath_length_mm_ci_low": 3188.941023,
+          "toolpath_length_mm_ci_high": 28038.554977,
+          "toolpath_length_mm_ci_margin": 12424.806977,
+          "collision_free_mean": 1.0,
+          "collision_free_ci_low": 0.478176,
+          "collision_free_ci_high": 1.0,
+          "collision_free_ci_margin": 0.260912,
+          "stock_in_bounds_mean": 1.0,
+          "stock_in_bounds_ci_low": 0.478176,
+          "stock_in_bounds_ci_high": 1.0,
+          "stock_in_bounds_ci_margin": 0.260912,
+          "rough_before_finish_mean": null,
+          "rough_before_finish_ci_low": null,
+          "rough_before_finish_ci_high": null,
+          "rough_before_finish_ci_margin": null,
+          "tolerance_appropriate_mean": null,
+          "tolerance_appropriate_ci_low": null,
+          "tolerance_appropriate_ci_high": null,
+          "tolerance_appropriate_ci_margin": null,
+          "air_cut_ratio_mean": 0.08048,
+          "air_cut_ratio_ci_low": 0.031556,
+          "air_cut_ratio_ci_high": 0.129404,
+          "air_cut_ratio_ci_margin": 0.048924,
+          "input_tokens_mean": 1107149.4,
+          "input_tokens_ci_low": 782762.803387,
+          "input_tokens_ci_high": 1431535.996613,
+          "input_tokens_ci_margin": 324386.596613,
+          "output_tokens_mean": 50041.2,
+          "output_tokens_ci_low": 36123.818901,
+          "output_tokens_ci_high": 63958.581099,
+          "output_tokens_ci_margin": 13917.381099,
+          "cache_read_input_tokens_mean": 0.0,
+          "cache_read_input_tokens_ci_low": null,
+          "cache_read_input_tokens_ci_high": null,
+          "cache_read_input_tokens_ci_margin": null,
+          "cache_creation_input_tokens_mean": 0.0,
+          "cache_creation_input_tokens_ci_low": null,
+          "cache_creation_input_tokens_ci_high": null,
+          "cache_creation_input_tokens_ci_margin": null,
+          "llm_rounds_mean": 23.0,
+          "llm_rounds_ci_low": 19.834366,
+          "llm_rounds_ci_high": 26.165634,
+          "llm_rounds_ci_margin": 3.165634,
+          "llm_s_mean": 666.948,
+          "llm_s_ci_low": 448.945151,
+          "llm_s_ci_high": 884.950849,
+          "llm_s_ci_margin": 218.002849,
+          "tool_s_mean": 14.474,
+          "tool_s_ci_low": 11.726742,
+          "tool_s_ci_high": 17.221258,
+          "tool_s_ci_margin": 2.747258,
+          "wall_clock_s_mean": 681.876,
+          "wall_clock_s_ci_low": 464.7365,
+          "wall_clock_s_ci_high": 899.0155,
+          "wall_clock_s_ci_margin": 217.1395,
+          "tool_inputs_repaired_mean": 0.0,
+          "tool_inputs_repaired_ci_low": null,
+          "tool_inputs_repaired_ci_high": null,
+          "tool_inputs_repaired_ci_margin": null,
+          "mb_injected_calls_mean": 22.6,
+          "mb_injected_calls_ci_low": 17.904605,
+          "mb_injected_calls_ci_high": 27.295395,
+          "mb_injected_calls_ci_margin": 4.695395,
+          "aborted_mean": 0.0,
+          "aborted_ci_low": null,
+          "aborted_ci_high": null,
+          "aborted_ci_margin": null,
+          "run_index": [
+            {
+              "run_id": "98296bc8-f40c-4494-8abe-afdbfe013689",
+              "timestamp": "2026-08-01T11:43:55.277445",
+              "trial_index": 0,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "7efd9e4d-9c7d-42f1-8626-8a85de14cd8f",
+              "timestamp": "2026-08-01T11:52:16.273885",
+              "trial_index": 1,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "a8a340bc-9ec9-4772-829a-7b4f0fb0b519",
+              "timestamp": "2026-08-01T12:08:07.618227",
+              "trial_index": 2,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "4e6ac41f-131a-4c27-a260-c01b7c260b0a",
+              "timestamp": "2026-08-01T12:22:16.415194",
+              "trial_index": 3,
+              "prompt_variant": "detailed"
+            },
+            {
+              "run_id": "74825f0d-6600-4535-91df-81056b518b6b",
+              "timestamp": "2026-08-01T12:34:35.884655",
               "trial_index": 4,
               "prompt_variant": "detailed"
             }
@@ -2569,7 +3047,8 @@
   ],
   "overview": {
     "models": [
-      "Claude Opus 5"
+      "Claude Opus 5",
+      "GLM 5.2"
     ],
     "tasks": [
       "box_pocket_detailed",
@@ -2594,6 +3073,24 @@
         "rounded_rectangle_with_pin_and_hole_detailed": {
           "runs": 6,
           "graded": 5
+        }
+      },
+      "GLM 5.2": {
+        "box_pocket_detailed": {
+          "runs": 5,
+          "graded": 5
+        },
+        "box_pocket_explicit": {
+          "runs": 0,
+          "graded": 0
+        },
+        "box_pocket_minimal": {
+          "runs": 0,
+          "graded": 0
+        },
+        "rounded_rectangle_with_pin_and_hole_detailed": {
+          "runs": 0,
+          "graded": 0
         }
       }
     }
