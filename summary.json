@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-02T00:25:54.132363+00:00",
-  "n_runs": 45,
+  "generated": "2026-08-02T01:39:07.106315+00:00",
+  "n_runs": 50,
   "group_order": [
     "outcome",
     "post",
@@ -138,7 +138,7 @@
         "models": [
           {
             "model": "GLM 5.2",
-            "runs": 25,
+            "runs": 30,
             "wins": 11,
             "won": [
               "iou_voxel",
@@ -154,11 +154,11 @@
               "hit_round_limit"
             ],
             "headline": {
-              "mean": 0.931372,
-              "n": 25,
-              "ci_low": 0.885407,
-              "ci_high": 0.977337,
-              "ci_margin": 0.045965
+              "mean": 0.909543,
+              "n": 30,
+              "ci_low": 0.85602,
+              "ci_high": 0.963066,
+              "ci_margin": 0.053523
             },
             "tasks": {
               "box_pocket": {
@@ -166,38 +166,38 @@
                 "n": 15
               },
               "rounded_rectangle_with_pin_and_hole": {
-                "mean": 0.88359,
-                "n": 10
+                "mean": 0.85586,
+                "n": 15
               }
             },
             "metrics": {
               "iou_voxel": {
-                "mean": 0.931372,
-                "n": 25
+                "mean": 0.909543,
+                "n": 30
               },
               "max_deviation_mm": {
-                "mean": 1.72864,
-                "n": 25
+                "mean": 1.954943,
+                "n": 30
               },
               "cycle_time_s": {
-                "mean": 8062.904,
-                "n": 25
+                "mean": 7804.366333,
+                "n": 30
               },
               "scallop_height_mm": {
                 "mean": 0.0,
-                "n": 25
+                "n": 30
               },
               "air_cut_ratio": {
-                "mean": 0.120656,
-                "n": 25
+                "mean": 0.128307,
+                "n": 30
               },
               "engagement_ok": {
                 "mean": 1.0,
-                "n": 25
+                "n": 30
               },
               "collision_free": {
                 "mean": 1.0,
-                "n": 25
+                "n": 30
               },
               "rough_before_finish": {
                 "mean": 1.0,
@@ -208,12 +208,12 @@
                 "n": 6
               },
               "tool_call_success_rate": {
-                "mean": 0.91568,
-                "n": 25
+                "mean": 0.906567,
+                "n": 30
               },
               "hit_round_limit": {
                 "mean": 0.0,
-                "n": 25
+                "n": 30
               }
             }
           },
@@ -297,92 +297,16 @@
         "contested": 9,
         "models": [
           {
-            "model": "GLM 5.2",
+            "model": "Claude Opus 5",
             "runs": 5,
-            "wins": 9,
+            "wins": 7,
             "won": [
               "iou_voxel",
-              "max_deviation_mm",
-              "cycle_time_s",
               "scallop_height_mm",
               "air_cut_ratio",
               "engagement_ok",
               "collision_free",
               "tool_call_success_rate",
-              "hit_round_limit"
-            ],
-            "headline": {
-              "mean": 0.96114,
-              "n": 5,
-              "ci_low": 0.933092,
-              "ci_high": 0.989188,
-              "ci_margin": 0.028048
-            },
-            "tasks": {
-              "box_pocket": {
-                "mean": 0.96114,
-                "n": 5
-              },
-              "rounded_rectangle_with_pin_and_hole": {
-                "mean": null,
-                "n": 0
-              }
-            },
-            "metrics": {
-              "iou_voxel": {
-                "mean": 0.96114,
-                "n": 5
-              },
-              "max_deviation_mm": {
-                "mean": 0.59746,
-                "n": 5
-              },
-              "cycle_time_s": {
-                "mean": 4659.032,
-                "n": 5
-              },
-              "scallop_height_mm": {
-                "mean": 0.0,
-                "n": 5
-              },
-              "air_cut_ratio": {
-                "mean": 0.07344,
-                "n": 5
-              },
-              "engagement_ok": {
-                "mean": 1.0,
-                "n": 5
-              },
-              "collision_free": {
-                "mean": 1.0,
-                "n": 5
-              },
-              "rough_before_finish": {
-                "mean": null,
-                "n": 0
-              },
-              "tolerance_appropriate": {
-                "mean": null,
-                "n": 0
-              },
-              "tool_call_success_rate": {
-                "mean": 0.9476,
-                "n": 5
-              },
-              "hit_round_limit": {
-                "mean": 0.0,
-                "n": 5
-              }
-            }
-          },
-          {
-            "model": "Claude Opus 5",
-            "runs": 5,
-            "wins": 4,
-            "won": [
-              "scallop_height_mm",
-              "engagement_ok",
-              "collision_free",
               "hit_round_limit"
             ],
             "headline": {
@@ -446,6 +370,82 @@
               "hit_round_limit": {
                 "mean": 0.0,
                 "n": 5
+              }
+            }
+          },
+          {
+            "model": "GLM 5.2",
+            "runs": 10,
+            "wins": 6,
+            "won": [
+              "max_deviation_mm",
+              "cycle_time_s",
+              "scallop_height_mm",
+              "engagement_ok",
+              "collision_free",
+              "hit_round_limit"
+            ],
+            "headline": {
+              "mean": 0.88077,
+              "n": 10,
+              "ci_low": 0.751611,
+              "ci_high": 1.0,
+              "ci_margin": 0.124194
+            },
+            "tasks": {
+              "box_pocket": {
+                "mean": 0.96114,
+                "n": 5
+              },
+              "rounded_rectangle_with_pin_and_hole": {
+                "mean": 0.8004,
+                "n": 5
+              }
+            },
+            "metrics": {
+              "iou_voxel": {
+                "mean": 0.88077,
+                "n": 10
+              },
+              "max_deviation_mm": {
+                "mean": 1.84196,
+                "n": 10
+              },
+              "cycle_time_s": {
+                "mean": 5585.355,
+                "n": 10
+              },
+              "scallop_height_mm": {
+                "mean": 0.0,
+                "n": 10
+              },
+              "air_cut_ratio": {
+                "mean": 0.12,
+                "n": 10
+              },
+              "engagement_ok": {
+                "mean": 1.0,
+                "n": 10
+              },
+              "collision_free": {
+                "mean": 1.0,
+                "n": 10
+              },
+              "rough_before_finish": {
+                "mean": null,
+                "n": 0
+              },
+              "tolerance_appropriate": {
+                "mean": null,
+                "n": 0
+              },
+              "tool_call_success_rate": {
+                "mean": 0.9043,
+                "n": 10
+              },
+              "hit_round_limit": {
+                "mean": 0.0,
+                "n": 10
               }
             }
           }
@@ -812,8 +812,8 @@
             "n": 5
           },
           "rounded_rectangle_with_pin_and_hole": {
-            "mean": null,
-            "n": 0
+            "mean": 0.8004,
+            "n": 5
           }
         },
         "explicit": {
@@ -4640,6 +4640,516 @@
           ]
         }
       ]
+    },
+    {
+      "name": "rounded_rectangle_with_pin_and_hole_minimal",
+      "metrics": [
+        {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "iou_voxel",
+          "section": "post",
+          "label": "IoU",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "max_deviation_mm",
+          "section": "post",
+          "label": "Max deviation (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "p99_deviation_mm",
+          "section": "post",
+          "label": "P99 deviation (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "scallop_height_mm",
+          "section": "post",
+          "label": "Scallop (mm)",
+          "group": "post",
+          "fmt": "score2"
+        },
+        {
+          "key": "radial_engagement_pct",
+          "section": "post",
+          "label": "Radial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "axial_engagement_pct",
+          "section": "post",
+          "label": "Axial eng %",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "engagement_ok",
+          "section": "post",
+          "label": "Engagement OK",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "operation_count",
+          "section": "post",
+          "label": "Ops",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_change_count",
+          "section": "post",
+          "label": "Tool changes",
+          "group": "post",
+          "fmt": "count"
+        },
+        {
+          "key": "cycle_time_s",
+          "section": "post",
+          "label": "Cycle time",
+          "group": "post",
+          "fmt": "secs"
+        },
+        {
+          "key": "toolpath_length_mm",
+          "section": "post",
+          "label": "Toolpath length (mm)",
+          "group": "post",
+          "fmt": "score1"
+        },
+        {
+          "key": "collision_free",
+          "section": "post",
+          "label": "Collision-free",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "stock_in_bounds",
+          "section": "post",
+          "label": "Stock in bounds",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "air_cut_ratio",
+          "section": "post",
+          "label": "Air-cut",
+          "group": "post",
+          "fmt": "pct"
+        },
+        {
+          "key": "input_tokens",
+          "section": "auto",
+          "label": "In tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "output_tokens",
+          "section": "auto",
+          "label": "Out tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_read_input_tokens",
+          "section": "auto",
+          "label": "Cache-read tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "cache_creation_input_tokens",
+          "section": "auto",
+          "label": "Cache-create tok",
+          "group": "tokens",
+          "fmt": "tokens"
+        },
+        {
+          "key": "llm_rounds",
+          "section": "auto",
+          "label": "Rounds",
+          "group": "time",
+          "fmt": "count"
+        },
+        {
+          "key": "llm_s",
+          "section": "auto",
+          "label": "LLM s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_s",
+          "section": "auto",
+          "label": "Tool s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "wall_clock_s",
+          "section": "auto",
+          "label": "Wall s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "retry_wait_s",
+          "section": "auto",
+          "label": "Retry-wait s",
+          "group": "time",
+          "fmt": "secs"
+        },
+        {
+          "key": "tool_inputs_repaired",
+          "section": "auto",
+          "label": "Tool inputs repaired",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "mb_injected_calls",
+          "section": "auto",
+          "label": "Mb injected calls",
+          "group": "other",
+          "fmt": "count"
+        },
+        {
+          "key": "aborted",
+          "section": "auto",
+          "label": "Aborted",
+          "group": "other",
+          "fmt": "count"
+        }
+      ],
+      "models": [
+        {
+          "model": "GLM 5.2",
+          "runs": 5,
+          "cells": {
+            "tool_call_success_rate": {
+              "mean": 0.861,
+              "n": 5
+            },
+            "tool_calls_total": {
+              "mean": 55.2,
+              "n": 5
+            },
+            "tool_calls_succeeded": {
+              "mean": 47.2,
+              "n": 5
+            },
+            "tool_calls_failed": {
+              "mean": 8.0,
+              "n": 5
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "iou_voxel": {
+              "mean": 0.8004,
+              "n": 5
+            },
+            "max_deviation_mm": {
+              "mean": 3.08646,
+              "n": 5
+            },
+            "p99_deviation_mm": {
+              "mean": 2.65252,
+              "n": 5
+            },
+            "scallop_height_mm": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "radial_engagement_pct": {
+              "mean": 61.9338,
+              "n": 5
+            },
+            "axial_engagement_pct": {
+              "mean": 19.324,
+              "n": 5
+            },
+            "engagement_ok": {
+              "mean": 1.0,
+              "n": 5
+            },
+            "operation_count": {
+              "mean": 5.8,
+              "n": 5
+            },
+            "tool_change_count": {
+              "mean": 3.2,
+              "n": 5
+            },
+            "cycle_time_s": {
+              "mean": 6511.678,
+              "n": 5
+            },
+            "toolpath_length_mm": {
+              "mean": 8968.09,
+              "n": 5
+            },
+            "collision_free": {
+              "mean": 1.0,
+              "n": 5
+            },
+            "stock_in_bounds": {
+              "mean": 1.0,
+              "n": 5
+            },
+            "air_cut_ratio": {
+              "mean": 0.16656,
+              "n": 5
+            },
+            "input_tokens": {
+              "mean": 3791657.8,
+              "n": 5
+            },
+            "output_tokens": {
+              "mean": 63837.6,
+              "n": 5
+            },
+            "cache_read_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "cache_creation_input_tokens": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "llm_rounds": {
+              "mean": 56.2,
+              "n": 5
+            },
+            "llm_s": {
+              "mean": 786.026,
+              "n": 5
+            },
+            "tool_s": {
+              "mean": 17.224,
+              "n": 5
+            },
+            "wall_clock_s": {
+              "mean": 803.522,
+              "n": 5
+            },
+            "retry_wait_s": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "tool_inputs_repaired": {
+              "mean": 0.0,
+              "n": 5
+            },
+            "mb_injected_calls": {
+              "mean": 44.4,
+              "n": 5
+            },
+            "aborted": {
+              "mean": 0.0,
+              "n": 5
+            }
+          },
+          "tool_call_success_rate_mean": 0.861,
+          "tool_call_success_rate_ci_low": 0.805173,
+          "tool_call_success_rate_ci_high": 0.916827,
+          "tool_call_success_rate_ci_margin": 0.055827,
+          "tool_calls_total_mean": 55.2,
+          "tool_calls_total_ci_low": 41.004788,
+          "tool_calls_total_ci_high": 69.395212,
+          "tool_calls_total_ci_margin": 14.195212,
+          "tool_calls_succeeded_mean": 47.2,
+          "tool_calls_succeeded_ci_low": 37.059322,
+          "tool_calls_succeeded_ci_high": 57.340678,
+          "tool_calls_succeeded_ci_margin": 10.140678,
+          "tool_calls_failed_mean": 8.0,
+          "tool_calls_failed_ci_low": 3.437835,
+          "tool_calls_failed_ci_high": 12.562165,
+          "tool_calls_failed_ci_margin": 4.562165,
+          "hit_round_limit_mean": 0.0,
+          "hit_round_limit_ci_low": 0.0,
+          "hit_round_limit_ci_high": 0.521824,
+          "hit_round_limit_ci_margin": 0.260912,
+          "iou_voxel_mean": 0.8004,
+          "iou_voxel_ci_low": 0.504768,
+          "iou_voxel_ci_high": 1.0,
+          "iou_voxel_ci_margin": 0.247616,
+          "max_deviation_mm_mean": 3.08646,
+          "max_deviation_mm_ci_low": 0.381463,
+          "max_deviation_mm_ci_high": 5.791457,
+          "max_deviation_mm_ci_margin": 2.704997,
+          "p99_deviation_mm_mean": 2.65252,
+          "p99_deviation_mm_ci_low": 0.0,
+          "p99_deviation_mm_ci_high": 5.431877,
+          "p99_deviation_mm_ci_margin": 2.715938,
+          "scallop_height_mm_mean": 0.0,
+          "scallop_height_mm_ci_low": null,
+          "scallop_height_mm_ci_high": null,
+          "scallop_height_mm_ci_margin": null,
+          "radial_engagement_pct_mean": 61.9338,
+          "radial_engagement_pct_ci_low": 21.051447,
+          "radial_engagement_pct_ci_high": 102.816153,
+          "radial_engagement_pct_ci_margin": 40.882353,
+          "axial_engagement_pct_mean": 19.324,
+          "axial_engagement_pct_ci_low": 3.638967,
+          "axial_engagement_pct_ci_high": 35.009033,
+          "axial_engagement_pct_ci_margin": 15.685033,
+          "engagement_ok_mean": 1.0,
+          "engagement_ok_ci_low": 0.478176,
+          "engagement_ok_ci_high": 1.0,
+          "engagement_ok_ci_margin": 0.260912,
+          "operation_count_mean": 5.8,
+          "operation_count_ci_low": 4.761149,
+          "operation_count_ci_high": 6.838851,
+          "operation_count_ci_margin": 1.038851,
+          "tool_change_count_mean": 3.2,
+          "tool_change_count_ci_low": 1.581068,
+          "tool_change_count_ci_high": 4.818932,
+          "tool_change_count_ci_margin": 1.618932,
+          "cycle_time_s_mean": 6511.678,
+          "cycle_time_s_ci_low": 0.0,
+          "cycle_time_s_ci_high": 13470.81276,
+          "cycle_time_s_ci_margin": 6735.40638,
+          "toolpath_length_mm_mean": 8968.09,
+          "toolpath_length_mm_ci_low": 3031.097048,
+          "toolpath_length_mm_ci_high": 14905.082952,
+          "toolpath_length_mm_ci_margin": 5936.992952,
+          "collision_free_mean": 1.0,
+          "collision_free_ci_low": 0.478176,
+          "collision_free_ci_high": 1.0,
+          "collision_free_ci_margin": 0.260912,
+          "stock_in_bounds_mean": 1.0,
+          "stock_in_bounds_ci_low": 0.478176,
+          "stock_in_bounds_ci_high": 1.0,
+          "stock_in_bounds_ci_margin": 0.260912,
+          "air_cut_ratio_mean": 0.16656,
+          "air_cut_ratio_ci_low": 0.1124,
+          "air_cut_ratio_ci_high": 0.22072,
+          "air_cut_ratio_ci_margin": 0.05416,
+          "input_tokens_mean": 3791657.8,
+          "input_tokens_ci_low": 2224880.626606,
+          "input_tokens_ci_high": 5358434.973394,
+          "input_tokens_ci_margin": 1566777.173394,
+          "output_tokens_mean": 63837.6,
+          "output_tokens_ci_low": 37994.601854,
+          "output_tokens_ci_high": 89680.598146,
+          "output_tokens_ci_margin": 25842.998146,
+          "cache_read_input_tokens_mean": 0.0,
+          "cache_read_input_tokens_ci_low": null,
+          "cache_read_input_tokens_ci_high": null,
+          "cache_read_input_tokens_ci_margin": null,
+          "cache_creation_input_tokens_mean": 0.0,
+          "cache_creation_input_tokens_ci_low": null,
+          "cache_creation_input_tokens_ci_high": null,
+          "cache_creation_input_tokens_ci_margin": null,
+          "llm_rounds_mean": 56.2,
+          "llm_rounds_ci_low": 42.004788,
+          "llm_rounds_ci_high": 70.395212,
+          "llm_rounds_ci_margin": 14.195212,
+          "llm_s_mean": 786.026,
+          "llm_s_ci_low": 472.42681,
+          "llm_s_ci_high": 1099.62519,
+          "llm_s_ci_margin": 313.59919,
+          "tool_s_mean": 17.224,
+          "tool_s_ci_low": 12.635303,
+          "tool_s_ci_high": 21.812697,
+          "tool_s_ci_margin": 4.588697,
+          "wall_clock_s_mean": 803.522,
+          "wall_clock_s_ci_low": 486.86909,
+          "wall_clock_s_ci_high": 1120.17491,
+          "wall_clock_s_ci_margin": 316.65291,
+          "retry_wait_s_mean": 0.0,
+          "retry_wait_s_ci_low": null,
+          "retry_wait_s_ci_high": null,
+          "retry_wait_s_ci_margin": null,
+          "tool_inputs_repaired_mean": 0.0,
+          "tool_inputs_repaired_ci_low": null,
+          "tool_inputs_repaired_ci_high": null,
+          "tool_inputs_repaired_ci_margin": null,
+          "mb_injected_calls_mean": 44.4,
+          "mb_injected_calls_ci_low": 29.745208,
+          "mb_injected_calls_ci_high": 59.054792,
+          "mb_injected_calls_ci_margin": 14.654792,
+          "aborted_mean": 0.0,
+          "aborted_ci_low": null,
+          "aborted_ci_high": null,
+          "aborted_ci_margin": null,
+          "run_index": [
+            {
+              "run_id": "9685a771-e321-4458-81ab-9b8991fbf346",
+              "timestamp": "2026-08-01T20:38:08.897438",
+              "trial_index": 0,
+              "prompt_variant": "minimal"
+            },
+            {
+              "run_id": "0053cd52-0c3c-458c-a36f-ce3838831d53",
+              "timestamp": "2026-08-01T20:51:51.464736",
+              "trial_index": 1,
+              "prompt_variant": "minimal"
+            },
+            {
+              "run_id": "570c35c4-56ef-4926-8019-f6266e2e0e09",
+              "timestamp": "2026-08-01T21:04:50.129661",
+              "trial_index": 2,
+              "prompt_variant": "minimal"
+            },
+            {
+              "run_id": "7f225cb4-e05e-40a8-83b0-4f848f035fe7",
+              "timestamp": "2026-08-01T21:23:02.726243",
+              "trial_index": 3,
+              "prompt_variant": "minimal"
+            },
+            {
+              "run_id": "b50c9628-c277-4848-9d3a-2731e5b18946",
+              "timestamp": "2026-08-01T21:39:00.762658",
+              "trial_index": 4,
+              "prompt_variant": "minimal"
+            }
+          ]
+        }
+      ]
     }
   ],
   "overview": {
@@ -4652,7 +5162,8 @@
       "box_pocket_explicit",
       "box_pocket_minimal",
       "rounded_rectangle_with_pin_and_hole_detailed",
-      "rounded_rectangle_with_pin_and_hole_explicit"
+      "rounded_rectangle_with_pin_and_hole_explicit",
+      "rounded_rectangle_with_pin_and_hole_minimal"
     ],
     "cells": {
       "Claude Opus 5": {
@@ -4675,6 +5186,10 @@
         "rounded_rectangle_with_pin_and_hole_explicit": {
           "runs": 0,
           "graded": 0
+        },
+        "rounded_rectangle_with_pin_and_hole_minimal": {
+          "runs": 0,
+          "graded": 0
         }
       },
       "GLM 5.2": {
@@ -4695,6 +5210,10 @@
           "graded": 5
         },
         "rounded_rectangle_with_pin_and_hole_explicit": {
+          "runs": 5,
+          "graded": 5
+        },
+        "rounded_rectangle_with_pin_and_hole_minimal": {
           "runs": 5,
           "graded": 5
         }
