@@ -301,6 +301,7 @@
   },
   "cam_summary": {
     "doc": "glm-5.2_Pocket_Box_explicit_constraints_2026-08-01T12-35-43",
+    "fusion_version": null,
     "cam_product": true,
     "setups": [
       {

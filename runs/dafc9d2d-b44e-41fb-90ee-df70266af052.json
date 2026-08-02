@@ -296,6 +296,7 @@
   },
   "cam_summary": {
     "doc": "claude-opus-5_Pocket_Box_detailed_2026-07-29T14-08-35",
+    "fusion_version": null,
     "cam_product": true,
     "setups": [
       {

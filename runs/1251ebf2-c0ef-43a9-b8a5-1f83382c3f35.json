@@ -358,6 +358,7 @@
   },
   "cam_summary": {
     "doc": "claude-opus-5_Rounded_Rectangle_with_Pin_and_Hole_detailed_2026-07-29T19-37-24",
+    "fusion_version": null,
     "cam_product": true,
     "setups": [
       {

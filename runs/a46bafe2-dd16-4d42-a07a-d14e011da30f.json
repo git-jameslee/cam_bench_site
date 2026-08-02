@@ -269,6 +269,7 @@
   },
   "cam_summary": {
     "doc": "claude-opus-5_Pocket_Box_minimal_2026-07-29T18-17-40",
+    "fusion_version": null,
     "cam_product": true,
     "setups": [
       {

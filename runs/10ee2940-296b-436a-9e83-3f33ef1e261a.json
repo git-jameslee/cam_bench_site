@@ -554,6 +554,7 @@
   },
   "cam_summary": {
     "doc": "claude-opus-5_Pocket_Box_explicit_constraints_2026-07-29T14-34-30",
+    "fusion_version": null,
     "cam_product": true,
     "setups": [
       {

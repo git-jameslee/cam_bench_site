@@ -400,6 +400,7 @@
   },
   "cam_summary": {
     "doc": "glm-5.2_Rounded_Rectangle_with_Pin_and_Hole_detailed_2026-08-01T17-29-08",
+    "fusion_version": null,
     "cam_product": true,
     "setups": [
       {

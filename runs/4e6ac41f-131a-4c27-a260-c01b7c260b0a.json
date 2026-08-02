@@ -320,6 +320,7 @@
   },
   "cam_summary": {
     "doc": "glm-5.2_Pocket_Box_detailed_2026-08-01T12-09-35",
+    "fusion_version": null,
     "cam_product": true,
     "setups": [
       {

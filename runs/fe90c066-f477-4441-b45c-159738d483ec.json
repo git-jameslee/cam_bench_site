@@ -411,6 +411,7 @@
   },
   "cam_summary": {
     "doc": null,
+    "fusion_version": null,
     "cam_product": null,
     "setups": [],
     "probe_error": true
