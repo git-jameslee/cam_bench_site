@@ -11,10 +11,6 @@
 // Cells show mean with a 95% t-distribution CI.
 
 const DASH = "—";
-const GROUP_LABEL = {
-  outcome: "Outcome", post: "Objective",
-  cost: "Cost ($)", tokens: "Tokens", time: "Time", other: "Other",
-};
 
 // Brand logos (simple-icons, 24x24 viewBox). Rendered inline before the model
 // name so they inherit the row text color via currentColor — no external fetch.
@@ -107,7 +103,6 @@ let DATA = null;
 let active = "Leaderboard";
 let variantTab = "all";
 let currentModel = null; // set when the #model=<name> route is active
-let visible = new Set();
 // Display-order sort for the leaderboard table. This NEVER touches the ranking:
 // board.models keeps its wins order (and each row keeps its true rank badge);
 // sortKey only re-orders the rows on screen. null = the default wins ranking.
@@ -522,8 +517,9 @@ function renderModel(name) {
         vr.classList.toggle("open", open);
         if (open && !loaded) {
           loaded = true;
-          const cols = p.task.metrics.filter((m) => visible.has(m.group));
-          renderRunDetail(vdcell, p.runIndex, cols);
+          // Every metric the task has, all groups — no toggling. The backend
+          // already emits them in group-then-key display order.
+          renderRunDetail(vdcell, p.runIndex, p.task.metrics);
         }
       };
     });
@@ -585,7 +581,7 @@ function renderOverview() {
 }
 
 // Lazy-load every run for one model row and render a per-run breakdown table
-// (same visible metric cols) + variant col; each run row expands to its
+// (every metric col the task has) + variant col; each run row expands to its
 // tool-call transcript. Visuals (video/image) are deferred — slots stay hidden.
 async function renderRunDetail(container, runIndex, cols) {
   container.replaceChildren(el("div", { class: "note" }, "loading runs…"));
@@ -733,8 +729,6 @@ function render() {
   if (active === "__model__" && DATA.leaderboard) renderModel(currentModel);
   else if (active === "Leaderboard" && DATA.leaderboard) renderLeaderboard();
   else renderOverview();
-  // Metric-group toggles only drive the model page's run tables.
-  $("#groups").style.display = active === "__model__" ? "flex" : "none";
   document.querySelectorAll(".tab").forEach((b) =>
     b.classList.toggle("active", b.dataset.name === active));
 }
@@ -751,21 +745,6 @@ function applyRoute() {
     currentModel = null;
     active = "Leaderboard";
   }
-}
-
-function buildGroupToggles() {
-  const present = new Set();
-  DATA.tasks.forEach((t) => t.metrics.forEach((m) => present.add(m.group)));
-  const order = DATA.group_order.filter((g) => present.has(g));
-  visible = new Set(DATA.default_visible.filter((g) => present.has(g)));
-  const box = $("#groups");
-  box.replaceChildren();
-  order.forEach((g) => {
-    const cb = el("input", { type: "checkbox" });
-    cb.checked = visible.has(g);
-    cb.onchange = () => { cb.checked ? visible.add(g) : visible.delete(g); render(); };
-    box.append(el("label", {}, cb, GROUP_LABEL[g] || g));
-  });
 }
 
 // Coverage is no longer a peer tab — the leaderboard is the only top-level
@@ -820,7 +799,6 @@ async function init() {
       syncAria();
     });
   }
-  buildGroupToggles();
   buildTabs();
   applyRoute();
   // In-place navigation between the leaderboard and a model page: re-route,
