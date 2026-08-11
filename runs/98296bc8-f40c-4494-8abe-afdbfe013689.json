@@ -41,7 +41,8 @@
     "toolpath_length_mm": 16004.07,
     "collision_free": 1.0,
     "stock_in_bounds": 1.0,
-    "air_cut_ratio": 0.0569
+    "air_cut_ratio": 0.0569,
+    "cost_usd": 1.945
   },
   "transcript": [
     {

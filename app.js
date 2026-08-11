@@ -13,7 +13,7 @@
 const DASH = "—";
 const GROUP_LABEL = {
   outcome: "Outcome", post: "Objective",
-  tokens: "Tokens", time: "Time", other: "Other",
+  cost: "Cost ($)", tokens: "Tokens", time: "Time", other: "Other",
 };
 
 // Brand logos (simple-icons, 24x24 viewBox). Rendered inline before the model
@@ -111,7 +111,7 @@ let visible = new Set();
 // Display-order sort for the leaderboard table. This NEVER touches the ranking:
 // board.models keeps its wins order (and each row keeps its true rank badge);
 // sortKey only re-orders the rows on screen. null = the default wins ranking.
-let sortKey = null;  // "model" | "wins" | "runs" | "headline" | "task:<group>"
+let sortKey = null;  // "model" | "wins" | "cost" | "runs" | "headline" | "task:<group>"
 let sortDir = -1;    // -1 descending, 1 ascending
 let h2hOpen = false; // metric head-to-head disclosure state
 
@@ -130,6 +130,9 @@ function fmtMain(fmt, v) {
   if (fmt === "count") return Number.isInteger(v) ? "" + v : v.toFixed(1);
   if (fmt === "tokens") return compact(v);
   if (fmt === "secs") return v.toFixed(1) + "s";
+  // Reference list-price dollars. Sub-$0.10 runs get a 3rd decimal so the cheap
+  // locally-served models don't all collapse to "$0.01".
+  if (fmt === "usd") return "$" + (v >= 0.1 ? v.toFixed(2) : v.toFixed(3));
   if (fmt === "score1") return v.toFixed(1);
   return v.toFixed(2); // score2
 }
@@ -177,11 +180,19 @@ function headlineCell(H, c, extraClass, title, expected) {
   return td;
 }
 
+// One model's mean reference cost in the active variant view, or null when the
+// model is unpriced — or when summary.json predates the cost payload entirely.
+function costCell(model) {
+  const cb = (DATA.cost && DATA.cost.boards[variantTab]) || {};
+  return cb[model] || null;
+}
+
 // Value a leaderboard row sorts on for a given column key (null → sorts last).
 function sortValue(e, key) {
   if (key === "model") return e.model.toLowerCase();
   if (key === "runs") return e.runs;
   if (key === "wins") return e.wins;
+  if (key === "cost") { const c = costCell(e.model); return c ? c.mean : null; }
   if (key === "headline") return e.headline ? e.headline.mean : null;
   if (key.startsWith("task:")) {
     const c = e.tasks[key.slice(5)];
@@ -208,7 +219,8 @@ function sortedRows(board) {
 // Three-state header click: sort (best/A-first) → reverse → back to the default
 // wins ranking. The model column is the explicit "restore default" too.
 function toggleSort(key) {
-  const initial = key === "model" ? 1 : -1;
+  // cost sorts ascending first: cheapest is the "best" end of that column.
+  const initial = (key === "model" || key === "cost") ? 1 : -1;
   if (sortKey !== key) { sortKey = key; sortDir = initial; }
   else if (sortDir === initial) { sortDir = -initial; }
   else { sortKey = null; sortDir = -1; }
@@ -259,7 +271,7 @@ function renderLeaderboard() {
     (mx, e) => Math.max(mx, (e.headline && e.headline.n) || 0), 0);
   let anyLowN = false;
 
-  // Columns: model → headline → per-task → wins → runs. The ranking is
+  // Columns: model → headline → per-task → wins → avg $ → runs. The ranking is
   // untouched; this is layout, and the sort below is display order only.
   const table = el("table");
   const head = el("tr");
@@ -269,6 +281,8 @@ function renderLeaderboard() {
     { class: "grp", title: `mean ${H.key} over every graded run in this view` }));
   lb.task_groups.forEach((g) => head.append(sortTh("task:" + g, taskShort(g), { title: g })));
   head.append(sortTh("wins", "wins", { class: "grp" }));
+  head.append(sortTh("cost", "avg $", { class: "grp",
+    title: "Mean reference cost per run: this model's token counts × its own public API list prices (input/output/cache rates). NOT what we spent — Claude ran on a flat-rate subscription and GLM/Qwen/Gemma ran on our own hardware; list-pricing every model is what makes the column comparable." }));
   head.append(sortTh("runs", "runs"));
   table.append(el("thead", {}, head));
 
@@ -323,6 +337,16 @@ function renderLeaderboard() {
     tr.append(el("td", wonLabels.length ? { class: "grp", title: "won: " + wonLabels.join(", ") }
                                         : { class: "grp" },
       `${e.wins}/${board.contested}`));
+
+    const cc = costCell(e.model);
+    if (!cc || cc.mean == null) {
+      tr.append(el("td", { class: "dash grp" }, DASH));
+    } else {
+      const td = el("td", { class: "grp" }, fmtMain("usd", cc.mean));
+      if (cc.ci_margin != null) td.append(el("span", { class: "ci" }, " ±" + fmtMain("usd", cc.ci_margin)));
+      tr.append(td);
+    }
+
     tr.append(el("td", {}, "" + e.runs));
     body.append(tr);
   });
@@ -340,6 +364,9 @@ function renderLeaderboard() {
   const covBtn = el("button", { class: "linkbtn", type: "button" }, "data coverage");
   covBtn.onclick = () => { active = "Coverage"; render(); };
   foot.append("Full runs-per-model × task matrix: ", covBtn, ".");
+  if (DATA.cost) {
+    foot.append(` avg $ = mean reference cost per run — token counts × each model's own public API list price (snapshot ${DATA.cost.pricing_version}). A comparability yardstick, not actual spend. Never counts toward wins or rank.`);
+  }
   panel.append(foot);
 
   // Head-to-head: every scoring metric × ranked models, winners marked. This is
@@ -383,7 +410,7 @@ function renderLeaderboard() {
   h2h.append(hb);
   h2hBox.append(el("div", { class: "scroll" }, h2h));
   h2hBox.append(el("div", { class: "note" },
-    "Models stay in rank order here. ↑ higher is better, ↓ lower is better. ● = best mean in this view (a win; ties share it; a metric only 1 model has data for is uncontested). Curated scoring metrics only — token / time diagnostics never count toward wins."));
+    "Models stay in rank order here. ↑ higher is better, ↓ lower is better. ● = best mean in this view (a win; ties share it; a metric only 1 model has data for is uncontested). Curated scoring metrics only — token / time / cost diagnostics never count toward wins."));
 }
 
 // Always show all three ablation variants under a task, even unrun ones.
@@ -554,7 +581,7 @@ function renderOverview() {
   table.append(body);
   panel.append(el("div", { class: "scroll" }, table));
   panel.append(el("div", { class: "note" },
-    "Cross-vendor caveat: tokens / time are not comparable between remote-API models (Claude, GPT) and locally-served ones (Qwen, Gemma)."));
+    "Cross-vendor caveat: tokens / time are not comparable between remote-API models (Claude, GPT) and locally-served ones (Qwen, Gemma). The leaderboard's avg $ column prices every model at its own vendor's public list rate — reference cost, not what we spent — which is what makes it comparable where raw token counts aren't."));
 }
 
 // Lazy-load every run for one model row and render a per-run breakdown table

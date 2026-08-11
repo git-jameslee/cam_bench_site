@@ -1,9 +1,10 @@
 {
-  "generated": "2026-08-11T14:07:55.845284+00:00",
+  "generated": "2026-08-11T14:53:14.072433+00:00",
   "n_runs": 2,
   "group_order": [
     "outcome",
     "post",
+    "cost",
     "tokens",
     "time",
     "other"
@@ -450,6 +451,45 @@
       }
     }
   },
+  "cost": {
+    "unit": "USD/run",
+    "basis": "public API list prices, not actual spend",
+    "pricing_version": "2026-08-11",
+    "boards": {
+      "all": {
+        "Claude Opus 5": {
+          "mean": 1.071892,
+          "n": 1,
+          "ci_low": null,
+          "ci_high": null,
+          "ci_margin": null
+        },
+        "GLM 5.2": {
+          "mean": 1.945,
+          "n": 1,
+          "ci_low": null,
+          "ci_high": null,
+          "ci_margin": null
+        }
+      },
+      "detailed": {
+        "Claude Opus 5": {
+          "mean": 1.071892,
+          "n": 1,
+          "ci_low": null,
+          "ci_high": null,
+          "ci_margin": null
+        },
+        "GLM 5.2": {
+          "mean": 1.945,
+          "n": 1,
+          "ci_low": null,
+          "ci_high": null,
+          "ci_margin": null
+        }
+      }
+    }
+  },
   "tasks": [
     {
       "name": "box_pocket_detailed",
@@ -600,6 +640,13 @@
           "label": "Air-cut",
           "group": "post",
           "fmt": "pct"
+        },
+        {
+          "key": "cost_usd",
+          "section": "auto",
+          "label": "$ (list)",
+          "group": "cost",
+          "fmt": "usd"
         },
         {
           "key": "input_tokens",
@@ -768,6 +815,10 @@
               "mean": 0.1148,
               "n": 1
             },
+            "cost_usd": {
+              "mean": 1.071892,
+              "n": 1
+            },
             "input_tokens": {
               "mean": 626952.0,
               "n": 1
@@ -897,6 +948,10 @@
           "air_cut_ratio_ci_low": null,
           "air_cut_ratio_ci_high": null,
           "air_cut_ratio_ci_margin": null,
+          "cost_usd_mean": null,
+          "cost_usd_ci_low": null,
+          "cost_usd_ci_high": null,
+          "cost_usd_ci_margin": null,
           "input_tokens_mean": null,
           "input_tokens_ci_low": null,
           "input_tokens_ci_high": null,
@@ -1038,6 +1093,10 @@
               "mean": 0.0569,
               "n": 1
             },
+            "cost_usd": {
+              "mean": 1.945,
+              "n": 1
+            },
             "input_tokens": {
               "mean": 1206409.0,
               "n": 1
@@ -1167,6 +1226,10 @@
           "air_cut_ratio_ci_low": null,
           "air_cut_ratio_ci_high": null,
           "air_cut_ratio_ci_margin": null,
+          "cost_usd_mean": null,
+          "cost_usd_ci_low": null,
+          "cost_usd_ci_high": null,
+          "cost_usd_ci_margin": null,
           "input_tokens_mean": null,
           "input_tokens_ci_low": null,
           "input_tokens_ci_high": null,
