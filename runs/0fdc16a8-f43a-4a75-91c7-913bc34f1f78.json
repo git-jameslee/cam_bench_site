@@ -44,7 +44,8 @@
     "rough_before_finish": 0.0,
     "tolerance_appropriate": 1.0,
     "air_cut_ratio": 0.1148,
-    "cost_usd": 1.071892
+    "cost_usd": 1.071892,
+    "total_time_s": 382.38
   },
   "transcript": [
     {

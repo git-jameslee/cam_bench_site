@@ -411,6 +411,25 @@ function renderLeaderboard() {
 // Always show all three ablation variants under a task, even unrun ones.
 const VARIANT_ORDER = ["minimal", "explicit", "detailed"];
 
+// Curated table columns: the metrics that matter for scanning results at a
+// glance. Everything else (near-duplicate diagnostics, process/debug flags,
+// raw token/time components) still lives in summary.json / the per-run JSON
+// — this is a display filter only, not a data change, so nothing is lost if
+// we want a column back later.
+const TABLE_METRIC_KEYS = new Set([
+  // post (quality) — the scored WINS_METRICS post keys, unfiltered order
+  "iou_voxel", "max_deviation_mm", "cycle_time_s", "scallop_height_mm",
+  "air_cut_ratio", "engagement_ok", "collision_free", "rough_before_finish",
+  "tolerance_appropriate",
+  // outcome
+  "tool_call_success_rate", "tool_calls_total", "hit_round_limit",
+  // cost
+  "cost_usd",
+  // time — the new unified total, plus rounds (a count, not a duration, so
+  // it isn't folded into total_time_s)
+  "total_time_s", "llm_rounds",
+]);
+
 // Model detail page (#model=<name>, opened in place from the leaderboard via
 // the hash router, and directly shareable): logo + name header, then a task
 // accordion — click a task to reveal its three prompt variants, click a variant
@@ -517,9 +536,11 @@ function renderModel(name) {
         vr.classList.toggle("open", open);
         if (open && !loaded) {
           loaded = true;
-          // Every metric the task has, all groups — no toggling. The backend
-          // already emits them in group-then-key display order.
-          renderRunDetail(vdcell, p.runIndex, p.task.metrics);
+          // The curated column set only (TABLE_METRIC_KEYS) — no toggling. The
+          // backend already emits them in group-then-key display order, which
+          // filtering preserves; the dropped metrics stay in the data.
+          renderRunDetail(vdcell, p.runIndex,
+                          p.task.metrics.filter((m) => TABLE_METRIC_KEYS.has(m.key)));
         }
       };
     });

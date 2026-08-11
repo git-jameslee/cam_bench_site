@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-11T15:04:22.880125+00:00",
+  "generated": "2026-08-11T16:02:42.542524+00:00",
   "n_runs": 2,
   "group_order": [
-    "outcome",
     "post",
+    "outcome",
     "cost",
     "tokens",
     "time",
@@ -495,41 +495,6 @@
       "name": "box_pocket_detailed",
       "metrics": [
         {
-          "key": "tool_call_success_rate",
-          "section": "auto",
-          "label": "Success",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
-          "key": "tool_calls_total",
-          "section": "auto",
-          "label": "Calls",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_succeeded",
-          "section": "auto",
-          "label": "Succeeded",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "tool_calls_failed",
-          "section": "auto",
-          "label": "Failed",
-          "group": "outcome",
-          "fmt": "count"
-        },
-        {
-          "key": "hit_round_limit",
-          "section": "auto",
-          "label": "Round-limit",
-          "group": "outcome",
-          "fmt": "pct"
-        },
-        {
           "key": "iou_voxel",
           "section": "post",
           "label": "IoU",
@@ -642,6 +607,41 @@
           "fmt": "pct"
         },
         {
+          "key": "tool_call_success_rate",
+          "section": "auto",
+          "label": "Success",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
+          "key": "tool_calls_total",
+          "section": "auto",
+          "label": "Calls",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_succeeded",
+          "section": "auto",
+          "label": "Succeeded",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "tool_calls_failed",
+          "section": "auto",
+          "label": "Failed",
+          "group": "outcome",
+          "fmt": "count"
+        },
+        {
+          "key": "hit_round_limit",
+          "section": "auto",
+          "label": "Round-limit",
+          "group": "outcome",
+          "fmt": "pct"
+        },
+        {
           "key": "cost_usd",
           "section": "auto",
           "label": "$ (list)",
@@ -675,6 +675,13 @@
           "label": "Cache-create tok",
           "group": "tokens",
           "fmt": "tokens"
+        },
+        {
+          "key": "total_time_s",
+          "section": "auto",
+          "label": "Time",
+          "group": "time",
+          "fmt": "secs"
         },
         {
           "key": "llm_rounds",
@@ -731,26 +738,6 @@
           "model": "Claude Opus 5",
           "runs": 1,
           "cells": {
-            "tool_call_success_rate": {
-              "mean": 0.88,
-              "n": 1
-            },
-            "tool_calls_total": {
-              "mean": 25.0,
-              "n": 1
-            },
-            "tool_calls_succeeded": {
-              "mean": 22.0,
-              "n": 1
-            },
-            "tool_calls_failed": {
-              "mean": 3.0,
-              "n": 1
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 1
-            },
             "iou_voxel": {
               "mean": 0.581,
               "n": 1
@@ -815,6 +802,26 @@
               "mean": 0.1148,
               "n": 1
             },
+            "tool_call_success_rate": {
+              "mean": 0.88,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 25.0,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 22.0,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 3.0,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 1
+            },
             "cost_usd": {
               "mean": 1.071892,
               "n": 1
@@ -833,6 +840,10 @@
             },
             "cache_creation_input_tokens": {
               "mean": 36123.0,
+              "n": 1
+            },
+            "total_time_s": {
+              "mean": 382.38,
               "n": 1
             },
             "llm_rounds": {
@@ -864,26 +875,6 @@
               "n": 1
             }
           },
-          "tool_call_success_rate_mean": null,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": null,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": null,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": null,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": null,
-          "hit_round_limit_ci_low": null,
-          "hit_round_limit_ci_high": null,
-          "hit_round_limit_ci_margin": null,
           "iou_voxel_mean": null,
           "iou_voxel_ci_low": null,
           "iou_voxel_ci_high": null,
@@ -948,6 +939,26 @@
           "air_cut_ratio_ci_low": null,
           "air_cut_ratio_ci_high": null,
           "air_cut_ratio_ci_margin": null,
+          "tool_call_success_rate_mean": null,
+          "tool_call_success_rate_ci_low": null,
+          "tool_call_success_rate_ci_high": null,
+          "tool_call_success_rate_ci_margin": null,
+          "tool_calls_total_mean": null,
+          "tool_calls_total_ci_low": null,
+          "tool_calls_total_ci_high": null,
+          "tool_calls_total_ci_margin": null,
+          "tool_calls_succeeded_mean": null,
+          "tool_calls_succeeded_ci_low": null,
+          "tool_calls_succeeded_ci_high": null,
+          "tool_calls_succeeded_ci_margin": null,
+          "tool_calls_failed_mean": null,
+          "tool_calls_failed_ci_low": null,
+          "tool_calls_failed_ci_high": null,
+          "tool_calls_failed_ci_margin": null,
+          "hit_round_limit_mean": null,
+          "hit_round_limit_ci_low": null,
+          "hit_round_limit_ci_high": null,
+          "hit_round_limit_ci_margin": null,
           "cost_usd_mean": null,
           "cost_usd_ci_low": null,
           "cost_usd_ci_high": null,
@@ -968,6 +979,10 @@
           "cache_creation_input_tokens_ci_low": null,
           "cache_creation_input_tokens_ci_high": null,
           "cache_creation_input_tokens_ci_margin": null,
+          "total_time_s_mean": null,
+          "total_time_s_ci_low": null,
+          "total_time_s_ci_high": null,
+          "total_time_s_ci_margin": null,
           "llm_rounds_mean": null,
           "llm_rounds_ci_low": null,
           "llm_rounds_ci_high": null,
@@ -1009,26 +1024,6 @@
           "model": "GLM 5.2",
           "runs": 1,
           "cells": {
-            "tool_call_success_rate": {
-              "mean": 1.0,
-              "n": 1
-            },
-            "tool_calls_total": {
-              "mean": 22.0,
-              "n": 1
-            },
-            "tool_calls_succeeded": {
-              "mean": 22.0,
-              "n": 1
-            },
-            "tool_calls_failed": {
-              "mean": 0.0,
-              "n": 1
-            },
-            "hit_round_limit": {
-              "mean": 0.0,
-              "n": 1
-            },
             "iou_voxel": {
               "mean": 1.0,
               "n": 1
@@ -1093,6 +1088,26 @@
               "mean": 0.0569,
               "n": 1
             },
+            "tool_call_success_rate": {
+              "mean": 1.0,
+              "n": 1
+            },
+            "tool_calls_total": {
+              "mean": 22.0,
+              "n": 1
+            },
+            "tool_calls_succeeded": {
+              "mean": 22.0,
+              "n": 1
+            },
+            "tool_calls_failed": {
+              "mean": 0.0,
+              "n": 1
+            },
+            "hit_round_limit": {
+              "mean": 0.0,
+              "n": 1
+            },
             "cost_usd": {
               "mean": 1.945,
               "n": 1
@@ -1111,6 +1126,10 @@
             },
             "cache_creation_input_tokens": {
               "mean": 0.0,
+              "n": 1
+            },
+            "total_time_s": {
+              "mean": 754.39,
               "n": 1
             },
             "llm_rounds": {
@@ -1142,26 +1161,6 @@
               "n": 1
             }
           },
-          "tool_call_success_rate_mean": null,
-          "tool_call_success_rate_ci_low": null,
-          "tool_call_success_rate_ci_high": null,
-          "tool_call_success_rate_ci_margin": null,
-          "tool_calls_total_mean": null,
-          "tool_calls_total_ci_low": null,
-          "tool_calls_total_ci_high": null,
-          "tool_calls_total_ci_margin": null,
-          "tool_calls_succeeded_mean": null,
-          "tool_calls_succeeded_ci_low": null,
-          "tool_calls_succeeded_ci_high": null,
-          "tool_calls_succeeded_ci_margin": null,
-          "tool_calls_failed_mean": null,
-          "tool_calls_failed_ci_low": null,
-          "tool_calls_failed_ci_high": null,
-          "tool_calls_failed_ci_margin": null,
-          "hit_round_limit_mean": null,
-          "hit_round_limit_ci_low": null,
-          "hit_round_limit_ci_high": null,
-          "hit_round_limit_ci_margin": null,
           "iou_voxel_mean": null,
           "iou_voxel_ci_low": null,
           "iou_voxel_ci_high": null,
@@ -1226,6 +1225,26 @@
           "air_cut_ratio_ci_low": null,
           "air_cut_ratio_ci_high": null,
           "air_cut_ratio_ci_margin": null,
+          "tool_call_success_rate_mean": null,
+          "tool_call_success_rate_ci_low": null,
+          "tool_call_success_rate_ci_high": null,
+          "tool_call_success_rate_ci_margin": null,
+          "tool_calls_total_mean": null,
+          "tool_calls_total_ci_low": null,
+          "tool_calls_total_ci_high": null,
+          "tool_calls_total_ci_margin": null,
+          "tool_calls_succeeded_mean": null,
+          "tool_calls_succeeded_ci_low": null,
+          "tool_calls_succeeded_ci_high": null,
+          "tool_calls_succeeded_ci_margin": null,
+          "tool_calls_failed_mean": null,
+          "tool_calls_failed_ci_low": null,
+          "tool_calls_failed_ci_high": null,
+          "tool_calls_failed_ci_margin": null,
+          "hit_round_limit_mean": null,
+          "hit_round_limit_ci_low": null,
+          "hit_round_limit_ci_high": null,
+          "hit_round_limit_ci_margin": null,
           "cost_usd_mean": null,
           "cost_usd_ci_low": null,
           "cost_usd_ci_high": null,
@@ -1246,6 +1265,10 @@
           "cache_creation_input_tokens_ci_low": null,
           "cache_creation_input_tokens_ci_high": null,
           "cache_creation_input_tokens_ci_margin": null,
+          "total_time_s_mean": null,
+          "total_time_s_ci_low": null,
+          "total_time_s_ci_high": null,
+          "total_time_s_ci_margin": null,
           "llm_rounds_mean": null,
           "llm_rounds_ci_low": null,
           "llm_rounds_ci_high": null,

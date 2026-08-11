@@ -42,7 +42,8 @@
     "collision_free": 1.0,
     "stock_in_bounds": 1.0,
     "air_cut_ratio": 0.0569,
-    "cost_usd": 1.945
+    "cost_usd": 1.945,
+    "total_time_s": 754.39
   },
   "transcript": [
     {
