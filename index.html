@@ -171,6 +171,32 @@
   td.dash { color:var(--muted); }
   .ci { color:var(--muted); font-size:11.5px; margin-left:5px; }
 
+  /* Click-to-sort headers. The arrow is the only ink added; its slot is always
+     reserved so activating a column never shifts the row. Sorting is display
+     order only — the rank badge stays with its model. */
+  th.sortable { cursor:pointer; user-select:none; transition:color .3s ease; }
+  th.sortable:hover { color:var(--fg); }
+  thead th.sorted { color:var(--fg); }
+  .sortind { display:inline-block; width:10px; margin-left:4px; font-size:9px;
+             color:var(--primary); }
+  /* Under-sampled cell: a footnote asterisk with a legend, not a badge. */
+  .warn { color:var(--bad); font-size:11px; vertical-align:2px; margin-left:2px;
+          cursor:help; }
+  /* Disclosure: a .detail-h you can click (metric head-to-head). */
+  .disclosure { display:inline-flex; align-items:center; gap:3px;
+                background:transparent; border:0; padding:0; cursor:pointer;
+                font-family:'Inter', sans-serif; transition:color .3s ease; }
+  .disclosure:hover { color:var(--fg); }
+  .disclosure.open .caret { transform:rotate(90deg); color:var(--primary); }
+  /* Generic collapse (accordion rows keep their own tr.detail.hidden rule). */
+  .hidden { display:none; }
+  /* Quiet inline link for secondary routes (data coverage). */
+  .linkbtn { background:transparent; border:0; padding:0; cursor:pointer;
+             color:var(--muted); font:inherit; font-weight:500;
+             text-decoration:underline; text-underline-offset:3px;
+             text-decoration-color:var(--muted); transition:color .3s ease; }
+  .linkbtn:hover { color:var(--primary); text-decoration-color:var(--primary); }
+
   /* Prompt-variant filter: quiet text pills; active carries the accent, thinly. */
   .seg { display:flex; gap:22px; margin:26px 0 2px; flex-wrap:wrap; }
   .segbtn { padding:6px 0; border:0; border-bottom:1.5px solid transparent; cursor:pointer;
@@ -274,7 +300,6 @@
   </header>
   <div class="barwrap">
     <div class="bar">
-      <label><input type="checkbox" id="ci" checked> 95% CI</label>
       <div class="group" id="groups"></div>
       <a class="logout" href="/logout">sign out</a>
     </div>

@@ -1,10 +1,14 @@
 // app.js — renders bench_site/summary.json.
-// Landing view = Leaderboard: models ranked by metric wins (see eval_etl
-// build_leaderboard) with prompt-variant filter tabs, per-task headline cells,
-// an expandable variant × task matrix per model, and a metric head-to-head
-// table. Task tabs keep the deep-dive: grouped metric columns
-// (outcome / post / tokens / time) with show/hide toggles and
-// per-run drill-down. Cells show mean with an optional 95% t-distribution CI.
+// Landing view = Leaderboard, and it is the only top-level view: models ranked
+// by metric wins (see eval_etl build_leaderboard) with prompt-variant filter
+// tabs, per-task headline cells carrying their sample count, click-to-sort
+// column headers (display order only — never the rank), and a collapsed metric
+// head-to-head table. Model detail pages (#model=<name>) open in place via the
+// hash router and hold the expandable variant × task matrix with grouped metric
+// columns (outcome / post / tokens / time) and per-run drill-down. Coverage is
+// a secondary view reached from the leaderboard footnote — and the automatic
+// fallback when summary.json predates the leaderboard payload.
+// Cells show mean with a 95% t-distribution CI.
 
 const DASH = "—";
 const GROUP_LABEL = {
@@ -104,9 +108,15 @@ let active = "Leaderboard";
 let variantTab = "all";
 let currentModel = null; // set when the #model=<name> route is active
 let visible = new Set();
+// Display-order sort for the leaderboard table. This NEVER touches the ranking:
+// board.models keeps its wins order (and each row keeps its true rank badge);
+// sortKey only re-orders the rows on screen. null = the default wins ranking.
+let sortKey = null;  // "model" | "wins" | "runs" | "headline" | "task:<group>"
+let sortDir = -1;    // -1 descending, 1 ascending
+let h2hOpen = false; // metric head-to-head disclosure state
 
 const $ = (s) => document.querySelector(s);
-const showCI = () => $("#ci").checked;
+const showCI = () => true;
 
 function compact(n) {
   const a = Math.abs(n);
@@ -139,19 +149,82 @@ function el(tag, attrs = {}, ...kids) {
 function taskShort(name) {
   const m = name.match(/^titan_m(\d+)$/);
   if (m) return "M" + m[1];
-  if (name === "box_pocket") return "BP";
-  if (name === "rounded_rectangle_with_pin_and_hole") return "RR";
   return name;
 }
 
-// One cell showing the headline metric's mean (dash when ungraded).
-function headlineCell(H, c, extraClass, title) {
+// Footnote marker for a cell whose mean rests on fewer runs than the fullest
+// cell in the same column — the leaderboard's own coverage warning, so a thin
+// number is never read as a solid one. The legend lives under the table.
+function lowNMark(n, expected) {
+  return el("span", {
+    class: "warn", "aria-label": "incomplete data",
+    title: `${n} of ${expected} runs — fewer than the fullest cell in this column; treat as provisional`,
+  }, "*");
+}
+
+// One cell showing the headline metric's mean (dash when ungraded), with the
+// sample count inline (muted, like the CI) and the incomplete-coverage marker
+// when `expected` is given and this cell falls short of it.
+function headlineCell(H, c, extraClass, title, expected) {
   if (!c || c.mean == null) {
     return el("td", { class: ("dash " + (extraClass || "")).trim() }, DASH);
   }
   const attrs = extraClass ? { class: extraClass } : {};
   if (title) attrs.title = title;
-  return el("td", attrs, fmtMain(H.fmt, c.mean));
+  const td = el("td", attrs, fmtMain(H.fmt, c.mean));
+  if (c.n) td.append(el("span", { class: "ci" }, " · n=" + c.n));
+  if (expected && c.n && c.n < expected) td.append(lowNMark(c.n, expected));
+  return td;
+}
+
+// Value a leaderboard row sorts on for a given column key (null → sorts last).
+function sortValue(e, key) {
+  if (key === "model") return e.model.toLowerCase();
+  if (key === "runs") return e.runs;
+  if (key === "wins") return e.wins;
+  if (key === "headline") return e.headline ? e.headline.mean : null;
+  if (key.startsWith("task:")) {
+    const c = e.tasks[key.slice(5)];
+    return c ? c.mean : null;
+  }
+  return null;
+}
+
+// Rows in display order: the wins ranking by default, otherwise sorted by the
+// active column. Each row carries its true (wins-based) rank regardless.
+function sortedRows(board) {
+  const rows = board.models.map((e, i) => ({ e, rank: i + 1 }));
+  if (!sortKey) return rows;
+  return rows.sort((a, b) => {
+    const x = sortValue(a.e, sortKey), y = sortValue(b.e, sortKey);
+    const xn = x == null, yn = y == null;
+    if (xn || yn) return xn && yn ? a.rank - b.rank : (xn ? 1 : -1);
+    if (typeof x === "string") return sortDir * x.localeCompare(y);
+    if (x === y) return a.rank - b.rank; // ties keep the wins order
+    return sortDir * (x < y ? -1 : 1);
+  });
+}
+
+// Three-state header click: sort (best/A-first) → reverse → back to the default
+// wins ranking. The model column is the explicit "restore default" too.
+function toggleSort(key) {
+  const initial = key === "model" ? 1 : -1;
+  if (sortKey !== key) { sortKey = key; sortDir = initial; }
+  else if (sortDir === initial) { sortDir = -initial; }
+  else { sortKey = null; sortDir = -1; }
+  render();
+}
+
+// A clickable column header carrying the active-sort arrow.
+function sortTh(key, label, attrs = {}) {
+  const on = sortKey === key;
+  const th = el("th", Object.assign({}, attrs, {
+    class: [attrs.class, "sortable", on ? "sorted" : ""].filter(Boolean).join(" "),
+  }), label);
+  th.append(el("span", { class: "sortind" }, on ? (sortDir < 0 ? "▾" : "▴") : ""));
+  th.setAttribute("aria-sort", on ? (sortDir < 0 ? "descending" : "ascending") : "none");
+  th.onclick = () => toggleSort(key);
+  return th;
 }
 
 function renderLeaderboard() {
@@ -162,7 +235,7 @@ function renderLeaderboard() {
   panel.replaceChildren();
   panel.append(el("h2", {}, "Leaderboard"));
   panel.append(el("div", { class: "note" },
-    `Ranked by metric wins — on how many scoring metrics the model posts the best mean in this view (${board.contested} contested; ties shared) — tiebroken by overall ${H.label}. Task cells show mean ${H.label}; click a model to open its detail page in a new tab.`));
+    `Ranked by metric wins — on how many scoring metrics the model posts the best mean in this view (${board.contested} contested; ties shared) — tiebroken by overall ${H.label}. Task cells show mean ${H.label} · n. Click a model for its detail page; click a column header to re-sort the rows (again to reverse, a third time to restore the wins ranking).`));
 
   // Prompt-variant filter (the ablation axis): re-filters + re-ranks the board.
   const seg = el("div", { class: "seg" });
@@ -174,34 +247,45 @@ function renderLeaderboard() {
   });
   panel.append(seg);
 
+  // Expected run count per column = the fullest cell any model posts there in
+  // this view. summary.json carries no declared trials-per-task target, so the
+  // best-covered model is the yardstick: anything below it is under-sampled.
+  const expTask = {};
+  lb.task_groups.forEach((g) => {
+    expTask[g] = board.models.reduce(
+      (mx, e) => Math.max(mx, (e.tasks[g] && e.tasks[g].n) || 0), 0);
+  });
+  const expHead = board.models.reduce(
+    (mx, e) => Math.max(mx, (e.headline && e.headline.n) || 0), 0);
+  let anyLowN = false;
+
+  // Columns: model → headline → per-task → wins → runs. The ranking is
+  // untouched; this is layout, and the sort below is display order only.
   const table = el("table");
   const head = el("tr");
-  ["model", "runs", "wins"].forEach((h) => head.append(el("th", {}, h)));
-  head.append(el("th", { class: "grp", title: `mean ${H.key} over every graded run in this view` },
-    H.label + " · overall"));
-  lb.task_groups.forEach((g) => head.append(el("th", { title: g }, taskShort(g))));
+  head.append(sortTh("model", "model",
+    { title: "sort by name — click again to restore the wins ranking" }));
+  head.append(sortTh("headline", H.label + " · overall",
+    { class: "grp", title: `mean ${H.key} over every graded run in this view` }));
+  lb.task_groups.forEach((g) => head.append(sortTh("task:" + g, taskShort(g), { title: g })));
+  head.append(sortTh("wins", "wins", { class: "grp" }));
+  head.append(sortTh("runs", "runs"));
   table.append(el("thead", {}, head));
 
   const body = el("tbody");
-  board.models.forEach((e, i) => {
+  sortedRows(board).forEach(({ e, rank }) => {
     const tr = el("tr");
-    // Rank lives inside the sticky model cell so it survives horizontal scroll.
+    // Rank lives inside the sticky model cell so it survives horizontal scroll
+    // (and stays with its model when a column sort re-orders the rows).
     // The model name is a real link (middle-click friendly) to its detail page.
     const mcell = el("td", { class: "model" });
-    mcell.append(el("span", { class: "rank" }, "" + (i + 1)));
-    const link = el("a", { class: "mlink", target: "_blank", rel: "noopener",
+    mcell.append(el("span", { class: "rank" }, "" + rank));
+    const link = el("a", { class: "mlink",
                            href: "#model=" + encodeURIComponent(e.model),
-                           title: "open model page in a new tab" });
+                           title: "open model page" });
     link.append(modelLabel(e.model));
     mcell.append(link);
     tr.append(mcell);
-    tr.append(el("td", {}, "" + e.runs));
-    const wonLabels = e.won.map((k) => {
-      const wm = lb.wins_metrics.find((m) => m.key === k);
-      return wm ? wm.label : k;
-    });
-    tr.append(el("td", wonLabels.length ? { title: "won: " + wonLabels.join(", ") } : {},
-      `${e.wins}/${board.contested}`));
 
     const h = e.headline;
     if (h.mean == null) {
@@ -221,20 +305,57 @@ function renderLeaderboard() {
           ? " ±" + fmtMain(H.fmt, h.ci_margin)
           : ` [${fmtMain(H.fmt, h.ci_low)}, ${fmtMain(H.fmt, h.ci_high)}]`));
       }
+      if (h.n) td.append(el("span", { class: "ci" }, " · n=" + h.n));
+      if (expHead && h.n && h.n < expHead) { td.append(lowNMark(h.n, expHead)); anyLowN = true; }
       tr.append(td);
     }
+
     lb.task_groups.forEach((g) => {
       const c = e.tasks[g];
-      tr.append(headlineCell(H, c, "", c && c.n ? `${g} · n=${c.n}` : g));
+      if (expTask[g] && c && c.n && c.n < expTask[g]) anyLowN = true;
+      tr.append(headlineCell(H, c, "", g, expTask[g]));
     });
+
+    const wonLabels = e.won.map((k) => {
+      const wm = lb.wins_metrics.find((m) => m.key === k);
+      return wm ? wm.label : k;
+    });
+    tr.append(el("td", wonLabels.length ? { class: "grp", title: "won: " + wonLabels.join(", ") }
+                                        : { class: "grp" },
+      `${e.wins}/${board.contested}`));
+    tr.append(el("td", {}, "" + e.runs));
     body.append(tr);
   });
   table.append(body);
   panel.append(el("div", { class: "scroll" }, table));
 
-  // Head-to-head: every scoring metric × ranked models, winners marked. This
-  // is the wins column's receipts.
-  panel.append(el("div", { class: "detail-h" }, "Metric head-to-head"));
+  // Footnote: the coverage legend for the "*" marker, plus the low-key route to
+  // the full coverage matrix (demoted from a peer tab).
+  const foot = el("div", { class: "note" });
+  if (anyLowN) {
+    foot.append(el("span", { class: "warn" }, "*"),
+      ` fewer runs than the best-covered model in that column — provisional. `);
+  }
+  foot.append("n = graded runs behind each mean. ");
+  const covBtn = el("button", { class: "linkbtn", type: "button" }, "data coverage");
+  covBtn.onclick = () => { active = "Coverage"; render(); };
+  foot.append("Full runs-per-model × task matrix: ", covBtn, ".");
+  panel.append(foot);
+
+  // Head-to-head: every scoring metric × ranked models, winners marked. This is
+  // the wins column's receipts — collapsed by default so the landing view is
+  // one table.
+  const h2hHead = el("button", { class: "detail-h disclosure" + (h2hOpen ? " open" : ""),
+                                 type: "button", "aria-expanded": h2hOpen ? "true" : "false" },
+    el("span", { class: "caret" }, "▸"), "Metric head-to-head");
+  const h2hBox = el("div", { class: h2hOpen ? "" : "hidden" });
+  h2hHead.onclick = () => {
+    h2hOpen = !h2hOpen;
+    h2hHead.classList.toggle("open", h2hOpen);
+    h2hHead.setAttribute("aria-expanded", h2hOpen ? "true" : "false");
+    h2hBox.classList.toggle("hidden", !h2hOpen);
+  };
+  panel.append(h2hHead, h2hBox);
   const h2h = el("table", { class: "subtable" });
   const hh = el("tr");
   hh.append(el("th", {}, "metric"));
@@ -260,25 +381,28 @@ function renderLeaderboard() {
     hb.append(r);
   });
   h2h.append(hb);
-  panel.append(el("div", { class: "scroll" }, h2h));
-  panel.append(el("div", { class: "note" },
-    "↑ higher is better, ↓ lower is better. ● = best mean in this view (a win; ties share it; a metric only 1 model has data for is uncontested). Curated scoring metrics only — token / time diagnostics never count toward wins."));
+  h2hBox.append(el("div", { class: "scroll" }, h2h));
+  h2hBox.append(el("div", { class: "note" },
+    "Models stay in rank order here. ↑ higher is better, ↓ lower is better. ● = best mean in this view (a win; ties share it; a metric only 1 model has data for is uncontested). Curated scoring metrics only — token / time diagnostics never count toward wins."));
 }
 
 // Always show all three ablation variants under a task, even unrun ones.
 const VARIANT_ORDER = ["minimal", "explicit", "detailed"];
 
-// Model detail page (#model=<name>, opened in a new tab from the leaderboard):
-// logo + name header, then a task accordion — click a task to reveal its three
-// prompt variants, click a variant to lazy-load that variant's runs with the
-// transcript / produced-CAM drill-down.
+// Model detail page (#model=<name>, opened in place from the leaderboard via
+// the hash router, and directly shareable): logo + name header, then a task
+// accordion — click a task to reveal its three prompt variants, click a variant
+// to lazy-load that variant's runs with the transcript / produced-CAM
+// drill-down. "← Leaderboard" clears the hash, so Back/Forward both work.
 function renderModel(name) {
   const lb = DATA.leaderboard;
   const H = lb.headline;
   const panel = $("#panel");
   panel.replaceChildren();
 
-  panel.append(el("a", { class: "backlink", href: "./" }, "← Leaderboard"));
+  // href="#" (not a reload) so the hash router handles it and Back/Forward keep
+  // stepping between the leaderboard and this page.
+  panel.append(el("a", { class: "backlink", href: "#" }, "← Leaderboard"));
   const head = el("div", { class: "model-head" });
   head.append(modelLabel(name));
   panel.append(head);
@@ -358,7 +482,7 @@ function renderModel(name) {
       vr.append(vc);
       vr.append(el("td", has ? {} : { class: "dash" },
         has ? "" + p.runIndex.length : "no runs"));
-      vr.append(headlineCell(H, p.iou, "", p.iou && p.iou.n ? `n=${p.iou.n}` : null));
+      vr.append(headlineCell(H, p.iou, "", null)); // n is rendered inline now
       vb.append(vr);
       if (!has) return;
       const vdetail = el("tr", { class: "detail hidden" });
@@ -390,10 +514,18 @@ function renderModel(name) {
   if (!any) panel.append(el("div", { class: "note" }, "no runs logged for this model"));
 }
 
+// Coverage matrix — a secondary view now (reached from the leaderboard
+// footnote), and still the automatic fallback when summary.json has no
+// leaderboard payload, in which case there is nothing to go back to.
 function renderOverview() {
   const ov = DATA.overview;
   const panel = $("#panel");
   panel.replaceChildren();
+  if (DATA.leaderboard) {
+    const back = el("a", { class: "backlink", href: "#" }, "← Leaderboard");
+    back.onclick = (ev) => { ev.preventDefault(); active = "Leaderboard"; render(); };
+    panel.append(back);
+  }
   panel.append(el("h2", {}, "Coverage"));
   panel.append(el("div", { class: "note" },
     "Runs per model × task, and whether objective scores are graded."));
@@ -580,8 +712,9 @@ function render() {
     b.classList.toggle("active", b.dataset.name === active));
 }
 
-// #model=<name> deep link → the model detail page (opened in a new tab from
-// the leaderboard, but also directly shareable).
+// #model=<name> deep link → the model detail page (navigated to in place from
+// the leaderboard, but also directly shareable). Dropping the hash — the
+// "← Leaderboard" backlink, or the browser Back button — lands back here.
 function applyRoute() {
   const m = location.hash.match(/^#model=(.+)$/);
   if (m && DATA && DATA.leaderboard) {
@@ -608,10 +741,15 @@ function buildGroupToggles() {
   });
 }
 
+// Coverage is no longer a peer tab — the leaderboard is the only top-level
+// view (Coverage hangs off its footnote link), so with a single entry the strip
+// is pure chrome and stays hidden. The list keeps its shape for the stale-
+// summary fallback, where Coverage is the only view there is.
 function buildTabs() {
   const tabs = $("#tabs");
   tabs.replaceChildren();
-  const names = [...(DATA.leaderboard ? ["Leaderboard"] : []), "Coverage"];
+  const names = DATA.leaderboard ? ["Leaderboard"] : ["Coverage"];
+  tabs.style.display = names.length > 1 ? "flex" : "none";
   names.forEach((name) => {
     const b = el("button", { class: "tab", "data-name": name }, name);
     b.onclick = () => {
@@ -642,7 +780,6 @@ async function init() {
     const when = DATA.generated ? new Date(DATA.generated).toLocaleDateString() : null;
     $("#sub").textContent = `${DATA.n_runs} runs` + (when ? ` · updated ${when}` : "");
   }
-  $("#ci").addEventListener("change", render);
   const themeBtn = $("#theme");
   if (themeBtn) {
     const syncAria = () => themeBtn.setAttribute("aria-pressed",
@@ -659,7 +796,13 @@ async function init() {
   buildGroupToggles();
   buildTabs();
   applyRoute();
-  window.addEventListener("hashchange", () => { applyRoute(); render(); });
+  // In-place navigation between the leaderboard and a model page: re-route,
+  // re-render, and start at the top the way a real page load would.
+  window.addEventListener("hashchange", () => {
+    applyRoute();
+    render();
+    window.scrollTo(0, 0);
+  });
   render();
 }
 
